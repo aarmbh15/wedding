@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import FooterLogo from '../assets/TSP_logo.png';
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -28,17 +29,25 @@ const Footer = () => {
       </div>
 
       {/* ── HERO BRAND BLOCK ──────────────────────────────────── */}
-      <div className="border-b border-white/5 px-6 lg:px-20 py-[60px] lg:py-[100px]">
+     <div className="border-b border-white/5 px-6 lg:px-20 py-[60px] lg:py-[100px]">
         <div className="max-w-[1300px] mx-auto flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10">
           <div className="max-w-xl">
             <p className="text-[0.7rem] tracking-[0.35em] uppercase text-[#c9a84c] mb-6">Est. 2014 · Mumbai & Pune</p>
-            <h2 className="font-['Cormorant_Garamond'] text-[clamp(3rem,8vw,7rem)] font-light text-white leading-none mb-6">
-              Knots <em className="text-[#c9a84c] not-italic">by Amp</em>
-            </h2>
+            
+            {/* Logo replaces the H2 text */}
+            <div className="mb-6">
+              <img 
+                src={FooterLogo} 
+                alt="TSP Knots by Amp Logo" 
+                className="h-16 md:h-24 w-auto object-contain" // Responsive height
+              />
+            </div>
+
             <p className="text-[0.92rem] font-light leading-relaxed text-[#e8e0d0]/40">
               Capturing timeless love stories with elegance, artistry, and an eye that finds the divine in every unguarded moment.
             </p>
           </div>
+
           <div className="w-full lg:w-auto text-left lg:text-right">
             <p className="text-[0.7rem] tracking-[0.25em] uppercase text-[#e8e0d0]/30 mb-4">Only 24 weddings / year</p>
             <Link to="/contact" className="inline-block px-10 py-4 bg-[#c9a84c] text-[#080b12] text-[0.78rem] tracking-[0.2em] uppercase font-medium transition-all hover:bg-white">
