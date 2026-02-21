@@ -1,8 +1,9 @@
-// src/pages/About.jsx
 import { useEffect, useRef, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import HeroImage from '../assets/6.jpg';
 
+// Hook for scroll animations
 function useInView(threshold = 0.15) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
@@ -10,178 +11,83 @@ function useInView(threshold = 0.15) {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setInView(true); }, { threshold });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
-  }, []);
+  }, [threshold]);
   return [ref, inView];
 }
 
 const team = [
-  {
-    name: "Anupam Maurya",
-    role: "Creative Director & Co-Founder",
-    bio: "Ex-engineer turned storyteller. Anupam sees poetry in shadows and finds the divine in unguarded moments.",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80",
-    tag: "Photographer · Director",
-  },
-  {
-    name: "Soumi Goswami",
-    role: "Chief Storyteller & Co-Founder",
-    bio: "A former architect who now designs emotional narratives. Soumi's eye for detail transforms frames into heirlooms.",
-    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80",
-    tag: "Photographer · Editor",
-  },
-  {
-    name: "Rahul Mehta",
-    role: "Lead Cinematographer",
-    bio: "Rahul crafts cinematic wedding films that play like short Bollywood features — every cut intentional, every score perfect.",
-    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&q=80",
-    tag: "Videographer · Colorist",
-  },
-  {
-    name: "Priya Desai",
-    role: "Second Photographer & Editor",
-    bio: "Priya blends into the crowd, emerging only to seize the tears, laughter, and love no one else noticed.",
-    img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&q=80",
-    tag: "Photographer · Retoucher",
-  },
-];
-
-const awards = [
-  { name: "WeddingSutra", year: "2023", award: "Best Wedding Photographer of the Year" },
-  { name: "Vogue India", year: "2022", award: "Top 10 Wedding Studios in India" },
-  { name: "Junebug Weddings", year: "2022", award: "World's Best Wedding Photography" },
-  { name: "The Knot", year: "2021", award: "Best of Weddings — Photography" },
-];
-
-const values = [
-  { icon: "◑", title: "Mastery of Light", desc: "We chase golden hour, sculpt shadows, and find beauty in every lighting condition — from sun-drenched mandaps to candlelit receptions." },
-  { icon: "◎", title: "Documentary Soul", desc: "We don't pose your wedding; we witness it. Real chaos, real tears, real magic — preserved exactly as it happened." },
-  { icon: "❖", title: "Cinematic Vision", desc: "Every wedding deserves a film score and a director's eye. We craft visual stories that feel timeless, not trendy." },
-  { icon: "✦", title: "Absolute Discretion", desc: "Your day, your story, your privacy. We integrate seamlessly, never disrupting, always present when it matters." },
+  { name: "Anupam Maurya", role: "Creative Director", bio: "Ex-engineer turned storyteller. Anupam sees poetry in shadows.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80", tag: "Photographer" },
+  { name: "Soumi Goswami", role: "Chief Storyteller", bio: "A former architect who designs emotional narratives.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80", tag: "Editor" },
+  { name: "Rahul Mehta", role: "Lead Cinematographer", bio: "Rahul crafts films that play like short cinema features.", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&q=80", tag: "Videographer" },
+  { name: "Priya Desai", role: "Second Photographer", bio: "Priya seizes the tears and laughter no one else noticed.", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&q=80", tag: "Retoucher" },
 ];
 
 const About = () => {
   const [heroRef, heroInView] = useInView(0.1);
-  const [storyRef, storyInView] = useInView(0.15);
+  const [storyRef, storyInView] = useInView(0.1);
   const [valRef, valInView] = useInView(0.1);
   const [teamRef, teamInView] = useInView(0.1);
-  const [awardRef, awardInView] = useInView(0.15);
-  const [ctaRef, ctaInView] = useInView(0.2);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#080b12", color: "#e8e0d0" }}>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
-
-        .reveal { opacity: 0; transform: translateY(44px); transition: opacity 0.95s cubic-bezier(.22,1,.36,1), transform 0.95s cubic-bezier(.22,1,.36,1); }
-        .reveal.visible { opacity: 1; transform: none; }
-        .reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1); }
-        .reveal-left.visible { opacity: 1; transform: none; }
-        .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1); }
-        .reveal-right.visible { opacity: 1; transform: none; }
-
-        .d1 { transition-delay: 0.1s !important; }
-        .d2 { transition-delay: 0.2s !important; }
-        .d3 { transition-delay: 0.3s !important; }
-        .d4 { transition-delay: 0.4s !important; }
-        .d5 { transition-delay: 0.5s !important; }
-
-        .team-card:hover .team-img { transform: scale(1.06); }
-        .team-card:hover .team-overlay { opacity: 1; }
-        .team-card:hover .team-tag { transform: translateY(0); opacity: 1; }
-
-        @keyframes heroFade { from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: scale(1); } }
-        @keyframes heroText { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes drawLine { from { width: 0; } to { width: 60px; } }
-        @keyframes rotate360 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); } 50% { box-shadow: 0 0 50px rgba(201,168,76,0.6); } }
-      `}</style>
-
-      {/* ─── HERO ─────────────────────────────────────────────────── */}
-      <section style={{ position: "relative", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, animation: "heroFade 1.6s ease-out forwards" }}>
-          <LazyLoadImage
-            src="https://images.unsplash.com/photo-1519741497674-281450b0d9be?auto=format&fit=crop&w=2000&q=80"
-            alt="Timeless love"
-            effect="blur"
-            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.32) saturate(0.8)" }}
-          />
-          {/* Elegant vignette overlay */}
-          <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 40%, rgba(8,11,18,0.7) 100%)" }} />
-        </div>
-
-        {/* Rotating decorative ring */}
-        <div style={{ position: "absolute", width: 360, height: 360, borderRadius: "50%", border: "1px solid rgba(201,168,76,0.2)", animation: "rotate360 30s linear infinite", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }} />
-        <div style={{ position: "absolute", width: 480, height: 480, borderRadius: "50%", border: "1px solid rgba(201,168,76,0.1)", animation: "rotate360 45s linear infinite reverse", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }} />
-
-        <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "0 24px", animation: "heroText 1.2s 0.4s ease-out both" }}>
-          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.4em", textTransform: "uppercase", color: "#c9a84c", marginBottom: "1.5rem", opacity: 0.9 }}>
-            Est. 2014 · Mumbai & Pune · 500+ Love Stories
-          </p>
-          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(3rem,8vw,7rem)", fontWeight: 300, color: "#fff", lineHeight: 1.05, marginBottom: "1rem" }}>
-            About <span style={{ color: "#c9a84c", fontStyle: "italic" }}>Knots by Amp</span>
+    <div className="min-h-screen font-['Jost'] text-[#1a1a1a]">
+      {/* ─── HERO SECTION ─────────────────────────────────────────── */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+       <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
+  <img
+    src={HeroImage}
+    alt="Wedding Cinematography"
+    className="w-full h-full object-cover opacity-60 brightness-75"
+  />
+</div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
+        
+        <div className="relative z-20 text-center px-6 transition-all duration-1000 transform translate-y-0 opacity-100">
+          <p className="text-[0.7rem] tracking-[0.4em] uppercase text-[#c9a84c] mb-6">Est. 2014 • Mumbai • Pune</p>
+          <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,8vw,6.5rem)] font-light text-white leading-[1.1] mb-8">
+            About <span className="italic text-[#c9a84c]">TILT SHIFT</span>
           </h1>
-          <div style={{ width: 60, height: 1, background: "#c9a84c", margin: "1.5rem auto", animation: "drawLine 1s 1s ease-out both" }} />
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(1.1rem,2.5vw,1.6rem)", fontWeight: 300, fontStyle: "italic", color: "rgba(232,224,208,0.85)", maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            Through the Lens Since 2014 — Capturing Love, One Timeless Story at a Time
+          <div className="w-16 h-[1px] bg-[#c9a84c] mx-auto mb-8 animate-[widthGrow_1.5s_ease-out]" />
+          <p className="font-['Cormorant_Garamond'] text-[clamp(1.1rem,2vw,1.6rem)] italic text-white/90 max-w-2xl mx-auto leading-relaxed">
+            "Capturing the quiet breaths between the big moments since 2014."
           </p>
         </div>
 
-        {/* Scroll hint */}
-        <div style={{ position: "absolute", bottom: 40, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-          <span style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.65rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "rgba(201,168,76,0.6)" }}>Scroll</span>
-          <div style={{ width: 1, height: 50, background: "linear-gradient(to bottom, #c9a84c, transparent)", animation: "pulseGlow 2s infinite" }} />
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3">
+          <span className="text-[0.6rem] tracking-[0.3em] uppercase text-white/50">Scroll</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-[#c9a84c] to-transparent animate-bounce" />
         </div>
       </section>
 
-      {/* ─── OUR STORY ────────────────────────────────────────────── */}
-      <section ref={storyRef} style={{ padding: "clamp(80px,10vw,140px) 24px", background: "#080b12", position: "relative", overflow: "hidden" }}>
-        {/* Large ghost text */}
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(6rem,15vw,16rem)", fontWeight: 300, color: "rgba(255,255,255,0.02)", whiteSpace: "nowrap", pointerEvents: "none", letterSpacing: "0.1em" }}>STORY</div>
-
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(50px,8vw,100px)", alignItems: "center" }}>
-          
-          {/* Images */}
-          <div className={`reveal-left ${storyInView ? "visible" : ""}`} style={{ position: "relative" }}>
-            <div style={{ position: "relative", borderRadius: 2, overflow: "hidden", aspectRatio: "3/4", boxShadow: "0 30px 100px rgba(0,0,0,0.6)" }}>
-              <LazyLoadImage
-                src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=80"
-                alt="Our story"
-                effect="blur"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(201,168,76,0.12) 0%, transparent 50%)" }} />
+      {/* ─── OUR STORY (WHITE) ────────────────────────────────────── */}
+      <section ref={storyRef} className="bg-white py-[clamp(80px,10vw,140px)] px-6 overflow-hidden">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className={`relative transition-all duration-1000 ${storyInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
+            <div className="aspect-[3/4] relative z-10 overflow-hidden shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="Our Story" className="w-full h-full object-cover" />
             </div>
-
-            {/* Accent small image */}
-            <div style={{ position: "absolute", bottom: -30, right: -30, width: 200, height: 240, borderRadius: 2, overflow: "hidden", boxShadow: "0 16px 60px rgba(0,0,0,0.5)", border: "3px solid #080b12" }}>
-              <LazyLoadImage src="https://images.unsplash.com/photo-1511285560929-80b456503681?auto=format&fit=crop&w=400&q=80" alt="Wedding detail" effect="blur" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <div className="absolute -bottom-10 -right-6 w-1/2 aspect-square hidden md:block border-[12px] border-white shadow-xl z-20 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80" alt="Detail" className="w-full h-full object-cover" />
             </div>
-
-            {/* Year badge */}
-            <div style={{ position: "absolute", top: 30, left: -20, background: "#c9a84c", color: "#fff", fontFamily: "'Cormorant Garamond', serif", fontSize: "3.5rem", fontWeight: 300, padding: "16px 24px", lineHeight: 1, boxShadow: "8px 8px 40px rgba(201,168,76,0.3)" }}>
-              <div>10+</div>
-              <div style={{ fontSize: "0.65rem", fontFamily: "'Jost', sans-serif", letterSpacing: "0.2em", textTransform: "uppercase", marginTop: 4 }}>Years</div>
+            <div className="absolute -top-6 -left-6 bg-[#c9a84c] text-white p-6 z-20">
+              <span className="font-['Cormorant_Garamond'] text-4xl block">10+</span>
+              <span className="text-[0.6rem] tracking-widest uppercase">Years</span>
             </div>
           </div>
 
-          {/* Text */}
-          <div className={`reveal-right ${storyInView ? "visible" : ""}`}>
-            <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#c9a84c", marginBottom: "1.5rem" }}>Our Journey</p>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem,4vw,3.2rem)", fontWeight: 300, color: "#fff", lineHeight: 1.2, marginBottom: "1.5rem" }}>
-              From Passion Projects<br />to <em>500+ Love Stories</em>
+          <div className={`transition-all duration-1000 delay-300 ${storyInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <span className="text-[0.7rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-4 block">Our Legacy</span>
+            <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.2rem,4vw,3.5rem)] font-light leading-tight mb-8">
+              Documenting Love <br /><em>With Absolute Sincerity</em>
             </h2>
-            <div style={{ width: 50, height: 1, background: "#c9a84c", marginBottom: "2rem" }} />
-            <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "1rem", fontWeight: 300, color: "rgba(232,224,208,0.7)", lineHeight: 1.9, marginBottom: "1.5rem" }}>
-              It all began when passion met purpose. Two friends from engineering and corporate worlds chose to chase light, emotion, and stories that matter. Knots by Amp was born in 2014 — evolving from candid street photography into a signature blend of documentary honesty, fine-art elegance, and cinematic romance.
-            </p>
-            <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "1rem", fontWeight: 300, color: "rgba(232,224,208,0.7)", lineHeight: 1.9, marginBottom: "2.5rem" }}>
-              Today, we're among India's most awarded studios — documenting love stories across destinations worldwide, earning recognition from WeddingSutra, Vogue India, Junebug Weddings, and more. Every frame is real: raw, emotional, beautifully imperfect.
-            </p>
-            <div style={{ display: "flex", gap: 40 }}>
-              {[{ n: "500+", l: "Weddings" }, { n: "12", l: "Countries" }, { n: "20+", l: "Awards" }].map((s, i) => (
+            <div className="space-y-6 text-[#4a4a4a] leading-relaxed text-[1.05rem]">
+              <p>Two friends left the corporate world in 2014 to pursue a simple dream: to see weddings differently. Not as events, but as living, breathing stories.</p>
+              <p>Today, with over 500 weddings across 12 countries, Knots by Amp has become a synonym for cinematic honesty. We don't just take photos; we preserve emotions.</p>
+            </div>
+            <div className="grid grid-cols-3 gap-8 mt-12 border-t border-gray-100 pt-8">
+              {[{n: "500+", l: "Weddings"}, {n: "12", l: "Countries"}, {n: "20+", l: "Awards"}].map((s, i) => (
                 <div key={i}>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.5rem", fontWeight: 300, color: "#c9a84c" }}>{s.n}</div>
-                  <div style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(232,224,208,0.45)" }}>{s.l}</div>
+                  <div className="font-['Cormorant_Garamond'] text-3xl text-[#c9a84c]">{s.n}</div>
+                  <div className="text-[0.65rem] tracking-widest uppercase text-gray-400">{s.l}</div>
                 </div>
               ))}
             </div>
@@ -189,107 +95,50 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── VALUES ───────────────────────────────────────────────── */}
-      <section ref={valRef} style={{ padding: "clamp(80px,10vw,130px) 24px", background: "#0d1019" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className={`reveal ${valInView ? "visible" : ""}`} style={{ textAlign: "center", marginBottom: "clamp(50px,7vw,90px)" }}>
-            <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#c9a84c", marginBottom: "1rem" }}>Our Philosophy</p>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.2rem,5vw,4rem)", fontWeight: 300, color: "#fff" }}>
-              Why Choose <em>Knots by Amp?</em>
-            </h2>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 2 }}>
-            {values.map((v, i) => (
-              <div key={i}
-                className={`reveal ${valInView ? `visible d${i + 1}` : ""}`}
-                style={{ padding: "clamp(40px,5vw,64px)", borderTop: "1px solid rgba(201,168,76,0.15)", borderLeft: i % 2 === 1 ? "1px solid rgba(201,168,76,0.15)" : "none", position: "relative", overflow: "hidden", cursor: "default" }}
-                onMouseEnter={e => { e.currentTarget.style.background = "rgba(201,168,76,0.04)"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
-              >
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "3.5rem", color: "rgba(201,168,76,0.25)", lineHeight: 1, marginBottom: "1.5rem" }}>{v.icon}</div>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", fontWeight: 400, color: "#fff", marginBottom: "1rem" }}>{v.title}</h3>
-                <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.92rem", fontWeight: 300, color: "rgba(232,224,208,0.55)", lineHeight: 1.8 }}>{v.desc}</p>
-
-                {/* Number watermark */}
-                <div style={{ position: "absolute", bottom: 20, right: 24, fontFamily: "'Cormorant Garamond', serif", fontSize: "5rem", fontWeight: 300, color: "rgba(255,255,255,0.03)", lineHeight: 1 }}>0{i + 1}</div>
-              </div>
-            ))}
-          </div>
+      {/* ─── PHILOSOPHY (BEIGE) ─────────────────────────────────── */}
+      <section ref={valRef} className="bg-[#F4F1EA] py-[clamp(80px,10vw,130px)] px-6">
+        <div className="max-w-[1200px] mx-auto text-center mb-16">
+          <p className="text-[0.7rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-4">Our DNA</p>
+          <h2 className="font-['Cormorant_Garamond'] text-[clamp(2rem,4vw,3.5rem)] font-light">Why Choose Us?</h2>
+        </div>
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200">
+          {[
+            { t: "Documentary Soul", d: "We witness, we don't direct. Your real chaos is your real magic." },
+            { t: "Mastery of Light", d: "From golden hour to candlelit ballrooms, we sculpt every frame." },
+            { t: "Cinematic Vision", d: "Every wedding film is treated like a director's cut." },
+            { t: "Seamless Integration", d: "We are invisible yet omnipresent, capturing the unguarded." }
+          ].map((v, i) => (
+            <div key={i} className="bg-[#F4F1EA] p-10 md:p-16 transition-all hover:bg-white group">
+              <span className="font-['Cormorant_Garamond'] text-5xl text-[#c9a84c]/20 block mb-6 group-hover:text-[#c9a84c]/50 transition-colors">0{i+1}</span>
+              <h3 className="font-['Cormorant_Garamond'] text-2xl mb-4">{v.t}</h3>
+              <p className="text-gray-500 font-light leading-relaxed">{v.d}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* ─── TEAM ─────────────────────────────────────────────────── */}
-      <section ref={teamRef} style={{ padding: "clamp(80px,10vw,130px) 24px", background: "#080b12" }}>
-        <div style={{ maxWidth: 1300, margin: "0 auto" }}>
-          <div className={`reveal ${teamInView ? "visible" : ""}`} style={{ marginBottom: "clamp(50px,7vw,90px)" }}>
-            <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#c9a84c", marginBottom: "1rem" }}>The Humans Behind the Lens</p>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 20 }}>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.2rem,5vw,4rem)", fontWeight: 300, color: "#fff" }}>
-                Dreamers <em>&amp; Doers</em>
-              </h2>
-              <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.88rem", fontWeight: 300, color: "rgba(232,224,208,0.45)", maxWidth: 320, lineHeight: 1.7 }}>
-                A tight-knit crew of artists who believe every love story deserves to be told beautifully.
-              </p>
-            </div>
+      {/* ─── TEAM (WHITE) ────────────────────────────────────────── */}
+      <section ref={teamRef} className="bg-white py-[clamp(80px,10vw,130px)] px-6">
+        <div className="max-w-[1300px] mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+            <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.2rem,5vw,4rem)] font-light leading-none">
+              The <em>Humans</em>
+            </h2>
+            <p className="max-w-xs text-gray-400 font-light text-[0.9rem]">A crew of artists who believe every love story is a masterpiece in waiting.</p>
           </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((p, i) => (
-              <div key={i}
-                className={`team-card reveal ${teamInView ? `visible d${i + 1}` : ""}`}
-                style={{ position: "relative", cursor: "pointer" }}
-              >
-                {/* Image */}
-                <div style={{ position: "relative", overflow: "hidden", aspectRatio: "3/4", marginBottom: 0 }}>
-                  <img
-                    className="team-img"
-                    src={p.img}
-                    alt={p.name}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", transition: "transform 0.7s cubic-bezier(.22,1,.36,1)", filter: "grayscale(20%)" }}
-                  />
-                  <div className="team-overlay" style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(8,11,18,0.95) 0%, rgba(8,11,18,0.3) 50%, transparent 100%)", opacity: 0.6, transition: "opacity 0.5s" }} />
-                  
-                  {/* Tag pill */}
-                  <div className="team-tag" style={{ position: "absolute", top: 16, left: 16, background: "rgba(201,168,76,0.9)", color: "#fff", fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", letterSpacing: "0.15em", textTransform: "uppercase", padding: "6px 14px", transform: "translateY(-10px)", opacity: 0, transition: "transform 0.4s 0.1s, opacity 0.4s 0.1s" }}>
+              <div key={i} className="group cursor-pointer">
+                <div className="aspect-[3/4] overflow-hidden bg-gray-100 mb-6 relative">
+                  <img src={p.img} alt={p.name} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                  <div className="absolute top-4 left-4 bg-[#c9a84c] text-white text-[0.6rem] px-3 py-1 tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
                     {p.tag}
                   </div>
                 </div>
-
-                {/* Info */}
-                <div style={{ padding: "20px 0 0" }}>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.3rem", fontWeight: 400, color: "#fff", marginBottom: 4 }}>{p.name}</h3>
-                  <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#c9a84c", marginBottom: 10 }}>{p.role}</p>
-                  <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.83rem", fontWeight: 300, color: "rgba(232,224,208,0.45)", lineHeight: 1.7 }}>{p.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── AWARDS ───────────────────────────────────────────────── */}
-      <section ref={awardRef} style={{ padding: "clamp(70px,8vw,110px) 24px", background: "#0d1019", borderTop: "1px solid rgba(201,168,76,0.12)" }}>
-        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <div className={`reveal ${awardInView ? "visible" : ""}`} style={{ textAlign: "center", marginBottom: "clamp(40px,6vw,70px)" }}>
-            <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#c9a84c", marginBottom: "1rem" }}>Recognition</p>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem,4vw,3.2rem)", fontWeight: 300, color: "#fff" }}>
-              Honoured by the <em>Best in the World</em>
-            </h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: "rgba(201,168,76,0.1)" }}>
-            {awards.map((a, i) => (
-              <div key={i}
-                className={`reveal ${awardInView ? `visible d${i + 1}` : ""}`}
-                style={{ background: "#0d1019", padding: "clamp(28px,4vw,48px)", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, transition: "background 0.3s" }}
-                onMouseEnter={e => e.currentTarget.style.background = "rgba(201,168,76,0.05)"}
-                onMouseLeave={e => e.currentTarget.style.background = "#0d1019"}
-              >
-                <div>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.25rem", fontWeight: 400, color: "#fff", marginBottom: 6 }}>{a.award}</div>
-                  <div style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#c9a84c" }}>{a.name}</div>
-                </div>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2rem", fontWeight: 300, color: "rgba(201,168,76,0.3)", flexShrink: 0 }}>{a.year}</div>
+                <h3 className="font-['Cormorant_Garamond'] text-xl mb-1">{p.name}</h3>
+                <p className="text-[#c9a84c] text-[0.7rem] uppercase tracking-widest mb-3">{p.role}</p>
+                <p className="text-gray-400 text-[0.85rem] font-light leading-relaxed">{p.bio}</p>
               </div>
             ))}
           </div>
@@ -297,34 +146,29 @@ const About = () => {
       </section>
 
       {/* ─── CTA ──────────────────────────────────────────────────── */}
-      <section ref={ctaRef} style={{ position: "relative", padding: "clamp(100px,12vw,160px) 24px", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0 }}>
-          <LazyLoadImage
-            src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1800&q=80"
-            alt="Wedding celebration"
-            effect="blur"
-            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "brightness(0.2) saturate(0.6)" }}
-          />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(8,11,18,0.6) 0%, transparent 100%)" }} />
-        </div>
-        <div className={`reveal ${ctaInView ? "visible" : ""}`} style={{ position: "relative", zIndex: 2, textAlign: "center", maxWidth: 700, margin: "0 auto" }}>
-          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "#c9a84c", marginBottom: "1.5rem" }}>
-            Only 24 Weddings Per Year
-          </p>
-          <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.5rem,6vw,5rem)", fontWeight: 300, color: "#fff", lineHeight: 1.1, marginBottom: "1.5rem" }}>
-            Ready to Tell<br /><em>Your Story?</em>
+      <section className="relative py-32 lg:py-48 px-6 text-center overflow-hidden bg-black">
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1800&q=80" alt="CTA" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,6vw,5rem)] font-light text-white leading-tight mb-8">
+            Ready to Create <br /><em>Your Heirloom?</em>
           </h2>
-          <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "1rem", fontWeight: 300, color: "rgba(232,224,208,0.6)", marginBottom: "3rem", lineHeight: 1.8 }}>
-            Every love is unique. Let's create something you'll treasure for a hundred years.
-          </p>
-          <a href="/contact"
-            style={{ display: "inline-block", padding: "16px 48px", background: "#c9a84c", color: "#080b12", fontFamily: "'Jost', sans-serif", fontSize: "0.8rem", fontWeight: 500, letterSpacing: "0.2em", textTransform: "uppercase", textDecoration: "none", transition: "all 0.35s", animation: "pulseGlow 3s 2s infinite" }}
-            onMouseEnter={e => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "#080b12"; e.currentTarget.style.transform = "translateY(-3px)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "#c9a84c"; e.currentTarget.style.color = "#080b12"; e.currentTarget.style.transform = "none"; }}>
-            Let's Create Magic Together →
+          <a href="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-white uppercase tracking-[0.2em] text-[0.8rem] hover:bg-white hover:text-black transition-all">
+            Inquire Now →
           </a>
         </div>
       </section>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes kenburns {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+        @keyframes widthGrow {
+          from { width: 0; }
+          to { width: 64px; }
+        }
+      `}} />
     </div>
   );
 };
