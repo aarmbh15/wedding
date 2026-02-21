@@ -1,5 +1,3 @@
-// src/components/ImageSlider.jsx
-
 import img1 from '../assets/img8.webp';
 import img2 from '../assets/img2.webp';
 import img3 from '../assets/img3.webp';
@@ -8,28 +6,20 @@ import img5 from '../assets/img5.webp';
 import img6 from '../assets/img6.webp';
 
 export default function ImageSlider() {
-<<<<<<< Updated upstream
   const images = [
-    '/src/assets/1.jpg',
-    '/src/assets/2.jpg',
-    '/src/assets/3.jpg',
-    '/src/assets/4.jpg',
-    '/src/assets/5.jpg',
-    '/src/assets/2.jpg',
-    '/src/assets/3.jpg',
-    '/src/assets/4.jpg',
-    '/src/assets/5.jpg',
-    '/src/assets/11.jpg',
-    '/src/assets/22.jpg',
-    '/src/assets/5.jpg',
+    '/src/assets/img8.webp',
+    '/src/assets/img2.webp',
+    '/src/assets/img3.webp',
+    '/src/assets/img4.webp',
+    '/src/assets/img5.webp',
+    '/src/assets/img2.webp',
+    '/src/assets/img3.webp',
+    '/src/assets/img4.webp',
+    '/src/assets/img5.webp',
+    '/src/assets/img5.webp',
     // Add more paths to your real wedding photos
   ];
-  
-=======
-  const images = [img1, img2, img3, img4, img5, img6];
->>>>>>> Stashed changes
-
-  return (
+return (
     <div className="relative w-full overflow-hidden py-12 bg-white">
 
       {/* Animation CSS Inside Component */}
