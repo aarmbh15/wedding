@@ -2,22 +2,40 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
+import video1 from '../assets/video1.mp4';
+import video2 from '../assets/video2.mp4';
+
 export default function HeroVideoSlider() {
-  const videos = [
-    '/src/assets/video1.mp4',
-    '/src/assets/video2.mp4',
-  ];
+  const videos = [video1, video2];
 
   return (
-    <section className="relative h-screen">
-      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} interval={5000} transitionTime={1000}>
+    <section className="relative h-screen overflow-hidden ">
+      <Carousel
+        autoPlay
+        infiniteLoop
+        showThumbs={false}
+        showStatus={false}
+        showIndicators={false}
+        interval={5000}
+        transitionTime={1000}
+      >
         {videos.map((video, index) => (
-          <div key={index} className="h-screen">
-            <video autoPlay muted loop playsInline className="w-full h-full object-cover" loading="lazy">
+          <div key={index} className="relative h-screen mt-8" >
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            >
               <source src={video} type="video/mp4" />
             </video>
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
-              <h1 className="text-white text-6xl font-bold text-center">Our Wedding Journey</h1>
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+              <h1 className="text-white text-5xl md:text-7xl font-serif font-light text-center px-6">
+                Our Wedding Journey
+              </h1>
             </div>
           </div>
         ))}

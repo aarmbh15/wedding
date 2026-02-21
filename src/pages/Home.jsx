@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Paramveer & [Partner] | Our Wedding - February 19, 2026</title>
+        {/* <title>Paramveer & [Partner] | Our Wedding - February 19, 2026</title> */}
         <meta
           name="description"
           content="Celebrate love with Paramveer & [Partner] on February 19, 2026 in Pune/Mumbai. View stunning photos, videos, venue details, our story, and RSVP today."
@@ -32,30 +32,66 @@ export default function Home() {
       <HeroVideoSlider />
 
       {/* Romantic Couple Intro - Fade in & scale animation */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-rose-50 via-white to-rose-50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,rgba(212,175,55,0.08),transparent_50%)]"></div>
+<section className="py-24 md:py-36 bg-gradient-to-b from-rose-50 via-white to-rose-50 relative overflow-hidden">
+
+  {/* Soft Golden Glow Background */}
+  <div className="absolute inset-0 opacity-20 pointer-events-none">
+    <div className="absolute top-10 left-10 w-72 h-72 bg-yellow-200 rounded-full blur-3xl"></div>
+    <div className="absolute bottom-10 right-10 w-96 h-96 bg-rose-200 rounded-full blur-3xl"></div>
+  </div>
+
+  <div className="max-w-6xl mx-auto px-6 relative z-10">
+    <div className="grid md:grid-cols-2 gap-16 items-center">
+
+      {/* 🖼️ Wedding Image */}
+      <div className="relative group">
+        <div className="absolute -inset-4 bg-gradient-to-r from-yellow-200 via-rose-200 to-yellow-200 rounded-3xl blur-2xl opacity-40 group-hover:opacity-60 transition duration-700"></div>
+
+        <img
+          src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=80"
+          alt="Wedding Photography"
+          className="relative rounded-3xl shadow-2xl object-cover w-full h-[520px] transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
+
+      {/* 💍 Business Content */}
+      <div className="text-center md:text-left">
+
+        <h2 className="text-5xl md:text-6xl font-serif font-light text-gray-900 tracking-wide mb-6">
+          Capturing Timeless Celebrations
+        </h2>
+
+        <p className="text-xl md:text-2xl text-gray-700 font-light italic mb-6 tracking-wide">
+          Cinematic Wedding Photography & Films
+        </p>
+
+        <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-light mb-10">
+          From intimate haldi ceremonies to grand wedding receptions, 
+          we preserve every emotion, detail, and unforgettable moment 
+          through artistic storytelling and breathtaking visuals.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start">
+          <a
+            href="/portfolio"
+            className="px-10 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-full text-lg shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1"
+          >
+            View Portfolio →
+          </a>
+
+          <a
+            href="/contact"
+            className="px-10 py-4 border border-gray-800 text-gray-800 rounded-full text-lg hover:bg-gray-900 hover:text-white transition-all duration-500"
+          >
+            Book Your Date
+          </a>
         </div>
-        <div className="max-w-6xl mx-auto px-6 text-center relative z-10 animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-serif font-light text-gray-900 tracking-wider mb-6 drop-shadow-lg">
-            Paramveer <span className="text-gold mx-4">&</span> [Partner Name]
-          </h1>
-          <p className="text-2xl md:text-3xl text-gray-700 font-light italic mb-8 tracking-wide">
-            February 19, 2026 • Pune / Mumbai
-          </p>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
-            From first glance to forever — we're beyond excited to share our most special day with the people we love most.
-          </p>
-          <div className="mt-12">
-            <a
-              href="/rsvp" // or link to contact/form
-              className="inline-block px-12 py-5 bg-gold text-white font-medium text-lg rounded-full hover:bg-yellow-600 transition-all duration-500 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
-            >
-              RSVP Now →
-            </a>
-          </div>
-        </div>
-      </section>
+
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* Image Gallery Slider - Attractive with hover zoom */}
       <section className="py-20 bg-white">
@@ -68,35 +104,102 @@ export default function Home() {
       </section>
 
       {/* Wedding Details Cards - Hover scale + shadow lift */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-rose-50">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-5xl font-serif text-center text-gray-800 mb-16 animate-fade-in-up">
-            The Celebration Details
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="bg-white rounded-2xl shadow-xl p-10 text-center transform transition-all duration-500 hover:scale-105 hover:shadow-2xl group">
-              <div className="text-6xl mb-6 group-hover:animate-bounce">📍</div>
-              <h3 className="text-3xl font-semibold text-gray-800 mb-4">Venue</h3>
-              <p className="text-xl text-gray-700">Elegant Waterfront Garden, Pune</p>
-              <p className="text-gray-600 mt-3">Surrounded by nature, lights & love</p>
-            </div>
+      <section className="py-24 bg-gradient-to-br from-green-50 to-rose-50">
+  <div className="max-w-7xl mx-auto px-6">
 
-            <div className="bg-white rounded-2xl shadow-xl p-10 text-center transform transition-all duration-500 hover:scale-105 hover:shadow-2xl group">
-              <div className="text-6xl mb-6 group-hover:animate-bounce">📅</div>
-              <h3 className="text-3xl font-semibold text-gray-800 mb-4">Date</h3>
-              <p className="text-2xl text-gray-700 font-medium">February 19, 2026</p>
-              <p className="text-gray-600 mt-3">A day we'll cherish forever</p>
-            </div>
+    <h2 className="text-5xl font-serif text-center text-gray-800 mb-16">
+      Our Signature Celebrations
+    </h2>
 
-            <div className="bg-white rounded-2xl shadow-xl p-10 text-center transform transition-all duration-500 hover:scale-105 hover:shadow-2xl group">
-              <div className="text-6xl mb-6 group-hover:animate-bounce">🕒</div>
-              <h3 className="text-3xl font-semibold text-gray-800 mb-4">Time</h3>
-              <p className="text-2xl text-gray-700 font-medium">1:00 PM onwards</p>
-              <p className="text-gray-600 mt-3">Ceremony • Reception • Dinner</p>
-            </div>
-          </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+
+      {/* Card 1 */}
+      <div className="relative group overflow-hidden rounded-3xl shadow-xl">
+        <img
+          src="/src/assets/img1.jpg"
+          alt="Haldi Ceremony"
+          className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-500"></div>
+        <div className="absolute bottom-6 left-6 text-white">
+          <h3 className="text-2xl font-semibold">Haldi Ceremony</h3>
+          <p className="text-sm opacity-90">Vibrant • Joyful • Traditional</p>
         </div>
-      </section>
+      </div>
+
+      {/* Card 2 */}
+      <div className="relative group overflow-hidden rounded-3xl shadow-xl">
+        <img
+          src="/src/assets/img2.jpg"
+          alt="Engagement"
+          className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-500"></div>
+        <div className="absolute bottom-6 left-6 text-white">
+          <h3 className="text-2xl font-semibold">Engagement</h3>
+          <p className="text-sm opacity-90">Elegant • Emotional • Timeless</p>
+        </div>
+      </div>
+
+      {/* Card 3 */}
+      <div className="relative group overflow-hidden rounded-3xl shadow-xl">
+        <img
+          src="/src/assets/img3.jpg"
+          alt="Wedding Ceremony"
+          className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-500"></div>
+        <div className="absolute bottom-6 left-6 text-white">
+          <h3 className="text-2xl font-semibold">Wedding Ceremony</h3>
+          <p className="text-sm opacity-90">Sacred • Grand • Emotional</p>
+        </div>
+      </div>
+
+      {/* Card 4 */}
+      <div className="relative group overflow-hidden rounded-3xl shadow-xl">
+        <img
+          src="/src/assets/img4.jpg"
+          alt="Reception"
+          className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-500"></div>
+        <div className="absolute bottom-6 left-6 text-white">
+          <h3 className="text-2xl font-semibold">Reception</h3>
+          <p className="text-sm opacity-90">Glamorous • Celebratory • Magical</p>
+        </div>
+      </div>
+
+      {/* Card 5 */}
+      <div className="relative group overflow-hidden rounded-3xl shadow-xl">
+        <img
+          src="/src/assets/img5.jpg"
+          alt="Pre-Wedding Shoot"
+          className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-500"></div>
+        <div className="absolute bottom-6 left-6 text-white">
+          <h3 className="text-2xl font-semibold">Pre-Wedding Shoot</h3>
+          <p className="text-sm opacity-90">Romantic • Cinematic • Artistic</p>
+        </div>
+      </div>
+
+      {/* Card 6 */}
+      <div className="relative group overflow-hidden rounded-3xl shadow-xl">
+        <img
+          src="/src/assets/img6.jpg"
+          alt="Candid Moments"
+          className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-500"></div>
+        <div className="absolute bottom-6 left-6 text-white">
+          <h3 className="text-2xl font-semibold">Candid Moments</h3>
+          <p className="text-sm opacity-90">Natural • Raw • Beautiful</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* Timeline Highlights - Slide in animation */}
       <section className="py-20 bg-white">
