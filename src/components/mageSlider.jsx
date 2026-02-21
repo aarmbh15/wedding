@@ -4,9 +4,9 @@ import { Carousel } from 'react-responsive-carousel';
 
 export default function ImageSlider() {
   const images = [
-    '/src/assets/img1.jpg',
-    '/src/assets/img2.jpg',
-    '/src/assets/img3.jpg',
+    '/src/assets/1.jpg',
+    '/src/assets/1.jpg',
+    '/src/assets/1.jpg',
   ];
 
   return (

@@ -11,8 +11,10 @@ export default {
           sans: ['Montserrat', 'sans-serif'],
         },
         colors: {
-          gold: '#D4AF37',
-          green: '#556B2F',
+          'wedding-dark': '#0f172a',
+          'wedding-gold': '#d4af37',
+          'wedding-blush': '#fdf4f0',
+          'wedding-cream': '#fffaf0',
         },
       },
     },
