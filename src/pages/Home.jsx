@@ -116,7 +116,7 @@ export default function Home() {
       {/* Card 1 */}
       <div className="relative group overflow-hidden rounded-3xl shadow-xl">
         <img
-          src="/src/assets/img1.jpg"
+          src="/src/assets/img1.webp"
           alt="Haldi Ceremony"
           className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -130,7 +130,7 @@ export default function Home() {
       {/* Card 2 */}
       <div className="relative group overflow-hidden rounded-3xl shadow-xl">
         <img
-          src="/src/assets/img2.jpg"
+          src="/src/assets/img2.webp"
           alt="Engagement"
           className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -144,7 +144,7 @@ export default function Home() {
       {/* Card 3 */}
       <div className="relative group overflow-hidden rounded-3xl shadow-xl">
         <img
-          src="/src/assets/img3.jpg"
+          src="/src/assets/img3.webp"
           alt="Wedding Ceremony"
           className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -158,7 +158,7 @@ export default function Home() {
       {/* Card 4 */}
       <div className="relative group overflow-hidden rounded-3xl shadow-xl">
         <img
-          src="/src/assets/img4.jpg"
+          src="/src/assets/img4.webp"
           alt="Reception"
           className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -172,7 +172,7 @@ export default function Home() {
       {/* Card 5 */}
       <div className="relative group overflow-hidden rounded-3xl shadow-xl">
         <img
-          src="/src/assets/img5.jpg"
+          src="/src/assets/img5.webp"
           alt="Pre-Wedding Shoot"
           className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -186,7 +186,7 @@ export default function Home() {
       {/* Card 6 */}
       <div className="relative group overflow-hidden rounded-3xl shadow-xl">
         <img
-          src="/src/assets/img6.jpg"
+          src="/src/assets/img6.webp"
           alt="Candid Moments"
           className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
         />
@@ -211,7 +211,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center gap-10 animate-slide-in-left">
               <div className="md:w-1/3">
                 <img
-                  src="http://www.marriagecolours.com/wp-content/uploads/2025/10/Aishwarya-Shanthan-Wedding-Shelter-Resort-6.jpg"
+                  src="http://www.marriagecolours.com/wp-content/uploads/2025/10/Aishwarya-Shanthan-Wedding-Shelter-Resort-6.webp"
                   alt="Wedding venue at sunset with floral mandap"
                   loading="lazy"
                   className="rounded-2xl shadow-2xl w-full h-80 object-cover transform transition duration-700 hover:scale-105"
