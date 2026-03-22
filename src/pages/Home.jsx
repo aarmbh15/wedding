@@ -20,12 +20,12 @@ function useInView(threshold = 0.12) {
 /* ─── Data ─────────────────────────────────────────────────── */
 
 // Hero full-bleed images (slideshow)
-const heroImages = [
-  "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1800&q=90",
-  "https://images.unsplash.com/photo-1519742866993-66d3cfef4bbd?auto=format&fit=crop&w=1800&q=90",
-  "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1800&q=90",
-  "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1800&q=90",
-];
+import img1 from '../assets/Abhimanyu&Manisha/Couple_118.jpg'; 
+import img2 from '../assets/Amruta & Amey/ADM05783-2.jpg';
+import img3 from '../assets/Bhakti & Sourabh/ADM03393.jpg';
+import img4 from '../assets/Chaitrali & Shubham/Insta Post/DSC07664.jpg';
+
+const heroImages = [img1, img2, img3, img4];
 
 // Portfolio grid — alternating tall / wide for editorial feel
 const portfolioGrid = [
