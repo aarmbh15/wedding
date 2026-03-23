@@ -33,7 +33,10 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "patch-package": "^8.0.1",
     "postinstall-postinstall": "^2.1.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.2.0",
-    "vite": "^5.2.0"
+    "vite": "^5.2.0",
+    "vite-imagetools": "^9.0.3",
+    "vite-plugin-image-optimizer": "^2.0.3"
   }
 }

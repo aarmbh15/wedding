@@ -40,6 +40,8 @@ function LazyImg({ src, alt = "", style = {}, className = "" }) {
       decoding="async"
       onLoad={() => setLoaded(true)}
       className={className}
+      // tells browser: use small src on mobile, full on desktop
+      sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
       style={{
         ...style,
         opacity: loaded ? 1 : 0,
@@ -71,20 +73,20 @@ const heroImages = [
 const portfolioGrid = [
   { src: img("Abhimanyu&Manisha/Couple_119.jpg"), span: "tall"   },
   { src: img("Aishwarya & Sanmay/Sanmay+Aishwarya-3.jpg"), span: "wide"   },
-  { src: img("Amruta & Amey/ADM05516-2.jpg"), span: "normal" },
-  { src: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg"), span: "normal" },
-  { src: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg"), span: "tall"   },
-  { src: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg"), span: "wide"   },
-  { src: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg"), span: "normal" },
+  { src: img("Rohan_Preksha/ampf-40 (49).jpg"), span: "normal" },
+  { src: img("Rohan_Preksha/ampf(2).jpg"), span: "normal" },
+  { src: img("Chaitrali & Shubham/ampf-11.jpg"), span: "tall"   },
+  { src: img("Chaitrali & Shubham/ampf-24.jpg"), span: "wide"   },
+  { src: img("Rohan_Preksha/ampf-40(45).jpg"), span: "normal" },
   { src: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg"), span: "normal" },
 ];
 
 // ── Featured couples (4 cards) ────────────────────────────────────────────────
 const featured = [
-  { couple: "Priya & Arjun",  location: "Udaipur · Rajasthan", date: "December 2024", img: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg") },
-  { couple: "Kavya & Rohit",  location: "Goa · Coastal",       date: "November 2024", img: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg") },
-  { couple: "Sneha & Dev",    location: "Mumbai · Maharashtra", date: "October 2024",  img: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg") },
-  { couple: "Aisha & Kabir",  location: "Jaipur · Pink City",  date: "January 2025",  img: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg") },
+  { couple: "Amruta & Amey",  location: "Udaipur · Rajasthan", date: "December 2024", img: img("Amruta & Amey/ADM05604-2.jpg") },
+  { couple: "Aishwarya & Sanmay",  location: "Goa · Coastal",       date: "November 2024", img: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg") },
+  { couple: "Rohan & Preksha",    location: "Mumbai · Maharashtra", date: "October 2024",  img: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg") },
+  { couple: "Bhakti & Sourabh",  location: "Jaipur · Pink City",  date: "January 2025",  img: img("Abhimanyu&Manisha/07 Saptapadhi_2580.jpg") },
 ];
 
 // ── Films (2 cinematic stories) ───────────────────────────────────────────────
@@ -124,12 +126,13 @@ function HeroSlider() {
         }}>
           {/* First slide eager, rest lazy */}
           <img
-            src={src}
-            alt=""
-            loading={i === 0 ? "eager" : "lazy"}
-            decoding="async"
-            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
-          />
+  src={src}
+  alt=""
+  loading={i === 0 ? "eager" : "lazy"}
+  fetchpriority={i === 0 ? "high" : "auto"}   // ← add this
+  decoding="async"
+  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
+/>
         </div>
       ))}
       <div style={{
