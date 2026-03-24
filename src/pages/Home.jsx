@@ -7,57 +7,68 @@ const allImages = import.meta.glob("../assets/**/*.{jpg,jpeg,png,webp}", { eager
 const img = (path) => allImages[`../assets/${path}`]?.default;
 
 /* ─── Intersection Observer Hook ─────────────────────────────── */
-function useInView(threshold = 0.12) {
+function useInView(threshold = 0.1) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) setInView(true); },
-      { threshold }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect(); // Stop observing once visible
+        }
+      },
+      { threshold, rootMargin: "100px" }
     );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+
   return [ref, inView];
 }
-
 /* ─── Progressive Image Component ─────────────────────────────
    - Only starts loading when `shouldLoad` is true
    - Shows a lightweight shimmer placeholder until loaded
    - Fades in smoothly on load
 ────────────────────────────────────────────────────────────── */
-function ProgressiveImg({ src, alt = "", style = {}, className = "", shouldLoad = true, eager = false }) {
+function ProgressiveImg({ src, alt = "", style = {}, shouldLoad = true }) {
   const [loaded, setLoaded] = useState(false);
-  const [currentSrc, setCurrentSrc] = useState(eager ? src : null);
+  const [currentSrc, setCurrentSrc] = useState(null);
 
   useEffect(() => {
-    if (!eager && shouldLoad && src && !currentSrc) {
+    if (shouldLoad && src && !currentSrc) {
       setCurrentSrc(src);
     }
-  }, [src, shouldLoad, eager, currentSrc]);
+  }, [src, shouldLoad, currentSrc]);
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%", ...(!loaded ? { background: "#e8e4df" } : {}) }}>
-      {/* Shimmer skeleton shown while loading */}
+    <div style={{ position: "relative", width: "100%", height: "100%", background: loaded ? "transparent" : "#e8e4df" }}>
       {!loaded && (
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(90deg, #e8e4df 25%, #f0ece7 50%, #e8e4df 75%)",
-          backgroundSize: "200% 100%",
-          animation: "shimmer 1.6s infinite",
-        }} />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(90deg, #e8e4df 25%, #f0ece7 50%, #e8e4df 75%)",
+            backgroundSize: "200% 100%",
+            animation: "shimmer 1.6s infinite",
+          }}
+        />
       )}
       {currentSrc && (
         <img
           src={currentSrc}
           alt={alt}
           decoding="async"
+          loading="lazy"
           onLoad={() => setLoaded(true)}
-          className={className}
           style={{
             ...style,
             opacity: loaded ? 1 : 0,
             transition: "opacity 0.6s ease",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
           }}
         />
       )}
@@ -74,12 +85,17 @@ function LazySection({ children, rootMargin = "200px" }) {
   const [isNear, setIsNear] = useState(false);
 
   useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setIsNear(true); obs.disconnect(); } },
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsNear(true);
+          observer.disconnect();
+        }
+      },
       { rootMargin }
     );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
   }, [rootMargin]);
 
   return <div ref={ref}>{children(isNear)}</div>;
@@ -107,38 +123,12 @@ const portfolioGrid = [
   { src: img("Abhimanyu_Manisha/img613.jpg"),  span: "normal" },
   { src: img("Amruta_Amey/img258.jpg"),        span: "wide"   },
 ];
-
 const featured = [
-  { 
-    couple: "Amruta & Amey",        
-    slug: "amruta-amey",
-    location: "Udaipur · Rajasthan",   
-    date: "December 2024", 
-    img: img("Amruta_Amey/img221.jpg") 
-  },
-  { 
-    couple: "Abhimanyu & Manisha",  
-    slug: "abhimanyu-manisha",
-    location: "Goa · Coastal",         
-    date: "November 2024", 
-    img: img("Abhimanyu_Manisha/img605.jpg") 
-  },
-  { 
-    couple: "Bhakti & Sourabh",     
-    slug: "bhakti-sourabh",
-    location: "Mumbai · Maharashtra",  
-    date: "October 2024",  
-    img: img("Bhakti_Sourabh/img326.jpg") 
-  },
-  { 
-    couple: "Rohan & Preksha",      
-    slug: "rohan-preksha",
-    location: "Jaipur · Pink City",    
-    date: "January 2025",  
-    img: img("Rohan_Preksha/img504.jpg") 
-  },
+  { couple: "Amruta & Amey",        slug: "amruta-amey", location: "Udaipur · Rajasthan",   date: "December 2024", img: img("Amruta_Amey/img221.jpg") },
+  { couple: "Abhimanyu & Manisha",  slug: "abhimanyu-manisha", location: "Goa · Coastal",   date: "November 2024", img: img("Abhimanyu_Manisha/img605.jpg") },
+  { couple: "Bhakti & Sourabh",     slug: "bhakti-sourabh", location: "Mumbai · Maharashtra", date: "October 2024",  img: img("Bhakti_Sourabh/img326.jpg") },
+  { couple: "Rohan & Preksha",      slug: "rohan-preksha", location: "Jaipur · Pink City",   date: "January 2025",  img: img("Rohan_Preksha/img504.jpg") },
 ];
-
 const films = [
   {
     title: "A Week in Udaipur",

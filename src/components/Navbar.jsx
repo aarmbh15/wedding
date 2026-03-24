@@ -1,110 +1,291 @@
+// src/components/Header.jsx
 import TSPLogo from "../assets/TSP_logo.png";
-import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaHome, FaInfoCircle, FaPhoneAlt } from 'react-icons/fa';
-
-const AnimatedHamburger = ({ isMenuOpen, setIsMenuOpen }) => (
-  <button
-    onClick={() => setIsMenuOpen(!isMenuOpen)}
-    className="flex flex-col justify-center items-end w-8 h-8 text-white hover:text-[#d4af37] focus:outline-none transition-colors"
-    aria-expanded={isMenuOpen}
-    aria-label="Toggle menu"
-  >
-    <span className={`block h-0.5 w-8 bg-current rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-    <span className={`block h-0.5 w-8 bg-current rounded-full transition-all duration-300 ease-in-out my-1.5 ${isMenuOpen ? 'opacity-0' : 'w-6'}`}></span>
-    <span className={`block h-0.5 w-8 bg-current rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-  </button>
-);
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => setIsMenuOpen(false), [location.pathname]);
+
   const navItems = [
-    { name: 'HOME', path: '/', icon: <FaHome /> },
-    { name: 'ABOUT', path: '/about', icon: <FaInfoCircle /> },
+    { name: "HOME",      path: "/" },
+    { name: "PORTFOLIO", path: "/portfolio" },
+    { name: "FILMS",     path: "/films" },
+    { name: "ABOUT",     path: "/about" },
   ];
 
-  const handleNavigation = (path) => {
-    navigate(path);
-    setIsMenuOpen(false);
-  };
+  const isActive = (path) =>
+    path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled || isMenuOpen ? 'bg-[#0f172a]/95 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'
-      }`}
-    >
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
-        <Link to="/" className="flex items-center space-x-3 group" onClick={() => setIsMenuOpen(false)}>
-          <img src={TSPLogo} alt="Logo" className="w-20 h-20 object-contain shadow-md group-hover:scale-110 transition-transform duration-300" />
-        </Link>
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap');
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-10">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={`flex items-center gap-2 text-lg font-medium tracking-wide transition-colors duration-300 ${
-                location.pathname === item.path ? 'text-[#d4af37]' : 'text-white hover:text-[#d4af37]'
-              }`}
-            >
-              <span className="text-sm">{item.icon}</span>
-              {item.name}
-            </Link>
-          ))}
-          <Link
-            to="/contact"
-            className="px-6 py-4 bg-[#d4af37] text-[#0f172a] font-semibold rounded-xl hover:bg-[#c9a96e] transition-all shadow-md hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2"
-          >
-            CONTACT US <FaPhoneAlt size={14} />
+        .ts-header {
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          z-index: 9000;
+          transition: background 0.5s ease, box-shadow 0.4s ease;
+        }
+        .ts-header.scrolled {
+          background: rgba(255,255,255,0.98);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+        }
+        .ts-header.transparent {
+          background: transparent;
+        }
+
+        .ts-header-inner {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: clamp(20px, 2.8vw, 32px) clamp(24px, 5vw, 72px);
+          transition: padding 0.4s ease;
+        }
+        .ts-header.scrolled .ts-header-inner {
+          padding-top: 16px;
+          padding-bottom: 16px;
+        }
+
+        /* ── Logo ── */
+        .ts-logo {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+        }
+        .ts-logo img {
+          height: 54px;
+          width: auto;
+          object-fit: contain;
+          transition: opacity 0.3s, filter 0.4s;
+        }
+        .ts-header.transparent .ts-logo img { filter: brightness(0) invert(1); }
+        .ts-header.scrolled   .ts-logo img { filter: none; }
+        .ts-logo:hover img { opacity: 0.72; }
+
+        /* ── Desktop nav ── */
+        .ts-nav {
+          display: flex;
+          align-items: center;
+          gap: clamp(28px, 3.2vw, 52px);
+        }
+        @media (max-width: 768px) { .ts-nav { display: none; } }
+
+        .ts-nav-link {
+          font-family: 'Jost', sans-serif;
+          font-size: 0.85rem;
+          font-weight: 600;
+          letter-spacing: 0.26em;
+          text-transform: uppercase;
+          text-decoration: none;
+          padding-bottom: 3px;
+          border-bottom: 2px solid transparent;
+          transition: color 0.3s, border-color 0.3s;
+        }
+        /* over hero (transparent) */
+        .ts-header.transparent .ts-nav-link {
+          color: #ffffff;
+          text-shadow: 0 1px 6px rgba(0,0,0,0.45);
+        }
+        .ts-header.transparent .ts-nav-link:hover,
+        .ts-header.transparent .ts-nav-link.active {
+          color: #fff;
+          border-bottom-color: #c9a84c;
+        }
+        /* after scroll (white bg) */
+        .ts-header.scrolled .ts-nav-link {
+          color: #1a1a1a;
+        }
+        .ts-header.scrolled .ts-nav-link:hover,
+        .ts-header.scrolled .ts-nav-link.active {
+          color: #c9a84c;
+          border-bottom-color: #c9a84c;
+        }
+
+        /* ── CTA button ── */
+        .ts-cta {
+          font-family: 'Jost', sans-serif;
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.24em;
+          text-transform: uppercase;
+          text-decoration: none;
+          padding: 13px 32px;
+          border: 2px solid transparent;
+          transition: background 0.3s, border-color 0.3s, color 0.3s;
+          white-space: nowrap;
+        }
+        .ts-header.transparent .ts-cta {
+          color: #fff;
+          border-color: rgba(255,255,255,0.7);
+          background: transparent;
+        }
+        .ts-header.transparent .ts-cta:hover {
+          background: rgba(255,255,255,0.16);
+          border-color: #fff;
+        }
+        .ts-header.scrolled .ts-cta {
+          color: #fff;
+          background: #1a1a1a;
+          border-color: #1a1a1a;
+        }
+        .ts-header.scrolled .ts-cta:hover {
+          background: #c9a84c;
+          border-color: #c9a84c;
+        }
+
+        /* ── Mobile hamburger ── */
+        .ts-hamburger {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-end;
+          gap: 7px;
+          width: 36px;
+          height: 36px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+        }
+        @media (max-width: 768px) { .ts-hamburger { display: flex; } }
+
+        .ts-hamburger span {
+          display: block;
+          height: 2px;
+          background: currentColor;
+          border-radius: 2px;
+          transition: transform 0.32s ease, opacity 0.32s ease, width 0.32s ease;
+        }
+        .ts-hamburger span:nth-child(1) { width: 30px; }
+        .ts-hamburger span:nth-child(2) { width: 20px; }
+        .ts-hamburger span:nth-child(3) { width: 30px; }
+        .ts-hamburger.open span:nth-child(1) { transform: rotate(45deg) translateY(6px);  width: 30px; }
+        .ts-hamburger.open span:nth-child(2) { opacity: 0; }
+        .ts-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translateY(-6px); width: 30px; }
+
+        .ts-header.transparent .ts-hamburger { color: #fff; }
+        .ts-header.scrolled   .ts-hamburger { color: #1a1a1a; }
+
+        /* ── Mobile drawer ── */
+        .ts-mobile-drawer {
+          overflow: hidden;
+          max-height: 0;
+          opacity: 0;
+          transition: max-height 0.42s cubic-bezier(.22,1,.36,1), opacity 0.3s ease;
+          background: rgba(255,255,255,0.99);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border-top: 1px solid #f0ece7;
+        }
+        .ts-mobile-drawer.open {
+          max-height: 560px;
+          opacity: 1;
+        }
+        .ts-mobile-drawer-inner {
+          padding: 20px clamp(24px, 6vw, 48px) 36px;
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+        }
+
+        .ts-mobile-link {
+          font-family: 'Jost', sans-serif;
+          font-size: 1.05rem;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: #1a1a1a;
+          text-decoration: none;
+          padding: 17px 0;
+          border-bottom: 1px solid #f0ece7;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          transition: color 0.3s;
+        }
+        .ts-mobile-link.active { color: #c9a84c; }
+        .ts-mobile-link:hover  { color: #c9a84c; }
+
+        .ts-mobile-cta {
+          margin-top: 24px;
+          display: block;
+          text-align: center;
+          font-family: 'Jost', sans-serif;
+          font-size: 0.85rem;
+          font-weight: 600;
+          letter-spacing: 0.24em;
+          text-transform: uppercase;
+          color: #fff;
+          background: #1a1a1a;
+          padding: 17px 32px;
+          text-decoration: none;
+          transition: background 0.3s;
+        }
+        .ts-mobile-cta:hover { background: #c9a84c; }
+      `}</style>
+
+      <header className={`ts-header ${isScrolled || isMenuOpen ? "scrolled" : "transparent"}`}>
+        <div className="ts-header-inner">
+
+          <Link to="/" className="ts-logo">
+            <img src={TSPLogo} alt="TILT SHIFT Films" />
           </Link>
-        </nav>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <AnimatedHamburger isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-        </div>
-      </div>
+          <nav className="ts-nav">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`ts-nav-link ${isActive(item.path) ? "active" : ""}`}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Link to="/contact" className="ts-cta">Get In Touch</Link>
+          </nav>
 
-      {/* Mobile Menu Content */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="px-6 pt-4 pb-8 space-y-4 bg-[#0f172a]/98 backdrop-blur-xl border-t border-white/10">
-          {navItems.map((item) => (
-            <button
-              key={item.name}
-              onClick={() => handleNavigation(item.path)}
-              className={`flex items-center w-full px-4 py-4 rounded-xl text-left text-lg font-medium transition-all duration-200 ${
-                location.pathname === item.path ? 'text-[#d4af37] bg-white/10' : 'text-gray-300 hover:text-[#d4af37] hover:bg-white/5'
-              }`}
-            >
-              <span className="mr-4 text-[#d4af37]">{item.icon}</span>
-              {item.name}
-            </button>
-          ))}
-
-          {/* Updated Mobile Contact Button with Close logic */}
-          <Link
-            to="/contact"
-            onClick={() => setIsMenuOpen(false)} // This closes the menu
-            className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-[#d4af37] text-[#0f172a] font-semibold rounded-xl hover:bg-[#c9a96e] transition-all shadow-md"
+          <button
+            className={`ts-hamburger ${isMenuOpen ? "open" : ""}`}
+            onClick={() => setIsMenuOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
-            CONTACT US <FaPhoneAlt size={14} />
-          </Link>
+            <span /><span /><span />
+          </button>
         </div>
-      </div>
-    </header>
+
+        <div className={`ts-mobile-drawer ${isMenuOpen ? "open" : ""}`}>
+          <div className="ts-mobile-drawer-inner">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`ts-mobile-link ${isActive(item.path) ? "active" : ""}`}
+              >
+                {item.name}
+                <span style={{ fontSize: "0.9rem", opacity: 0.3, fontWeight: 400 }}>→</span>
+              </Link>
+            ))}
+            <Link to="/contact" className="ts-mobile-cta">Get In Touch</Link>
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
 
