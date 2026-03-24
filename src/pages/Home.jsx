@@ -105,7 +105,7 @@ function LazySection({ children, rootMargin = "200px" }) {
 
 // Hero: only 4 paths — loaded one-by-one as slides advance
 const heroImages = [
-  img("Abhimanyu_Manisha/img621.jpg"),
+  // img("Abhimanyu_Manisha/img621.jpg"),
   img("Aishwarya_Sanmay/img33.jpg"),
   img("Amruta_Amey/img216.jpg"),
   img("Chaitrali_Shubham/img405.jpg"),
@@ -143,8 +143,9 @@ const films = [
 ];
 
 const aboutImg      = img("Chaitrali_Shubham/img407.jpg");
-const philosophyImg = img("Chaitrali_Shubham/img407.jpg");
-const premiumImg    = img("Chaitrali_Shubham/img407.jpg");
+const philosophyImg = img("Chaitrali_Shubham/img615.jpg");
+const premiumImg    = img("Bhakti_Sourabh/img322.jpg");
+const leftImg = img("Abhimanyu_Manisha/img615.jpg");
 
 /* ─── Hero Slider ──────────────────────────────────────────────
    KEY FIX: `loadedSlides` tracks which slide indices have been
@@ -300,16 +301,19 @@ export default function Home() {
       {/* LazySection defers image loading until section is 200px from viewport */}
       <LazySection rootMargin="200px">
         {(isNear) => (
-          <section ref={aboutRef} style={{
-            padding: "clamp(80px,10vw,140px) clamp(24px,8vw,120px)",
-            background: "#fff",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "clamp(40px,8vw,120px)",
-            alignItems: "center",
-            maxWidth: 1400,
-            margin: "0 auto",
-          }} className="about-grid">
+         <section
+  ref={aboutRef}
+  style={{
+    padding: "clamp(80px,10vw,140px) clamp(24px,8vw,120px)",
+    background: "#fff",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "clamp(40px,8vw,120px)",
+    alignItems: "center",
+    width: "100%"   // ✅ full width
+  }}
+  className="about-grid"
+>
 
             <div className={`hover-zoom fade-up ${aboutInView ? "in" : ""}`}
               style={{ position: "relative", aspectRatio: "3/4" }}>
@@ -432,16 +436,11 @@ export default function Home() {
           </section>
         )}
       </LazySection>
-
-      {/* ─── FEATURED COUPLES ─────────────────────────────────── */}
-      {/* ─── FEATURED COUPLES ─────────────────────────────────── */}
-{/* ─── FEATURED COUPLES ─────────────────────────────────── */}
-{/* ─── FEATURED COUPLES ─────────────────────────────────── */}
 <LazySection rootMargin="300px">
         {(isNear) => (
           <section 
             ref={featRef} 
-            style={{ background: "#f7f5f1", padding: "clamp(80px,10vw,130px) clamp(24px,6vw,80px)" }}
+            style={{ background: "#fff", padding: "clamp(80px,10vw,130px) clamp(24px,6vw,80px)" }}
           >
             <div style={{ maxWidth: 1320, margin: "0 auto" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "clamp(36px,5vw,60px)", flexWrap: "wrap", gap: 16 }}>
@@ -554,35 +553,39 @@ export default function Home() {
       </LazySection>
 
       {/* ─── PHILOSOPHY FULL-BLEED ────────────────────────────── */}
-      <LazySection rootMargin="300px">
-        {(isNear) => (
-          <section style={{ position: "relative", minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-            <ProgressiveImg
-              src={philosophyImg}
-              shouldLoad={isNear}
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 40%" }}
-            />
-            <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.48)" }} />
-            <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "clamp(60px,8vw,100px) clamp(24px,10vw,160px)", maxWidth: 1000 }}>
-              <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.7rem", letterSpacing: "0.35em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)", marginBottom: "2rem" }}>Our Philosophy</p>
-              <blockquote style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: "clamp(1.8rem, 4vw, 3.2rem)",
-                fontWeight: 300, fontStyle: "italic",
-                color: "#fff", lineHeight: 1.4, margin: "0 0 2.5rem",
-              }}>
-                "We celebrate the wild ones, the rule breakers, the travellers — the modern couple unafraid to experiment."
-              </blockquote>
-              <a href="/about" style={{
-                fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.3em",
-                textTransform: "uppercase", color: "rgba(255,255,255,0.75)", textDecoration: "none",
-                borderBottom: "1px solid rgba(255,255,255,0.4)", paddingBottom: "3px",
-              }}>Our Story →</a>
-            </div>
-          </section>
-        )}
-      </LazySection>
+  <LazySection rootMargin="300px">
+{(isNear) => (
+<section style={{ position:"relative", minHeight:"60vh", display:"flex", alignItems:"center", justifyContent:"center" }}>
 
+  <div style={{ display:"flex", alignItems:"center", gap:"60px", maxWidth:"1100px", width:"100%", padding:"80px 40px" }}>
+
+    {/* LEFT IMAGE */}
+    <div style={{ flex:"0 0 45%" }}>
+      <img src={leftImg} alt="Couple"
+        style={{ width:"100%", height:"500px", objectFit:"cover", borderRadius:"10px" }} />
+    </div>
+
+    {/* RIGHT TEXT */}
+    <div style={{ flex:"0 0 55%", textAlign:"left" }}>
+      <p style={{ fontFamily:"'Jost', sans-serif", fontSize:"0.7rem", letterSpacing:"0.35em", textTransform:"uppercase", marginBottom:"20px" }}>
+        Our Philosophy
+      </p>
+
+      <blockquote style={{ fontFamily:"'Cormorant Garamond', serif", fontSize:"clamp(2rem, 3vw, 3rem)", fontStyle:"italic",
+        lineHeight:1.5, marginBottom:"30px" }}>
+        "We celebrate the wild ones, the rule breakers, the travellers — the modern couple unafraid to experiment."
+      </blockquote>
+
+      <a href="/about" style={{ fontSize:"0.75rem", letterSpacing:"0.3em", textTransform:"uppercase",
+        textDecoration:"none", borderBottom:"1px solid black" }}>
+        Our Story →
+      </a>
+    </div>
+
+  </div>
+</section>
+)}
+</LazySection>
       {/* ─── PREMIUM OFFERING ─────────────────────────────────── */}
       <LazySection rootMargin="300px">
         {(isNear) => (
@@ -630,7 +633,7 @@ export default function Home() {
       </LazySection>
 
       {/* ─── CTA ──────────────────────────────────────────────── */}
-      <section style={{ background: "#f7f5f1", padding: "clamp(80px,10vw,130px) clamp(24px,6vw,80px)", textAlign: "center" }}>
+      <section style={{ background: "#fff", padding: "clamp(80px,10vw,130px) clamp(24px,6vw,80px)", textAlign: "center" }}>
         <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.32em", textTransform: "uppercase", color: "#999", marginBottom: "1.5rem" }}>
           Limited Availability · 2025–26
         </p>

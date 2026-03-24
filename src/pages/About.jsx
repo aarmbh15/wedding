@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import HeroImage from '../assets/6.jpg';
+// import HeroImage from '../assets/6.jpg';
 
 // Hook for scroll animations
 function useInView(threshold = 0.15) {
@@ -33,11 +33,11 @@ const About = () => {
       {/* ─── HERO SECTION ─────────────────────────────────────────── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
        <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
-  <img
+  {/* <img
     src={HeroImage}
     alt="Wedding Cinematography"
     className="w-full h-full object-cover opacity-60 brightness-75"
-  />
+  /> */}
 </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
         
