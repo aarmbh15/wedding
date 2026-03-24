@@ -90,14 +90,14 @@ function LazySection({ children, rootMargin = "200px" }) {
 // Hero: only 4 paths — loaded one-by-one as slides advance
 const heroImages = [
   img("Abhimanyu_Manisha/img621.jpg"),
-  img("Aishwarya_Sanmay/img33.jpg"),
+  img("Bhakti_Sourabh/img331.jpg"),
   img("Amrut_Amey/img216.jpg"),
   img("Chaitrali_Shubham/img405.jpg"),
 ];
 
 const portfolioGrid = [
   { src: img("Abhimanyu_Manisha/img621.jpg"), span: "tall"   },
-  { src: img("Aishwarya_Sanmay/img66.jpg"),   span: "wide"   },
+  { src: img("Bhakti_Sourabh/img331.jpg"),   span: "wide"   },
   { src: img("Rohan_Preksha/img550.jpg"),      span: "normal" },
   { src: img("Amruta_Amey/img224.jpg"),        span: "normal" },
   { src: img("Chaitrali_Shubham/img407.jpg"),  span: "tall"   },
