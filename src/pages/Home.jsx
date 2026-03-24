@@ -90,8 +90,8 @@ function LazySection({ children, rootMargin = "200px" }) {
 // Hero: only 4 paths — loaded one-by-one as slides advance
 const heroImages = [
   img("Abhimanyu_Manisha/img621.jpg"),
-  img("Bhakti_Sourabh/img331.jpg"),
-  img("Amrut_Amey/img216.jpg"),
+  img("Aishwarya_Sanmay/img33.jpg"),
+  img("Amruta_Amey/img216.jpg"),
   img("Chaitrali_Shubham/img405.jpg"),
 ];
 
