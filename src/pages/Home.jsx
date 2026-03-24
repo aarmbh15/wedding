@@ -109,10 +109,34 @@ const portfolioGrid = [
 ];
 
 const featured = [
-  { couple: "Amruta & Amey",        location: "Udaipur · Rajasthan",   date: "December 2024", img: img("Amruta_Amey/img221.jpg") },
-  { couple: "Abhimanyu & Manisha",  location: "Goa · Coastal",         date: "November 2024", img: img("Abhimanyu_Manisha/img605.jpg") },
-  { couple: "Bhakti & Sourabh",     location: "Mumbai · Maharashtra",  date: "October 2024",  img: img("Bhakti_Sourabh/img326.jpg") },
-  { couple: "Rohan & Preksha",      location: "Jaipur · Pink City",    date: "January 2025",  img: img("Rohan_Preksha/img504.jpg") },
+  { 
+    couple: "Amruta & Amey",        
+    slug: "amruta-amey",
+    location: "Udaipur · Rajasthan",   
+    date: "December 2024", 
+    img: img("Amruta_Amey/img221.jpg") 
+  },
+  { 
+    couple: "Abhimanyu & Manisha",  
+    slug: "abhimanyu-manisha",
+    location: "Goa · Coastal",         
+    date: "November 2024", 
+    img: img("Abhimanyu_Manisha/img605.jpg") 
+  },
+  { 
+    couple: "Bhakti & Sourabh",     
+    slug: "bhakti-sourabh",
+    location: "Mumbai · Maharashtra",  
+    date: "October 2024",  
+    img: img("Bhakti_Sourabh/img326.jpg") 
+  },
+  { 
+    couple: "Rohan & Preksha",      
+    slug: "rohan-preksha",
+    location: "Jaipur · Pink City",    
+    date: "January 2025",  
+    img: img("Rohan_Preksha/img504.jpg") 
+  },
 ];
 
 const films = [
@@ -420,9 +444,15 @@ export default function Home() {
       </LazySection>
 
       {/* ─── FEATURED COUPLES ─────────────────────────────────── */}
-      <LazySection rootMargin="300px">
+      {/* ─── FEATURED COUPLES ─────────────────────────────────── */}
+{/* ─── FEATURED COUPLES ─────────────────────────────────── */}
+{/* ─── FEATURED COUPLES ─────────────────────────────────── */}
+<LazySection rootMargin="300px">
         {(isNear) => (
-          <section ref={featRef} style={{ background: "#f7f5f1", padding: "clamp(80px,10vw,130px) clamp(24px,6vw,80px)" }}>
+          <section 
+            ref={featRef} 
+            style={{ background: "#f7f5f1", padding: "clamp(80px,10vw,130px) clamp(24px,6vw,80px)" }}
+          >
             <div style={{ maxWidth: 1320, margin: "0 auto" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "clamp(36px,5vw,60px)", flexWrap: "wrap", gap: 16 }}>
                 <div>
@@ -438,9 +468,16 @@ export default function Home() {
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "clamp(12px,2vw,24px)" }} className="featured-grid">
                 {featured.map((f, i) => (
-                  <div key={i}
+                  <a 
+                    key={i}
+                    href={`/wedding/${f.slug}`}
                     className={`hover-zoom fade-up ${featInView ? `in d${i + 1}` : ""}`}
-                    style={{ cursor: "pointer" }}
+                    style={{ 
+                      cursor: "pointer", 
+                      textDecoration: "none", 
+                      color: "inherit",
+                      display: "block"
+                    }}
                   >
                     <div style={{ position: "relative", aspectRatio: "3/4", marginBottom: "1.1rem" }}>
                       <ProgressiveImg
@@ -450,13 +487,20 @@ export default function Home() {
                         style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                       />
                     </div>
-                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", fontWeight: 400, color: "#1a1a1a", marginBottom: "0.3rem" }}>{f.couple}</p>
-                    <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#999" }}>{f.location}</p>
-                    <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", color: "#bbb", marginTop: "0.2rem" }}>{f.date}</p>
-                  </div>
+                    <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", fontWeight: 400, color: "#1a1a1a", marginBottom: "0.3rem" }}>
+                      {f.couple}
+                    </p>
+                    <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#999" }}>
+                      {f.location}
+                    </p>
+                    <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", color: "#bbb", marginTop: "0.2rem" }}>
+                      {f.date}
+                    </p>
+                  </a>
                 ))}
               </div>
             </div>
+
             <style>{`
               @media (max-width: 900px) { .featured-grid { grid-template-columns: 1fr 1fr !important; } }
               @media (max-width: 520px) { .featured-grid { grid-template-columns: 1fr !important; } }
@@ -464,7 +508,6 @@ export default function Home() {
           </section>
         )}
       </LazySection>
-
       {/* ─── FILMS ────────────────────────────────────────────── */}
       <LazySection rootMargin="300px">
         {(isNear) => (

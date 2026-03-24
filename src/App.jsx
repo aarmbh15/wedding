@@ -8,6 +8,7 @@ import ScrollToTop from './components/ScrollToTop.jsx'; // ← Import the new co
 const Home = lazy(() => import('./pages/Home.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
+const WeddingPage = lazy(() => import('./pages/WeddingPage.jsx'));
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/wedding/:slug" element={<WeddingPage />} />
             </Routes>
           </Suspense>
           <Footer />
