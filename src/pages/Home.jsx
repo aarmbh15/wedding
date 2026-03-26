@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 
 // ─── Bulk import ALL images from assets ──────────────────────────────────────
-const allImages = import.meta.glob("../assets/**/*.{jpg,jpeg,png,webp}", { eager: true });
+const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
 const img = (path) => allImages[`../assets/${path}`]?.default;
 
 /* ─── Intersection Observer Hook ─────────────────────────────── */
@@ -32,7 +32,7 @@ function useInView(threshold = 0.1) {
    - Shows a lightweight shimmer placeholder until loaded
    - Fades in smoothly on load
 ────────────────────────────────────────────────────────────── */
-function ProgressiveImg({ src, alt = "", style = {}, shouldLoad = true }) {
+function ProgressiveImg({ src, alt = "", style = {}, shouldLoad = true, onLoadComplete }) {
   const [loaded, setLoaded] = useState(false);
   const [currentSrc, setCurrentSrc] = useState(null);
 
@@ -42,33 +42,32 @@ function ProgressiveImg({ src, alt = "", style = {}, shouldLoad = true }) {
     }
   }, [src, shouldLoad, currentSrc]);
 
+  const handleLoad = () => {
+    setLoaded(true);
+    if (onLoadComplete) onLoadComplete(); // Notify parent
+  };
+
   return (
     <div style={{ position: "relative", width: "100%", height: "100%", background: loaded ? "transparent" : "#e8e4df" }}>
       {!loaded && (
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(90deg, #e8e4df 25%, #f0ece7 50%, #e8e4df 75%)",
-            backgroundSize: "200% 100%",
-            animation: "shimmer 1.6s infinite",
-          }}
-        />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(90deg, #e8e4df 25%, #f0ece7 50%, #e8e4df 75%)",
+          backgroundSize: "200% 100%",
+          animation: "shimmer 1.6s infinite",
+        }} />
       )}
       {currentSrc && (
         <img
           src={currentSrc}
           alt={alt}
           decoding="async"
-          loading="lazy"
-          onLoad={() => setLoaded(true)}
+          onLoad={handleLoad}
           style={{
             ...style,
             opacity: loaded ? 1 : 0,
-            transition: "opacity 0.6s ease",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
+            transition: "opacity 1.2s ease", // Slower fade for smoother feel
+            width: "100%", height: "100%", objectFit: "cover",
           }}
         />
       )}
@@ -105,47 +104,47 @@ function LazySection({ children, rootMargin = "200px" }) {
 
 // Hero: only 4 paths — loaded one-by-one as slides advance
 const heroImages = [
-  // img("Abhimanyu_Manisha/img621.jpg"),
-  img("Aishwarya_Sanmay/img33.jpg"),
-  img("Amruta_Amey/img216.jpg"),
-  img("Chaitrali_Shubham/img405.jpg"),
+  // img("Abhimanyu_Manisha/img621.webp"),
+  img("Aishwarya_Sanmay/img33.webp"),
+  img("Amruta_Amey/img216.webp"),
+  img("Chaitrali_Shubham/img405.webp"),
 ];
 
 const portfolioGrid = [
-  { src: img("Abhimanyu_Manisha/img621.jpg"), span: "tall"   },
-  { src: img("Bhakti_Sourabh/img331.jpg"),   span: "wide"   },
-  { src: img("Rohan_Preksha/img550.jpg"),      span: "normal" },
-  { src: img("Amruta_Amey/img224.jpg"),        span: "normal" },
-  { src: img("Chaitrali_Shubham/img407.jpg"),  span: "tall"   },
-  { src: img("Bhakti_Sourabh/img321.jpg"),     span: "normal" },
-  { src: img("Chaitrali_Shubham/img423.jpg"),  span: "wide"   },
-  { src: img("Rohan_Preksha/img543.jpg"),      span: "tall"   },
-  { src: img("Abhimanyu_Manisha/img613.jpg"),  span: "normal" },
-  { src: img("Amruta_Amey/img258.jpg"),        span: "wide"   },
+  { src: img("Abhimanyu_Manisha/img621.webp"), span: "tall"   },
+  { src: img("Bhakti_Sourabh/img331.webp"),   span: "wide"   },
+  { src: img("Rohan_Preksha/img550.webp"),      span: "normal" },
+  { src: img("Amruta_Amey/img224.webp"),        span: "normal" },
+  { src: img("Chaitrali_Shubham/img407.webp"),  span: "tall"   },
+  { src: img("Bhakti_Sourabh/img321.webp"),     span: "normal" },
+  { src: img("Chaitrali_Shubham/img423.webp"),  span: "wide"   },
+  { src: img("Rohan_Preksha/img543.webp"),      span: "tall"   },
+  { src: img("Abhimanyu_Manisha/img613.webp"),  span: "normal" },
+  { src: img("Amruta_Amey/img258.webp"),        span: "wide"   },
 ];
 const featured = [
-  { couple: "Amruta & Amey",        slug: "amruta-amey", location: "Udaipur · Rajasthan",   date: "December 2024", img: img("Amruta_Amey/img221.jpg") },
-  { couple: "Abhimanyu & Manisha",  slug: "abhimanyu-manisha", location: "Goa · Coastal",   date: "November 2024", img: img("Abhimanyu_Manisha/img605.jpg") },
-  { couple: "Bhakti & Sourabh",     slug: "bhakti-sourabh", location: "Mumbai · Maharashtra", date: "October 2024",  img: img("Bhakti_Sourabh/img326.jpg") },
-  { couple: "Rohan & Preksha",      slug: "rohan-preksha", location: "Jaipur · Pink City",   date: "January 2025",  img: img("Rohan_Preksha/img504.jpg") },
+  { couple: "Amruta & Amey",        slug: "amruta-amey", location: "Udaipur · Rajasthan",   date: "December 2024", img: img("Amruta_Amey/img221.webp") },
+  { couple: "Abhimanyu & Manisha",  slug: "abhimanyu-manisha", location: "Goa · Coastal",   date: "November 2024", img: img("Abhimanyu_Manisha/img605.webp") },
+  { couple: "Bhakti & Sourabh",     slug: "bhakti-sourabh", location: "Mumbai · Maharashtra", date: "October 2024",  img: img("Bhakti_Sourabh/img326.webp") },
+  { couple: "Rohan & Preksha",      slug: "rohan-preksha", location: "Jaipur · Pink City",   date: "January 2025",  img: img("Rohan_Preksha/img504.webp") },
 ];
 const films = [
   {
     title: "A Week in Udaipur",
     desc: "A multi-day royal celebration woven through palaces, lakes, and golden evenings. This film captures the quiet in-between moments that no one else thought to notice.",
-    thumb: img("Rohan_Preksha/img550.jpg"),
+    thumb: img("Rohan_Preksha/img550.webp"),
   },
   {
     title: "Monsoon Wedding, Goa",
     desc: "Rain doesn't stop love. It amplifies it. This coastal ceremony, drenched in petrichor and jasmine, became one of our most emotionally resonant films.",
-    thumb: img("Bhakti_Sourabh/img321.jpg"),
+    thumb: img("Bhakti_Sourabh/img321.webp"),
   },
 ];
 
-const aboutImg      = img("Chaitrali_Shubham/img407.jpg");
-const philosophyImg = img("Chaitrali_Shubham/img615.jpg");
-const premiumImg    = img("Bhakti_Sourabh/img322.jpg");
-const leftImg = img("Abhimanyu_Manisha/img615.jpg");
+const aboutImg      = img("Chaitrali_Shubham/img407.webp");
+const philosophyImg = img("Chaitrali_Shubham/img615.webp");
+const premiumImg    = img("Bhakti_Sourabh/img322.webp");
+const leftImg = img("Abhimanyu_Manisha/img615.webp");
 
 /* ─── Hero Slider ──────────────────────────────────────────────
    KEY FIX: `loadedSlides` tracks which slide indices have been

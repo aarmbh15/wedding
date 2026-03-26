@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 
 // ─── Bulk import ALL images ───────────────────────────────────────────────────
-const allImages = import.meta.glob("../assets/**/*.{jpg,jpeg,png,webp}", { eager: true });
+const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
 const img = (path) => allImages[`../assets/${path}`]?.default;
 
 // ─── Portfolio data ───────────────────────────────────────────────────────────
@@ -15,7 +15,7 @@ const weddings = [
     location: "Udaipur · Rajasthan",
     date:     "December 2024",
     category: "Destination",
-    cover:    img("Amruta_Amey/img221.jpg"),
+    cover:    img("Amruta_Amey/img221.webp"),
   },
   {
     slug:     "abhimanyu-manisha",
@@ -23,7 +23,7 @@ const weddings = [
     location: "Goa · Coastal",
     date:     "November 2024",
     category: "Coastal",
-    cover:    img("Abhimanyu_Manisha/img621.jpg"),
+    cover:    img("Abhimanyu_Manisha/img621.webp"),
   },
   {
     slug:     "bhakti-sourabh",
@@ -31,7 +31,7 @@ const weddings = [
     location: "Mumbai · Maharashtra",
     date:     "October 2024",
     category: "City",
-    cover:    img("Bhakti_Sourabh/img326.jpg"),
+    cover:    img("Bhakti_Sourabh/img326.webp"),
   },
   {
     slug:     "rohan-preksha",
@@ -39,7 +39,7 @@ const weddings = [
     location: "Jaipur · Pink City",
     date:     "January 2025",
     category: "Royal",
-    cover:    img("Rohan_Preksha/img504.jpg"),
+    cover:    img("Rohan_Preksha/img504.webp"),
   },
   // ── Add more weddings here by duplicating a block above ──
   // {
@@ -48,7 +48,7 @@ const weddings = [
   //   location: "City · State",
   //   date:     "Month Year",
   //   category: "Tag",
-  //   cover:    img("FolderName/cover.jpg"),
+  //   cover:    img("FolderName/cover.webp"),
   // },
 ];
 
