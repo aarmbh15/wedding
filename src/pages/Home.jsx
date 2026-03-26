@@ -111,16 +111,16 @@ const heroImages = [
 ];
 
 const portfolioGrid = [
-  { src: img("Abhimanyu_Manisha/img621.webp"), span: "tall"   },
-  { src: img("Bhakti_Sourabh/img331.webp"),   span: "wide"   },
-  { src: img("Rohan_Preksha/img550.webp"),      span: "normal" },
-  { src: img("Amruta_Amey/img224.webp"),        span: "normal" },
-  { src: img("Chaitrali_Shubham/img407.webp"),  span: "tall"   },
-  { src: img("Bhakti_Sourabh/img321.webp"),     span: "normal" },
-  { src: img("Chaitrali_Shubham/img423.webp"),  span: "wide"   },
-  { src: img("Rohan_Preksha/img543.webp"),      span: "tall"   },
-  { src: img("Abhimanyu_Manisha/img613.webp"),  span: "normal" },
-  { src: img("Amruta_Amey/img258.webp"),        span: "wide"   },
+  { src: img("Abhimanyu_Manisha/img621.webp"), pos: "52% 88%" },
+  { src: img("Bhakti_Sourabh/img331.webp"),    pos: "50% 50%" },
+  { src: img("Rohan_Preksha/img550.webp"),     pos: "50% 50%" },
+  { src: img("Amruta_Amey/img224.webp"),       pos: "50% 50%" },
+  { src: img("Chaitrali_Shubham/img407.webp"), pos: "50% 50%" },
+  { src: img("Bhakti_Sourabh/img321.webp"),    pos: "50% 50%" },
+  { src: img("Chaitrali_Shubham/img423.webp"), pos: "50% 50%" },
+  { src: img("Rohan_Preksha/img543.webp"),     pos: "50% 50%" },
+  { src: img("Abhimanyu_Manisha/img613.webp"), pos: "50% 50%" },
+  { src: img("Amruta_Amey/img258.webp"),       pos: "50% 50%" },
 ];
 const featured = [
   { couple: "Amruta & Amey",        slug: "amruta-amey", location: "Udaipur · Rajasthan",   date: "December 2024", img: img("Amruta_Amey/img221.webp") },
@@ -358,14 +358,14 @@ export default function Home() {
                   onMouseEnter={e => { e.target.style.color = "#c9a84c"; e.target.style.borderColor = "#c9a84c"; }}
                   onMouseLeave={e => { e.target.style.color = "#1a1a1a"; e.target.style.borderColor = "#1a1a1a"; }}
                 >View Photography →</a>
-                <a href="/films" style={{
+                {/* <a href="/films" style={{
                   fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", letterSpacing: "0.25em",
                   textTransform: "uppercase", color: "#1a1a1a", textDecoration: "none",
                   borderBottom: "1px solid #1a1a1a", paddingBottom: "2px", transition: "color 0.3s, border-color 0.3s",
                 }}
                   onMouseEnter={e => { e.target.style.color = "#c9a84c"; e.target.style.borderColor = "#c9a84c"; }}
                   onMouseLeave={e => { e.target.style.color = "#1a1a1a"; e.target.style.borderColor = "#1a1a1a"; }}
-                >Watch Our Films →</a>
+                >Watch Our Films →</a> */}
               </div>
             </div>
 
@@ -374,67 +374,84 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* ─── PORTFOLIO MOSAIC ─────────────────────────────────── */}
-      {/* rootMargin="400px" starts loading when grid is 400px below viewport */}
-      <LazySection rootMargin="400px">
-        {(isNear) => (
-          <section ref={gridRef} style={{ background: "#fff", padding: "0 0 clamp(60px,8vw,100px)" }}>
-            <div style={{ textAlign: "center", padding: "0 24px clamp(32px,5vw,60px)" }}>
-              <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.32em", textTransform: "uppercase", color: "#999", marginBottom: "1rem" }}>Selected Work</p>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.2rem,4vw,3.5rem)", fontWeight: 300, color: "#1a1a1a" }}>Portfolio</h2>
-            </div>
+     {/* ─── PORTFOLIO MOSAIC ─────────────────────────────────── */}
+{/* ─── PORTFOLIO MOSAIC ─────────────────────────────────── */}
+<LazySection rootMargin="400px">
+  {(isNear) => (
+    <section 
+      ref={gridRef} // Important: Connects to the useInView hook
+      style={{ background: "#fff", padding: "0 0 clamp(60px,8vw,100px)", minHeight: "600px" }}
+    >
+      {/* Header Title */}
+      <div style={{ textAlign: "center", padding: "0 24px clamp(32px,5vw,60px)" }}>
+        <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.32em", textTransform: "uppercase", color: "#999", marginBottom: "1rem" }}>
+          Selected Work
+        </p>
+        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.2rem,4vw,3.5rem)", fontWeight: 300, color: "#1a1a1a" }}>
+          Portfolio
+        </h2>
+      </div>
 
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gridAutoRows: "260px",
-              gap: 3,
-              padding: "0 3px",
-            }} className="mosaic-grid">
-              {portfolioGrid.map((image, i) => {
-                const colSpan = image.span === "wide" ? 2 : 1;
-                const rowSpan = image.span === "tall" ? 2 : 1;
-                return (
-                  <div key={i}
-                    className={`hover-zoom fade-up ${gridInView ? `in d${(i % 4) + 1}` : ""}`}
-                    style={{
-                      gridColumn: `span ${colSpan}`,
-                      gridRow: `span ${rowSpan}`,
-                      overflow: "hidden",
-                      cursor: "pointer",
-                      position: "relative",
-                    }}
-                  >
-                    {/* Each mosaic image loads only when the section is near */}
-                    <ProgressiveImg
-                      src={image.src}
-                      shouldLoad={isNear}
-                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                    />
-                    <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0)", transition: "background 0.5s" }}
-                      onMouseEnter={e => e.currentTarget.style.background = "rgba(201,168,76,0.12)"}
-                      onMouseLeave={e => e.currentTarget.style.background = "rgba(0,0,0,0)"}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+      <div 
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(5, 1fr)",
+          gap: "3px",
+          padding: "0 3px",
+        }} 
+        className="mosaic-grid"
+      >
+        {portfolioGrid.map((image, i) => (
+          <div key={i}
+            className={`hover-zoom fade-up ${gridInView ? "in" : ""}`}
+            style={{
+              overflow: "hidden",
+              cursor: "pointer",
+              position: "relative",
+              aspectRatio: "1 / 1",
+              background: "#f7f7f7" // Light grey placeholder
+            }}
+          >
+            <ProgressiveImg
+              src={image.src}
+              alt={`Gallery Image ${i + 1}`}
+              shouldLoad={isNear}
+              style={{ 
+                width: "100%", 
+                height: "100%", 
+                objectFit: "cover", 
+                display: "block",
+                objectPosition: image.pos || "50% 50%" // Fallback focal point
+              }}
+            />
+            {/* Hover Overlay */}
+            <div 
+              style={{ 
+                position: "absolute", 
+                inset: 0, 
+                background: "rgba(0,0,0,0)", 
+                transition: "background 0.5s",
+                zIndex: 2 
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = "rgba(201,168,76,0.12)"}
+              onMouseLeave={e => e.currentTarget.style.background = "rgba(0,0,0,0)"}
+            />
+          </div>
+        ))}
+      </div>
 
-            <div style={{ textAlign: "center", marginTop: "clamp(32px,4vw,56px)" }}>
-              <a href="/portfolio" style={{
-                fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", letterSpacing: "0.3em",
-                textTransform: "uppercase", color: "#1a1a1a", textDecoration: "none",
-                borderBottom: "1px solid #1a1a1a", paddingBottom: "3px",
-              }}>View Full Portfolio</a>
-            </div>
+      <div style={{ textAlign: "center", marginTop: "clamp(32px,4vw,56px)" }}>
+        <a href="/portfolio" style={{
+          fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", letterSpacing: "0.3em",
+          textTransform: "uppercase", color: "#1a1a1a", textDecoration: "none",
+          borderBottom: "1px solid #1a1a1a", paddingBottom: "3px",
+        }}>View Full Portfolio</a>
+      </div>
+    </section>
+  )}
+</LazySection>
 
-            <style>{`
-              @media (max-width: 900px) { .mosaic-grid { grid-template-columns: repeat(2, 1fr) !important; grid-auto-rows: 220px !important; } }
-              @media (max-width: 540px) { .mosaic-grid { grid-template-columns: 1fr 1fr !important; grid-auto-rows: 180px !important; } }
-            `}</style>
-          </section>
-        )}
-      </LazySection>
+
 <LazySection rootMargin="300px">
         {(isNear) => (
           <section 
@@ -538,13 +555,13 @@ export default function Home() {
                 ))}
               </div>
 
-              <div style={{ textAlign: "center" }}>
+              {/* <div style={{ textAlign: "center" }}>
                 <a href="/films" style={{
                   fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", letterSpacing: "0.3em",
                   textTransform: "uppercase", color: "#1a1a1a", textDecoration: "none",
                   borderBottom: "1px solid #1a1a1a", paddingBottom: "3px",
                 }}>Watch All Award-Winning Films</a>
-              </div>
+              </div> */}
             </div>
             <style>{`@media (max-width: 768px) { .films-grid { grid-template-columns: 1fr !important; } }`}</style>
           </section>
@@ -670,3 +687,4 @@ export default function Home() {
     </>
   );
 }
+

@@ -110,7 +110,7 @@ const Footer = () => {
           <nav className="ts-footer-nav">
             <Link to="/">Home</Link>
             <Link to="/portfolio">Portfolio</Link>
-            <Link to="/films">Films</Link>
+            {/* <Link to="/films">Films</Link> */}
             <Link to="/about">About</Link>
             <Link to="/contact">Contact</Link>
           </nav>
