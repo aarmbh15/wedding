@@ -41,6 +41,23 @@ const weddings = [
     category: "Royal",
     cover:    img("Rohan_Preksha/img504.webp"),
   },
+  {
+    slug:     "Aishwarya_Sanmay",
+    couple:   "Aishwarya & Sanmay",
+    location: "City · State",
+    date:     "Month Year",
+    category: "Tag",
+    cover:    img("Aishwarya_Sanmay/img44.webp"),
+  },
+  {
+    slug:     "Chaitrali_Shubham",
+    couple:   "Chaitrali & Shubham",
+    location: "City · State",
+    date:     "Month Year",
+    category: "Tag",
+    cover:    img("Chaitrali_Shubham/img408.webp"),
+  },
+
   // ── Add more weddings here by duplicating a block above ──
   // {
   //   slug:     "name-name",
