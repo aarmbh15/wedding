@@ -1,6 +1,7 @@
 // src/pages/Home.jsx
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
+import bgVideo from "../assets/bg.mp4";
 
 // ─── Bulk import ALL images from assets ──────────────────────────────────────
 const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
@@ -490,78 +491,74 @@ export default function Home() {
       {/* ─── FILMS ────────────────────────────────────────────── */}
       <LazySection rootMargin="300px">
   {(isNear) => (
-    <section 
-      ref={filmRef} 
-      style={{ 
-        background: "#fff", // The white "light" peaking from top/bottom
-        padding: "clamp(100px, 15vw, 180px) 0", 
+    <section
+      ref={filmRef}
+      style={{
+        padding: "clamp(100px, 15vw, 180px) 0",
         position: "relative",
         overflow: "hidden",
-        minHeight: "40vh",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center"
+        minHeight: "90vh",
+        background: "#fff"
       }}
     >
-      {/* THE PERSPECTIVE SHUTTER PANELS */}
-      <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        {/* Left Side Wall */}
-        <div style={{ 
-          position: "absolute", top: 0, left: 0, width: "60%", height: "100%", 
-          background: "#0a0a0a", 
-          clipPath: "polygon(0 0, 100% 18%, 100% 82%, 0 100%)",
-          zIndex: 1 
-        }} />
-        
-        {/* Right Side Wall */}
-        <div style={{ 
-          position: "absolute", top: 0, right: 0, width: "60%", height: "100%", 
-          background: "#0d0d0d", 
-          clipPath: "polygon(0 22%, 100% 0, 100% 100%, 0 78%)",
-          zIndex: 2 
-        }} />
+
+      {/* 🎥 VIDEO INSIDE ONE SHAPE */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          overflow: "hidden",
+          zIndex: 1,
+
+          /* 🔥 MERGED SHAPE */
+clipPath: `polygon(
+  0% 0%,       /* Top Left */
+  70% 15%,     /* Your Top "V" cut */
+  100% 0%,     /* Top Right */
+  100% 100%,   /* Bottom Right Corner */
+  90% 90%,     /* The "Mountain Peak" (The up-slanted point) */
+  20% 100%,    /* The "Valley" (The lowest point on the left) */
+  0% 88%       /* Bottom Left Corner (Slightly up) */
+)`
+        }}
+      >
+        {isNear && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover"
+            }}
+          >
+            <source src={bgVideo} type="video/mp4" />
+          </video>
+        )}
       </div>
 
-      {/* CONTENT OVERLAY */}
-      <div style={{ 
-        position: "relative", zIndex: 10, width: "100%", maxWidth: 1200, 
-        textAlign: "center", color: "#fff", padding: "0 20px" 
-      }}>
-        
-        {/* TOP SECTION: LOGO + TITLE */}
-        <div style={{ position: "relative", marginBottom: "4rem" }}>
-          {/* Central Logo Overlay */}
-          <div style={{
-            position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-            zIndex: 12, textAlign: "center", width: "100%"
-          }}>
-             <div style={{ 
-               display: "inline-block", padding: "20px",
-               background: "radial-gradient(circle, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 80%)" 
-             }}>
-                <p style={{ 
-                  fontFamily: "'Jost', sans-serif", fontSize: "0.6rem", fontWeight: 700, 
-                  letterSpacing: "0.25em", margin: 0, lineHeight: 1.3, color: "#fff",
-                  textTransform: "uppercase"
-                }}>
-                  HOUSE<br/>ON THE<br/>CLOUDS
-                </p>
-             </div>
-          </div>
-
-          {/* Background Cinematic Text */}
-          <h2 style={{ 
-            fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(3.5rem, 12vw, 8.5rem)", 
-            fontWeight: 300, letterSpacing: "0.15em", textTransform: "uppercase", 
-            margin: 0, color: "#fff", opacity: 0.95,
-            display: "flex", justifyContent: "center", gap: "1.5em" // Gap for logo
-          }}>
-            <span>SOUL</span>
-            <span>CINEMA</span>
-          </h2>
-        </div>
-
-        {/* DESCRIPTION */}
+      {/* 📝 CONTENT */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 10,
+          width: "100%",
+          maxWidth: 1200,
+          margin: "0 auto",
+          textAlign: "center",
+          color: "#fff",
+          padding: "0 20px"
+        }}
+      >
+        <h2 style={{
+          fontSize: "clamp(2.5rem, 6vw, 5rem)",
+          fontWeight: 300,
+          letterSpacing: "0.1em"
+        }}>
+          SOUL CINEMA
+        </h2>
         <p style={{ 
           fontFamily: "'Jost', sans-serif", fontSize: "0.92rem", fontWeight: 300, 
           maxWidth: "720px", margin: "0 auto 5rem", lineHeight: "1.9", 
@@ -571,8 +568,8 @@ export default function Home() {
           storytelling within wedding realm and beyond. We are fortunate to have experienced so unique 
           cultures and traditions across 25 countries and to document stories that continuously overwhelm us.
         </p>
-
       </div>
+      
 
     </section>
   )}
