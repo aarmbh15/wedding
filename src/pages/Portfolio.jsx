@@ -34,7 +34,7 @@ const weddings = [
     cover:    img("Bhakti_Sourabh/img326.webp"),
   },
   {
-    slug:     "rohan-preksha",
+    slug:     "Rohan-preksha",
     couple:   "Rohan & Preksha",
     location: "Jaipur · Pink City",
     date:     "January 2025",
