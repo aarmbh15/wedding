@@ -489,59 +489,94 @@ export default function Home() {
       </LazySection>
       {/* ─── FILMS ────────────────────────────────────────────── */}
       <LazySection rootMargin="300px">
-        {(isNear) => (
-          <section ref={filmRef} style={{ background: "#fff", padding: "clamp(80px,10vw,130px) clamp(24px,6vw,80px)" }}>
-            <div style={{ maxWidth: 1320, margin: "0 auto" }}>
-              <div style={{ textAlign: "center", marginBottom: "clamp(40px,6vw,72px)" }}>
-                <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", letterSpacing: "0.32em", textTransform: "uppercase", color: "#999", marginBottom: "1rem" }}>Cinematic Films</p>
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.2rem,5vw,4.5rem)", fontWeight: 300, color: "#1a1a1a", lineHeight: 1.1 }}>
-                  Soul Cinema
-                </h2>
-                <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.95rem", fontWeight: 300, color: "#777", maxWidth: 620, margin: "1.6rem auto 0", lineHeight: 1.85 }}>
-                  Every wedding is unique and so are our films. For over a decade TILT SHIFT has set new benchmarks of storytelling within the wedding realm and beyond — across 20+ countries.
+  {(isNear) => (
+    <section 
+      ref={filmRef} 
+      style={{ 
+        background: "#fff", // The white "light" peaking from top/bottom
+        padding: "clamp(100px, 15vw, 180px) 0", 
+        position: "relative",
+        overflow: "hidden",
+        minHeight: "40vh",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center"
+      }}
+    >
+      {/* THE PERSPECTIVE SHUTTER PANELS */}
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+        {/* Left Side Wall */}
+        <div style={{ 
+          position: "absolute", top: 0, left: 0, width: "60%", height: "100%", 
+          background: "#0a0a0a", 
+          clipPath: "polygon(0 0, 100% 18%, 100% 82%, 0 100%)",
+          zIndex: 1 
+        }} />
+        
+        {/* Right Side Wall */}
+        <div style={{ 
+          position: "absolute", top: 0, right: 0, width: "60%", height: "100%", 
+          background: "#0d0d0d", 
+          clipPath: "polygon(0 22%, 100% 0, 100% 100%, 0 78%)",
+          zIndex: 2 
+        }} />
+      </div>
+
+      {/* CONTENT OVERLAY */}
+      <div style={{ 
+        position: "relative", zIndex: 10, width: "100%", maxWidth: 1200, 
+        textAlign: "center", color: "#fff", padding: "0 20px" 
+      }}>
+        
+        {/* TOP SECTION: LOGO + TITLE */}
+        <div style={{ position: "relative", marginBottom: "4rem" }}>
+          {/* Central Logo Overlay */}
+          <div style={{
+            position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
+            zIndex: 12, textAlign: "center", width: "100%"
+          }}>
+             <div style={{ 
+               display: "inline-block", padding: "20px",
+               background: "radial-gradient(circle, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 80%)" 
+             }}>
+                <p style={{ 
+                  fontFamily: "'Jost', sans-serif", fontSize: "0.6rem", fontWeight: 700, 
+                  letterSpacing: "0.25em", margin: 0, lineHeight: 1.3, color: "#fff",
+                  textTransform: "uppercase"
+                }}>
+                  HOUSE<br/>ON THE<br/>CLOUDS
                 </p>
-              </div>
+             </div>
+          </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(20px,3vw,40px)", marginBottom: "clamp(40px,5vw,70px)" }} className="films-grid">
-                {films.map((film, i) => (
-                  <div key={i} className={`fade-up ${filmInView ? `in d${i + 1}` : ""}`}>
-                    <div style={{ position: "relative", aspectRatio: "16/10", marginBottom: "1.8rem", cursor: "pointer" }} className="hover-zoom">
-                      <ProgressiveImg
-                        src={film.thumb}
-                        alt={film.title}
-                        shouldLoad={isNear}
-                        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                      />
-                      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0.05))" }} />
-                      <div className="play-btn">
-                        <span>
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                            <polygon points="5,3 19,12 5,21" />
-                          </svg>
-                        </span>
-                      </div>
-                      <div style={{ position: "absolute", bottom: 24, left: 24 }}>
-                        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 400, color: "#fff", lineHeight: 1.2 }}>{film.title}</p>
-                      </div>
-                    </div>
-                    <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.92rem", fontWeight: 300, color: "#666", lineHeight: 1.85 }}>{film.desc}</p>
-                  </div>
-                ))}
-              </div>
+          {/* Background Cinematic Text */}
+          <h2 style={{ 
+            fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(3.5rem, 12vw, 8.5rem)", 
+            fontWeight: 300, letterSpacing: "0.15em", textTransform: "uppercase", 
+            margin: 0, color: "#fff", opacity: 0.95,
+            display: "flex", justifyContent: "center", gap: "1.5em" // Gap for logo
+          }}>
+            <span>SOUL</span>
+            <span>CINEMA</span>
+          </h2>
+        </div>
 
-              {/* <div style={{ textAlign: "center" }}>
-                <a href="/films" style={{
-                  fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", letterSpacing: "0.3em",
-                  textTransform: "uppercase", color: "#1a1a1a", textDecoration: "none",
-                  borderBottom: "1px solid #1a1a1a", paddingBottom: "3px",
-                }}>Watch All Award-Winning Films</a>
-              </div> */}
-            </div>
-            <style>{`@media (max-width: 768px) { .films-grid { grid-template-columns: 1fr !important; } }`}</style>
-          </section>
-        )}
-      </LazySection>
+        {/* DESCRIPTION */}
+        <p style={{ 
+          fontFamily: "'Jost', sans-serif", fontSize: "0.92rem", fontWeight: 300, 
+          maxWidth: "720px", margin: "0 auto 5rem", lineHeight: "1.9", 
+          color: "rgba(255,255,255,0.8)", letterSpacing: "0.02em"
+        }}>
+          Every wedding is unique and so are our films. For past 8 years <strong>HOTC</strong> has set new benchmarks of 
+          storytelling within wedding realm and beyond. We are fortunate to have experienced so unique 
+          cultures and traditions across 25 countries and to document stories that continuously overwhelm us.
+        </p>
 
+      </div>
+
+    </section>
+  )}
+</LazySection>
       {/* ─── PHILOSOPHY FULL-BLEED ────────────────────────────── */}
   <LazySection rootMargin="300px">
 {(isNear) => (

@@ -38,11 +38,27 @@ const Header = () => {
           transition: background 0.5s ease, box-shadow 0.4s ease;
         }
         .ts-header.scrolled {
-          background: rgba(255,255,255,0.98);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          box-shadow: 0 1px 0 rgba(0,0,0,0.1);
-        }
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.06),
+    0 1px 0 rgba(255, 255, 255, 0.4) inset;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+  .ts-header.scrolled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.35),
+    rgba(255,255,255,0.05)
+  );
+  pointer-events: none;
+}
         .ts-header.transparent {
           background: transparent;
         }
