@@ -6,127 +6,157 @@ const Footer = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap');
 
         .ts-footer {
-          background: #1a1a1a;
-          padding: 48px clamp(24px, 6vw, 80px);
+          background: #111111;
+          /* Reduced top/bottom padding for less empty space */
+          padding: 50px clamp(24px, 6vw, 80px) 30px;
           font-family: 'Jost', sans-serif;
+          color: #ffffff;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .ts-footer-inner {
-          max-width: 1400px;
+          max-width: 1200px; /* Narrowed container to bring content closer */
           margin: 0 auto;
           display: flex;
-          align-items: center;
           justify-content: space-between;
-          flex-wrap: wrap;
-          gap: 24px;
+          align-items: flex-start;
+          gap: 30px;
+          margin-bottom: 40px; /* Reduced space before bottom bar */
         }
 
-        /* Logo */
-        .ts-footer-logo img {
-          height: 44px;
-          width: auto;
-          object-fit: contain;
-          filter: brightness(0) invert(1);
-          opacity: 0.85;
-          transition: opacity 0.3s;
-          display: block;
-        }
-        .ts-footer-logo:hover img { opacity: 1; }
-
-        /* Nav links */
-        .ts-footer-nav {
-          display: flex;
-          align-items: center;
-          gap: clamp(20px, 3vw, 40px);
-          flex-wrap: wrap;
-        }
-        .ts-footer-nav a {
-          font-family: 'Jost', sans-serif;
-          font-size: 0.78rem;
-          font-weight: 500;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: rgba(255,255,255,0.55);
-          text-decoration: none;
-          transition: color 0.3s;
-        }
-        .ts-footer-nav a:hover { color: #c9a84c; }
-
-        /* Right: socials + copyright */
-        .ts-footer-right {
+        /* ── Left: Brand & Address ── */
+        .ts-footer-brand {
           display: flex;
           flex-direction: column;
-          align-items: flex-end;
-          gap: 10px;
+          gap: 16px; /* Reduced gap between logo and address */
         }
-        .ts-footer-socials {
+        .ts-footer-logo img {
+          height: 42px; /* Slightly smaller logo for better proportions */
+          width: auto;
+          filter: none;
+          opacity: 0.95;
+        }
+
+        .ts-footer-address {
+          font-size: 0.88rem;
+          line-height: 1.5;
+          color: rgba(255, 255, 255, 0.5);
+          max-width: 280px;
+          font-weight: 300;
+          margin: 0;
+        }
+
+        /* ── Right: Contact ── */
+        .ts-footer-contact {
+          display: flex;
+          flex-direction: column;
+          gap: 8px; /* Tighter spacing between contact links */
+          align-items: flex-end;
+          text-align: right;
+        }
+        .ts-footer-title {
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: #c9a84c;
+          margin-bottom: 4px;
+        }
+        .ts-contact-link {
+          font-size: 1rem;
+          color: #ffffff;
+          text-decoration: none;
+          font-weight: 400;
+          transition: color 0.3s;
+        }
+        .ts-contact-link:hover { color: #c9a84c; }
+        
+        .ts-social-links {
           display: flex;
           gap: 20px;
+          margin-top: 10px;
         }
-        .ts-footer-socials a {
-          font-family: 'Jost', sans-serif;
-          font-size: 0.72rem;
+        .ts-social-links a {
+          font-size: 0.7rem;
           font-weight: 500;
-          letter-spacing: 0.18em;
+          letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.45);
+          color: rgba(255, 255, 255, 0.4);
           text-decoration: none;
           transition: color 0.3s;
         }
-        .ts-footer-socials a:hover { color: #c9a84c; }
+        .ts-social-links a:hover { color: #ffffff; }
 
+        /* ── Bottom Bar ── */
+        .ts-footer-bottom {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding-top: 25px;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
         .ts-footer-copy {
-          font-size: 0.68rem;
-          font-weight: 400;
-          letter-spacing: 0.12em;
-          color: rgba(255,255,255,0.25);
+          font-size: 0.65rem;
+          color: rgba(255, 255, 255, 0.2);
+          letter-spacing: 0.08em;
+          margin: 0;
         }
 
-        /* Mobile: stack everything */
-        @media (max-width: 640px) {
+        /* ── Mobile Responsive ── */
+        @media (max-width: 768px) {
+          .ts-footer { padding: 40px 24px 20px; }
           .ts-footer-inner {
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 28px;
+            gap: 30px;
           }
-          .ts-footer-nav { justify-content: center; }
-          .ts-footer-right { align-items: center; }
+          .ts-footer-contact { align-items: center; text-align: center; }
+          .ts-footer-bottom { flex-direction: column; gap: 10px; }
         }
       `}</style>
 
       <footer className="ts-footer">
         <div className="ts-footer-inner">
-
-          {/* Logo */}
-          <Link to="/" className="ts-footer-logo">
-            <img src={FooterLogo} alt="TILT SHIFT Films" />
-          </Link>
-
-          {/* Nav */}
-          <nav className="ts-footer-nav">
-            <Link to="/">Home</Link>
-            <Link to="/portfolio">Portfolio</Link>
-            {/* <Link to="/films">Films</Link> */}
-            <Link to="/about">About</Link>
-            <Link to="/contact">Contact</Link>
-          </nav>
-
-          {/* Right side */}
-          <div className="ts-footer-right">
-            <div className="ts-footer-socials">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://facebook.com"  target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a href="https://youtube.com"   target="_blank" rel="noopener noreferrer">YouTube</a>
-            </div>
-            <p className="ts-footer-copy">
-              © {new Date().getFullYear()} TILT SHIFT Films. All rights reserved.
+          
+          <div className="ts-footer-brand">
+            <Link to="/" className="ts-footer-logo">
+              <img src={FooterLogo} alt="TILT SHIFT Films" />
+            </Link>
+            <p className="ts-footer-address">
+              Bunglow no 6, Periwinkle Society,<br />
+              Near Yogi park Baner, Pune 411045
             </p>
           </div>
 
+          <div className="ts-footer-contact">
+            <h4 className="ts-footer-title">Contact</h4>
+            <a href="mailto:hello@tiltshiftpictures.com" className="ts-contact-link">
+              hello@tiltshiftpictures.com
+            </a>
+            <a href="tel:+919579328262" className="ts-contact-link">
+              +91 95793 28262
+            </a>
+            <div className="ts-social-links">
+              <a href="https://www.instagram.com/tiltshift_pictures?igsh=Mm9zeXQ2bHQxaWk0&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="ts-footer-bottom">
+          <p className="ts-footer-copy">
+            © {new Date().getFullYear()} TILT SHIFT Films.
+          </p>
+          <p className="ts-footer-copy">
+            Pune, India
+          </p>
         </div>
       </footer>
     </>

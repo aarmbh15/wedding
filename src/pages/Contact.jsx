@@ -14,7 +14,7 @@ function useInView(threshold = 0.1) {
   return [ref, inView];
 }
 
-const packageOptions = ["Elopement", "Classic Wedding", "Signature Film", "Destination", "Not Sure Yet"];
+const packageOptions = ["Wedding Film", "Commercial/Brand", "Portfolio Shoot", "Short Film", "Not Sure Yet"];
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", date: "", venue: "", package: "", message: "" });
@@ -28,6 +28,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    // Simulate API call
     await new Promise(r => setTimeout(r, 2000));
     setLoading(false);
     setSubmitted(true);
@@ -37,43 +38,39 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-[#FDFCF9] text-[#2D2D2D] font-['Jost']">
+      
       {/* ─── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative h-[75vh] flex items-center justify-center overflow-hidden">
-  {/* Background Image Container */}
-  <div className="absolute inset-0 z-0">
-    <LazyLoadImage
-      src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=2000&q=80"
-      alt="Wedding Hero"
-      className="w-full h-full object-cover"
-      effect="blur"
-      wrapperClassName="w-full h-full"
-    />
-    {/* Subtle vignette to ensure text pops without making the image dark */}
-    <div className="absolute inset-0 bg-black/20 shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]" />
-  </div>
+      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <LazyLoadImage
+            src="https://images.unsplash.com/photo-1492691523567-6170c3295db6?auto=format&fit=crop&w=2000&q=80"
+            alt="Contact Hero"
+            className="w-full h-full object-cover"
+            effect="blur"
+            wrapperClassName="w-full h-full"
+          />
+          <div className="absolute inset-0 bg-black/30" />
+        </div>
 
-  {/* Content Layer */}
-  <div className="relative z-10 text-center px-6 animate-[fadeIn_1.4s_ease-out]">
-    <p className="text-[0.75rem] tracking-[0.5em] uppercase text-[#c9a84c] mb-6 font-semibold drop-shadow-sm">
-      Availability for 2025/26
-    </p>
-    
-    <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.8rem,8vw,6rem)] font-light leading-none text-white drop-shadow-md mb-4">
-      Let’s Capture <br />
-      <span className="italic">The Magic</span>
-    </h1>
-    
-    <div className="w-16 h-[1.5px] bg-[#c9a84c] mx-auto mt-8 shadow-sm" />
-  </div>
-</section>
+        <div className="relative z-10 text-center px-6 animate-[fadeIn_1.4s_ease-out]">
+          <p className="text-[0.75rem] tracking-[0.5em] uppercase text-[#c9a84c] mb-6 font-semibold drop-shadow-sm">
+            Availability for 2026
+          </p>
+          <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.8rem,8vw,6rem)] font-light leading-none text-white drop-shadow-md mb-4">
+            Let’s Capture <br />
+            <span className="italic">The Magic</span>
+          </h1>
+          <div className="w-16 h-[1.5px] bg-[#c9a84c] mx-auto mt-8 shadow-sm" />
+        </div>
+      </section>
 
-      {/* ─── QUICK INFO STRIP ────────────────────────────────────── */}
+      {/* ─── QUICK INFO STRIP (Updated Details) ───────────────────── */}
       <div className="bg-[#F4F1EA] border-y border-black/5 py-8 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
           {[
-            { l: "Email", v: "hello@knotsbyamp.com" },
-            { l: "WhatsApp", v: "+91 98765 43210" },
-            { l: "Studio", v: "Bandra, Mumbai" },
+            { l: "Email", v: "hello@tiltshiftpictures.com" },
+            { l: "Phone", v: "+91 95793 28262" },
+            { l: "Studio", v: "Baner, Pune" },
             { l: "Response", v: "Within 24 Hours" }
           ].map((item, i) => (
             <div key={i}>
@@ -96,7 +93,7 @@ const Contact = () => {
               <div className="bg-white p-12 text-center border border-[#c9a84c]/20 shadow-sm">
                 <span className="text-4xl block mb-4">✨</span>
                 <h3 className="font-['Cormorant_Garamond'] text-2xl mb-2">Thank You</h3>
-                <p className="text-gray-500 font-light">Your story has reached us. We'll be in touch very soon.</p>
+                <p className="text-gray-500 font-light">Your inquiry has reached us. We'll be in touch very soon.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-10">
@@ -113,26 +110,26 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="group">
-                    <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Wedding Date</label>
+                    <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Event Date</label>
                     <input type="date" className={inputClasses} />
                   </div>
                   <div className="group">
                     <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Venue & City</label>
-                    <input type="text" className={inputClasses} placeholder="Where is the magic happening?" />
+                    <input type="text" className={inputClasses} placeholder="Baner, Pune..." />
                   </div>
                 </div>
 
                 <div className="group">
                   <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">What are you interested in?</label>
                   <select className={inputClasses + " cursor-pointer"}>
-                    <option value="">Select a package</option>
+                    <option value="">Select a service</option>
                     {packageOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
                 </div>
 
                 <div className="group">
                   <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Tell us your story</label>
-                  <textarea rows={4} className={inputClasses + " resize-none"} placeholder="The vibe, the details, the moments you care about most..." />
+                  <textarea rows={4} className={inputClasses + " resize-none"} placeholder="Tell us about your project or vision..." />
                 </div>
 
                 <button 
@@ -146,23 +143,32 @@ const Contact = () => {
             )}
           </div>
 
-          {/* Info Side */}
+          {/* Info Side (Updated Address & Links) */}
           <div className="lg:col-span-5 space-y-12">
             <div className="bg-[#F4F1EA] p-10 md:p-14">
-              <h3 className="font-['Cormorant_Garamond'] text-2xl mb-6 italic">Booking Philosophy</h3>
+              <h3 className="font-['Cormorant_Garamond'] text-2xl mb-6 italic">Visit our Studio</h3>
               <p className="text-gray-500 font-light leading-relaxed mb-8 text-[0.95rem]">
-                We intentionally take on only 24 weddings per year. This allows us to dedicate our full creative energy to every couple, ensuring your film and gallery are treated as art, not just a task.
+                Bunglow no 6, Periwinkle Society,<br />
+                Near Yogi park Baner, Pune 411045
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[0.65rem] uppercase tracking-widest text-gray-400">Limited slots for 2025</span>
+                <span className="text-[0.65rem] uppercase tracking-widest text-gray-400">Limited slots for 2026</span>
               </div>
             </div>
 
             <div className="px-4">
-              <h3 className="font-['Cormorant_Garamond'] text-xl mb-6">Connect with us</h3>
+              <h3 className="font-['Cormorant_Garamond'] text-xl mb-6">Social Portfolios</h3>
               <div className="flex flex-wrap gap-4">
-                {['Instagram', 'Pinterest', 'Vimeo'].map(social => (
+                <a 
+                  href="https://www.instagram.com/tiltshift_pictures?igsh=Mm9zeXQ2bHQxaWk0&utm_source=qr" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[0.7rem] uppercase tracking-widest border border-black/10 px-6 py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all"
+                >
+                  Instagram
+                </a>
+                {['Facebook', 'YouTube'].map(social => (
                   <a key={social} href="#" className="text-[0.7rem] uppercase tracking-widest border border-black/10 px-6 py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all">
                     {social}
                   </a>
@@ -184,9 +190,9 @@ const Contact = () => {
 
           <div className="space-y-4">
             {[
-              { q: "How early should we book?", a: "To ensure availability, we recommend 10-12 months in advance for peak season dates." },
-              { q: "Do you travel for weddings?", a: "Yes, we have documented love stories across Europe, Asia, and all of India." },
-              { q: "When do we get our photos?", a: "A 'Sneak Peek' is sent within 48 hours. The full handcrafted gallery takes 6-8 weeks." }
+              { q: "Do you travel for shoots?", a: "Absolutely. While based in Pune, we work with clients across India and internationally for commercial and wedding projects." },
+              { q: "What is your typical turnaround time?", a: "For commercial projects, 2-3 weeks. For films, the handcrafted final edit typically takes 6-8 weeks." },
+              { q: "How do we secure a date?", a: "A booking deposit and a signed agreement are required to officially reserve your date in our calendar." }
             ].map((faq, i) => (
               <div key={i} className="bg-white border border-black/5 overflow-hidden">
                 <button 
