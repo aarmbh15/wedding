@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
 import bgVideo from "../assets/bg.mp4";
+import { Link, useLocation } from "react-router-dom";
 
 // ─── Bulk import ALL images from assets ──────────────────────────────────────
 const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
@@ -244,6 +245,7 @@ export default function Home() {
   const [featRef,  featInView]  = useInView(0.1);
   const [filmRef,  filmInView]  = useInView(0.1);
   const [gridRef,  gridInView]  = useInView(0.05);
+  const location = useLocation();
 
   return (
     <>
@@ -392,7 +394,7 @@ export default function Home() {
         </h2>
       </div>
 
-      <div 
+      {/* <div 
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(5, 1fr)",
@@ -403,17 +405,32 @@ export default function Home() {
       >
        {portfolioGrid.map((image, i) => (
   <div key={i} className={`fade-up ${gridInView ? "in" : ""}`} 
-       style={{ transitionDelay: `${i * 0.1}s` }}> {/* Staggered fade-in */}
+       style={{ transitionDelay: `${i * 0.1}s` }}> 
     <ProgressiveImg
       src={image.src}
       alt={`Gallery ${i}`}
-      // Trigger load only when near, but we could add a tiny delay per index here
       shouldLoad={gridInView} 
       style={{ aspectRatio: "1/1" }}
     />
   </div>
 ))}
-      </div>
+      </div> */}
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-[3px] px-[3px] mosaic-grid">
+  {portfolioGrid.map((image, i) => (
+    <div
+      key={i}
+      className={`fade-up ${gridInView ? "in" : ""}`}
+      style={{ transitionDelay: `${i * 0.1}s` }}
+    >
+      <ProgressiveImg
+        src={image.src}
+        alt={`Gallery ${i}`}
+        shouldLoad={gridInView}
+        style={{ aspectRatio: "1/1" }}
+      />
+    </div>
+  ))}
+</div>
 
       <div style={{ textAlign: "center", marginTop: "clamp(32px,4vw,56px)" }}>
         <a href="/portfolio" style={{
@@ -448,17 +465,29 @@ export default function Home() {
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "clamp(12px,2vw,24px)" }} className="featured-grid">
                 {featured.map((f, i) => (
-                  <a 
-                    key={i}
-                    href={`/wedding/${f.slug}`}
-                    className={`hover-zoom fade-up ${featInView ? `in d${i + 1}` : ""}`}
-                    style={{ 
-                      cursor: "pointer", 
-                      textDecoration: "none", 
-                      color: "inherit",
-                      display: "block"
-                    }}
-                  >
+                  // <a 
+                  //   key={i}
+                  //   href={`/wedding/${f.slug}`}
+                  //   className={`hover-zoom fade-up ${featInView ? `in d${i + 1}` : ""}`}
+                  //   style={{ 
+                  //     cursor: "pointer", 
+                  //     textDecoration: "none", 
+                  //     color: "inherit",
+                  //     display: "block"
+                  //   }}
+                  // >
+                  <Link
+                  key={i}
+  to={`/wedding/${f.slug}`}
+  state={{ from: location }}
+  className={`hover-zoom fade-up ${featInView ? `in d${i + 1}` : ""}`}
+  style={{ 
+    cursor: "pointer", 
+    textDecoration: "none", 
+    color: "inherit",
+    display: "block"
+  }}
+>
                     <div style={{ position: "relative", aspectRatio: "3/4", marginBottom: "1.1rem" }}>
                       <ProgressiveImg
                         src={f.img}
@@ -476,7 +505,8 @@ export default function Home() {
                     <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", color: "#bbb", marginTop: "0.2rem" }}>
                       {f.date}
                     </p>
-                  </a>
+                  {/* </a> */}
+                  </Link>
                 ))}
               </div>
             </div>
@@ -494,11 +524,14 @@ export default function Home() {
     <section
       ref={filmRef}
       style={{
-        padding: "clamp(100px, 15vw, 180px) 0",
+        // padding: "clamp(100px, 15vw, 180px) 0",
+        // padding: "clamp(100px, 15vw, 180px) 0 clamp(180px, 20vw, 260px)",
+        padding: "clamp(100px, 15vw, 180px) 0 clamp(220px, 22vw, 300px)",
         position: "relative",
         overflow: "hidden",
         minHeight: "90vh",
-        background: "#fff"
+        background: "#fff",
+        marginBottom: "100px"
       }}
     >
 
@@ -511,14 +544,23 @@ export default function Home() {
           zIndex: 1,
 
           /* 🔥 MERGED SHAPE */
+// clipPath: `polygon(
+//   0% 0%,       /* Top Left */
+//   70% 15%,     /* Your Top "V" cut */
+//   100% 0%,     /* Top Right */
+//   100% 100%,   /* Bottom Right Corner */
+//   90% 90%,     /* The "Mountain Peak" (The up-slanted point) */
+//   20% 100%,    /* The "Valley" (The lowest point on the left) */
+//   0% 88%       /* Bottom Left Corner (Slightly up) */
+// )`
 clipPath: `polygon(
-  0% 0%,       /* Top Left */
-  70% 15%,     /* Your Top "V" cut */
-  100% 0%,     /* Top Right */
-  100% 100%,   /* Bottom Right Corner */
-  90% 90%,     /* The "Mountain Peak" (The up-slanted point) */
-  20% 100%,    /* The "Valley" (The lowest point on the left) */
-  0% 88%       /* Bottom Left Corner (Slightly up) */
+  0% 0%,
+  70% 15%,
+  100% 0%,
+  100% 100%,
+  85% 95%,
+  15% 100%,
+  0% 95%
 )`
         }}
       >
@@ -575,19 +617,17 @@ clipPath: `polygon(
   )}
 </LazySection>
       {/* ─── PHILOSOPHY FULL-BLEED ────────────────────────────── */}
-  <LazySection rootMargin="300px">
+  {/* <LazySection rootMargin="300px">
 {(isNear) => (
 <section style={{ position:"relative", minHeight:"60vh", display:"flex", alignItems:"center", justifyContent:"center" }}>
 
   <div style={{ display:"flex", alignItems:"center", gap:"60px", maxWidth:"1100px", width:"100%", padding:"80px 40px" }}>
 
-    {/* LEFT IMAGE */}
     <div style={{ flex:"0 0 45%" }}>
       <img src={leftImg} alt="Couple"
         style={{ width:"100%", height:"500px", objectFit:"cover", borderRadius:"10px" }} />
     </div>
 
-    {/* RIGHT TEXT */}
     <div style={{ flex:"0 0 55%", textAlign:"left" }}>
       <p style={{ fontFamily:"'Jost', sans-serif", fontSize:"0.7rem", letterSpacing:"0.35em", textTransform:"uppercase", marginBottom:"20px" }}>
         Our Philosophy
@@ -607,6 +647,46 @@ clipPath: `polygon(
   </div>
 </section>
 )}
+</LazySection> */}
+
+<LazySection rootMargin="300px">
+  {(isNear) => (
+    <section className="relative z-10 min-h-[60vh] flex items-center justify-center mt-16 md:mt-52">
+      
+      <div className="flex flex-col md:flex-row items-center gap-10 md:gap-[60px] max-w-[1100px] w-full px-5 md:px-10 py-12 md:py-[80px]">
+
+        {/* LEFT IMAGE */}
+        <div className="w-full md:w-[45%]">
+          <img
+            src={leftImg}
+            alt="Couple"
+            className="w-full h-[300px] md:h-[500px] object-cover rounded-[10px]"
+          />
+        </div>
+
+        {/* RIGHT TEXT */}
+        <div className="w-full md:w-[55%] text-center md:text-left">
+          
+          <p className="font-[Jost] text-[0.65rem] md:text-[0.7rem] tracking-[0.3em] md:tracking-[0.35em] uppercase mb-4 md:mb-5">
+            Our Philosophy
+          </p>
+
+          <blockquote className="font-[Cormorant_Garamond] italic text-[1.6rem] sm:text-[2rem] md:text-[clamp(2rem,3vw,3rem)] leading-relaxed mb-6 md:mb-[30px]">
+            "We celebrate the wild ones, the rule breakers, the travellers — the modern couple unafraid to experiment."
+          </blockquote>
+
+          <a
+            href="/about"
+            className="text-[0.7rem] md:text-[0.75rem] tracking-[0.25em] md:tracking-[0.3em] uppercase border-b border-black no-underline"
+          >
+            Our Story →
+          </a>
+
+        </div>
+      </div>
+
+    </section>
+  )}
 </LazySection>
       {/* ─── PREMIUM OFFERING ─────────────────────────────────── */}
       <LazySection rootMargin="300px">

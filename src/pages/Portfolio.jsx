@@ -1,7 +1,7 @@
 // src/pages/Portfolio.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // ─── Bulk import ALL images ───────────────────────────────────────────────────
 const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
@@ -197,6 +197,7 @@ function WeddingCard({ wedding, onClick }) {
 export default function Portfolio() {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("All");
+  const location = useLocation();
 
   const filtered = activeCategory === "All"
     ? weddings
@@ -332,7 +333,12 @@ export default function Portfolio() {
             >
               <WeddingCard
                 wedding={wedding}
-                onClick={() => navigate(`/wedding/${wedding.slug}`)}
+                // onClick={() => navigate(`/wedding/${wedding.slug}`)}
+                onClick={() =>
+  navigate(`/wedding/${wedding.slug}`, {
+    state: { from: location }
+  })
+}
               />
             </div>
           ))}

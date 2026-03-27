@@ -1,6 +1,6 @@
 // src/pages/weddings/WeddingPage.jsx
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link,useLocation, useNavigate  } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import ProgressiveImg from "../../components/ProgressiveImg"; // adjust path
 
@@ -53,9 +53,21 @@ const weddingData = {
   }
 };
 
+
+
 export default function WeddingPage() {
+  const handleBack = () => {
+  if (location.state?.from) {
+    navigate(location.state.from);
+  } else {
+    navigate("/"); // fallback if opened directly
+  }
+};
+
   const { slug } = useParams();
   const wedding = weddingData[slug];
+  const location = useLocation();
+const navigate = useNavigate();
 
   if (!wedding) {
     return <h1>Wedding not found</h1>;
@@ -69,7 +81,7 @@ export default function WeddingPage() {
 
       <div style={{ padding: "clamp(80px, 8vw, 140px) 24px" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-          <Link to="/#featured" style={{ 
+          {/* <Link to="/#featured" style={{ 
             fontFamily: "'Jost', sans-serif", 
             fontSize: "0.8rem", 
             letterSpacing: "0.1em",
@@ -79,7 +91,23 @@ export default function WeddingPage() {
             display: "inline-block"
           }}>
             ← Back to Featured Weddings
-          </Link>
+          </Link> */}
+          <button
+  onClick={handleBack}
+  style={{
+    fontFamily: "'Jost', sans-serif",
+    fontSize: "0.8rem",
+    letterSpacing: "0.1em",
+    color: "#666",
+    background: "none",
+    border: "none",
+    cursor: "pointer",
+    marginBottom: "2rem",
+    padding: 0
+  }}
+>
+  ← Back
+</button>
 
           <h1 style={{ 
             fontFamily: "'Cormorant Garamond', serif", 
