@@ -105,6 +105,58 @@ const weddingData = {
       img("Rohan_Preksha/img504.webp"),
       // Add more
     ]
+  },
+  "rohan-preksha": {
+    couple: "Rohan & Preksha",
+    location: "Jaipur, Rajasthan",
+    date: "January 2025",
+    images: [
+      img("Rohan_Preksha/img501.webp"),
+      img("Rohan_Preksha/img502.webp"),
+      img("Rohan_Preksha/img503.webp"),
+      img("Rohan_Preksha/img504.webp"),
+      img("Rohan_Preksha/img505.webp"),
+      img("Rohan_Preksha/img506.webp"),
+      img("Rohan_Preksha/img507.webp"),
+      img("Rohan_Preksha/img508.webp"),
+      img("Rohan_Preksha/img504.webp"),
+      img("Rohan_Preksha/img550.webp"),
+      img("Rohan_Preksha/img543.webp"),
+      img("Rohan_Preksha/img504.webp"),
+      img("Rohan_Preksha/img550.webp"),
+      img("Rohan_Preksha/img543.webp"),
+      img("Rohan_Preksha/img504.webp"),
+      img("Rohan_Preksha/img550.webp"),
+      img("Rohan_Preksha/img543.webp"),
+      img("Rohan_Preksha/img504.webp"),
+      // Add more
+    ]
+  },
+  "Aishwarya_Sanmay": {
+    couple: "Aishwarya & Sanmay",
+    location: "Jaipur, Rajasthan",
+    date: "January 2025",
+    images: [
+      img("Aishwarya_Sanmay/img1.webp"),
+      img("Aishwarya_Sanmay/img2.webp"),
+      img("Aishwarya_Sanmay/img3.webp"),
+      img("Aishwarya_Sanmay/img4.webp"),
+      img("Aishwarya_Sanmay/img5.webp"),
+      img("Aishwarya_Sanmay/img6.webp"),
+      img("Aishwarya_Sanmay/img7.webp"),
+      img("Aishwarya_Sanmay/img9.webp"),
+      img("Aishwarya_Sanmay/img5.webp"),
+      img("Aishwarya_Sanmay/img12.webp"),
+      img("Aishwarya_Sanmay/img22.webp"),
+      img("Aishwarya_Sanmay/img24.webp"),
+      img("Aishwarya_Sanmay/img27.webp"),
+      img("Aishwarya_Sanmay/img25.webp"),
+      img("Aishwarya_Sanmay/img33.webp"),
+      img("Aishwarya_Sanmay/img35.webp"),
+      img("Aishwarya_Sanmay/img38.webp"),
+      img("Aishwarya_Sanmay/img39.webp"),
+      // Add more
+    ]
   }
 };
 

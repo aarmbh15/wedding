@@ -113,7 +113,7 @@ const heroImages = [
 const portfolioGrid = [
   { src: img("Abhimanyu_Manisha/img621.webp"), pos: "52% 88%" },
   { src: img("Bhakti_Sourabh/img331.webp"),    pos: "50% 50%" },
-  { src: img("Rohan_Preksha/img550.webp"),     pos: "50% 50%" },
+  { src: img("Rohan_Preksha/img515.webp"),     pos: "50% 50%" },
   { src: img("Amruta_Amey/img224.webp"),       pos: "50% 50%" },
   { src: img("Chaitrali_Shubham/img407.webp"), pos: "50% 50%" },
   { src: img("Bhakti_Sourabh/img321.webp"),    pos: "50% 50%" },
