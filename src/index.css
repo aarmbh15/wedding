@@ -8,3 +8,14 @@
   --font-sans: Montserrat, system-ui, sans-serif;
   --font-serif: Playfair Display, Georgia, serif;
 }
+
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.fade-up.in {
+  opacity: 1;
+  transform: none;
+}

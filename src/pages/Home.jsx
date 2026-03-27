@@ -32,7 +32,7 @@ function useInView(threshold = 0.1) {
    - Shows a lightweight shimmer placeholder until loaded
    - Fades in smoothly on load
 ────────────────────────────────────────────────────────────── */
-function ProgressiveImg({ src, alt = "", style = {}, shouldLoad = true, onLoadComplete }) {
+function ProgressiveImg({ src, alt = "", style = {}, shouldLoad = true }) {
   const [loaded, setLoaded] = useState(false);
   const [currentSrc, setCurrentSrc] = useState(null);
 
@@ -48,25 +48,24 @@ function ProgressiveImg({ src, alt = "", style = {}, shouldLoad = true, onLoadCo
   };
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%", background: loaded ? "transparent" : "#e8e4df" }}>
-      {!loaded && (
-        <div style={{
-          position: "absolute", inset: 0,
-          background: "linear-gradient(90deg, #e8e4df 25%, #f0ece7 50%, #e8e4df 75%)",
-          backgroundSize: "200% 100%",
-          animation: "shimmer 1.6s infinite",
-        }} />
-      )}
-      {currentSrc && (
+    <div style={{ 
+      position: "relative", 
+      overflow: "hidden", 
+      background: "#f7f7f7", // Static background is faster than a complex gradient initially
+      ...style 
+    }}>
+      {shouldLoad && (
         <img
-          src={currentSrc}
+          src={src}
           alt={alt}
-          decoding="async"
-          onLoad={handleLoad}
+          loading="lazy"
+          decoding="async" // Non-blocking decode
+          onLoad={() => setLoaded(true)}
           style={{
             ...style,
             opacity: loaded ? 1 : 0,
-            transition: "opacity 1.2s ease", // Slower fade for smoother feel
+            transform: loaded ? "scale(1)" : "scale(1.05)", // Subtle zoom-out effect on load
+            transition: "opacity 0.8s ease-out, transform 1.2s ease-out",
             width: "100%", height: "100%", objectFit: "cover",
           }}
         />
@@ -401,43 +400,18 @@ export default function Home() {
         }} 
         className="mosaic-grid"
       >
-        {portfolioGrid.map((image, i) => (
-          <div key={i}
-            className={`hover-zoom fade-up ${gridInView ? "in" : ""}`}
-            style={{
-              overflow: "hidden",
-              cursor: "pointer",
-              position: "relative",
-              aspectRatio: "1 / 1",
-              background: "#f7f7f7" // Light grey placeholder
-            }}
-          >
-            <ProgressiveImg
-              src={image.src}
-              alt={`Gallery Image ${i + 1}`}
-              shouldLoad={isNear}
-              style={{ 
-                width: "100%", 
-                height: "100%", 
-                objectFit: "cover", 
-                display: "block",
-                objectPosition: image.pos || "50% 50%" // Fallback focal point
-              }}
-            />
-            {/* Hover Overlay */}
-            <div 
-              style={{ 
-                position: "absolute", 
-                inset: 0, 
-                background: "rgba(0,0,0,0)", 
-                transition: "background 0.5s",
-                zIndex: 2 
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = "rgba(201,168,76,0.12)"}
-              onMouseLeave={e => e.currentTarget.style.background = "rgba(0,0,0,0)"}
-            />
-          </div>
-        ))}
+       {portfolioGrid.map((image, i) => (
+  <div key={i} className={`fade-up ${gridInView ? "in" : ""}`} 
+       style={{ transitionDelay: `${i * 0.1}s` }}> {/* Staggered fade-in */}
+    <ProgressiveImg
+      src={image.src}
+      alt={`Gallery ${i}`}
+      // Trigger load only when near, but we could add a tiny delay per index here
+      shouldLoad={gridInView} 
+      style={{ aspectRatio: "1/1" }}
+    />
+  </div>
+))}
       </div>
 
       <div style={{ textAlign: "center", marginTop: "clamp(32px,4vw,56px)" }}>
