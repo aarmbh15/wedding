@@ -15,15 +15,15 @@ const weddings = [
     location: "Udaipur · Rajasthan",
     date:     "December 2024",
     category: "Destination",
-    cover:    img("Amruta_Amey/img221.webp"),
+    cover:    img("Amruta_Amey/img233.webp"),
   },
   {
     slug:     "abhimanyu-manisha",
-    couple:   "Abhimanyu & Manisha",
+    couple:   "Manisha & Abhimanyu",
     location: "Goa · Coastal",
     date:     "November 2024",
     category: "Coastal",
-    cover:    img("Abhimanyu_Manisha/img621.webp"),
+    cover:    img("Abhimanyu_Manisha/img603.webp"),
   },
   {
     slug:     "bhakti-sourabh",
@@ -31,15 +31,15 @@ const weddings = [
     location: "Mumbai · Maharashtra",
     date:     "October 2024",
     category: "City",
-    cover:    img("Bhakti_Sourabh/img326.webp"),
+    cover:    img("Bhakti_Sourabh/img319.webp"),
   },
   {
     slug:     "Rohan-preksha",
-    couple:   "Rohan & Preksha",
+    couple:   "Preksha & Rohan",
     location: "Jaipur · Pink City",
     date:     "January 2025",
     category: "Royal",
-    cover:    img("Rohan_Preksha/img504.webp"),
+    cover:    img("Rohan_Preksha/img538.webp"),
   },
   {
     slug:     "Aishwarya_Sanmay",
@@ -47,7 +47,7 @@ const weddings = [
     location: "City · State",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Aishwarya_Sanmay/img44.webp"),
+    cover:    img("Aishwarya_Sanmay/img33.webp"),
   },
   {
     slug:     "Chaitrali_Shubham",
@@ -55,7 +55,7 @@ const weddings = [
     location: "City · State",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Chaitrali_Shubham/img408.webp"),
+    cover:    img("Chaitrali_Shubham/img432.webp"),
   },
 
   // ── Add more weddings here by duplicating a block above ──

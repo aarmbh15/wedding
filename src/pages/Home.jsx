@@ -106,9 +106,10 @@ function LazySection({ children, rootMargin = "200px" }) {
 // Hero: only 4 paths — loaded one-by-one as slides advance
 const heroImages = [
   // img("Abhimanyu_Manisha/img621.webp"),
-  img("Aishwarya_Sanmay/img33.webp"),
-  img("Amruta_Amey/img216.webp"),
-  img("Chaitrali_Shubham/img405.webp"),
+  // img("Aishwarya_Sanmay/img33.webp"),
+  // img("Amruta_Amey/img216.webp"),
+  // img("Chaitrali_Shubham/img405.webp"),
+  img("Bhakti_Sourabh/img356.webp"),
 ];
 
 const portfolioGrid = [
