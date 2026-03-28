@@ -166,20 +166,31 @@ const weddingData = {
       img("Chaitrali_Shubham/img402.webp"),
       img("Chaitrali_Shubham/img403.webp"),
       img("Chaitrali_Shubham/img404.webp"),
+
       img("Chaitrali_Shubham/img405.webp"),
-      img("Chaitrali_Shubham/img406.webp"),
       img("Chaitrali_Shubham/img407.webp"),
       img("Chaitrali_Shubham/img408.webp"),
       img("Chaitrali_Shubham/img409.webp"),
-      img("Chaitrali_Shubham/img410.webp"),
+
       img("Chaitrali_Shubham/img411.webp"),
       img("Chaitrali_Shubham/img412.webp"),
-      img("Chaitrali_Shubham/img413.webp"),
-      img("Chaitrali_Shubham/img438.webp"),
-      img("Chaitrali_Shubham/img430.webp"),
-      img("Chaitrali_Shubham/img435.webp"),
+      img("Chaitrali_Shubham/img415.webp"),
+      img("Chaitrali_Shubham/img416.webp"),
+
+      img("Chaitrali_Shubham/img418.webp"),
+      img("Chaitrali_Shubham/img421.webp"),
+      img("Chaitrali_Shubham/img422.webp"),
+      img("Chaitrali_Shubham/img420.webp"),
+
+      img("Chaitrali_Shubham/img423.webp"),
+      img("Chaitrali_Shubham/img425.webp"),
+      img("Chaitrali_Shubham/img427.webp"),
+      img("Chaitrali_Shubham/img428.webp"),
+
       img("Chaitrali_Shubham/img432.webp"),
-      img("Chaitrali_Shubham/img404.webp"),
+      img("Chaitrali_Shubham/img434.webp"),
+      img("Chaitrali_Shubham/img436.webp"),
+      img("Chaitrali_Shubham/img438.webp"),
       // Add more
     ]
   },
@@ -188,24 +199,41 @@ const weddingData = {
     location: "Jaipur, Rajasthan",
     date: "January 2025",
     images: [
+      img("Aishwarya_Sanmay/img0.webp"),
       img("Aishwarya_Sanmay/img1.webp"),
-      img("Aishwarya_Sanmay/img2.webp"),
       img("Aishwarya_Sanmay/img3.webp"),
-      img("Aishwarya_Sanmay/img4.webp"),
       img("Aishwarya_Sanmay/img5.webp"),
+
       img("Aishwarya_Sanmay/img6.webp"),
-      img("Aishwarya_Sanmay/img7.webp"),
-      img("Aishwarya_Sanmay/img9.webp"),
-      img("Aishwarya_Sanmay/img5.webp"),
-      img("Aishwarya_Sanmay/img12.webp"),
-      img("Aishwarya_Sanmay/img22.webp"),
-      img("Aishwarya_Sanmay/img24.webp"),
+      img("Aishwarya_Sanmay/img15.webp"),
+      img("Aishwarya_Sanmay/img20.webp"),
+      img("Aishwarya_Sanmay/img26.webp"),
+
+      img("Aishwarya_Sanmay/img17.webp"),
       img("Aishwarya_Sanmay/img27.webp"),
-      img("Aishwarya_Sanmay/img25.webp"),
-      img("Aishwarya_Sanmay/img33.webp"),
+      img("Aishwarya_Sanmay/img29.webp"),
+      img("Aishwarya_Sanmay/img23.webp"),
+
+      img("Aishwarya_Sanmay/img28.webp"),
+      img("Aishwarya_Sanmay/img31.webp"),
       img("Aishwarya_Sanmay/img35.webp"),
-      img("Aishwarya_Sanmay/img38.webp"),
       img("Aishwarya_Sanmay/img39.webp"),
+
+      img("Aishwarya_Sanmay/img44.webp"),
+      img("Aishwarya_Sanmay/img48.webp"),
+      img("Aishwarya_Sanmay/img54.webp"),
+      img("Aishwarya_Sanmay/img62.webp"),
+
+      img("Aishwarya_Sanmay/img64.webp"),
+      img("Aishwarya_Sanmay/img67.webp"),
+      img("Aishwarya_Sanmay/img69.webp"),
+      img("Aishwarya_Sanmay/img70.webp"),
+
+      img("Aishwarya_Sanmay/img73.webp"),
+      img("Aishwarya_Sanmay/img74.webp"),
+      img("Aishwarya_Sanmay/img80.webp"),
+      img("Aishwarya_Sanmay/img82.webp"),
+      
       // Add more
     ]
   }
