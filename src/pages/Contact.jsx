@@ -119,13 +119,13 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="group">
+                {/* <div className="group">
                   <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">What are you interested in?</label>
                   <select className={inputClasses + " cursor-pointer"}>
                     <option value="">Select a service</option>
                     {packageOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                   </select>
-                </div>
+                </div> */}
 
                 <div className="group">
                   <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Tell us your story</label>

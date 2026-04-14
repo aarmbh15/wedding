@@ -118,7 +118,7 @@ const About = () => {
       </section>
 
       {/* ─── TEAM (WHITE) ────────────────────────────────────────── */}
-      <section ref={teamRef} className="bg-white py-[clamp(80px,10vw,130px)] px-6">
+      {/* <section ref={teamRef} className="bg-white py-[clamp(80px,10vw,130px)] px-6">
         <div className="max-w-[1300px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
             <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.2rem,5vw,4rem)] font-light leading-none">
@@ -143,7 +143,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ─── CTA ──────────────────────────────────────────────────── */}
       <section className="relative py-32 lg:py-48 px-6 text-center overflow-hidden bg-black">

@@ -12,7 +12,7 @@ const weddings = [
   {
     slug:     "amruta-amey",
     couple:   "Amruta & Amey",
-    location: "Udaipur · Rajasthan",
+    location: "Pune, Maharashtra",
     date:     "December 2024",
     category: "Destination",
     cover:    img("Amruta_Amey/img233.webp"),
@@ -20,7 +20,7 @@ const weddings = [
   {
     slug:     "abhimanyu-manisha",
     couple:   "Manisha & Abhimanyu",
-    location: "Goa · Coastal",
+    location: "Pune, Maharashtra",
     date:     "November 2024",
     category: "Coastal",
     cover:    img("Abhimanyu_Manisha/img603.webp"),
@@ -28,7 +28,7 @@ const weddings = [
   {
     slug:     "bhakti-sourabh",
     couple:   "Bhakti & Sourabh",
-    location: "Mumbai · Maharashtra",
+    location: "Jodhpur, Rajasthan",
     date:     "October 2024",
     category: "City",
     cover:    img("Bhakti_Sourabh/img319.webp"),
@@ -36,7 +36,7 @@ const weddings = [
   {
     slug:     "Rohan-preksha",
     couple:   "Preksha & Rohan",
-    location: "Jaipur · Pink City",
+    location: "Pushkar, Rajasthan",
     date:     "January 2025",
     category: "Royal",
     cover:    img("Rohan_Preksha/img538.webp"),
@@ -44,7 +44,7 @@ const weddings = [
   {
     slug:     "Aishwarya_Sanmay",
     couple:   "Aishwarya & Sanmay",
-    location: "City · State",
+    location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
     cover:    img("Aishwarya_Sanmay/img33.webp"),
@@ -52,7 +52,7 @@ const weddings = [
   {
     slug:     "Chaitrali_Shubham",
     couple:   "Chaitrali & Shubham",
-    location: "City · State",
+    location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
     cover:    img("Chaitrali_Shubham/img432.webp"),

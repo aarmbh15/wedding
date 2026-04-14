@@ -144,8 +144,8 @@ const Footer = () => {
             </a>
             <div className="ts-social-links">
               <a href="https://www.instagram.com/tiltshift_pictures?igsh=Mm9zeXQ2bHQxaWk0&utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
+              <a href="https://www.facebook.com/tiltshiftpicture" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://www.youtube.com/@tiltshiftpictures1623" target="_blank" rel="noopener noreferrer">YouTube</a>
             </div>
           </div>
         </div>

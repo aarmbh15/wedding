@@ -125,12 +125,12 @@ const portfolioGrid = [
   { src: img("Amruta_Amey/img258.webp"),       pos: "50% 50%" },
 ];
 const featured = [
-  { couple: "Amruta & Amey",        slug: "amruta-amey", location: "Udaipur · Rajasthan",   date: "December 2024", img: img("Amruta_Amey/img221.webp") },
-  { couple: "Abhimanyu & Manisha",  slug: "abhimanyu-manisha", location: "Goa · Coastal",   date: "November 2024", img: img("Abhimanyu_Manisha/img605.webp") },
-  { couple: "Bhakti & Sourabh",     slug: "bhakti-sourabh", location: "Mumbai · Maharashtra", date: "October 2024",  img: img("Bhakti_Sourabh/img326.webp") },
-  { couple: "Rohan & Preksha",      slug: "rohan-preksha", location: "Jaipur · Pink City",   date: "January 2025",  img: img("Rohan_Preksha/img504.webp") },
+  { couple: "Amruta & Amey",        slug: "amruta-amey", location: "Pune, Maharashtra",   date: "December 2024", img: img("Amruta_Amey/img221.webp") },
+  { couple: "Abhimanyu & Manisha",  slug: "abhimanyu-manisha", location: "Pune, Maharashtra",   date: "November 2024", img: img("Abhimanyu_Manisha/img605.webp") },
+  { couple: "Bhakti & Sourabh",     slug: "bhakti-sourabh", location: "Jodhpur, Rajasthan", date: "October 2024",  img: img("Bhakti_Sourabh/img326.webp") },
+  { couple: "Rohan & Preksha",      slug: "Rohan-preksha", location: "Pushkar, Rajasthan",   date: "January 2025",  img: img("Rohan_Preksha/img504.webp") },
 ];
-const films = [
+const Pictures = [
   {
     title: "A Week in Udaipur",
     desc: "A multi-day royal celebration woven through palaces, lakes, and golden evenings. This film captures the quiet in-between moments that no one else thought to notice.",
@@ -138,7 +138,7 @@ const films = [
   },
   {
     title: "Monsoon Wedding, Goa",
-    desc: "Rain doesn't stop love. It amplifies it. This coastal ceremony, drenched in petrichor and jasmine, became one of our most emotionally resonant films.",
+    desc: "Rain doesn't stop love. It amplifies it. This coastal ceremony, drenched in petrichor and jasmine, became one of our most emotionally resonant Pictures.",
     thumb: img("Bhakti_Sourabh/img321.webp"),
   },
 ];
@@ -220,7 +220,7 @@ function HeroSlider() {
           fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
           fontWeight: 300, lineHeight: 1.08, margin: 0, color: "#fff",
         }}>
-          TILT SHIFT Films
+          TILT SHIFT Pictures
         </h1>
       </div>
       <div style={{
@@ -251,11 +251,11 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>TILT SHIFT Films | Cinematic Wedding Photography & Films</title>
+        <title>TILT SHIFT Pictures | Cinematic Wedding Photography & Pictures</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-        <meta name="description" content="TILT SHIFT Films — India's finest cinematic wedding photography and films." />
+        <meta name="description" content="TILT SHIFT Pictures — India's finest cinematic wedding photography and Pictures." />
         <style>{`
           *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
           html { scroll-behavior: smooth; }
@@ -347,10 +347,10 @@ export default function Home() {
               </h2>
               <div style={{ width: 40, height: 1, background: "#1a1a1a", marginBottom: "2rem" }} />
               <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "1rem", fontWeight: 300, lineHeight: 1.9, color: "#555", marginBottom: "1.6rem" }}>
-                At TILT SHIFT Films, we have transformed the Indian wedding landscape for over a decade — creating photographs and films that are timeless, and etched in the memories of thousands of families forever.
+                At TILT SHIFT Pictures, we have transformed the Indian wedding landscape for over a decade — creating photographs and Pictures that are timeless, and etched in the memories of thousands of families forever.
               </p>
               <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "1rem", fontWeight: 300, lineHeight: 1.9, color: "#555", marginBottom: "3rem" }}>
-                Awarded Wedding Filmmaker of the Year for four consecutive years, we are the only Indian wedding studio listed on IMDB for our award-winning films. We accept only 24 weddings each year.
+                Awarded Wedding Filmmaker of the Year for four consecutive years, we are the only Indian wedding studio listed on IMDB for our award-winning Pictures. We accept only 24 weddings each year.
               </p>
               <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
                 <a href="/portfolio" style={{
@@ -361,14 +361,14 @@ export default function Home() {
                   onMouseEnter={e => { e.target.style.color = "#c9a84c"; e.target.style.borderColor = "#c9a84c"; }}
                   onMouseLeave={e => { e.target.style.color = "#1a1a1a"; e.target.style.borderColor = "#1a1a1a"; }}
                 >View Photography →</a>
-                {/* <a href="/films" style={{
+                {/* <a href="/Pictures" style={{
                   fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", letterSpacing: "0.25em",
                   textTransform: "uppercase", color: "#1a1a1a", textDecoration: "none",
                   borderBottom: "1px solid #1a1a1a", paddingBottom: "2px", transition: "color 0.3s, border-color 0.3s",
                 }}
                   onMouseEnter={e => { e.target.style.color = "#c9a84c"; e.target.style.borderColor = "#c9a84c"; }}
                   onMouseLeave={e => { e.target.style.color = "#1a1a1a"; e.target.style.borderColor = "#1a1a1a"; }}
-                >Watch Our Films →</a> */}
+                >Watch Our Pictures →</a> */}
               </div>
             </div>
 
@@ -519,7 +519,7 @@ export default function Home() {
           </section>
         )}
       </LazySection>
-      {/* ─── FILMS ────────────────────────────────────────────── */}
+      {/* ─── Pictures ────────────────────────────────────────────── */}
       <LazySection rootMargin="300px">
   {(isNear) => (
     <section
@@ -607,7 +607,7 @@ clipPath: `polygon(
           maxWidth: "720px", margin: "0 auto 5rem", lineHeight: "1.9", 
           color: "rgba(255,255,255,0.8)", letterSpacing: "0.02em"
         }}>
-          Every wedding is unique and so are our films. For past 8 years <strong>HOTC</strong> has set new benchmarks of 
+          Every wedding is unique and so are our Pictures. For past 8 years <strong>HOTC</strong> has set new benchmarks of 
           storytelling within wedding realm and beyond. We are fortunate to have experienced so unique 
           cultures and traditions across 25 countries and to document stories that continuously overwhelm us.
         </p>
