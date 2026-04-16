@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 // import HeroImage from '../assets/6.jpg';
+import HeroImage from '../assets/Amruta_Amey/img251.webp';
 
 // Hook for scroll animations
 function useInView(threshold = 0.15) {
@@ -33,11 +34,11 @@ const About = () => {
       {/* ─── HERO SECTION ─────────────────────────────────────────── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
        <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
-  {/* <img
+  <img
     src={HeroImage}
     alt="Wedding Cinematography"
     className="w-full h-full object-cover opacity-60 brightness-75"
-  /> */}
+  />
 </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
         
@@ -103,10 +104,10 @@ const About = () => {
         </div>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200">
           {[
-            { t: "Documentary Soul", d: "We witness, we don't direct. Your real chaos is your real magic." },
-            { t: "Mastery of Light", d: "From golden hour to candlelit ballrooms, we sculpt every frame." },
-            { t: "Cinematic Vision", d: "Every wedding film is treated like a director's cut." },
-            { t: "Seamless Integration", d: "We are invisible yet omnipresent, capturing the unguarded." }
+            { t: "Candid Wedding Photography", d: "Capturing real emotions, natural moments, and authentic stories through candid wedding photography." },
+            { t: "Traditional Modern Weddings", d: "Blending traditional Indian rituals with modern aesthetics for timeless, elegant wedding storytelling." },
+            { t: "Cinematic Wedding Films", d: "Creating cinematic wedding films that capture emotions, moments, and your complete love story beautifully." },
+            { t: "Destination Wedding Experts", d: "Experienced in destination weddings across India, capturing every moment seamlessly in diverse locations." }
           ].map((v, i) => (
             <div key={i} className="bg-[#F4F1EA] p-10 md:p-16 transition-all hover:bg-white group">
               <span className="font-['Cormorant_Garamond'] text-5xl text-[#c9a84c]/20 block mb-6 group-hover:text-[#c9a84c]/50 transition-colors">0{i+1}</span>

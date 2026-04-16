@@ -34,7 +34,7 @@ const Footer = () => {
           gap: 16px; /* Reduced gap between logo and address */
         }
         .ts-footer-logo img {
-          height: 42px; /* Slightly smaller logo for better proportions */
+          height: 72px; /* Slightly smaller logo for better proportions */
           width: auto;
           filter: none;
           opacity: 0.95;

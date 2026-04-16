@@ -391,7 +391,8 @@ export default function Home() {
           Selected Work
         </p>
         <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.2rem,4vw,3.5rem)", fontWeight: 300, color: "#1a1a1a" }}>
-          Portfolio
+          {/* Portfolio */}
+          Photography
         </h2>
       </div>
 
@@ -438,7 +439,7 @@ export default function Home() {
           fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", letterSpacing: "0.3em",
           textTransform: "uppercase", color: "#1a1a1a", textDecoration: "none",
           borderBottom: "1px solid #1a1a1a", paddingBottom: "3px",
-        }}>View Full Portfolio</a>
+        }}>View Full Photography</a>
       </div>
     </section>
   )}
@@ -556,7 +557,7 @@ export default function Home() {
 // )`
 clipPath: `polygon(
   0% 0%,
-  70% 15%,
+  70% 10%,
   100% 0%,
   100% 100%,
   85% 95%,
@@ -600,16 +601,14 @@ clipPath: `polygon(
           fontWeight: 300,
           letterSpacing: "0.1em"
         }}>
-          SOUL CINEMA
+          Films
         </h2>
         <p style={{ 
-          fontFamily: "'Jost', sans-serif", fontSize: "0.92rem", fontWeight: 300, 
+          fontFamily: "'Jost', sans-serif", fontSize: "1.2rem", fontWeight: 300, 
           maxWidth: "720px", margin: "0 auto 5rem", lineHeight: "1.9", 
           color: "rgba(255,255,255,0.8)", letterSpacing: "0.02em"
         }}>
-          Every wedding is unique and so are our Pictures. For past 8 years <strong>HOTC</strong> has set new benchmarks of 
-          storytelling within wedding realm and beyond. We are fortunate to have experienced so unique 
-          cultures and traditions across 25 countries and to document stories that continuously overwhelm us.
+          Every wedding has its own rhythm of emotions, laughter and unforgettable moments. Our cinematic wedding films and professional wedding videography capture this flow through candid moments, real emotions and creative storytelling. From traditional Indian weddings to modern destination weddings, we craft timeless wedding films that let you relive your celebration with authenticity, beauty and lasting memories.
         </p>
       </div>
       
@@ -672,8 +671,9 @@ clipPath: `polygon(
             Our Philosophy
           </p>
 
-          <blockquote className="font-[Cormorant_Garamond] italic text-[1.6rem] sm:text-[2rem] md:text-[clamp(2rem,3vw,3rem)] leading-relaxed mb-6 md:mb-[30px]">
-            "We celebrate the wild ones, the rule breakers, the travellers — the modern couple unafraid to experiment."
+          <blockquote className="font-[Cormorant_Garamond] italic text-[1.4rem] sm:text-[2rem]  leading-relaxed mb-6 md:mb-[30px]">
+            {/* "We celebrate the wild ones, the rule breakers, the travellers — the modern couple unafraid to experiment." */}
+            We capture weddings in their truest form—whether deeply traditional or beautifully modern. From soulful rituals to vibrant celebrations, our candid wedding photography and cinematic wedding films focus on real emotions, natural moments, and timeless storytelling. Be it an intimate ceremony or a grand destination wedding, we preserve every detail with authenticity, creativity, and a style that reflects your unique love story.
           </blockquote>
 
           <a

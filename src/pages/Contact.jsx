@@ -168,11 +168,27 @@ const Contact = () => {
                 >
                   Instagram
                 </a>
-                {['Facebook', 'YouTube'].map(social => (
+                <a 
+                  href="https://www.youtube.com/@tiltshiftpictures1623" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[0.7rem] uppercase tracking-widest border border-black/10 px-6 py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all"
+                >
+                  YouTube
+                </a>
+                <a 
+                  href="https://www.facebook.com/tiltshiftpicture" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[0.7rem] uppercase tracking-widest border border-black/10 px-6 py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all"
+                >
+                  Facebook
+                </a>
+                {/* {['Facebook', 'YouTube'].map(social => (
                   <a key={social} href="#" className="text-[0.7rem] uppercase tracking-widest border border-black/10 px-6 py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all">
                     {social}
                   </a>
-                ))}
+                ))} */}
               </div>
             </div>
           </div>
