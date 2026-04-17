@@ -184,6 +184,45 @@ function HeroSlider() {
   );
 }
 
+/* ─── Scrolling Film Card ────────────────────────────────────── */
+function ScrollingFilmCard({ film }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      className="flex-shrink-0 w-[320px] md:w-[480px] px-4 transition-transform duration-500"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => window.open(film.url, "_blank")}
+    >
+      <div className="relative aspect-video overflow-hidden bg-[#ede9e3] mb-5 cursor-pointer group">
+        {!isHovered && (
+          <img
+            src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
+            alt={film.couple}
+            className="absolute inset-0 w-full h-full object-cover z-10 transition-transform duration-700 group-hover:scale-105"
+          />
+        )}
+        {isHovered && (
+          <iframe
+            className="w-full h-full border-none pointer-events-none scale-[1.15]"
+            src={`https://www.youtube.com/embed/${film.id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${film.id}&rel=0&modestbranding=1&vq=hd1080&start=20`}
+            title={film.couple}
+            allow="autoplay; encrypted-media"
+          />
+        )}
+        <div className="absolute inset-0 bg-black/5 z-20 pointer-events-none" />
+      </div>
+      <h3 className={`font-cormorant text-[1.4rem] transition-colors duration-400 ${isHovered ? 'text-[#c9a84c]' : 'text-[#1a1a1a]'}`}>
+        {film.couple}
+      </h3>
+      <p className="font-jost text-[0.7rem] tracking-[0.2em] uppercase text-[#999]">
+        {film.location}
+      </p>
+    </div>
+  );
+}
+
 /* ─── Main Home Component ────────────────────────────────────── */
 export default function Home() {
   const [aboutRef, aboutInView] = useInView(0.1);
@@ -369,7 +408,7 @@ export default function Home() {
       </LazySection>
 
       {/* FILMS SECTION */}
-      <LazySection rootMargin="300px">
+      {/* <LazySection rootMargin="300px">
         {(isNear) => (
           <section
             ref={filmRef}
@@ -379,7 +418,6 @@ export default function Home() {
               paddingBottom: "clamp(220px,22vw,300px)",
             }}
           >
-            {/* Video Background with Clip Path */}
             <div
               className="absolute inset-0 overflow-hidden z-10"
               style={{
@@ -399,7 +437,6 @@ export default function Home() {
               )}
             </div>
 
-            {/* Content Overlay */}
             <div className="relative z-20 max-w-[1200px] mx-auto text-center text-white px-5">
               <h2 className="font-cormorant text-[clamp(2.5rem,6vw,5rem)] font-light tracking-widest mb-8">
                 Films
@@ -407,6 +444,68 @@ export default function Home() {
               <p className="font-jost text-[1.2rem] font-light max-w-[720px] mx-auto leading-[1.9] text-white/80">
                 Every wedding has its own rhythm of emotions, laughter and unforgettable moments. Our cinematic wedding films capture this flow through candid moments, real emotions and creative storytelling.
               </p>
+            </div>
+          </section>
+        )}
+      </LazySection> */}
+
+      {/* FILMS SECTION */}
+      <LazySection rootMargin="300px">
+        {(isNear) => (
+          <section className="bg-white py-[clamp(80px,10vw,140px)] overflow-hidden">
+            <div className="text-center px-6 mb-16">
+              <p className="font-jost text-[0.72rem] tracking-[0.35em] uppercase text-[#bbb] mb-4">
+                Cinematic Stories
+              </p>
+              <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a] mb-8">
+                Films
+              </h2>
+              <p className="font-jost text-[1rem] md:text-[1.1rem] font-light max-w-[750px] mx-auto leading-relaxed text-[#666] px-4">
+                Every wedding has its own rhythm of emotions, laughter and unforgettable moments. 
+                Our cinematic wedding films capture this flow through candid moments, real emotions 
+                and creative storytelling.
+              </p>
+            </div>
+
+            {/* Infinite Scroll Container */}
+            <div className="relative group/scroll">
+              <style>{`
+                @keyframes scroll {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-50%); }
+                }
+                .animate-infinite-scroll {
+                  display: flex;
+                  width: max-content;
+                  animation: scroll 35s linear infinite;
+                }
+                .group\/scroll:hover .animate-infinite-scroll {
+                  animation-play-state: paused;
+                }
+              `}</style>
+              
+              <div className="animate-infinite-scroll">
+                {[
+                  { couple: "Shubhang & Anuja", id: "6AlgoGp8SLg", url: "https://youtu.be/6AlgoGp8SLg", location: "Pune" },
+                  { couple: "Abhimanyu & Manisha", id: "ppQtE_3sPcg", url: "https://youtu.be/ppQtE_3sPcg", location: "Goa" },
+                  { couple: "Dhriti & Lakshya", id: "QV-GVZNHNDo", url: "https://youtu.be/QV-GVZNHNDo", location: "Jaipur" },
+                  // Duplicated for seamless loop
+                  { couple: "Shubhang & Anuja", id: "6AlgoGp8SLg", url: "https://youtu.be/6AlgoGp8SLg", location: "Pune" },
+                  { couple: "Abhimanyu & Manisha", id: "ppQtE_3sPcg", url: "https://youtu.be/ppQtE_3sPcg", location: "Goa" },
+                  { couple: "Dhriti & Lakshya", id: "QV-GVZNHNDo", url: "https://youtu.be/QV-GVZNHNDo", location: "Jaipur" }
+                ].map((film, i) => (
+                  <ScrollingFilmCard key={i} film={film} />
+                ))}
+              </div>
+            </div>
+
+            <div className="text-center mt-16">
+              <Link
+                to="/films"
+                className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-[#1a1a1a] pb-1 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
+              >
+                Explore All Films →
+              </Link>
             </div>
           </section>
         )}
