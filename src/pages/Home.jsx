@@ -362,21 +362,13 @@ export default function Home() {
         {(isNear) => (
           <section ref={featRef} className="bg-white py-[clamp(80px,10vw,130px)] px-[clamp(24px,6vw,80px)]">
             <div className="max-w-[1320px] mx-auto">
-              <div className="flex flex-wrap justify-between items-end gap-4 mb-[clamp(36px,5vw,60px)]">
-                <div>
+              <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
                   <p className="font-jost text-[0.72rem] tracking-[0.32em] uppercase text-[#999] mb-2">
                     Recent Work
                   </p>
                   <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
                     Featured Weddings
                   </h2>
-                </div>
-                <a
-                  href="/portfolio"
-                  className="font-jost text-[0.72rem] tracking-[0.28em] uppercase border-b border-[#aaa] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
-                >
-                  See All →
-                </a>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[clamp(12px,2vw,24px)] featured-grid">
@@ -402,6 +394,15 @@ export default function Home() {
                   </Link>
                 ))}
               </div>
+              <div className="text-center mt-[clamp(32px,4vw,56px)]">
+              <a
+                  href="/portfolio"
+                  className="font-jost text-[0.72rem] tracking-[0.28em] uppercase border-b border-[#aaa] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
+                >
+                  See All 
+                  {/* → */}
+                </a>
+                </div>
             </div>
           </section>
         )}
@@ -504,7 +505,8 @@ export default function Home() {
                 to="/films"
                 className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-[#1a1a1a] pb-1 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
-                Explore All Films →
+                Explore All Films 
+                {/* → */}
               </Link>
             </div>
           </section>

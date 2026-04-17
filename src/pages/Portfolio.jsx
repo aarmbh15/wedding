@@ -185,7 +185,7 @@ export default function Portfolio() {
       </Helmet>
 
       {/* ── Hero Banner ─────────────────────────────────────────────────────── */}
-      <div className="bg-[#f7f5f1] pt-[clamp(110px,14vw,160px)] pb-[clamp(40px,5vw,64px)] px-[clamp(24px,6vw,80px)] border-b border-[#ede9e3]">
+      {/* <div className="bg-[#f7f5f1] pt-[clamp(110px,14vw,160px)] pb-[clamp(40px,5vw,64px)] px-[clamp(24px,6vw,80px)] border-b border-[#ede9e3]">
         <div className="max-w-[1400px] mx-auto">
           <p className="pf-hero-sub font-jost text-[0.72rem] font-medium tracking-[0.32em] uppercase text-[#bbb] mb-4">
             Selected Work
@@ -197,11 +197,20 @@ export default function Portfolio() {
             A curated selection of weddings we've had the privilege of photographing — across palaces, beaches, and intimate celebrations.
           </p>
         </div>
+      </div> */}
+
+      <div className="pt-[160px] pb-[60px] text-center px-6">
+        <h1 className="pf-hero-text font-cormorant text-[clamp(3rem,6vw,5rem)] font-light text-[#1a1a1a]">
+          Portfolio
+        </h1>
+        <p className="pf-hero-sub font-jost text-[0.95rem] font-light text-[#888] leading-[1.85]">
+          A curated selection of weddings we've had the privilege of photographing — across palaces, beaches, and intimate celebrations.
+        </p>
       </div>
 
       {/* ── Filter Pills ────────────────────────────────────────────────────── */}
       <div className="pt-[clamp(28px,4vw,48px)] px-[clamp(24px,6vw,80px)] pb-0 max-w-[1400px] mx-auto">
-        <div className="pf-filters flex gap-2 flex-wrap">
+        <div className="pf-filters justify-center flex gap-2 flex-wrap">
           {categories.map((cat) => (
             <button
               key={cat}
