@@ -360,7 +360,7 @@ export default function Home() {
       {/* FEATURED WEDDINGS */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section ref={featRef} className="bg-white py-[clamp(80px,10vw,130px)] px-[clamp(24px,6vw,80px)]">
+          <section ref={featRef} className="bg-white py-[clamp(40px,10vw,40px)] px-[clamp(24px,6vw,80px)]">
             <div className="max-w-[1320px] mx-auto">
               <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
                   <p className="font-jost text-[0.72rem] tracking-[0.32em] uppercase text-[#999] mb-2">
