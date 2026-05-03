@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate, useLocation } from "react-router-dom";
+import HeroImage from "../assets/hero5.jpeg";
 
 // ─── Bulk import ALL images ───────────────────────────────────────────────────
 const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
@@ -136,9 +137,9 @@ function WeddingCard({ wedding, onClick }) {
       <p className="font-jost text-[0.7rem] font-medium tracking-[0.2em] uppercase text-[#999] mb-1">
         {wedding.location}
       </p>
-      <p className="font-jost text-[0.72rem] font-light text-[#bbb]">
+      {/* <p className="font-jost text-[0.72rem] font-light text-[#bbb]">
         {wedding.date}
-      </p>
+      </p> */}
     </div>
   );
 }
@@ -199,14 +200,44 @@ export default function Portfolio() {
         </div>
       </div> */}
 
-      <div className="pt-[160px] pb-[60px] text-center px-6">
+      {/* <div className="h-screen pt-[200px] pb-[60px] text-center px-6">
+        <div className="absolute inset-0 z-0 scale-105">
+          <img
+            src={HeroImage}
+            alt="Wedding Cinematography"
+            className="w-full h-full object-cover opacity-60 brightness-75"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
+
         <h1 className="pf-hero-text font-cormorant text-[clamp(3rem,6vw,5rem)] font-light text-[#1a1a1a]">
-          Portfolio
+          Photography
         </h1>
         <p className="pf-hero-sub font-jost text-[0.95rem] font-light text-[#888] leading-[1.85]">
-          A curated selection of weddings we've had the privilege of photographing — across palaces, beaches, and intimate celebrations.
+          Our wedding photography gallery is a curated collection of real stories, capturing genuine emotions, natural moments and refined portraits. Blending candid photography with thoughtful composition, we create elegant, timeless images that reflect each celebration with authenticity and creativity.
         </p>
-      </div>
+      </div> */}
+
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+             <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
+                <img
+                  src={HeroImage}
+                  alt="Wedding Cinematography"
+                  className="w-full h-full object-cover opacity-60 brightness-75"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
+              
+              <div className="relative z-20 text-center px-6 transition-all duration-1000 transform translate-y-0 opacity-100">
+                <h1 className="pf-hero-text font-cormorant text-[clamp(3rem,6vw,5rem)] font-light text-white">
+                  Photography
+                </h1>
+                <div className="w-16 h-[1px] bg-[#c9a84c] mx-auto mb-8 animate-[widthGrow_1.5s_ease-out]" />
+                <p className="pf-hero-sub font-jost text-[0.95rem] font-light text-white/90 leading-[1.85]">
+                   Our wedding photography gallery is a curated collection of real stories, capturing genuine emotions, natural moments and refined portraits. Blending candid photography with thoughtful composition, we create elegant, timeless images that reflect each celebration with authenticity and creativity.
+                </p>
+              </div>
+            </section>
 
       {/* ── Filter Pills ────────────────────────────────────────────────────── */}
       <div className="pt-[clamp(28px,4vw,48px)] px-[clamp(24px,6vw,80px)] pb-0 max-w-[1400px] mx-auto">

@@ -34,12 +34,12 @@ const About = () => {
       {/* ─── HERO SECTION ─────────────────────────────────────────── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
        <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
-  <img
-    src={HeroImage}
-    alt="Wedding Cinematography"
-    className="w-full h-full object-cover opacity-60 brightness-75"
-  />
-</div>
+          <img
+            src={HeroImage}
+            alt="Wedding Cinematography"
+            className="w-full h-full object-cover opacity-60 brightness-75"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
         
         <div className="relative z-20 text-center px-6 transition-all duration-1000 transform translate-y-0 opacity-100">
@@ -81,8 +81,10 @@ const About = () => {
               Documenting Love <br /><em>With Absolute Sincerity</em>
             </h2>
             <div className="space-y-6 text-[#4a4a4a] leading-relaxed text-[1.05rem]">
-              <p>Two friends left the corporate world in 2014 to pursue a simple dream: to see weddings differently. Not as events, but as living, breathing stories.</p>
-              <p>Today, with over 500 weddings across 12 countries, Knots by Amp has become a synonym for cinematic honesty. We don't just take photos; we preserve emotions.</p>
+              {/* <p>Two friends left the corporate world in 2014 to pursue a simple dream: to see weddings differently. Not as events, but as living, breathing stories.</p>
+              <p>Today, with over 500 weddings across 12 countries, Knots by Amp has become a synonym for cinematic honesty. We don't just take photos; we preserve emotions.</p> */}
+              <p>I’m Nityananda Borkar, the founder of Tilt Shift Pictures. My journey into wedding photography wasn’t planned, it was built over time through passion and instinct. After spending over 15 years in the corporate world working in customer service and sales, I realized my true calling was always behind the camera. What began as a deep interest in wildlife photography slowly evolved into capturing people, emotions and stories. I started as a freelance wedding photographer and with every wedding, my connection to storytelling grew stronger. In October 2019, I took a leap of faith and founded Tilt Shift Pictures, turning passion into purpose.</p>
+              <p>Over the past six years, we have had the privilege of capturing 400+ weddings across India, including Bangalore, Mysore, Pune, Mumbai, Goa, MP & Rajasthan, establishing ourselves as a trusted name in candid wedding photography and cinematic wedding films. From intimate ceremonies to grand destination weddings our focus has always been on telling real stories through natural, unscripted moments. As a wedding photographer in Pune and across major cities in India, we specialise in creating timeless memories through candid photography and storytelling videos that let you relive every emotion. At Tilt Shift Pictures, it’s never just about photos or films it’s about preserving your story in the most authentic way possible.</p>
             </div>
             <div className="grid grid-cols-3 gap-8 mt-12 border-t border-gray-100 pt-8">
               {[{n: "500+", l: "Weddings"}, {n: "12", l: "Countries"}, {n: "20+", l: "Awards"}].map((s, i) => (

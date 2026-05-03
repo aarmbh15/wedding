@@ -243,22 +243,23 @@
 // src/pages/Films.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import HeroImage from "../assets/hero3.jpeg";
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 const films = [
-  { couple: "Shubhang & Anuja", url: "https://youtu.be/6AlgoGp8SLg", id: "6AlgoGp8SLg", location: "Pune", category: "Destination" },
-  { couple: "Abhimanyu & Manisha", url: "https://youtu.be/ppQtE_3sPcg", id: "ppQtE_3sPcg", location: "Goa", category: "Coastal" },
-  { couple: "Amey & Amruta", url: "https://youtu.be/yUpQjeTuSbA", id: "yUpQjeTuSbA", location: "Mahabaleshwar", category: "Destination" },
-  { couple: "Harjyot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Royal Palace", category: "Royal" },
-  { couple: "Pradyumna & Drushti", url: "https://youtu.be/ER4o6k5L3J0", id: "ER4o6k5L3J0", location: "Pune", category: "City" },
-  { couple: "Dhriti & Lakshya", url: "https://youtu.be/QV-GVZNHNDo", id: "QV-GVZNHNDo", location: "Jaipur", category: "Royal" },
-  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Mumbai", category: "City" },
-  { couple: "Cp & Amol", url: "https://youtu.be/8UMiPZMhUE4", id: "8UMiPZMhUE4", location: "Pune", category: "Destination" },
-  { couple: "Indrajeet & Sakshi", url: "https://youtu.be/R0F2tWN8oLc", id: "R0F2tWN8oLc", location: "Nashik", category: "City" },
-  { couple: "Nidhi & Kunal", url: "https://youtu.be/ex_Fs-BiUC0", id: "ex_Fs-BiUC0", location: "Mumbai", category: "Coastal" },
-  { couple: "Omkar & Apoorva", url: "https://youtu.be/DCCGOXaPCHQ", id: "DCCGOXaPCHQ", location: "Pune", category: "City" },
-  { couple: "Bhakti & Saurabh", url: "https://youtu.be/tHZ2RwYCdpQ", id: "tHZ2RwYCdpQ", location: "Jodhpur", category: "Royal" },
-  { couple: "Utsav & Dyuthi", url: "https://youtu.be/nHDxp0WJqaE", id: "nHDxp0WJqaE", location: "Bangalore", category: "Destination" },
+  { couple: "Shubhang & Anuja", url: "https://youtu.be/6AlgoGp8SLg", id: "6AlgoGp8SLg", location: "Pune, Maharashtra", category: "Destination" },
+  { couple: "Abhimanyu & Manisha", url: "https://youtu.be/ppQtE_3sPcg", id: "ppQtE_3sPcg", location: "Pune, Maharashtra", category: "Coastal" },
+  { couple: "Amey & Amruta", url: "https://youtu.be/yUpQjeTuSbA", id: "yUpQjeTuSbA", location: "Pune, Maharashtra", category: "Destination" },
+  { couple: "Harjyot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra", category: "Royal" },
+  { couple: "Pradyumna & Drushti", url: "https://youtu.be/ER4o6k5L3J0", id: "ER4o6k5L3J0", location: "Pune, Maharashtra", category: "City" },
+  { couple: "Dhriti & Lakshya", url: "https://youtu.be/QV-GVZNHNDo", id: "QV-GVZNHNDo", location: "Pune, Maharashtra", category: "Royal" },
+  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra", category: "City" },
+  { couple: "Chandra & Anmol", url: "https://youtu.be/8UMiPZMhUE4", id: "8UMiPZMhUE4", location: "Pune, Maharashtra", category: "Destination" },
+  { couple: "Indrajeet & Sakshi", url: "https://youtu.be/R0F2tWN8oLc", id: "R0F2tWN8oLc", location: "Pune, Maharashtra", category: "City" },
+  { couple: "Nidhi & Kunal", url: "https://youtu.be/ex_Fs-BiUC0", id: "ex_Fs-BiUC0", location: "Bangalore, Karnataka", category: "Coastal" },
+  { couple: "Omkar & Apoorva", url: "https://youtu.be/DCCGOXaPCHQ", id: "DCCGOXaPCHQ", location: "Pune, Maharashtra", category: "City" },
+  { couple: "Bhakti & Saurabh", url: "https://youtu.be/tHZ2RwYCdpQ", id: "tHZ2RwYCdpQ", location: "Jodhpur, Rajasthan", category: "Royal" },
+  { couple: "Utsav & Dyuthi", url: "https://youtu.be/nHDxp0WJqaE", id: "nHDxp0WJqaE", location: "Bangalore, Karnataka", category: "Destination" },
 ];
 
 const categories = ["All", "Destination", "Royal", "Coastal", "City"];
@@ -343,17 +344,47 @@ export default function Films() {
       </Helmet>
 
       {/* Hero Section - ensure padding-top is enough for the fixed navbar */}
-      <div className="pt-[160px] pb-[60px] text-center px-6">
+      {/* <div className="pt-[160px] pb-[60px] text-center px-6">
         <p className="font-['Jost'] text-[0.75rem] tracking-[0.4em] uppercase text-[#bbb] mb-4">
           Cinematic Storytelling
         </p>
         <h1 className="font-['Cormorant_Garamond'] text-[clamp(3rem,6vw,5rem)] font-light text-[#1a1a1a]">
           Films
         </h1>
-      </div>
+      </div> */}
+
+      {/* <div className="pt-[160px] pb-[60px] text-center px-6">
+        <h1 className="pf-hero-text font-cormorant text-[clamp(3rem,6vw,5rem)] font-light text-[#1a1a1a]">
+          Films
+        </h1>
+        <p className="pf-hero-sub font-jost text-[0.95rem] font-light text-[#888] leading-[1.85]">
+          These wedding films are shaped around real moments and natural emotions, brought together through a cinematic lens. With careful capture and intentional editing, each film becomes a seamless narrative that preserves the essence of the celebration in an authentic and enduring way.
+        </p>
+      </div> */}
+
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+                   <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
+                      <img
+                        src={HeroImage}
+                        alt="Wedding Cinematography"
+                        className="w-full h-full object-cover opacity-60 brightness-75"
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
+                    
+                    <div className="relative z-20 text-center px-6 transition-all duration-1000 transform translate-y-0 opacity-100">
+                      <h1 className="pf-hero-text font-cormorant text-[clamp(3rem,6vw,5rem)] font-light text-white">
+                        Films
+                      </h1>
+                      <div className="w-16 h-[1px] bg-[#c9a84c] mx-auto mb-8 animate-[widthGrow_1.5s_ease-out]" />
+                      <p className="pf-hero-sub font-jost text-[0.95rem] font-light text-white/90 leading-[1.85]">
+                        These wedding films are shaped around real moments and natural emotions, brought together through a cinematic lens. With careful capture and intentional editing, each film becomes a seamless narrative that preserves the essence of the celebration in an authentic and enduring way.
+                      </p>
+                    </div>
+                  </section>
 
       {/* Filters */}
-      <div className="flex justify-center gap-[10px] flex-wrap mb-10 px-6">
+      <div className="flex justify-center gap-[10px] flex-wrap mb-10 px-6 pt-[clamp(28px,4vw,48px)]">
         {categories.map(cat => (
           <button 
             key={cat} 

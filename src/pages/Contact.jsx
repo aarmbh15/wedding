@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import HeroImage from "../assets/hero1.jpeg";
 
 // Hook for scroll animations
 function useInView(threshold = 0.1) {
@@ -40,8 +41,8 @@ const Contact = () => {
     <div className="min-h-screen bg-[#FDFCF9] text-[#2D2D2D] font-['Jost']">
       
       {/* ─── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* <div className="absolute inset-0 z-0">
           <LazyLoadImage
             src="https://images.unsplash.com/photo-1492691523567-6170c3295db6?auto=format&fit=crop&w=2000&q=80"
             alt="Contact Hero"
@@ -50,7 +51,22 @@ const Contact = () => {
             wrapperClassName="w-full h-full"
           />
           <div className="absolute inset-0 bg-black/30" />
-        </div>
+        </div> */}
+        <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
+                        {/* <img
+                          src={HeroImage}
+                          alt="Wedding Cinematography"
+                          className="w-full h-full object-cover opacity-60 brightness-75"
+                        /> */}
+                        <LazyLoadImage
+            src={HeroImage}
+            alt="Contact Hero"
+            className="w-full h-full object-cover opacity-60 brightness-75"
+            effect="blur"
+            wrapperClassName="w-full h-full"
+          />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
 
         <div className="relative z-10 text-center px-6 animate-[fadeIn_1.4s_ease-out]">
           <p className="text-[0.75rem] tracking-[0.5em] uppercase text-[#c9a84c] mb-6 font-semibold drop-shadow-sm">
