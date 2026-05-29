@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate, useLocation } from "react-router-dom";
-import HeroImage from "../assets/hero5.jpeg";
+import HeroImage from "../assets/hero5.webp";
 
 // ─── Bulk import ALL images ───────────────────────────────────────────────────
 const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });

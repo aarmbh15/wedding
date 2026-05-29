@@ -92,18 +92,18 @@ const portfolioGrid = [
   { src: img("Rohan_Preksha/img515.webp"), pos: "50% 50%" },
   { src: img("Amruta_Amey/img208.webp"), pos: "50% 50%" },
   { src: img("Chaitrali_Shubham/img407.webp"), pos: "50% 50%" },
-  { src: img("Bhakti_Sourabh/img321.webp"), pos: "50% 50%" },
-  { src: img("Chaitrali_Shubham/img423.webp"), pos: "50% 50%" },
-  { src: img("Rohan_Preksha/img543.webp"), pos: "50% 50%" },
+  { src: img("Bhakti_Sourabh/img343.webp"), pos: "50% 50%" },
+  { src: img("Chaitrali_Shubham/img439.webp"), pos: "50% 50%" },
+  { src: img("Rohan_Preksha/img549.webp"), pos: "50% 50%" },
   { src: img("Abhimanyu_Manisha/img613.webp"), pos: "50% 50%" },
   { src: img("Amruta_Amey/img258.webp"), pos: "50% 50%" },
 ];
 
 const featured = [
-  { couple: "Amruta & Amey", slug: "amruta-amey", location: "Pune, Maharashtra", date: "December 2024", img: img("Amruta_Amey/img221.webp") },
-  { couple: "Abhimanyu & Manisha", slug: "abhimanyu-manisha", location: "Pune, Maharashtra", date: "November 2024", img: img("Abhimanyu_Manisha/img605.webp") },
-  { couple: "Bhakti & Sourabh", slug: "bhakti-sourabh", location: "Jodhpur, Rajasthan", date: "October 2024", img: img("Bhakti_Sourabh/img326.webp") },
-  { couple: "Rohan & Preksha", slug: "Rohan-preksha", location: "Pushkar, Rajasthan", date: "January 2025", img: img("Rohan_Preksha/img504.webp") },
+  { couple: "Amruta & Amey", slug: "amruta-amey", location: "Pune, Maharashtra", date: "December 2024", img: img("Amruta_Amey/img218.webp") },
+  { couple: "Abhimanyu & Manisha", slug: "abhimanyu-manisha", location: "Pune, Maharashtra", date: "November 2024", img: img("Abhimanyu_Manisha/img620.webp") },
+  { couple: "Bhakti & Sourabh", slug: "bhakti-sourabh", location: "Jodhpur, Rajasthan", date: "October 2024", img: img("Bhakti_Sourabh/img343.webp") },
+  { couple: "Rohan & Preksha", slug: "Rohan-preksha", location: "Pushkar, Rajasthan", date: "January 2025", img: img("Rohan_Preksha/img550.webp") },
 ];
 
 const aboutImg = img("Chaitrali_Shubham/img407.webp");

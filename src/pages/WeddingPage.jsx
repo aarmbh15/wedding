@@ -1590,6 +1590,8 @@ const weddingData = {
   img("Rohan_Preksha/img546.webp"),
   img("Rohan_Preksha/img547.webp"),
   img("Rohan_Preksha/img548.webp"),
+  img("Rohan_Preksha/img549.webp"),
+  img("Rohan_Preksha/img550.webp"),
 ]
   },
   "Chaitrali_Shubham": {
@@ -1634,6 +1636,7 @@ const weddingData = {
       img("Chaitrali_Shubham/img435.webp"),
       img("Chaitrali_Shubham/img436.webp"),
       img("Chaitrali_Shubham/img438.webp"),
+      img("Chaitrali_Shubham/img439.webp"),
     ]
   },
   "Aishwarya_Sanmay": {

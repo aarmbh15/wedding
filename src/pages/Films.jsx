@@ -243,7 +243,7 @@
 // src/pages/Films.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import HeroImage from "../assets/hero3.jpeg";
+import HeroImage from "../assets/hero3.webp";
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 const films = [
