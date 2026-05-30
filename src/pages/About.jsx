@@ -43,13 +43,13 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
         
         <div className="relative z-20 text-center px-6 transition-all duration-1000 transform translate-y-0 opacity-100">
-          <p className="text-[0.7rem] tracking-[0.4em] uppercase text-[#c9a84c] mb-6">Est. 2014 • Mumbai • Pune</p>
+          <p className="text-[0.7rem] tracking-[0.4em] uppercase text-[#c9a84c] mb-6">Est. 2019 • Mumbai • Pune</p>
           <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,8vw,6.5rem)] font-light text-white leading-[1.1] mb-8">
             About <span className="italic text-[#c9a84c]">TILT SHIFT</span>
           </h1>
           <div className="w-16 h-[1px] bg-[#c9a84c] mx-auto mb-8 animate-[widthGrow_1.5s_ease-out]" />
           <p className="font-['Cormorant_Garamond'] text-[clamp(1.1rem,2vw,1.6rem)] italic text-white/90 max-w-2xl mx-auto leading-relaxed">
-            "Capturing the quiet breaths between the big moments since 2014."
+            "Capturing the quiet breaths between the big moments since 2019."
           </p>
         </div>
 
@@ -70,7 +70,7 @@ const About = () => {
               <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80" alt="Detail" className="w-full h-full object-cover" />
             </div>
             <div className="absolute -top-6 -left-6 bg-[#c9a84c] text-white p-6 z-20">
-              <span className="font-['Cormorant_Garamond'] text-4xl block">10+</span>
+              <span className="font-['Cormorant_Garamond'] text-4xl block">6+</span>
               <span className="text-[0.6rem] tracking-widest uppercase">Years</span>
             </div>
           </div>
@@ -81,19 +81,19 @@ const About = () => {
               Documenting Love <br /><em>With Absolute Sincerity</em>
             </h2>
             <div className="space-y-6 text-[#4a4a4a] leading-relaxed text-[1.05rem]">
-              {/* <p>Two friends left the corporate world in 2014 to pursue a simple dream: to see weddings differently. Not as events, but as living, breathing stories.</p>
+              {/* <p>Two friends left the corporate world in 2019 to pursue a simple dream: to see weddings differently. Not as events, but as living, breathing stories.</p>
               <p>Today, with over 500 weddings across 12 countries, Knots by Amp has become a synonym for cinematic honesty. We don't just take photos; we preserve emotions.</p> */}
               <p>I’m Nityananda Borkar, the founder of Tilt Shift Pictures. My journey into wedding photography wasn’t planned, it was built over time through passion and instinct. After spending over 15 years in the corporate world working in customer service and sales, I realized my true calling was always behind the camera. What began as a deep interest in wildlife photography slowly evolved into capturing people, emotions and stories. I started as a freelance wedding photographer and with every wedding, my connection to storytelling grew stronger. In October 2019, I took a leap of faith and founded Tilt Shift Pictures, turning passion into purpose.</p>
               <p>Over the past six years, we have had the privilege of capturing 400+ weddings across India, including Bangalore, Mysore, Pune, Mumbai, Goa, MP & Rajasthan, establishing ourselves as a trusted name in candid wedding photography and cinematic wedding films. From intimate ceremonies to grand destination weddings our focus has always been on telling real stories through natural, unscripted moments. As a wedding photographer in Pune and across major cities in India, we specialise in creating timeless memories through candid photography and storytelling videos that let you relive every emotion. At Tilt Shift Pictures, it’s never just about photos or films it’s about preserving your story in the most authentic way possible.</p>
             </div>
-            <div className="grid grid-cols-3 gap-8 mt-12 border-t border-gray-100 pt-8">
+            {/* <div className="grid grid-cols-3 gap-8 mt-12 border-t border-gray-100 pt-8">
               {[{n: "500+", l: "Weddings"}, {n: "12", l: "Countries"}, {n: "20+", l: "Awards"}].map((s, i) => (
                 <div key={i}>
                   <div className="font-['Cormorant_Garamond'] text-3xl text-[#c9a84c]">{s.n}</div>
                   <div className="text-[0.65rem] tracking-widest uppercase text-gray-400">{s.l}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

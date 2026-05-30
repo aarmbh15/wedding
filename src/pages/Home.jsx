@@ -102,7 +102,7 @@ const portfolioGrid = [
 const featured = [
   { couple: "Amruta & Amey", slug: "amruta-amey", location: "Pune, Maharashtra", date: "December 2024", img: img("Amruta_Amey/img218.webp") },
   { couple: "Abhimanyu & Manisha", slug: "abhimanyu-manisha", location: "Pune, Maharashtra", date: "November 2024", img: img("Abhimanyu_Manisha/img620.webp") },
-  { couple: "Bhakti & Sourabh", slug: "bhakti-sourabh", location: "Jodhpur, Rajasthan", date: "October 2024", img: img("Bhakti_Sourabh/img343.webp") },
+  { couple: "Bhakti & Sourabh", slug: "bhakti-sourabh", location: "Jodhpur, Rajasthan", date: "October 2024", img: img("Bhakti_Sourabh/img353.webp") },
   { couple: "Rohan & Preksha", slug: "Rohan-preksha", location: "Pushkar, Rajasthan", date: "January 2025", img: img("Rohan_Preksha/img550.webp") },
 ];
 
@@ -279,7 +279,7 @@ export default function Home() {
               />
               <div className="absolute bottom-[clamp(16px,2.5vw,28px)] right-[clamp(16px,2.5vw,28px)] bg-white px-5 py-3.5">
                 <p className="font-jost text-[0.68rem] tracking-[0.28em] uppercase text-[#888]">
-                  Est. 2014
+                  Est. 2019
                 </p>
               </div>
             </div>
@@ -290,17 +290,19 @@ export default function Home() {
                 About the Studio
               </p>
               <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.4rem)] font-light leading-tight text-[#1a1a1a] mb-8">
-                Considered the epitome of<br />
-                <em className="italic">Modern Wedding Photography</em>
+                Candid Wedding Photography &<br />
+                <em className="italic">Cinematic Wedding Films Across India</em>
               </h2>
 
               <div className="w-10 h-px bg-[#1a1a1a] mb-8" />
 
               <p className="text-[#555] text-base leading-[1.9] mb-6">
-                At TILT SHIFT Pictures, we have transformed the Indian wedding landscape for over a decade — creating photographs and films that are timeless, and etched in the memories of thousands of families forever.
+                {/* At TILT SHIFT Pictures, we have transformed the Indian wedding landscape for over a decade — creating photographs and films that are timeless, and etched in the memories of thousands of families forever. */}
+                At Tilt Shift Pictures, we believe every wedding deserves to be remembered through real emotions and meaningful storytelling. Through candid wedding photography and cinematic wedding films, we capture genuine moments, family bonds and celebrations exactly as they happen.
               </p>
               <p className="text-[#555] text-base leading-[1.9] mb-12">
-                Awarded Wedding Filmmaker of the Year for four consecutive years, we are the only Indian wedding studio listed on IMDB for our award-winning films. We accept only 24 weddings each year.
+                {/* Awarded Wedding Filmmaker of the Year for four consecutive years, we are the only Indian wedding studio listed on IMDB for our award-winning films. We accept only 24 weddings each year. */}
+                Having documented 400+ weddings across Pune, Mumbai, Goa, Bangalore and destination weddings across India, we focus on preserving memories in a way that lets every couple feel and relive their special day even after many years.
               </p>
 
               <div className="flex flex-wrap gap-6">
@@ -388,9 +390,9 @@ export default function Home() {
                     <p className="font-jost text-[0.72rem] tracking-[0.15em] uppercase text-[#999]">
                       {f.location}
                     </p>
-                    <p className="font-jost text-[0.72rem] text-[#bbb] mt-0.5">
+                    {/* <p className="font-jost text-[0.72rem] text-[#bbb] mt-0.5">
                       {f.date}
-                    </p>
+                    </p> */}
                   </Link>
                 ))}
               </div>
@@ -528,7 +530,7 @@ export default function Home() {
                 <img
                   src={leftImg}
                   alt="Couple"
-                  className="w-full h-[300px] md:h-[500px] object-cover rounded-[10px]"
+                  className="w-full h-[300px] md:h-[700px] object-cover rounded-[10px]"
                 />
               </div>
 
@@ -537,7 +539,8 @@ export default function Home() {
                   Our Philosophy
                 </p>
                 <blockquote className="font-cormorant italic text-[1.4rem] sm:text-[2rem] leading-relaxed mb-8">
-                  We capture weddings in their truest form—whether deeply traditional or beautifully modern. From soulful rituals to vibrant celebrations, our candid wedding photography and cinematic films focus on real emotions and timeless storytelling.
+                  {/* We capture weddings in their truest form—whether deeply traditional or beautifully modern. From soulful rituals to vibrant celebrations, our candid wedding photography and cinematic films focus on real emotions and timeless storytelling. */}
+                  At Tilt Shift Pictures, our philosophy is weddings should be captured as they are truly felt. We believe the most powerful memories come from real emotions, natural moments and the people who make the celebration meaningful. Through candid wedding photography and cinematic films, we create heartfelt stories that allow couples and families to reconnect with their special day for years to come.
                 </blockquote>
                 <a
                   href="/about"
