@@ -87,16 +87,16 @@ function LazySection({ children, rootMargin = "200px" }) {
 const heroImages = [img("Bhakti_Sourabh/img356.webp")];
 
 const portfolioGrid = [
-  { src: img("Abhimanyu_Manisha/img621.webp"), pos: "52% 88%" },
-  { src: img("Bhakti_Sourabh/img331.webp"), pos: "50% 50%" },
-  { src: img("Rohan_Preksha/img515.webp"), pos: "50% 50%" },
-  { src: img("Amruta_Amey/img208.webp"), pos: "50% 50%" },
-  { src: img("Chaitrali_Shubham/img407.webp"), pos: "50% 50%" },
-  { src: img("Bhakti_Sourabh/img343.webp"), pos: "50% 50%" },
-  { src: img("Chaitrali_Shubham/img439.webp"), pos: "50% 50%" },
-  { src: img("Rohan_Preksha/img549.webp"), pos: "50% 50%" },
-  { src: img("Abhimanyu_Manisha/img613.webp"), pos: "50% 50%" },
-  { src: img("Amruta_Amey/img258.webp"), pos: "50% 50%" },
+  { src: img("Abhimanyu_Manisha/img621.webp"), pos: "52% 88%", size: "portrait" },   // Tall
+  { src: img("Bhakti_Sourabh/img331.webp"), pos: "50% 50%", size: "normal" },       // Square
+  { src: img("Rohan_Preksha/img515.webp"), pos: "50% 50%", size: "normal" },       // Square
+  { src: img("Amruta_Amey/img208.webp"), pos: "50% 50%", size: "landscape" },    // Wide
+  { src: img("Chaitrali_Shubham/img407.webp"), pos: "50% 50%", size: "normal" },    // Square
+  { src: img("Bhakti_Sourabh/img343.webp"), pos: "50% 50%", size: "portrait" },   // Tall
+  { src: img("Chaitrali_Shubham/img439.webp"), pos: "50% 50%", size: "landscape" }, // Wide
+  { src: img("Rohan_Preksha/img549.webp"), pos: "50% 50%", size: "normal" },       // Square
+  { src: img("Abhimanyu_Manisha/img613.webp"), pos: "50% 50%", size: "normal" },    // Square
+  { src: img("Amruta_Amey/img258.webp"), pos: "50% 50%", size: "normal" },       // Square
 ];
 
 const featured = [
@@ -319,45 +319,53 @@ export default function Home() {
       </LazySection>
 
       {/* PORTFOLIO MOSAIC */}
-      <LazySection rootMargin="400px">
-        {(isNear) => (
-          <section ref={gridRef} className="bg-white pb-[clamp(60px,8vw,100px)]">
-            <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
-              <p className="font-jost text-[0.72rem] tracking-[0.32em] uppercase text-[#999] mb-3">
-                Selected Work
-              </p>
-              <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a]">
-                Photography
-              </h2>
-            </div>
+     <LazySection rootMargin="400px">
+  {(isNear) => (
+    <section ref={gridRef} className="bg-white pb-[clamp(60px,8vw,100px)]">
+      <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
+        <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a]">
+          PORTFOLIO
+        </h2>
+      </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-[3px] px-[3px]">
-              {portfolioGrid.map((image, i) => (
-                <div
-                  key={i}
-                  className={`fade-up ${gridInView ? "in" : ""}`}
-                  style={{ transitionDelay: `${i * 0.1}s` }}
-                >
-                  <ProgressiveImg
-                    src={image.src}
-                    alt={`Gallery ${i}`}
-                    shouldLoad={gridInView}
-                  />
-                </div>
-              ))}
-            </div>
+      {/* Changed to 4 columns on desktop for better mathematical spacing with spans */}
+      <div className="grid grid-cols-2 md:grid-cols-4 grid-flow-dense gap-3 px-3 auto-rows-[200px] md:auto-rows-[260px]">
+  {portfolioGrid.map((image, i) => {
+    // Determine grid spans based on the size property
+    let sizeClasses = "col-span-1 row-span-1"; // normal
+    if (image.size === "landscape") sizeClasses = "col-span-2 row-span-1";
+    if (image.size === "portrait") sizeClasses = "col-span-1 row-span-2";
 
-            <div className="text-center mt-[clamp(32px,4vw,56px)]">
-              <a
-                href="/portfolio"
-                className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-[#1a1a1a] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
-              >
-                View Full Photography
-              </a>
-            </div>
-          </section>
-        )}
-      </LazySection>
+    return (
+      <div
+        key={i}
+        className={`fade-up ${gridInView ? "in" : ""} ${sizeClasses} relative overflow-hidden rounded-sm`}
+        style={{ transitionDelay: `${i * 0.1}s` }}
+      >
+        <ProgressiveImg
+          src={image.src}
+          alt={`Gallery ${i}`}
+          shouldLoad={gridInView}
+          className="w-full h-full object-cover"
+          // This applies your custom focus points (e.g., "52% 88%") dynamically
+          style={{ objectPosition: image.pos || "50% 50%" }} 
+        />
+      </div>
+    );
+  })}
+</div>
+
+      <div className="text-center mt-[clamp(32px,4vw,56px)]">
+        <a
+          href="/portfolio"
+          className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-[#1a1a1a] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
+        >
+          View Full Portfolio
+        </a>
+      </div>
+    </section>
+  )}
+</LazySection>
 
       {/* FEATURED WEDDINGS */}
       <LazySection rootMargin="300px">
