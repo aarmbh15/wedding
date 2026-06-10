@@ -373,9 +373,7 @@ export default function Home() {
           <section ref={featRef} className="bg-white py-[clamp(40px,10vw,40px)] px-[clamp(24px,6vw,80px)]">
             <div className="max-w-[1320px] mx-auto">
               <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
-                  <p className="font-jost text-[0.72rem] tracking-[0.32em] uppercase text-[#999] mb-2">
-                    Recent Work
-                  </p>
+           
                   <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
                     Featured Weddings
                   </h2>
