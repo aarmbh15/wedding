@@ -84,7 +84,13 @@ function LazySection({ children, rootMargin = "200px" }) {
 }
 
 /* ─── Data ───────────────────────────────────────────────────── */
-const heroImages = [img("Bhakti_Sourabh/img356.webp")];
+// Hero section now uses background stream videos from YouTube
+const heroVideos = [
+  { id: "8AXq1eYnz78" },
+  { id: "dhJ-yGpyhb4" },
+  { id: "b9m2wRvZALw" },
+  { id: "lQv2jJlEgn0" }
+];
 
 const portfolioGrid = [
   { src: img("Abhimanyu_Manisha/img621.webp"), pos: "52% 88%", size: "portrait" },   // Tall
@@ -110,21 +116,22 @@ const aboutImg = img("Chaitrali_Shubham/img407.webp");
 const leftImg = img("Abhimanyu_Manisha/img615.webp");
 const premiumImg = img("Bhakti_Sourabh/img322.webp");
 
-/* ─── Hero Slider ────────────────────────────────────────────── */
+/* ─── Hero Video Slider ───────────────────────────────────────── */
 function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [loadedSlides, setLoadedSlides] = useState(new Set([0]));
 
   const advance = useCallback(() => {
     setCurrent((c) => {
-      const next = (c + 1) % heroImages.length;
+      const next = (c + 1) % heroVideos.length;
       setLoadedSlides((prev) => (prev.has(next) ? prev : new Set([...prev, next])));
       return next;
     });
   }, []);
 
+  // Switches video automatically every 8 seconds to allow clips to play out a bit
   useEffect(() => {
-    const t = setInterval(advance, 5000);
+    const t = setInterval(advance, 8000);
     return () => clearInterval(t);
   }, [advance]);
 
@@ -134,29 +141,30 @@ function HeroSlider() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {heroImages.map((src, i) => (
+    <div className="relative w-full h-screen overflow-hidden bg-black">
+      {heroVideos.map((video, i) => (
         <div
           key={i}
-          className={`absolute inset-0 transition-opacity duration-[1600ms] cubic-bezier(.4,0,.2,1) ${
+          className={`absolute inset-0 transition-opacity duration-[1600ms] cubic-bezier(.4,0,.2,1) pointer-events-none ${
             i === current ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
         >
           {loadedSlides.has(i) && (
-            <img
-              src={src}
-              alt=""
-              loading={i === 0 ? "eager" : "lazy"}
-              fetchPriority={i === 0 ? "high" : "auto"}
-              decoding="async"
-              className="w-full h-full object-cover object-[center_30%]"
-            />
+            <div className="absolute inset-0 w-full h-full scale-[1.35] origin-center">
+              <iframe
+                className="w-full h-full border-none"
+                src={`https://www.youtube.com/embed/${video.id}?autoplay=${i === current ? 1 : 0}&mute=1&controls=0&loop=1&playlist=${video.id}&rel=0&modestbranding=1&vq=hd1080&iv_load_policy=3&playsinline=1`}
+                title={`Hero Video ${i}`}
+                allow="autoplay; encrypted-media"
+              />
+            </div>
           )}
         </div>
       ))}
 
-      {/* Gradient Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-gradient-to-t from-black/22 to-transparent z-20" />
+      {/* Dark Overlay for better typography contrast */}
+      <div className="absolute inset-0 bg-black/25 z-20" />
+      <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-gradient-to-t from-black/40 to-transparent z-20" />
 
       {/* Hero Text */}
       <div className="absolute bottom-[clamp(36px,6vw,72px)] left-[clamp(24px,6vw,80px)] z-30 text-white">
@@ -170,7 +178,7 @@ function HeroSlider() {
 
       {/* Slider Dots */}
       <div className="absolute bottom-[clamp(36px,6vw,72px)] right-[clamp(24px,6vw,80px)] z-30 flex gap-2.5 items-center">
-        {heroImages.map((_, i) => (
+        {heroVideos.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
@@ -286,9 +294,6 @@ export default function Home() {
 
             {/* Right Content */}
             <div className={`fade-up ${aboutInView ? "in" : ""}`}>
-              <p className="font-jost text-[0.72rem] tracking-[0.32em] uppercase text-[#999] mb-8">
-                About the Studio
-              </p>
               <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.4rem)] font-light leading-tight text-[#1a1a1a] mb-8">
                 Candid Wedding Photography &<br />
                 <em className="italic">Cinematic Wedding Films Across India</em>
@@ -297,11 +302,9 @@ export default function Home() {
               <div className="w-10 h-px bg-[#1a1a1a] mb-8" />
 
               <p className="text-[#555] text-base leading-[1.9] mb-6">
-                {/* At TILT SHIFT Pictures, we have transformed the Indian wedding landscape for over a decade — creating photographs and films that are timeless, and etched in the memories of thousands of families forever. */}
                 At Tilt Shift Pictures, we believe every wedding deserves to be remembered through real emotions and meaningful storytelling. Through candid wedding photography and cinematic wedding films, we capture genuine moments, family bonds and celebrations exactly as they happen.
               </p>
               <p className="text-[#555] text-base leading-[1.9] mb-12">
-                {/* Awarded Wedding Filmmaker of the Year for four consecutive years, we are the only Indian wedding studio listed on IMDB for our award-winning films. We accept only 24 weddings each year. */}
                 Having documented 400+ weddings across Pune, Mumbai, Goa, Bangalore and destination weddings across India, we focus on preserving memories in a way that lets every couple feel and relive their special day even after many years.
               </p>
 
@@ -319,53 +322,50 @@ export default function Home() {
       </LazySection>
 
       {/* PORTFOLIO MOSAIC */}
-     <LazySection rootMargin="400px">
-  {(isNear) => (
-    <section ref={gridRef} className="bg-white pb-[clamp(60px,8vw,100px)]">
-      <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
-        <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a]">
-          PORTFOLIO
-        </h2>
-      </div>
+      <LazySection rootMargin="400px">
+        {(isNear) => (
+          <section ref={gridRef} className="bg-white pb-[clamp(60px,8vw,100px)]">
+            <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
+              <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a]">
+                PORTFOLIO
+              </h2>
+            </div>
 
-      {/* Changed to 4 columns on desktop for better mathematical spacing with spans */}
-      <div className="grid grid-cols-2 md:grid-cols-4 grid-flow-dense gap-3 px-3 auto-rows-[200px] md:auto-rows-[260px]">
-  {portfolioGrid.map((image, i) => {
-    // Determine grid spans based on the size property
-    let sizeClasses = "col-span-1 row-span-1"; // normal
-    if (image.size === "landscape") sizeClasses = "col-span-2 row-span-1";
-    if (image.size === "portrait") sizeClasses = "col-span-1 row-span-2";
+            <div className="grid grid-cols-2 md:grid-cols-4 grid-flow-dense gap-3 px-3 auto-rows-[200px] md:auto-rows-[260px]">
+              {portfolioGrid.map((image, i) => {
+                let sizeClasses = "col-span-1 row-span-1";
+                if (image.size === "landscape") sizeClasses = "col-span-2 row-span-1";
+                if (image.size === "portrait") sizeClasses = "col-span-1 row-span-2";
 
-    return (
-      <div
-        key={i}
-        className={`fade-up ${gridInView ? "in" : ""} ${sizeClasses} relative overflow-hidden rounded-sm`}
-        style={{ transitionDelay: `${i * 0.1}s` }}
-      >
-        <ProgressiveImg
-          src={image.src}
-          alt={`Gallery ${i}`}
-          shouldLoad={gridInView}
-          className="w-full h-full object-cover"
-          // This applies your custom focus points (e.g., "52% 88%") dynamically
-          style={{ objectPosition: image.pos || "50% 50%" }} 
-        />
-      </div>
-    );
-  })}
-</div>
+                return (
+                  <div
+                    key={i}
+                    className={`fade-up ${gridInView ? "in" : ""} ${sizeClasses} relative overflow-hidden rounded-sm`}
+                    style={{ transitionDelay: `${i * 0.1}s` }}
+                  >
+                    <ProgressiveImg
+                      src={image.src}
+                      alt={`Gallery ${i}`}
+                      shouldLoad={gridInView}
+                      className="w-full h-full object-cover"
+                      style={{ objectPosition: image.pos || "50% 50%" }} 
+                    />
+                  </div>
+                );
+              })}
+            </div>
 
-      <div className="text-center mt-[clamp(32px,4vw,56px)]">
-        <a
-          href="/portfolio"
-          className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-[#1a1a1a] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
-        >
-          View Full Portfolio
-        </a>
-      </div>
-    </section>
-  )}
-</LazySection>
+            <div className="text-center mt-[clamp(32px,4vw,56px)]">
+              <a
+                href="/portfolio"
+                className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-[#1a1a1a] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
+              >
+                View Full Portfolio
+              </a>
+            </div>
+          </section>
+        )}
+      </LazySection>
 
       {/* FEATURED WEDDINGS */}
       <LazySection rootMargin="300px">
@@ -373,10 +373,9 @@ export default function Home() {
           <section ref={featRef} className="bg-white py-[clamp(40px,10vw,40px)] px-[clamp(24px,6vw,80px)]">
             <div className="max-w-[1320px] mx-auto">
               <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
-           
-                  <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
-                    Featured Weddings
-                  </h2>
+                <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
+                  Featured Weddings
+                </h2>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[clamp(12px,2vw,24px)] featured-grid">
@@ -396,76 +395,27 @@ export default function Home() {
                     <p className="font-jost text-[0.72rem] tracking-[0.15em] uppercase text-[#999]">
                       {f.location}
                     </p>
-                    {/* <p className="font-jost text-[0.72rem] text-[#bbb] mt-0.5">
-                      {f.date}
-                    </p> */}
                   </Link>
                 ))}
               </div>
               <div className="text-center mt-[clamp(32px,4vw,56px)]">
-              <a
+                <a
                   href="/portfolio"
                   className="font-jost text-[0.72rem] tracking-[0.28em] uppercase border-b border-[#aaa] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
                 >
                   See All 
-                  {/* → */}
                 </a>
-                </div>
+              </div>
             </div>
           </section>
         )}
       </LazySection>
 
       {/* FILMS SECTION */}
-      {/* <LazySection rootMargin="300px">
-        {(isNear) => (
-          <section
-            ref={filmRef}
-            className="relative min-h-[90vh] overflow-hidden bg-white mb-24"
-            style={{
-              paddingTop: "clamp(100px,15vw,180px)",
-              paddingBottom: "clamp(220px,22vw,300px)",
-            }}
-          >
-            <div
-              className="absolute inset-0 overflow-hidden z-10"
-              style={{
-                clipPath: "polygon(0% 0%, 70% 10%, 100% 0%, 100% 100%, 85% 95%, 15% 100%, 0% 95%)",
-              }}
-            >
-              {isNear && (
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src={bgVideo} type="video/mp4" />
-                </video>
-              )}
-            </div>
-
-            <div className="relative z-20 max-w-[1200px] mx-auto text-center text-white px-5">
-              <h2 className="font-cormorant text-[clamp(2.5rem,6vw,5rem)] font-light tracking-widest mb-8">
-                Films
-              </h2>
-              <p className="font-jost text-[1.2rem] font-light max-w-[720px] mx-auto leading-[1.9] text-white/80">
-                Every wedding has its own rhythm of emotions, laughter and unforgettable moments. Our cinematic wedding films capture this flow through candid moments, real emotions and creative storytelling.
-              </p>
-            </div>
-          </section>
-        )}
-      </LazySection> */}
-
-      {/* FILMS SECTION */}
       <LazySection rootMargin="300px">
         {(isNear) => (
           <section className="bg-white py-[clamp(80px,10vw,140px)] overflow-hidden">
             <div className="text-center px-6 mb-16">
-              <p className="font-jost text-[0.72rem] tracking-[0.35em] uppercase text-[#bbb] mb-4">
-                Cinematic Stories
-              </p>
               <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a] mb-8">
                 Films
               </h2>
@@ -496,18 +446,18 @@ export default function Home() {
               <div className="animate-infinite-scroll">
                 {[
                   { couple: "Shubhang & Anuja", url: "https://youtu.be/6AlgoGp8SLg", id: "6AlgoGp8SLg", location: "Pune, Maharashtra"},
-  { couple: "Abhimanyu & Manisha", url: "https://youtu.be/ppQtE_3sPcg", id: "ppQtE_3sPcg", location: "Pune, Maharashtra" },
-  { couple: "Amey & Amruta", url: "https://youtu.be/yUpQjeTuSbA", id: "yUpQjeTuSbA", location: "Pune, Maharashtra" },
-  { couple: "Harjyot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra" },
-  { couple: "Pradyumna & Drushti", url: "https://youtu.be/ER4o6k5L3J0", id: "ER4o6k5L3J0", location: "Pune, Maharashtra" },
-  { couple: "Dhriti & Lakshya", url: "https://youtu.be/QV-GVZNHNDo", id: "QV-GVZNHNDo", location: "Pune, Maharashtra" },
-  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra" },
-  { couple: "Chandra & Anmol", url: "https://youtu.be/8UMiPZMhUE4", id: "8UMiPZMhUE4", location: "Pune, Maharashtra" },
-  { couple: "Indrajeet & Sakshi", url: "https://youtu.be/R0F2tWN8oLc", id: "R0F2tWN8oLc", location: "Pune, Maharashtra" },
-  { couple: "Nidhi & Kunal", url: "https://youtu.be/ex_Fs-BiUC0", id: "ex_Fs-BiUC0", location: "Bangalore, Karnataka" },
-  { couple: "Omkar & Apoorva", url: "https://youtu.be/DCCGOXaPCHQ", id: "DCCGOXaPCHQ", location: "Pune, Maharashtra" },
-  { couple: "Bhakti & Saurabh", url: "https://youtu.be/tHZ2RwYCdpQ", id: "tHZ2RwYCdpQ", location: "Jodhpur, Rajasthan" },
-  { couple: "Utsav & Dyuthi", url: "https://youtu.be/nHDxp0WJqaE", id: "nHDxp0WJqaE", location: "Bangalore, Karnataka" },
+                  { couple: "Abhimanyu & Manisha", url: "https://youtu.be/ppQtE_3sPcg", id: "ppQtE_3sPcg", location: "Pune, Maharashtra" },
+                  { couple: "Amey & Amruta", url: "https://youtu.be/yUpQjeTuSbA", id: "yUpQjeTuSbA", location: "Pune, Maharashtra" },
+                  { couple: "Harjyot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra" },
+                  { couple: "Pradyumna & Drushti", url: "https://youtu.be/ER4o6k5L3J0", id: "ER4o6k5L3J0", location: "Pune, Maharashtra" },
+                  { couple: "Dhriti & Lakshya", url: "https://youtu.be/QV-GVZNHNDo", id: "QV-GVZNHNDo", location: "Pune, Maharashtra" },
+                  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra" },
+                  { couple: "Chandra & Anmol", url: "https://youtu.be/8UMiPZMhUE4", id: "8UMiPZMhUE4", location: "Pune, Maharashtra" },
+                  { couple: "Indrajeet & Sakshi", url: "https://youtu.be/R0F2tWN8oLc", id: "R0F2tWN8oLc", location: "Pune, Maharashtra" },
+                  { couple: "Nidhi & Kunal", url: "https://youtu.be/ex_Fs-BiUC0", id: "ex_Fs-BiUC0", location: "Bangalore, Karnataka" },
+                  { couple: "Omkar & Apoorva", url: "https://youtu.be/DCCGOXaPCHQ", id: "DCCGOXaPCHQ", location: "Pune, Maharashtra" },
+                  { couple: "Bhakti & Saurabh", url: "https://youtu.be/tHZ2RwYCdpQ", id: "tHZ2RwYCdpQ", location: "Jodhpur, Rajasthan" },
+                  { couple: "Utsav & Dyuthi", url: "https://youtu.be/nHDxp0WJqaE", id: "nHDxp0WJqaE", location: "Bangalore, Karnataka" },
                 ].map((film, i) => (
                   <ScrollingFilmCard key={i} film={film} />
                 ))}
@@ -520,7 +470,6 @@ export default function Home() {
                 className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-[#1a1a1a] pb-1 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
                 Explore All Films 
-                {/* → */}
               </Link>
             </div>
           </section>
@@ -541,11 +490,7 @@ export default function Home() {
               </div>
 
               <div className="w-full md:w-[55%] text-center md:text-left">
-                <p className="font-jost text-[0.7rem] tracking-[0.35em] uppercase mb-5 text-[#888]">
-                  Our Philosophy
-                </p>
                 <blockquote className="font-cormorant italic text-[1.4rem] sm:text-[2rem] leading-relaxed mb-8">
-                  {/* We capture weddings in their truest form—whether deeply traditional or beautifully modern. From soulful rituals to vibrant celebrations, our candid wedding photography and cinematic films focus on real emotions and timeless storytelling. */}
                   At Tilt Shift Pictures, our philosophy is weddings should be captured as they are truly felt. We believe the most powerful memories come from real emotions, natural moments and the people who make the celebration meaningful. Through candid wedding photography and cinematic films, we create heartfelt stories that allow couples and families to reconnect with their special day for years to come.
                 </blockquote>
                 <a
@@ -565,9 +510,6 @@ export default function Home() {
         {(isNear) => (
           <section className="premium-grid grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,8vw,120px)] items-center max-w-[1400px] mx-auto px-[clamp(24px,6vw,80px)] py-[clamp(80px,10vw,130px)] bg-white">
             <div>
-              <p className="font-jost text-[0.72rem] tracking-[0.32em] uppercase text-[#999] mb-8">
-                Signature Offering
-              </p>
               <h2 className="font-cormorant text-[clamp(2rem,4vw,3.5rem)] font-light leading-tight text-[#1a1a1a] mb-6">
                 Fine-Art<br />
                 <em className="italic">Editorial Photography</em>
@@ -600,9 +542,6 @@ export default function Home() {
 
       {/* FINAL CTA */}
       <section className="bg-white py-[clamp(80px,10vw,130px)] px-[clamp(24px,6vw,80px)] text-center">
-        <p className="font-jost text-[0.72rem] tracking-[0.32em] uppercase text-[#999] mb-6">
-          Limited Availability · 2025–26
-        </p>
         <h2 className="font-cormorant text-[clamp(2.5rem,5vw,4.5rem)] font-light leading-tight text-[#1a1a1a] max-w-[700px] mx-auto mb-9">
           Your Story Deserves<br />
           <em className="italic">To Be Told Beautifully</em>
