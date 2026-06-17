@@ -1,11 +1,16 @@
 // src/pages/Home.jsx
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Helmet } from "react-helmet-async";
-import bgVideo from "../assets/bg.mp4";
 import { Link, useLocation } from "react-router-dom";
 
+// ─── Import Local Hero Videos ────────────────────────────────────────────────
+import showreelVideo from "../assets/Website Showreel.mp4";
+import shrutiVideo from "../assets/Shruti Bride.mp4";
+import rohanPrekshaVideo from "../assets/Rohan & Preksha Prewedding.mp4";
+import eshaRahulVideo from "../assets/Esha & Rahul Haldi.mp4";
+
 // ─── Bulk import ALL images ───────────────────────────────────────────────────
-const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
+const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png}", { eager: true });
 const img = (path) => allImages[`../assets/${path}`]?.default;
 
 /* ─── Intersection Observer Hook ─────────────────────────────── */
@@ -50,7 +55,7 @@ function ProgressiveImg({ src, alt = "", shouldLoad = true }) {
           src={src}
           alt={alt}
           loading="lazy"
-          decoding="async"
+          disabled-decoding="async"
           onLoad={() => setLoaded(true)}
           className={`w-full h-full object-cover transition-all duration-700 ease-out ${
             loaded ? "opacity-100 scale-100" : "opacity-0 scale-105"
@@ -84,25 +89,24 @@ function LazySection({ children, rootMargin = "200px" }) {
 }
 
 /* ─── Data ───────────────────────────────────────────────────── */
-// Hero section now uses background stream videos from YouTube
 const heroVideos = [
-  { id: "8AXq1eYnz78" },
-  { id: "dhJ-yGpyhb4" },
-  { id: "b9m2wRvZALw" },
-  { id: "lQv2jJlEgn0" }
+  { src: showreelVideo },
+  { src: shrutiVideo },
+  { src: rohanPrekshaVideo },
+  { src: eshaRahulVideo }
 ];
 
 const portfolioGrid = [
-  { src: img("Abhimanyu_Manisha/img621.webp"), pos: "52% 88%", size: "portrait" },   // Tall
-  { src: img("Bhakti_Sourabh/img331.webp"), pos: "50% 50%", size: "normal" },       // Square
-  { src: img("Rohan_Preksha/img515.webp"), pos: "50% 50%", size: "normal" },       // Square
-  { src: img("Amruta_Amey/img208.webp"), pos: "50% 50%", size: "landscape" },    // Wide
-  { src: img("Chaitrali_Shubham/img407.webp"), pos: "50% 50%", size: "normal" },    // Square
-  { src: img("Bhakti_Sourabh/img343.webp"), pos: "50% 50%", size: "portrait" },   // Tall
-  { src: img("Chaitrali_Shubham/img439.webp"), pos: "50% 50%", size: "landscape" }, // Wide
-  { src: img("Rohan_Preksha/img549.webp"), pos: "50% 50%", size: "normal" },       // Square
-  { src: img("Abhimanyu_Manisha/img613.webp"), pos: "50% 50%", size: "normal" },    // Square
-  { src: img("Amruta_Amey/img258.webp"), pos: "50% 50%", size: "normal" },       // Square
+  { src: img("Abhimanyu_Manisha/img621.webp"), pos: "52% 88%", size: "portrait" },
+  { src: img("Bhakti_Sourabh/img331.webp"), pos: "50% 50%", size: "normal" },
+  { src: img("Rohan_Preksha/img515.webp"), pos: "50% 50%", size: "normal" },
+  { src: img("Amruta_Amey/img208.webp"), pos: "50% 50%", size: "landscape" },
+  { src: img("Chaitrali_Shubham/img407.webp"), pos: "50% 50%", size: "normal" },
+  { src: img("Bhakti_Sourabh/img343.webp"), pos: "50% 50%", size: "portrait" },
+  { src: img("Chaitrali_Shubham/img439.webp"), pos: "50% 50%", size: "landscape" },
+  { src: img("Rohan_Preksha/img549.webp"), pos: "50% 50%", size: "normal" },
+  { src: img("Abhimanyu_Manisha/img613.webp"), pos: "50% 50%", size: "normal" },
+  { src: img("Amruta_Amey/img258.webp"), pos: "50% 50%", size: "normal" },
 ];
 
 const featured = [
@@ -129,7 +133,6 @@ function HeroSlider() {
     });
   }, []);
 
-  // Switches video automatically every 8 seconds to allow clips to play out a bit
   useEffect(() => {
     const t = setInterval(advance, 8000);
     return () => clearInterval(t);
@@ -140,48 +143,78 @@ function HeroSlider() {
     setCurrent(i);
   };
 
-  return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
-      {heroVideos.map((video, i) => (
-        <div
-          key={i}
-          className={`absolute inset-0 transition-opacity duration-[1600ms] cubic-bezier(.4,0,.2,1) pointer-events-none ${
-            i === current ? "opacity-100 z-10" : "opacity-0 z-0"
-          }`}
-        >
-          {loadedSlides.has(i) && (
-            <div className="absolute inset-0 w-full h-full scale-[1.35] origin-center">
-              <iframe
-                className="w-full h-full border-none"
-                src={`https://www.youtube.com/embed/${video.id}?autoplay=${i === current ? 1 : 0}&mute=1&controls=0&loop=1&playlist=${video.id}&rel=0&modestbranding=1&vq=hd1080&iv_load_policy=3&playsinline=1`}
-                title={`Hero Video ${i}`}
-                allow="autoplay; encrypted-media"
-              />
-            </div>
-          )}
-        </div>
-      ))}
+  const goNext = () => { goTo((current + 1) % heroVideos.length); };
+  const goPrev = () => { goTo((current - 1 + heroVideos.length) % heroVideos.length); };
 
-      {/* Dark Overlay for better typography contrast */}
-      <div className="absolute inset-0 bg-black/25 z-20" />
-      <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-gradient-to-t from-black/40 to-transparent z-20" />
+  return (
+    <div className="relative w-full h-[65vh] sm:h-[75vh] md:h-[100dvh] overflow-hidden bg-[#0d0d0d]">
+      {/* Video layer: Switched to object-contain to zoom out framing safely without cropping cinematic details */}
+      <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+        {heroVideos.map((video, i) => (
+          <div
+            key={i}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-[1600ms] pointer-events-none ${
+              i === current ? "opacity-100 z-10" : "opacity-0 z-0"
+            }`}
+          >
+            {loadedSlides.has(i) && (
+              <video
+                className="absolute inset-0 w-full h-full object-contain object-center scale-100"
+                src={video.src}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Overlays for typography hierarchy */}
+      <div className="absolute inset-0 bg-black/15 z-20 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/60 via-black/20 to-transparent z-20 pointer-events-none" />
 
       {/* Hero Text */}
-      <div className="absolute bottom-[clamp(36px,6vw,72px)] left-[clamp(24px,6vw,80px)] z-30 text-white">
-        <p className="font-jost text-[0.7rem] tracking-[0.35em] uppercase opacity-75 mb-2">
+      <div className="absolute bottom-[clamp(24px,5vw,72px)] left-[clamp(16px,5vw,80px)] right-[clamp(60px,16vw,90px)] z-30 text-white drop-shadow-md">
+        <p className="font-jost text-[0.58rem] sm:text-[0.7rem] tracking-[0.25em] sm:tracking-[0.35em] uppercase opacity-90 mb-2">
           Mumbai · Pune · Worldwide
         </p>
-        <h1 className="font-cormorant text-[clamp(2.8rem,6vw,5.5rem)] font-light leading-[1.08]">
+        <h1 className="font-cormorant text-[clamp(1.7rem,7.5vw,5.5rem)] font-light leading-[1.08]">
           TILT SHIFT Pictures
         </h1>
       </div>
 
-      {/* Slider Dots */}
-      <div className="absolute bottom-[clamp(36px,6vw,72px)] right-[clamp(24px,6vw,80px)] z-30 flex gap-2.5 items-center">
+      {/* Navigation UI Buttons */}
+      <button
+        type="button"
+        onClick={goPrev}
+        aria-label="Previous video"
+        className="absolute left-3 sm:left-5 md:left-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/20 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-colors duration-300"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        onClick={goNext}
+        aria-label="Next video"
+        className="absolute right-3 sm:right-5 md:right-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/20 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-colors duration-300"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+
+      {/* Progress Indicators */}
+      <div className="absolute bottom-[clamp(24px,5vw,72px)] right-[clamp(16px,5vw,80px)] z-30 flex gap-2 items-center">
         {heroVideos.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
+            aria-label={`Go to slide ${i + 1}`}
             className={`h-[2px] transition-all duration-400 ${
               i === current ? "w-7 bg-white" : "w-2 bg-white/40"
             }`}
@@ -235,7 +268,6 @@ function ScrollingFilmCard({ film }) {
 export default function Home() {
   const [aboutRef, aboutInView] = useInView(0.1);
   const [featRef, featInView] = useInView(0.1);
-  const [filmRef, filmInView] = useInView(0.1);
   const [gridRef, gridInView] = useInView(0.05);
   const location = useLocation();
 
@@ -451,7 +483,7 @@ export default function Home() {
                   { couple: "Harjyot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra" },
                   { couple: "Pradyumna & Drushti", url: "https://youtu.be/ER4o6k5L3J0", id: "ER4o6k5L3J0", location: "Pune, Maharashtra" },
                   { couple: "Dhriti & Lakshya", url: "https://youtu.be/QV-GVZNHNDo", id: "QV-GVZNHNDo", location: "Pune, Maharashtra" },
-                  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra" },
+                  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Rahul & Esha" },
                   { couple: "Chandra & Anmol", url: "https://youtu.be/8UMiPZMhUE4", id: "8UMiPZMhUE4", location: "Pune, Maharashtra" },
                   { couple: "Indrajeet & Sakshi", url: "https://youtu.be/R0F2tWN8oLc", id: "R0F2tWN8oLc", location: "Pune, Maharashtra" },
                   { couple: "Nidhi & Kunal", url: "https://youtu.be/ex_Fs-BiUC0", id: "ex_Fs-BiUC0", location: "Bangalore, Karnataka" },
