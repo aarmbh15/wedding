@@ -89,6 +89,7 @@ function LazySection({ children, rootMargin = "200px" }) {
 }
 
 /* ─── Data ───────────────────────────────────────────────────── */
+// Hero section configured with local imported video paths
 const heroVideos = [
   { src: showreelVideo },
   { src: shrutiVideo },
@@ -97,16 +98,16 @@ const heroVideos = [
 ];
 
 const portfolioGrid = [
-  { src: img("Abhimanyu_Manisha/img621.webp"), pos: "52% 88%", size: "portrait" },
-  { src: img("Bhakti_Sourabh/img331.webp"), pos: "50% 50%", size: "normal" },
-  { src: img("Rohan_Preksha/img515.webp"), pos: "50% 50%", size: "normal" },
-  { src: img("Amruta_Amey/img208.webp"), pos: "50% 50%", size: "landscape" },
-  { src: img("Chaitrali_Shubham/img407.webp"), pos: "50% 50%", size: "normal" },
-  { src: img("Bhakti_Sourabh/img343.webp"), pos: "50% 50%", size: "portrait" },
-  { src: img("Chaitrali_Shubham/img439.webp"), pos: "50% 50%", size: "landscape" },
-  { src: img("Rohan_Preksha/img549.webp"), pos: "50% 50%", size: "normal" },
-  { src: img("Abhimanyu_Manisha/img613.webp"), pos: "50% 50%", size: "normal" },
-  { src: img("Amruta_Amey/img258.webp"), pos: "50% 50%", size: "normal" },
+  { src: img("Abhimanyu_Manisha/img621.webp"), pos: "52% 88%", size: "portrait" },   // Tall
+  { src: img("Bhakti_Sourabh/img331.webp"), pos: "50% 50%", size: "normal" },       // Square
+  { src: img("Rohan_Preksha/img515.webp"), pos: "50% 50%", size: "normal" },       // Square
+  { src: img("Amruta_Amey/img208.webp"), pos: "50% 50%", size: "landscape" },    // Wide
+  { src: img("Chaitrali_Shubham/img407.webp"), pos: "50% 50%", size: "normal" },    // Square
+  { src: img("Bhakti_Sourabh/img343.webp"), pos: "50% 50%", size: "portrait" },   // Tall
+  { src: img("Chaitrali_Shubham/img439.webp"), pos: "50% 50%", size: "landscape" }, // Wide
+  { src: img("Rohan_Preksha/img549.webp"), pos: "50% 50%", size: "normal" },       // Square
+  { src: img("Abhimanyu_Manisha/img613.webp"), pos: "50% 50%", size: "normal" },    // Square
+  { src: img("Amruta_Amey/img258.webp"), pos: "50% 50%", size: "normal" },       // Square
 ];
 
 const featured = [
@@ -133,6 +134,7 @@ function HeroSlider() {
     });
   }, []);
 
+  // Switches video automatically every 8 seconds
   useEffect(() => {
     const t = setInterval(advance, 8000);
     return () => clearInterval(t);
@@ -143,13 +145,18 @@ function HeroSlider() {
     setCurrent(i);
   };
 
-  const goNext = () => { goTo((current + 1) % heroVideos.length); };
-  const goPrev = () => { goTo((current - 1 + heroVideos.length) % heroVideos.length); };
+  const goNext = () => {
+    goTo((current + 1) % heroVideos.length);
+  };
+
+  const goPrev = () => {
+    goTo((current - 1 + heroVideos.length) % heroVideos.length);
+  };
 
   return (
-    <div className="relative w-full h-[65vh] sm:h-[75vh] md:h-[100dvh] overflow-hidden bg-[#0d0d0d]">
-      {/* Video layer: Switched to object-contain to zoom out framing safely without cropping cinematic details */}
-      <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+    <div className="relative w-full h-[68vh] sm:h-[78vh] md:h-[100dvh] overflow-hidden bg-black">
+      {/* Video layer: full-bleed cover on BOTH mobile and desktop — no letterboxing */}
+      <div className="absolute inset-0 w-full h-full">
         {heroVideos.map((video, i) => (
           <div
             key={i}
@@ -159,7 +166,7 @@ function HeroSlider() {
           >
             {loadedSlides.has(i) && (
               <video
-                className="absolute inset-0 w-full h-full object-contain object-center scale-100"
+                className="absolute inset-0 w-full h-full object-cover object-center"
                 src={video.src}
                 autoPlay
                 loop
@@ -171,13 +178,13 @@ function HeroSlider() {
         ))}
       </div>
 
-      {/* Overlays for typography hierarchy */}
-      <div className="absolute inset-0 bg-black/15 z-20 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/60 via-black/20 to-transparent z-20 pointer-events-none" />
+      {/* Dark Overlay for better typography contrast */}
+      <div className="absolute inset-0 bg-black/25 z-20" />
+      <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-gradient-to-t from-black/40 to-transparent z-20" />
 
-      {/* Hero Text */}
-      <div className="absolute bottom-[clamp(24px,5vw,72px)] left-[clamp(16px,5vw,80px)] right-[clamp(60px,16vw,90px)] z-30 text-white drop-shadow-md">
-        <p className="font-jost text-[0.58rem] sm:text-[0.7rem] tracking-[0.25em] sm:tracking-[0.35em] uppercase opacity-90 mb-2">
+      {/* Hero Text — responsive right-inset so it never crowds the dots/arrows on mobile */}
+      <div className="absolute bottom-[clamp(24px,5vw,72px)] left-[clamp(16px,5vw,80px)] right-[clamp(60px,16vw,90px)] z-30 text-white">
+        <p className="font-jost text-[0.58rem] sm:text-[0.7rem] tracking-[0.25em] sm:tracking-[0.35em] uppercase opacity-75 mb-2">
           Mumbai · Pune · Worldwide
         </p>
         <h1 className="font-cormorant text-[clamp(1.7rem,7.5vw,5.5rem)] font-light leading-[1.08]">
@@ -185,12 +192,12 @@ function HeroSlider() {
         </h1>
       </div>
 
-      {/* Navigation UI Buttons */}
+      {/* Manual Left / Right Scroll Buttons — slightly smaller base size on mobile */}
       <button
         type="button"
         onClick={goPrev}
         aria-label="Previous video"
-        className="absolute left-3 sm:left-5 md:left-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/20 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-colors duration-300"
+        className="absolute left-2 sm:left-5 md:left-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/35 text-white transition-colors duration-300"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="15 18 9 12 15 6" />
@@ -201,14 +208,14 @@ function HeroSlider() {
         type="button"
         onClick={goNext}
         aria-label="Next video"
-        className="absolute right-3 sm:right-5 md:right-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/20 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/20 text-white transition-colors duration-300"
+        className="absolute right-2 sm:right-5 md:right-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/35 text-white transition-colors duration-300"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="9 18 15 12 9 6" />
         </svg>
       </button>
 
-      {/* Progress Indicators */}
+      {/* Slider Dots — pulled in slightly on mobile so they don't sit flush against the edge */}
       <div className="absolute bottom-[clamp(24px,5vw,72px)] right-[clamp(16px,5vw,80px)] z-30 flex gap-2 items-center">
         {heroVideos.map((_, i) => (
           <button
@@ -483,7 +490,7 @@ export default function Home() {
                   { couple: "Harjyot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra" },
                   { couple: "Pradyumna & Drushti", url: "https://youtu.be/ER4o6k5L3J0", id: "ER4o6k5L3J0", location: "Pune, Maharashtra" },
                   { couple: "Dhriti & Lakshya", url: "https://youtu.be/QV-GVZNHNDo", id: "QV-GVZNHNDo", location: "Pune, Maharashtra" },
-                  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Rahul & Esha" },
+                  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra" },
                   { couple: "Chandra & Anmol", url: "https://youtu.be/8UMiPZMhUE4", id: "8UMiPZMhUE4", location: "Pune, Maharashtra" },
                   { couple: "Indrajeet & Sakshi", url: "https://youtu.be/R0F2tWN8oLc", id: "R0F2tWN8oLc", location: "Pune, Maharashtra" },
                   { couple: "Nidhi & Kunal", url: "https://youtu.be/ex_Fs-BiUC0", id: "ex_Fs-BiUC0", location: "Bangalore, Karnataka" },
