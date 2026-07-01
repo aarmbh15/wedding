@@ -437,7 +437,7 @@ export default function Home() {
                   </Link>
                 ))}
               </div>
-              <div className="text-center mt-[clamp(32px,4vw,56px)]">
+              <div className="text-center mt-[clamp(32px,4vw,536px)]">
                 <a
                   href="/portfolio"
                   className="font-jost text-[0.72rem] tracking-[0.28em] uppercase border-b border-[#aaa] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
@@ -453,15 +453,15 @@ export default function Home() {
       {/* FILMS SECTION */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section className="bg-white py-[clamp(80px,10vw,140px)] overflow-hidden">
+          <section className="bg-white py-[clamp(80px,10vw,140px)] overflow-hidden mb-26">
             <div className="text-center px-6 mb-16">
               <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a] mb-8">
                 Films
               </h2>
               <p className="font-jost text-[1rem] md:text-[1.1rem] font-light max-w-[750px] mx-auto leading-relaxed text-[#666] px-4">
-                Every wedding has its own rhythm of emotions, laughter and unforgettable moments. 
-                Our cinematic wedding films capture this flow through candid moments, real emotions 
-                and creative storytelling.
+               Every wedding has its own rhythm of emotions, laughter and unforgettable moments. Our cinematic wedding films and professional wedding videography capture this flow through candid moments, 
+               real emotions and creative storytelling. From traditional Indian weddings to modern destination weddings, we craft timeless wedding films that let you relive your celebration with authenticity, 
+               beauty and lasting memories.
               </p>
             </div>
 
@@ -488,13 +488,13 @@ export default function Home() {
                   { couple: "Abhimanyu & Manisha", url: "https://youtu.be/ppQtE_3sPcg", id: "ppQtE_3sPcg", location: "Pune, Maharashtra" },
                   { couple: "Amey & Amruta", url: "https://youtu.be/yUpQjeTuSbA", id: "yUpQjeTuSbA", location: "Pune, Maharashtra" },
                   { couple: "Harjyot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra" },
-                  { couple: "Pradyumna & Drushti", url: "https://youtu.be/ER4o6k5L3J0", id: "ER4o6k5L3J0", location: "Pune, Maharashtra" },
+                  { couple: "Pradyumna & Drashti", url: "https://youtu.be/ER4o6k5L3J0", id: "ER4o6k5L3J0", location: "Pune, Maharashtra" },
                   { couple: "Dhriti & Lakshya", url: "https://youtu.be/QV-GVZNHNDo", id: "QV-GVZNHNDo", location: "Pune, Maharashtra" },
                   { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra" },
-                  { couple: "Chandra & Anmol", url: "https://youtu.be/8UMiPZMhUE4", id: "8UMiPZMhUE4", location: "Pune, Maharashtra" },
+                  { couple: "Chandra and Anmol", url: "https://youtu.be/8UMiPZMhUE4", id: "8UMiPZMhUE4", location: "Pune, Maharashtra" },
                   { couple: "Indrajeet & Sakshi", url: "https://youtu.be/R0F2tWN8oLc", id: "R0F2tWN8oLc", location: "Pune, Maharashtra" },
                   { couple: "Nidhi & Kunal", url: "https://youtu.be/ex_Fs-BiUC0", id: "ex_Fs-BiUC0", location: "Bangalore, Karnataka" },
-                  { couple: "Omkar & Apoorva", url: "https://youtu.be/DCCGOXaPCHQ", id: "DCCGOXaPCHQ", location: "Pune, Maharashtra" },
+                  { couple: "Omkar & Apurva", url: "https://youtu.be/DCCGOXaPCHQ", id: "DCCGOXaPCHQ", location: "Pune, Maharashtra" },
                   { couple: "Bhakti & Saurabh", url: "https://youtu.be/tHZ2RwYCdpQ", id: "tHZ2RwYCdpQ", location: "Jodhpur, Rajasthan" },
                   { couple: "Utsav & Dyuthi", url: "https://youtu.be/nHDxp0WJqaE", id: "nHDxp0WJqaE", location: "Bangalore, Karnataka" },
                 ].map((film, i) => (
@@ -516,10 +516,10 @@ export default function Home() {
       </LazySection>
 
       {/* PHILOSOPHY SECTION */}
-      <LazySection rootMargin="300px">
+      <LazySection rootMargin="100px">
         {(isNear) => (
-          <section className="relative z-10 min-h-[60vh] flex items-center justify-center mt-16 md:mt-52">
-            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-[60px] max-w-[1100px] w-full px-5 md:px-10 py-12 md:py-20">
+          <section className="relative z-10 min-h-[60vh] flex items-center justify-center bg-white">
+            <div className="flex flex-col md:flex-row items-center gap-1 md:gap-[100px] max-w-[1300px] w-full ">
               <div className="w-full md:w-[45%]">
                 <img
                   src={leftImg}
@@ -530,7 +530,7 @@ export default function Home() {
 
               <div className="w-full md:w-[55%] text-center md:text-left">
                 <blockquote className="font-cormorant italic text-[1.4rem] sm:text-[2rem] leading-relaxed mb-8">
-                  At Tilt Shift Pictures, our philosophy is weddings should be captured as they are truly felt. We believe the most powerful memories come from real emotions, natural moments and the people who make the celebration meaningful. Through candid wedding photography and cinematic films, we create heartfelt stories that allow couples and families to reconnect with their special day for years to come.
+                   We capture weddings in their truest form-whether deeply traditional or beautifully modern. From soulful rituals to vibrant celebrations, our candid wedding photography and cinematic wedding films focus on real emotions, natural moments, and timeless storytelling. Be it an intimate ceremony or a grand destination wedding, we preserve every detail with authenticity, creativity, and a style that reflects your unique love story.
                 </blockquote>
                 <a
                   href="/about"
@@ -547,9 +547,9 @@ export default function Home() {
       {/* PREMIUM OFFERING */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section className="premium-grid grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,8vw,120px)] items-center max-w-[1400px] mx-auto px-[clamp(24px,6vw,80px)] py-[clamp(80px,10vw,130px)] bg-white">
+          <section className="premium-grid grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,8vw,120px)] items-center max-w-[1300px] mx-auto  bg-white">
             <div>
-              <h2 className="font-cormorant text-[clamp(2rem,4vw,3.5rem)] font-light leading-tight text-[#1a1a1a] mb-6">
+              <h2 className="font-cormorant text-[clamp(2rem,4vw,3.5rem)] font-light leading-tight text-[#1a1a1a] mb-16">
                 Fine-Art<br />
                 <em className="italic">Editorial Photography</em>
               </h2>

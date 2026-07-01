@@ -19,11 +19,11 @@ const Header = () => {
   const navItems = [
     { name: "HOME", path: "/" },
     {
-      name: "PORTFOLIO",
+      name: "PHOTOGRAPHY",
       dropdown: [
-        { name: "PHOTOGRAPHY", path: "/portfolio" },
         { name: "FILMS", path: "/films" },
-      ],
+        { name: "PHOTOGRAPHY", path: "/portfolio" },
+        ],
     },
     { name: "ABOUT", path: "/about" },
   ];

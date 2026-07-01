@@ -86,14 +86,6 @@ const About = () => {
               <p>I’m Nityananda Borkar, the founder of Tilt Shift Pictures. My journey into wedding photography wasn’t planned, it was built over time through passion and instinct. After spending over 15 years in the corporate world working in customer service and sales, I realized my true calling was always behind the camera. What began as a deep interest in wildlife photography slowly evolved into capturing people, emotions and stories. I started as a freelance wedding photographer and with every wedding, my connection to storytelling grew stronger. In October 2019, I took a leap of faith and founded Tilt Shift Pictures, turning passion into purpose.</p>
               <p>Over the past six years, we have had the privilege of capturing 400+ weddings across India, including Bangalore, Mysore, Pune, Mumbai, Goa, MP & Rajasthan, establishing ourselves as a trusted name in candid wedding photography and cinematic wedding films. From intimate ceremonies to grand destination weddings our focus has always been on telling real stories through natural, unscripted moments. As a wedding photographer in Pune and across major cities in India, we specialise in creating timeless memories through candid photography and storytelling videos that let you relive every emotion. At Tilt Shift Pictures, it’s never just about photos or films it’s about preserving your story in the most authentic way possible.</p>
             </div>
-            {/* <div className="grid grid-cols-3 gap-8 mt-12 border-t border-gray-100 pt-8">
-              {[{n: "500+", l: "Weddings"}, {n: "12", l: "Countries"}, {n: "20+", l: "Awards"}].map((s, i) => (
-                <div key={i}>
-                  <div className="font-['Cormorant_Garamond'] text-3xl text-[#c9a84c]">{s.n}</div>
-                  <div className="text-[0.65rem] tracking-widest uppercase text-gray-400">{s.l}</div>
-                </div>
-              ))}
-            </div> */}
           </div>
         </div>
       </section>
@@ -101,12 +93,12 @@ const About = () => {
       {/* ─── PHILOSOPHY (BEIGE) ─────────────────────────────────── */}
       <section ref={valRef} className="bg-[#F4F1EA] py-[clamp(80px,10vw,130px)] px-6">
         <div className="max-w-[1200px] mx-auto text-center mb-16">
-          <p className="text-[0.7rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-4">Our DNA</p>
+          {/* <p className="text-[0.7rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-4">Our DNA</p> */}
           <h2 className="font-['Cormorant_Garamond'] text-[clamp(2rem,4vw,3.5rem)] font-light">Why Choose Us?</h2>
         </div>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200">
           {[
-            { t: "Candid Wedding Photography", d: "Capturing real emotions, natural moments, and authentic stories through candid wedding photography." },
+            { t: " Candid Wedding Photography", d: "Capturing real emotions, natural moments, and authentic stories through candid wedding photography." },
             { t: "Traditional Modern Weddings", d: "Blending traditional Indian rituals with modern aesthetics for timeless, elegant wedding storytelling." },
             { t: "Cinematic Wedding Films", d: "Creating cinematic wedding films that capture emotions, moments, and your complete love story beautifully." },
             { t: "Destination Wedding Experts", d: "Experienced in destination weddings across India, capturing every moment seamlessly in diverse locations." }
@@ -119,34 +111,6 @@ const About = () => {
           ))}
         </div>
       </section>
-
-      {/* ─── TEAM (WHITE) ────────────────────────────────────────── */}
-      {/* <section ref={teamRef} className="bg-white py-[clamp(80px,10vw,130px)] px-6">
-        <div className="max-w-[1300px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-            <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.2rem,5vw,4rem)] font-light leading-none">
-              The <em>Humans</em>
-            </h2>
-            <p className="max-w-xs text-gray-400 font-light text-[0.9rem]">A crew of artists who believe every love story is a masterpiece in waiting.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((p, i) => (
-              <div key={i} className="group cursor-pointer">
-                <div className="aspect-[3/4] overflow-hidden bg-gray-100 mb-6 relative">
-                  <img src={p.img} alt={p.name} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
-                  <div className="absolute top-4 left-4 bg-[#c9a84c] text-white text-[0.6rem] px-3 py-1 tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
-                    {p.tag}
-                  </div>
-                </div>
-                <h3 className="font-['Cormorant_Garamond'] text-xl mb-1">{p.name}</h3>
-                <p className="text-[#c9a84c] text-[0.7rem] uppercase tracking-widest mb-3">{p.role}</p>
-                <p className="text-gray-400 text-[0.85rem] font-light leading-relaxed">{p.bio}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* ─── CTA ──────────────────────────────────────────────────── */}
       <section className="relative py-32 lg:py-48 px-6 text-center overflow-hidden bg-black">

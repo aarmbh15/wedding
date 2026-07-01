@@ -184,41 +184,7 @@ export default function Portfolio() {
           }
         `}</style>
       </Helmet>
-
-      {/* ── Hero Banner ─────────────────────────────────────────────────────── */}
-      {/* <div className="bg-[#f7f5f1] pt-[clamp(110px,14vw,160px)] pb-[clamp(40px,5vw,64px)] px-[clamp(24px,6vw,80px)] border-b border-[#ede9e3]">
-        <div className="max-w-[1400px] mx-auto">
-          <p className="pf-hero-sub font-jost text-[0.72rem] font-medium tracking-[0.32em] uppercase text-[#bbb] mb-4">
-            Selected Work
-          </p>
-          <h1 className="pf-hero-text font-cormorant text-[clamp(2.8rem,6vw,5rem)] font-light leading-[1.08] text-[#1a1a1a] mb-6">
-            Portfolio
-          </h1>
-          <p className="pf-hero-sub font-jost text-[0.95rem] font-light text-[#888] leading-[1.85] max-w-[500px]">
-            A curated selection of weddings we've had the privilege of photographing — across palaces, beaches, and intimate celebrations.
-          </p>
-        </div>
-      </div> */}
-
-      {/* <div className="h-screen pt-[200px] pb-[60px] text-center px-6">
-        <div className="absolute inset-0 z-0 scale-105">
-          <img
-            src={HeroImage}
-            alt="Wedding Cinematography"
-            className="w-full h-full object-cover opacity-60 brightness-75"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
-
-        <h1 className="pf-hero-text font-cormorant text-[clamp(3rem,6vw,5rem)] font-light text-[#1a1a1a]">
-          Photography
-        </h1>
-        <p className="pf-hero-sub font-jost text-[0.95rem] font-light text-[#888] leading-[1.85]">
-          Our wedding photography gallery is a curated collection of real stories, capturing genuine emotions, natural moments and refined portraits. Blending candid photography with thoughtful composition, we create elegant, timeless images that reflect each celebration with authenticity and creativity.
-        </p>
-      </div> */}
-
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+     <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
              <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
                 <img
                   src={HeroImage}
@@ -233,9 +199,18 @@ export default function Portfolio() {
                   Photography
                 </h1>
                 <div className="w-16 h-[1px] bg-[#c9a84c] mx-auto mb-8 animate-[widthGrow_1.5s_ease-out]" />
-                <p className="pf-hero-sub font-jost text-[0.95rem] font-light text-white/90 leading-[1.85]">
-                   Our wedding photography gallery is a curated collection of real stories, capturing genuine emotions, natural moments and refined portraits. Blending candid photography with thoughtful composition, we create elegant, timeless images that reflect each celebration with authenticity and creativity.
-                </p>
+ <p className="pf-hero-sub mt-8 mx-auto max-w-4xl px-6 text-center font-jost text-[0.95rem] md:text-[1.05rem] font-light text-white/90 leading-[1.9]">
+  Our wedding photography gallery is a curated collection of
+  <span className="font-medium text-white"> real stories</span>, capturing
+  <span className="font-medium text-white"> genuine emotions</span>,
+  <span className="font-medium text-white"> natural moments</span> and
+  <span className="font-medium text-white"> refined portraits</span>. Blending
+  <span className="font-medium text-white"> candid photography</span> with
+  <span className="font-medium text-white"> thoughtful composition</span>, we create
+  <span className="font-medium text-white"> elegant, timeless images</span> that
+  reflect each celebration with
+  <span className="font-medium text-white"> authenticity and creativity</span>.
+</p>
               </div>
             </section>
 
