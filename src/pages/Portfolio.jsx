@@ -27,14 +27,6 @@ const weddings = [
     cover:    img("Abhimanyu_Manisha/img603.webp"),
   },
   {
-    slug:     "bhakti-sourabh",
-    couple:   "Bhakti & Sourabh",
-    location: "Jodhpur, Rajasthan",
-    date:     "October 2024",
-    category: "City",
-    cover:    img("Bhakti_Sourabh/img319.webp"),
-  },
-  {
     slug:     "Rohan-preksha",
     couple:   "Preksha & Rohan",
     location: "Pushkar, Rajasthan",
@@ -56,7 +48,7 @@ const weddings = [
     location: "Pushkar, Rajasthan",
     date:     "January 2025",
     category: "Royal",
-    cover:    img("Rohan_Preksha/img538.webp"),
+    cover:    img("Nina_Parth/img1025.webp"),
   },
   {
     slug:     "Atish_Shweta",
@@ -64,7 +56,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Aishwarya_Sanmay/img33.webp"),
+    cover:    img("Atish_Shweta/img4014.webp"),
   },
    {
     slug:     "Gaurav_Chinmaee",
@@ -72,7 +64,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Aishwarya_Sanmay/img33.webp"),
+    cover:    img("Gaurav_Chinmaee/img913.webp"),
   },
   {
     slug:     "Raj_Suhasini",
@@ -80,7 +72,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Aishwarya_Sanmay/img33.webp"),
+    cover:    img("Raj_Suhasini/img2045.webp"),
   },
   {
     slug:     "Aishwarya_Sanmay",
@@ -96,7 +88,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Aishwarya_Sanmay/img33.webp"),
+    cover:    img("Anuja_Shubhang/img709.webp"),
   },
   {
     slug:     "Atharva_Haritha",
@@ -104,7 +96,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Aishwarya_Sanmay/img33.webp"),
+    cover:    img("Atharva_Haritha/img836.webp"),
   },
     {
     slug:     "Shruti_Harjot",
@@ -112,7 +104,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Aishwarya_Sanmay/img33.webp"),
+    cover:    img("Shruti_Harjot/img3057.webp"),
   },
   
   {
