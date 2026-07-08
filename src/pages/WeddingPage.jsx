@@ -376,8 +376,8 @@ const weddingData = {
     couple: "Atish & Shweta",
     location: "Pune, Maharashtra",
     caption: [
-      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
-      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+      "Atish and Shweta's wedding was filled with moments that kept everyone involved. One ritual led to another, family members stepped in with advice, laughter followed almost every tradition and there was always a reaction worth watching.",
+      "Between all the ceremonies and celebrations, they found time to exchange glances that said more than the words around them."
     ],
   images: [
   img("Atish_Shweta/img4001.webp"),
@@ -429,8 +429,8 @@ const weddingData = {
     couple: "Gaurav & Chinmaee",
     location: "Pune, Maharashtra",
     caption: [
-      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
-      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+      "Gaurav and Chinmaee's wedding in Pune was filled with warmth, laughter and moments shared with their closest people. From the bright haldi celebrations to the wedding ceremony, every part of the day felt joyful and relaxed.",
+      "Surrounded by family and friends, they embraced each moment as it came, making the celebration feel genuine, memorable and truly their own."
     ],
   images: [
   img("Gaurav_Chinmaee/img901.webp"),
@@ -478,10 +478,10 @@ const weddingData = {
     couple: "Raj & Suhasini",
     location: "Pune, Maharashtra",
     caption: [
-      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
-      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+      "Raj and Suhasini's celebrations began with a cheerful haldi where family and friends filled the day with colour and laughter. The energy carried into the sangeet, with music, dancing and unforgettable performances.",
+      "By the wedding day, the excitement had settled into meaningful moments, bringing everyone together for a celebration that felt complete from start to finish."
     ],
- images: [
+    images: [
   img("Raj_Suhasini/img2001.webp"),
   img("Raj_Suhasini/img2002.webp"),
   img("Raj_Suhasini/img2003.webp"),
@@ -536,8 +536,8 @@ const weddingData = {
     couple: "Shruti & Harjot",
     location: "Pune, Maharashtra",
     caption: [
-      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
-      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+      "Harjot and Shruti's celebrations brought together three very different moods. The haldi was filled with cheerful moments and family traditions, while the sangeet gave everyone a reason to let loose and celebrate.",
+      "By the wedding day, the pace had slowed, allowing them to take in each ritual, each glance and each moment shared with the people around them."
     ],
 images: [
   img("Shruti_Harjot/img3001.webp"),
@@ -609,8 +609,8 @@ images: [
     couple: "Atharva & Haritha",
     location: "Pune, Maharashtra",
     caption: [
-      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
-      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+      "Atharva and Haritha's wedding was a joyful celebration filled with laughter, family and meaningful moments. From the fun-filled haldi to the wedding ceremony, every part of the day felt warm and genuine.",
+      "Surrounded by their loved ones, they enjoyed every moment together making it a beautiful wedding celebration in Pune that reflected who they are."
     ],
 images: [
   img("Atharva_Haritha/img801.webp"),
@@ -673,8 +673,8 @@ images: [
     couple: "Nina & Parth",
     location: "Pune, Maharashtra",
     caption: [
-      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
-      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+      "Nina and Parth's wedding never had a quiet moment. The haldi was filled with fun, the wedding brought everyone together and the celebrations carried on well into the evening.",
+      "Wherever you looked, there were people dancing, laughing and creating moments that made the entire wedding feel alive from start to finish."
     ],
 images: [
   img("Nina_Parth/img1001.webp"),
@@ -720,8 +720,8 @@ images: [
     couple: "Anuja & Shubhang",
     location: "Pune, Maharashtra",
     caption: [
-      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
-      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+      "Shubhang and Anuja's celebrations started with a haldi where family members took centre stage, filling every moment with laughter and playful traditions.",
+      "The sangeet brought a different energy, with performances, dancing and a packed dance floor. By the wedding day, the focus shifted to meaningful rituals, bringing everyone together for a celebration rooted in tradition."
     ],
 images: [
   img("Anuja_Shubhang/img701.webp"),
