@@ -371,9 +371,428 @@ const weddingData = {
   img("Aishwarya_Sanmay/img84.webp"),
   img("Aishwarya_Sanmay/img85.webp"),
 ]
-  }
-};
+  },
+   "Atish_Shweta": {
+    couple: "Atish & Shweta",
+    location: "Pune, Maharashtra",
+    caption: [
+      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
+      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+    ],
+  images: [
+  img("Atish_Shweta/img4001.webp"),
+  img("Atish_Shweta/img4002.webp"),
+  img("Atish_Shweta/img4003.webp"),
+  img("Atish_Shweta/img4004.webp"),
+  img("Atish_Shweta/img4005.webp"),
+  img("Atish_Shweta/img4006.webp"),
+  img("Atish_Shweta/img4007.webp"),
+  img("Atish_Shweta/img4008.webp"),
+  img("Atish_Shweta/img4009.webp"),
+  img("Atish_Shweta/img4010.webp"),
+  img("Atish_Shweta/img4011.webp"),
+  img("Atish_Shweta/img4012.webp"),
+  img("Atish_Shweta/img4013.webp"),
+  img("Atish_Shweta/img4014.webp"),
+  img("Atish_Shweta/img4015.webp"),
+  img("Atish_Shweta/img4016.webp"),
+  img("Atish_Shweta/img4017.webp"),
+  img("Atish_Shweta/img4018.webp"),
+  img("Atish_Shweta/img4019.webp"),
+  img("Atish_Shweta/img4020.webp"),
+  img("Atish_Shweta/img4021.webp"),
+  img("Atish_Shweta/img4022.webp"),
+  img("Atish_Shweta/img4023.webp"),
+  img("Atish_Shweta/img4024.webp"),
+  img("Atish_Shweta/img4025.webp"),
+  img("Atish_Shweta/img4026.webp"),
+  img("Atish_Shweta/img4027.webp"),
+  img("Atish_Shweta/img4028.webp"),
+  img("Atish_Shweta/img4029.webp"),
+  img("Atish_Shweta/img4030.webp"),
+  img("Atish_Shweta/img4031.webp"),
+  img("Atish_Shweta/img4032.webp"),
+  img("Atish_Shweta/img4033.webp"),
+  img("Atish_Shweta/img4034.webp"),
+  img("Atish_Shweta/img4035.webp"),
+  img("Atish_Shweta/img4036.webp"),
+  img("Atish_Shweta/img4037.webp"),
+  img("Atish_Shweta/img4038.webp"),
+  img("Atish_Shweta/img4039.webp"),
+  img("Atish_Shweta/img4040.webp"),
+  img("Atish_Shweta/img4041.webp"),
+  img("Atish_Shweta/img4042.webp"),
+  ]   
+},
 
+  "Gaurav_Chinmaee": {
+    couple: "Gaurav & Chinmaee",
+    location: "Pune, Maharashtra",
+    caption: [
+      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
+      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+    ],
+  images: [
+  img("Gaurav_Chinmaee/img901.webp"),
+  img("Gaurav_Chinmaee/img902.webp"),
+  img("Gaurav_Chinmaee/img903.webp"),
+  img("Gaurav_Chinmaee/img904.webp"),
+  img("Gaurav_Chinmaee/img905.webp"),
+  img("Gaurav_Chinmaee/img906.webp"),
+  img("Gaurav_Chinmaee/img907.webp"),
+  img("Gaurav_Chinmaee/img908.webp"),
+  img("Gaurav_Chinmaee/img909.webp"),
+  img("Gaurav_Chinmaee/img910.webp"),
+  img("Gaurav_Chinmaee/img911.webp"),
+  img("Gaurav_Chinmaee/img912.webp"),
+  img("Gaurav_Chinmaee/img913.webp"),
+  img("Gaurav_Chinmaee/img914.webp"),
+  img("Gaurav_Chinmaee/img915.webp"),
+  img("Gaurav_Chinmaee/img916.webp"),
+  img("Gaurav_Chinmaee/img917.webp"),
+  img("Gaurav_Chinmaee/img918.webp"),
+  img("Gaurav_Chinmaee/img919.webp"),
+  img("Gaurav_Chinmaee/img920.webp"),
+  img("Gaurav_Chinmaee/img921.webp"),
+  img("Gaurav_Chinmaee/img922.webp"),
+  img("Gaurav_Chinmaee/img923.webp"),
+  img("Gaurav_Chinmaee/img924.webp"),
+  img("Gaurav_Chinmaee/img925.webp"),
+  img("Gaurav_Chinmaee/img926.webp"),
+  img("Gaurav_Chinmaee/img927.webp"),
+  img("Gaurav_Chinmaee/img928.webp"),
+  img("Gaurav_Chinmaee/img929.webp"),
+  img("Gaurav_Chinmaee/img930.webp"),
+  img("Gaurav_Chinmaee/img931.webp"),
+  img("Gaurav_Chinmaee/img932.webp"),
+  img("Gaurav_Chinmaee/img933.webp"),
+  img("Gaurav_Chinmaee/img934.webp"),
+  img("Gaurav_Chinmaee/img935.webp"),
+  img("Gaurav_Chinmaee/img936.webp"),
+  img("Gaurav_Chinmaee/img937.webp"),
+  img("Gaurav_Chinmaee/img938.webp"),
+  ]
+},
+
+  "Raj_Suhasini": {
+    couple: "Raj & Suhasini",
+    location: "Pune, Maharashtra",
+    caption: [
+      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
+      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+    ],
+ images: [
+  img("Raj_Suhasini/img2001.webp"),
+  img("Raj_Suhasini/img2002.webp"),
+  img("Raj_Suhasini/img2003.webp"),
+  img("Raj_Suhasini/img2004.webp"),
+  img("Raj_Suhasini/img2005.webp"),
+  img("Raj_Suhasini/img2006.webp"),
+  img("Raj_Suhasini/img2007.webp"),
+  img("Raj_Suhasini/img2008.webp"),
+  img("Raj_Suhasini/img2009.webp"),
+  img("Raj_Suhasini/img2010.webp"),
+  img("Raj_Suhasini/img2011.webp"),
+  img("Raj_Suhasini/img2012.webp"),
+  img("Raj_Suhasini/img2013.webp"),
+  img("Raj_Suhasini/img2014.webp"),
+  img("Raj_Suhasini/img2015.webp"),
+  img("Raj_Suhasini/img2016.webp"),
+  img("Raj_Suhasini/img2017.webp"),
+  img("Raj_Suhasini/img2018.webp"),
+  img("Raj_Suhasini/img2019.webp"),
+  img("Raj_Suhasini/img2020.webp"),
+  img("Raj_Suhasini/img2021.webp"),
+  img("Raj_Suhasini/img2022.webp"),
+  img("Raj_Suhasini/img2023.webp"),
+  img("Raj_Suhasini/img2024.webp"),
+  img("Raj_Suhasini/img2025.webp"),
+  img("Raj_Suhasini/img2026.webp"),
+  img("Raj_Suhasini/img2027.webp"),
+  img("Raj_Suhasini/img2028.webp"),
+  img("Raj_Suhasini/img2029.webp"),
+  img("Raj_Suhasini/img2030.webp"),
+  img("Raj_Suhasini/img2031.webp"),
+  img("Raj_Suhasini/img2032.webp"),
+  img("Raj_Suhasini/img2033.webp"),
+  img("Raj_Suhasini/img2034.webp"),
+  img("Raj_Suhasini/img2035.webp"),
+  img("Raj_Suhasini/img2036.webp"),
+  img("Raj_Suhasini/img2037.webp"),
+  img("Raj_Suhasini/img2038.webp"),
+  img("Raj_Suhasini/img2039.webp"),
+  img("Raj_Suhasini/img2040.webp"),
+  img("Raj_Suhasini/img2041.webp"),
+  img("Raj_Suhasini/img2042.webp"),
+  img("Raj_Suhasini/img2043.webp"),
+  img("Raj_Suhasini/img2044.webp"),
+  img("Raj_Suhasini/img2045.webp"),
+  img("Raj_Suhasini/img2046.webp"),
+  img("Raj_Suhasini/img2047.webp"),
+  ]
+},
+
+  "Shruti_Harjot": {
+    couple: "Shruti & Harjot",
+    location: "Pune, Maharashtra",
+    caption: [
+      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
+      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+    ],
+images: [
+  img("Shruti_Harjot/img3001.webp"),
+  img("Shruti_Harjot/img3002.webp"),
+  img("Shruti_Harjot/img3003.webp"),
+  img("Shruti_Harjot/img3004.webp"),
+  img("Shruti_Harjot/img3005.webp"),
+  img("Shruti_Harjot/img3006.webp"),
+  img("Shruti_Harjot/img3007.webp"),
+  img("Shruti_Harjot/img3008.webp"),
+  img("Shruti_Harjot/img3009.webp"),
+  img("Shruti_Harjot/img3010.webp"),
+  img("Shruti_Harjot/img3011.webp"),
+  img("Shruti_Harjot/img3012.webp"),
+  img("Shruti_Harjot/img3013.webp"),
+  img("Shruti_Harjot/img3014.webp"),
+  img("Shruti_Harjot/img3015.webp"),
+  img("Shruti_Harjot/img3016.webp"),
+  img("Shruti_Harjot/img3017.webp"),
+  img("Shruti_Harjot/img3018.webp"),
+  img("Shruti_Harjot/img3019.webp"),
+  img("Shruti_Harjot/img3020.webp"),
+  img("Shruti_Harjot/img3021.webp"),
+  img("Shruti_Harjot/img3022.webp"),
+  img("Shruti_Harjot/img3023.webp"),
+  img("Shruti_Harjot/img3024.webp"),
+  img("Shruti_Harjot/img3025.webp"),
+  img("Shruti_Harjot/img3026.webp"),
+  img("Shruti_Harjot/img3027.webp"),
+  img("Shruti_Harjot/img3028.webp"),
+  img("Shruti_Harjot/img3029.webp"),
+  img("Shruti_Harjot/img3030.webp"),
+  img("Shruti_Harjot/img3031.webp"),
+  img("Shruti_Harjot/img3032.webp"),
+  img("Shruti_Harjot/img3033.webp"),
+  img("Shruti_Harjot/img3034.webp"),
+  img("Shruti_Harjot/img3035.webp"),
+  img("Shruti_Harjot/img3036.webp"),
+  img("Shruti_Harjot/img3037.webp"),
+  img("Shruti_Harjot/img3038.webp"),
+  img("Shruti_Harjot/img3039.webp"),
+  img("Shruti_Harjot/img3040.webp"),
+  img("Shruti_Harjot/img3041.webp"),
+  img("Shruti_Harjot/img3042.webp"),
+  img("Shruti_Harjot/img3043.webp"),
+  img("Shruti_Harjot/img3044.webp"),
+  img("Shruti_Harjot/img3045.webp"),
+  img("Shruti_Harjot/img3046.webp"),
+  img("Shruti_Harjot/img3047.webp"),
+  img("Shruti_Harjot/img3048.webp"),
+  img("Shruti_Harjot/img3049.webp"),
+  img("Shruti_Harjot/img3050.webp"),
+  img("Shruti_Harjot/img3051.webp"),
+  img("Shruti_Harjot/img3052.webp"),
+  img("Shruti_Harjot/img3053.webp"),
+  img("Shruti_Harjot/img3054.webp"),
+  img("Shruti_Harjot/img3055.webp"),
+  img("Shruti_Harjot/img3056.webp"),
+  img("Shruti_Harjot/img3057.webp"),
+  img("Shruti_Harjot/img3058.webp"),
+  img("Shruti_Harjot/img3059.webp"),
+  img("Shruti_Harjot/img3060.webp"),
+  img("Shruti_Harjot/img3061.webp"),
+  img("Shruti_Harjot/img3062.webp"),
+  img("Shruti_Harjot/img3063.webp"),
+ ]
+  },  
+  "Atharva_Haritha": {
+    couple: "Atharva & Haritha",
+    location: "Pune, Maharashtra",
+    caption: [
+      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
+      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+    ],
+images: [
+  img("Atharva_Haritha/img801.webp"),
+  img("Atharva_Haritha/img802.webp"),
+  img("Atharva_Haritha/img803.webp"),
+  img("Atharva_Haritha/img804.webp"),
+  img("Atharva_Haritha/img805.webp"),
+  img("Atharva_Haritha/img806.webp"),
+  img("Atharva_Haritha/img807.webp"),
+  img("Atharva_Haritha/img808.webp"),
+  img("Atharva_Haritha/img809.webp"),
+  img("Atharva_Haritha/img810.webp"),
+  img("Atharva_Haritha/img811.webp"),
+  img("Atharva_Haritha/img812.webp"),
+  img("Atharva_Haritha/img813.webp"),
+  img("Atharva_Haritha/img814.webp"),
+  img("Atharva_Haritha/img815.webp"),
+  img("Atharva_Haritha/img816.webp"),
+  img("Atharva_Haritha/img817.webp"),
+  img("Atharva_Haritha/img818.webp"),
+  img("Atharva_Haritha/img819.webp"),
+  img("Atharva_Haritha/img820.webp"),
+  img("Atharva_Haritha/img821.webp"),
+  img("Atharva_Haritha/img822.webp"),
+  img("Atharva_Haritha/img823.webp"),
+  img("Atharva_Haritha/img824.webp"),
+  img("Atharva_Haritha/img825.webp"),
+  img("Atharva_Haritha/img826.webp"),
+  img("Atharva_Haritha/img827.webp"),
+  img("Atharva_Haritha/img828.webp"),
+  img("Atharva_Haritha/img829.webp"),
+  img("Atharva_Haritha/img830.webp"),
+  img("Atharva_Haritha/img831.webp"),
+  img("Atharva_Haritha/img832.webp"),
+  img("Atharva_Haritha/img833.webp"),
+  img("Atharva_Haritha/img834.webp"),
+  img("Atharva_Haritha/img835.webp"),
+  img("Atharva_Haritha/img836.webp"),
+  img("Atharva_Haritha/img837.webp"),
+  img("Atharva_Haritha/img838.webp"),
+  img("Atharva_Haritha/img839.webp"),
+  img("Atharva_Haritha/img840.webp"),
+  img("Atharva_Haritha/img841.webp"),
+  img("Atharva_Haritha/img842.webp"),
+  img("Atharva_Haritha/img843.webp"),
+  img("Atharva_Haritha/img844.webp"),
+  img("Atharva_Haritha/img845.webp"),
+  img("Atharva_Haritha/img846.webp"),
+  img("Atharva_Haritha/img847.webp"),
+  img("Atharva_Haritha/img848.webp"),
+  img("Atharva_Haritha/img849.webp"),
+  img("Atharva_Haritha/img850.webp"),
+  img("Atharva_Haritha/img851.webp"),
+  img("Atharva_Haritha/img852.webp"),
+  img("Atharva_Haritha/img853.webp"),
+   ]
+},
+
+  "Nina_Parth": {
+    couple: "Nina & Parth",
+    location: "Pune, Maharashtra",
+    caption: [
+      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
+      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+    ],
+images: [
+  img("Nina_Parth/img1001.webp"),
+  img("Nina_Parth/img1002.webp"),
+  img("Nina_Parth/img1003.webp"),
+  img("Nina_Parth/img1004.webp"),
+  img("Nina_Parth/img1005.webp"),
+  img("Nina_Parth/img1006.webp"),
+  img("Nina_Parth/img1007.webp"),
+  img("Nina_Parth/img1008.webp"),
+  img("Nina_Parth/img1009.webp"),
+  img("Nina_Parth/img1010.webp"),
+  img("Nina_Parth/img1011.webp"),
+  img("Nina_Parth/img1012.webp"),
+  img("Nina_Parth/img1013.webp"),
+  img("Nina_Parth/img1014.webp"),
+  img("Nina_Parth/img1015.webp"),
+  img("Nina_Parth/img1016.webp"),
+  img("Nina_Parth/img1017.webp"),
+  img("Nina_Parth/img1018.webp"),
+  img("Nina_Parth/img1019.webp"),
+  img("Nina_Parth/img1020.webp"),
+  img("Nina_Parth/img1021.webp"),
+  img("Nina_Parth/img1022.webp"),
+  img("Nina_Parth/img1023.webp"),
+  img("Nina_Parth/img1024.webp"),
+  img("Nina_Parth/img1025.webp"),
+  img("Nina_Parth/img1026.webp"),
+  img("Nina_Parth/img1027.webp"),
+  img("Nina_Parth/img1028.webp"),
+  img("Nina_Parth/img1029.webp"),
+  img("Nina_Parth/img1030.webp"),
+  img("Nina_Parth/img1031.webp"),
+  img("Nina_Parth/img1032.webp"),
+  img("Nina_Parth/img1033.webp"),
+  img("Nina_Parth/img1034.webp"),
+  img("Nina_Parth/img1035.webp"),
+  img("Nina_Parth/img1036.webp"),
+ ]
+  },
+
+  "Anuja_Shubhang": {
+    couple: "Anuja & Shubhang",
+    location: "Pune, Maharashtra",
+    caption: [
+      "Aishwarya and Sanmay’s wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout. There was always something happening, yet it never felt overwhelming.",
+      "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
+    ],
+images: [
+  img("Anuja_Shubhang/img701.webp"),
+  img("Anuja_Shubhang/img702.webp"),
+  img("Anuja_Shubhang/img703.webp"),
+  img("Anuja_Shubhang/img704.webp"),
+  img("Anuja_Shubhang/img705.webp"),
+  img("Anuja_Shubhang/img706.webp"),
+  img("Anuja_Shubhang/img707.webp"),
+  img("Anuja_Shubhang/img708.webp"),
+  img("Anuja_Shubhang/img709.webp"),
+  img("Anuja_Shubhang/img710.webp"),
+  img("Anuja_Shubhang/img711.webp"),
+  img("Anuja_Shubhang/img712.webp"),
+  img("Anuja_Shubhang/img713.webp"),
+  img("Anuja_Shubhang/img714.webp"),
+  img("Anuja_Shubhang/img715.webp"),
+  img("Anuja_Shubhang/img716.webp"),
+  img("Anuja_Shubhang/img717.webp"),
+  img("Anuja_Shubhang/img718.webp"),
+  img("Anuja_Shubhang/img719.webp"),
+  img("Anuja_Shubhang/img720.webp"),
+  img("Anuja_Shubhang/img721.webp"),
+  img("Anuja_Shubhang/img722.webp"),
+  img("Anuja_Shubhang/img723.webp"),
+  img("Anuja_Shubhang/img724.webp"),
+  img("Anuja_Shubhang/img725.webp"),
+  img("Anuja_Shubhang/img726.webp"),
+  img("Anuja_Shubhang/img727.webp"),
+  img("Anuja_Shubhang/img728.webp"),
+  img("Anuja_Shubhang/img729.webp"),
+  img("Anuja_Shubhang/img730.webp"),
+  img("Anuja_Shubhang/img731.webp"),
+  img("Anuja_Shubhang/img732.webp"),
+  img("Anuja_Shubhang/img733.webp"),
+  img("Anuja_Shubhang/img734.webp"),
+  img("Anuja_Shubhang/img735.webp"),
+  img("Anuja_Shubhang/img736.webp"),
+  img("Anuja_Shubhang/img737.webp"),
+  img("Anuja_Shubhang/img738.webp"),
+  img("Anuja_Shubhang/img739.webp"),
+  img("Anuja_Shubhang/img740.webp"),
+  img("Anuja_Shubhang/img741.webp"),
+  img("Anuja_Shubhang/img742.webp"),
+  img("Anuja_Shubhang/img743.webp"),
+  img("Anuja_Shubhang/img744.webp"),
+  img("Anuja_Shubhang/img745.webp"),
+  img("Anuja_Shubhang/img746.webp"),
+  img("Anuja_Shubhang/img747.webp"),
+  img("Anuja_Shubhang/img748.webp"),
+  img("Anuja_Shubhang/img749.webp"),
+  img("Anuja_Shubhang/img750.webp"),
+  img("Anuja_Shubhang/img751.webp"),
+  img("Anuja_Shubhang/img752.webp"),
+  img("Anuja_Shubhang/img753.webp"),
+  img("Anuja_Shubhang/img754.webp"),
+  img("Anuja_Shubhang/img755.webp"),
+  img("Anuja_Shubhang/img756.webp"),
+  img("Anuja_Shubhang/img757.webp"),
+  img("Anuja_Shubhang/img758.webp"),
+  img("Anuja_Shubhang/img759.webp"),
+  img("Anuja_Shubhang/img760.webp"),
+  img("Anuja_Shubhang/img761.webp"),
+  img("Anuja_Shubhang/img762.webp"),
+  img("Anuja_Shubhang/img763.webp"),
+  img("Anuja_Shubhang/img764.webp"),
+  img("Anuja_Shubhang/img765.webp"),
+ ]
+} 
+
+};
 export default function WeddingPage() {
   const { slug } = useParams();
   const wedding = weddingData[slug];
@@ -564,839 +983,3 @@ export default function WeddingPage() {
     </div>
   );
 }
-
-//below is image1 
-
-// import React from "react";
-// import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
-// import { Helmet } from "react-helmet-async";
-
-// // Image loading logic
-// const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
-// const img = (path) => allImages[`../assets/${path}`]?.default;
-
-// const weddingData = {
-//   "amruta-amey": {
-//     couple: "Amruta & Amey",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Amruta & Amey's wedding was a heartfelt Maharashtrian celebration, rooted in tradition and quiet elegance. The day unfolded with a gentle rhythm where every ritual felt meaningful, unhurried and deeply personal.",
-//       "From soft, intimate moments to bursts of laughter shared with loved ones, their wedding carried a warmth that stayed constant throughout. Nothing felt rushed, nothing felt staged, just real emotions, honest connections and a love that spoke for itself."
-//     ],
-//     images: [
-//       img("Amruta_Amey/img200.webp"), img("Amruta_Amey/img202.webp"), img("Amruta_Amey/img203.webp"),
-//       img("Amruta_Amey/img204.webp"), img("Amruta_Amey/img206.webp"), img("Amruta_Amey/img207.webp"),
-//       img("Amruta_Amey/img208.webp"), img("Amruta_Amey/img209.webp"), img("Amruta_Amey/img213.webp"),
-//       img("Amruta_Amey/img216.webp"), img("Amruta_Amey/img218.webp"), img("Amruta_Amey/img221.webp"),
-//       img("Amruta_Amey/img225.webp"), img("Amruta_Amey/img229.webp"), img("Amruta_Amey/img232.webp"),
-//       img("Amruta_Amey/img233.webp"), img("Amruta_Amey/img234.webp"), img("Amruta_Amey/img235.webp"),
-//       img("Amruta_Amey/img239.webp"), img("Amruta_Amey/img237.webp"), img("Amruta_Amey/img241.webp"),
-//       img("Amruta_Amey/img243.webp"), img("Amruta_Amey/img244.webp"), img("Amruta_Amey/img252.webp"),
-//       img("Amruta_Amey/img254.webp"), img("Amruta_Amey/img257.webp"), img("Amruta_Amey/img258.webp"),
-//       img("Amruta_Amey/img266.webp"), img("Amruta_Amey/img265.webp"), img("Amruta_Amey/img262.webp"),
-//       img("Amruta_Amey/img261.webp"), img("Amruta_Amey/img270.webp"),
-//     ]
-//   },
-//   "abhimanyu-manisha": {
-//     couple: "Abhimanyu & Manisha",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Abhimanyu and Manisha's wedding felt full of life from the very beginning. The haldi was filled with laughter and colour where everyone was completely in the moment and enjoying every second.",
-//       "When the ceremony began everything slowed down and fell calm and meaningful. In between it all they stayed present sharing real moments with their people. It was warm honest and truly a reflection of them."
-//     ],
-//     images: [
-//       img("Abhimanyu_Manisha/img601.webp"), img("Abhimanyu_Manisha/img602.webp"), img("Abhimanyu_Manisha/img603.webp"),
-//       img("Abhimanyu_Manisha/img604.webp"), img("Abhimanyu_Manisha/img605.webp"), img("Abhimanyu_Manisha/img606.webp"),
-//       img("Abhimanyu_Manisha/img607.webp"), img("Abhimanyu_Manisha/img608.webp"), img("Abhimanyu_Manisha/img609.webp"),
-//       img("Abhimanyu_Manisha/img610.webp"), img("Abhimanyu_Manisha/img611.webp"), img("Abhimanyu_Manisha/img612.webp"),
-//       img("Abhimanyu_Manisha/img613.webp"), img("Abhimanyu_Manisha/img614.webp"), img("Abhimanyu_Manisha/img615.webp"),
-//       img("Abhimanyu_Manisha/img616.webp"), img("Abhimanyu_Manisha/img617.webp"), img("Abhimanyu_Manisha/img618.webp"),
-//       img("Abhimanyu_Manisha/img624.webp"), img("Abhimanyu_Manisha/img620.webp"), img("Abhimanyu_Manisha/img621.webp"),
-//       img("Abhimanyu_Manisha/img622.webp"), img("Abhimanyu_Manisha/img623.webp"),
-//     ]
-//   },
-//   "bhakti-sourabh": {
-//     couple: "Bhakti & Sourabh",
-//     location: "Jodhpur, Rajasthan",
-//     caption: [
-//       "Bhakti and Sourabh's wedding carried a royal charm that felt both grand and personal at the same time. Set against the heritage beauty of Jodhpur the celebrations moved effortlessly from intimate rituals to lively evenings.",
-//       "There was a natural ease between them that showed in every moment whether it was quiet glances or carefree laughter with their people."
-//     ],
-//     images: [
-//       img("Bhakti_Sourabh/img304.webp"), img("Bhakti_Sourabh/img309.webp"), img("Bhakti_Sourabh/img310.webp"),
-//       img("Bhakti_Sourabh/img314.webp"), img("Bhakti_Sourabh/img316.webp"), img("Bhakti_Sourabh/img317.webp"),
-//       img("Bhakti_Sourabh/img318.webp"), img("Bhakti_Sourabh/img319.webp"), img("Bhakti_Sourabh/img321.webp"),
-//       img("Bhakti_Sourabh/img322.webp"), img("Bhakti_Sourabh/img323.webp"), img("Bhakti_Sourabh/img324.webp"),
-//       img("Bhakti_Sourabh/img327.webp"), img("Bhakti_Sourabh/img328.webp"), img("Bhakti_Sourabh/img330.webp"),
-//       img("Bhakti_Sourabh/img332.webp"), img("Bhakti_Sourabh/img333.webp"), img("Bhakti_Sourabh/img334.webp"),
-//       img("Bhakti_Sourabh/img335.webp"), img("Bhakti_Sourabh/img338.webp"), img("Bhakti_Sourabh/img339.webp"),
-//       img("Bhakti_Sourabh/img340.webp"), img("Bhakti_Sourabh/img342.webp"), img("Bhakti_Sourabh/img344.webp"),
-//       img("Bhakti_Sourabh/img345.webp"), img("Bhakti_Sourabh/img346.webp"), img("Bhakti_Sourabh/img349.webp"),
-//       img("Bhakti_Sourabh/img350.webp"), img("Bhakti_Sourabh/img351.webp"), img("Bhakti_Sourabh/img353.webp"),
-//       img("Bhakti_Sourabh/img357.webp"), img("Bhakti_Sourabh/img359.webp"),
-//     ]
-//   },
-//   "Rohan-preksha": {
-//     couple: "Rohan & Preksha",
-//     location: "Pushkar, Rajasthan",
-//     caption: [
-//       "Rohan and Preksha's wedding felt like one long celebration where no one held back. The days were filled with colour, music, and constant movement with something happening in every corner.",
-//       "What made it special was how easily they blended into it all. Dancing with their friends, sharing jokes, and just enjoying the chaos around them."
-//     ],
-//     images: [
-//       img("Rohan_Preksha/img501.webp"), img("Rohan_Preksha/img502.webp"), img("Rohan_Preksha/img503.webp"),
-//       img("Rohan_Preksha/img504.webp"), img("Rohan_Preksha/img505.webp"), img("Rohan_Preksha/img506.webp"),
-//       img("Rohan_Preksha/img507.webp"), img("Rohan_Preksha/img508.webp"), img("Rohan_Preksha/img509.webp"),
-//       img("Rohan_Preksha/img511.webp"), img("Rohan_Preksha/img514.webp"), img("Rohan_Preksha/img515.webp"),
-//       img("Rohan_Preksha/img517.webp"), img("Rohan_Preksha/img519.webp"), img("Rohan_Preksha/img520.webp"),
-//       img("Rohan_Preksha/img521.webp"), img("Rohan_Preksha/img534.webp"), img("Rohan_Preksha/img533.webp"),
-//       img("Rohan_Preksha/img536.webp"), img("Rohan_Preksha/img540.webp"), img("Rohan_Preksha/img543.webp"),
-//       img("Rohan_Preksha/img544.webp"), img("Rohan_Preksha/img545.webp"), img("Rohan_Preksha/img546.webp"),
-//     ]
-//   },
-//   "Chaitrali_Shubham": {
-//     couple: "Chaitrali & Shubham",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Chaitrali and Shubham's wedding had a rhythm of its own, steady, joyful, and full of heart. The celebrations felt close knit, with every ritual bringing people together in the most genuine way.",
-//       "What stood out was how effortlessly everything came together. Just two people surrounded by their families, celebrating in a way that felt familiar and comforting."
-//     ],
-//     images: [
-//       img("Chaitrali_Shubham/img401.webp"), img("Chaitrali_Shubham/img402.webp"), img("Chaitrali_Shubham/img403.webp"),
-//       img("Chaitrali_Shubham/img404.webp"), img("Chaitrali_Shubham/img405.webp"), img("Chaitrali_Shubham/img407.webp"),
-//       img("Chaitrali_Shubham/img408.webp"), img("Chaitrali_Shubham/img409.webp"), img("Chaitrali_Shubham/img411.webp"),
-//       img("Chaitrali_Shubham/img412.webp"), img("Chaitrali_Shubham/img415.webp"), img("Chaitrali_Shubham/img416.webp"),
-//       img("Chaitrali_Shubham/img418.webp"), img("Chaitrali_Shubham/img421.webp"), img("Chaitrali_Shubham/img422.webp"),
-//       img("Chaitrali_Shubham/img420.webp"), img("Chaitrali_Shubham/img423.webp"), img("Chaitrali_Shubham/img425.webp"),
-//       img("Chaitrali_Shubham/img427.webp"), img("Chaitrali_Shubham/img428.webp"), img("Chaitrali_Shubham/img432.webp"),
-//       img("Chaitrali_Shubham/img434.webp"), img("Chaitrali_Shubham/img436.webp"), img("Chaitrali_Shubham/img438.webp"),
-//     ]
-//   },
-//   "Aishwarya_Sanmay": {
-//     couple: "Aishwarya & Sanmay",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Aishwarya and Sanmay's wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout.",
-//       "What stood out was how naturally they moved through it all. It wasn't about the scale or the setup, but about how present they were with each other."
-//     ],
-//     images: [
-//       img("Aishwarya_Sanmay/img0.webp"), img("Aishwarya_Sanmay/img1.webp"), img("Aishwarya_Sanmay/img3.webp"),
-//       img("Aishwarya_Sanmay/img5.webp"), img("Aishwarya_Sanmay/img6.webp"), img("Aishwarya_Sanmay/img15.webp"),
-//       img("Aishwarya_Sanmay/img20.webp"), img("Aishwarya_Sanmay/img26.webp"), img("Aishwarya_Sanmay/img17.webp"),
-//       img("Aishwarya_Sanmay/img27.webp"), img("Aishwarya_Sanmay/img29.webp"), img("Aishwarya_Sanmay/img23.webp"),
-//       img("Aishwarya_Sanmay/img28.webp"), img("Aishwarya_Sanmay/img31.webp"), img("Aishwarya_Sanmay/img35.webp"),
-//       img("Aishwarya_Sanmay/img39.webp"), img("Aishwarya_Sanmay/img44.webp"), img("Aishwarya_Sanmay/img48.webp"),
-//       img("Aishwarya_Sanmay/img54.webp"), img("Aishwarya_Sanmay/img62.webp"), img("Aishwarya_Sanmay/img64.webp"),
-//       img("Aishwarya_Sanmay/img67.webp"), img("Aishwarya_Sanmay/img69.webp"), img("Aishwarya_Sanmay/img70.webp"),
-//       img("Aishwarya_Sanmay/img73.webp"), img("Aishwarya_Sanmay/img74.webp"), img("Aishwarya_Sanmay/img80.webp"),
-//       img("Aishwarya_Sanmay/img82.webp"),
-//     ]
-//   }
-// };
-
-// export default function WeddingPage() {
-//   const { slug } = useParams();
-//   const wedding = weddingData[slug];
-//   const location = useLocation();
-//   const navigate = useNavigate();
-
-//   const handleBack = () => {
-//     if (location.state?.from) {
-//       navigate(location.state.from);
-//     } else {
-//       navigate("/");
-//     }
-//   };
-
-//   if (!wedding) {
-//     return (
-//       <div className="flex flex-col items-center justify-center min-h-screen bg-[#fdfcfa] px-6 text-center">
-//         <h1 className="font-serif text-4xl text-neutral-800 mb-6">Wedding Not Found</h1>
-//         <Link to="/" className="font-sans uppercase tracking-[0.2em] text-xs text-neutral-500 hover:text-black transition-colors duration-300 border-b border-neutral-300 pb-1">
-//           Back to Stories
-//         </Link>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="bg-[#fdfcfa] min-h-screen selection:bg-[#bba98a]/20">
-//       <Helmet>
-//         <title>{wedding.couple} | TILT SHIFT Films</title>
-//       </Helmet>
-
-//       {/* Animation & Font Import Layer */}
-//       <style>{`
-//         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap');
-        
-//         @keyframes reveal-up {
-//           from { transform: translateY(30px); opacity: 0; }
-//           to { transform: translateY(0); opacity: 1; }
-//         }
-//         .reveal {
-//           animation: reveal-up 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-//         }
-//       `}</style>
-
-//       {/* Fixed Sidebar Navigation (Desktop) / Top Nav (Mobile) */}
-//       <nav className="fixed top-0 left-0 w-full z-50 p-6 md:p-10 pointer-events-none">
-//         <button
-//           onClick={handleBack}
-//           className="pointer-events-auto group flex items-center gap-4 font-sans text-[10px] tracking-[0.4em] uppercase text-neutral-400 hover:text-neutral-900 transition-all duration-500"
-//         >
-//           <span className="w-8 h-[1px] bg-neutral-300 group-hover:w-14 group-hover:bg-neutral-900 transition-all duration-500"></span>
-//           Back
-//         </button>
-//       </nav>
-
-//       <main className="max-w-[1400px] mx-auto px-6 md:px-12 pt-32 pb-24">
-        
-//         {/* Editorial Header */}
-//         <header className="mb-24 lg:mb-40 reveal">
-//           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-neutral-100 pb-12">
-//             <div className="max-w-4xl">
-//               <span className="inline-block font-sans text-[11px] tracking-[0.5em] uppercase text-[#bba98a] mb-6">
-//                 Cinema Journal • Vol. 01
-//               </span>
-//               <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.9] text-neutral-900 tracking-tighter">
-//                 {wedding.couple}
-//               </h1>
-//             </div>
-//             <div className="lg:text-right">
-//               <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-neutral-400 mb-1">Destination</p>
-//               <p className="font-serif text-2xl italic text-neutral-700">{wedding.location}</p>
-//             </div>
-//           </div>
-//         </header>
-
-//         {/* Narrative Split Layout */}
-//         <section className="mb-32 grid lg:grid-cols-12 gap-12 items-start reveal" style={{ animationDelay: '0.2s' }}>
-//           <div className="lg:col-span-4">
-//             <div className="w-12 h-[1px] bg-[#bba98a] mb-8"></div>
-//             <h3 className="font-sans text-[10px] tracking-[0.4em] uppercase text-neutral-400">The Narrative</h3>
-//           </div>
-//           <div className="lg:col-span-8 space-y-10">
-//             {wedding.caption.map((para, i) => (
-//               <p key={i} className="font-serif text-xl md:text-3xl leading-relaxed text-neutral-600 font-light italic">
-//                 "{para}"
-//               </p>
-//             ))}
-//           </div>
-//         </section>
-
-//         {/* Decorative Divider */}
-//         <div className="flex items-center justify-center gap-6 mb-32 opacity-30">
-//           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent to-neutral-900"></div>
-//           <div className="w-1.5 h-1.5 rounded-full bg-neutral-900"></div>
-//           <div className="w-24 h-[1px] bg-gradient-to-l from-transparent to-neutral-900"></div>
-//         </div>
-
-//         {/* Masonry-Style Image Grid */}
-//         <section className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-//           {wedding.images.map((src, index) => (
-//             <div 
-//               key={index} 
-//               className="break-inside-avoid group relative overflow-hidden bg-neutral-100 rounded-[2px]"
-//             >
-//               <img
-//                 src={src}
-//                 alt={`${wedding.couple} - Moment ${index + 1}`}
-//                 className="w-full h-auto object-cover transition-transform duration-[2s] cubic-bezier(0.2, 1, 0.3, 1) group-hover:scale-105"
-//                 loading="lazy"
-//               />
-//               {/* Subtle hover overlay */}
-//               <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-//             </div>
-//           ))}
-//         </section>
-
-//         {/* Footer Navigation */}
-//         <footer className="mt-40 border-t border-neutral-100 pt-20 text-center">
-//           <p className="font-sans text-[10px] tracking-[0.4em] uppercase text-neutral-400 mb-8">End of Story</p>
-//           <button 
-//             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-//             className="font-serif italic text-2xl text-neutral-800 hover:text-[#bba98a] transition-colors duration-500"
-//           >
-//             Back to top
-//           </button>
-//         </footer>
-
-//       </main>
-//     </div>
-//   );
-// }
-
-//below is image 2
-
-// import React, { useEffect } from "react";
-// import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
-// import { Helmet } from "react-helmet-async";
-
-// // Image loading logic remains consistent
-// const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
-// const img = (path) => allImages[`../assets/${path}`]?.default;
-
-// // ... (weddingData object remains the same) ...
-// const weddingData = {
-//   "amruta-amey": {
-//     couple: "Amruta & Amey",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Amruta & Amey's wedding was a heartfelt Maharashtrian celebration, rooted in tradition and quiet elegance. The day unfolded with a gentle rhythm where every ritual felt meaningful, unhurried and deeply personal.",
-//       "From soft, intimate moments to bursts of laughter shared with loved ones, their wedding carried a warmth that stayed constant throughout. Nothing felt rushed, nothing felt staged, just real emotions, honest connections and a love that spoke for itself."
-//     ],
-//     images: [
-//       img("Amruta_Amey/img200.webp"), img("Amruta_Amey/img202.webp"), img("Amruta_Amey/img203.webp"),
-//       img("Amruta_Amey/img204.webp"), img("Amruta_Amey/img206.webp"), img("Amruta_Amey/img207.webp"),
-//       img("Amruta_Amey/img208.webp"), img("Amruta_Amey/img209.webp"), img("Amruta_Amey/img213.webp"),
-//       img("Amruta_Amey/img216.webp"), img("Amruta_Amey/img218.webp"), img("Amruta_Amey/img221.webp"),
-//       img("Amruta_Amey/img225.webp"), img("Amruta_Amey/img229.webp"), img("Amruta_Amey/img232.webp"),
-//       img("Amruta_Amey/img233.webp"), img("Amruta_Amey/img234.webp"), img("Amruta_Amey/img235.webp"),
-//       img("Amruta_Amey/img239.webp"), img("Amruta_Amey/img237.webp"), img("Amruta_Amey/img241.webp"),
-//       img("Amruta_Amey/img243.webp"), img("Amruta_Amey/img244.webp"), img("Amruta_Amey/img252.webp"),
-//       img("Amruta_Amey/img254.webp"), img("Amruta_Amey/img257.webp"), img("Amruta_Amey/img258.webp"),
-//       img("Amruta_Amey/img266.webp"), img("Amruta_Amey/img265.webp"), img("Amruta_Amey/img262.webp"),
-//       img("Amruta_Amey/img261.webp"), img("Amruta_Amey/img270.webp"),
-//     ]
-//   },
-//   "abhimanyu-manisha": {
-//     couple: "Abhimanyu & Manisha",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Abhimanyu and Manisha's wedding felt full of life from the very beginning. The haldi was filled with laughter and colour where everyone was completely in the moment and enjoying every second.",
-//       "When the ceremony began everything slowed down and fell calm and meaningful. In between it all they stayed present sharing real moments with their people. It was warm honest and truly a reflection of them."
-//     ],
-//     images: [
-//       img("Abhimanyu_Manisha/img601.webp"), img("Abhimanyu_Manisha/img602.webp"), img("Abhimanyu_Manisha/img603.webp"),
-//       img("Abhimanyu_Manisha/img604.webp"), img("Abhimanyu_Manisha/img605.webp"), img("Abhimanyu_Manisha/img606.webp"),
-//       img("Abhimanyu_Manisha/img607.webp"), img("Abhimanyu_Manisha/img608.webp"), img("Abhimanyu_Manisha/img609.webp"),
-//       img("Abhimanyu_Manisha/img610.webp"), img("Abhimanyu_Manisha/img611.webp"), img("Abhimanyu_Manisha/img612.webp"),
-//       img("Abhimanyu_Manisha/img613.webp"), img("Abhimanyu_Manisha/img614.webp"), img("Abhimanyu_Manisha/img615.webp"),
-//       img("Abhimanyu_Manisha/img616.webp"), img("Abhimanyu_Manisha/img617.webp"), img("Abhimanyu_Manisha/img618.webp"),
-//       img("Abhimanyu_Manisha/img624.webp"), img("Abhimanyu_Manisha/img620.webp"), img("Abhimanyu_Manisha/img621.webp"),
-//       img("Abhimanyu_Manisha/img622.webp"), img("Abhimanyu_Manisha/img623.webp"),
-//     ]
-//   },
-//   "bhakti-sourabh": {
-//     couple: "Bhakti & Sourabh",
-//     location: "Jodhpur, Rajasthan",
-//     caption: [
-//       "Bhakti and Sourabh's wedding carried a royal charm that felt both grand and personal at the same time. Set against the heritage beauty of Jodhpur the celebrations moved effortlessly from intimate rituals to lively evenings.",
-//       "There was a natural ease between them that showed in every moment whether it was quiet glances or carefree laughter with their people."
-//     ],
-//     images: [
-//       img("Bhakti_Sourabh/img304.webp"), img("Bhakti_Sourabh/img309.webp"), img("Bhakti_Sourabh/img310.webp"),
-//       img("Bhakti_Sourabh/img314.webp"), img("Bhakti_Sourabh/img316.webp"), img("Bhakti_Sourabh/img317.webp"),
-//       img("Bhakti_Sourabh/img318.webp"), img("Bhakti_Sourabh/img319.webp"), img("Bhakti_Sourabh/img321.webp"),
-//       img("Bhakti_Sourabh/img322.webp"), img("Bhakti_Sourabh/img323.webp"), img("Bhakti_Sourabh/img324.webp"),
-//       img("Bhakti_Sourabh/img327.webp"), img("Bhakti_Sourabh/img328.webp"), img("Bhakti_Sourabh/img330.webp"),
-//       img("Bhakti_Sourabh/img332.webp"), img("Bhakti_Sourabh/img333.webp"), img("Bhakti_Sourabh/img334.webp"),
-//       img("Bhakti_Sourabh/img335.webp"), img("Bhakti_Sourabh/img338.webp"), img("Bhakti_Sourabh/img339.webp"),
-//       img("Bhakti_Sourabh/img340.webp"), img("Bhakti_Sourabh/img342.webp"), img("Bhakti_Sourabh/img344.webp"),
-//       img("Bhakti_Sourabh/img345.webp"), img("Bhakti_Sourabh/img346.webp"), img("Bhakti_Sourabh/img349.webp"),
-//       img("Bhakti_Sourabh/img350.webp"), img("Bhakti_Sourabh/img351.webp"), img("Bhakti_Sourabh/img353.webp"),
-//       img("Bhakti_Sourabh/img357.webp"), img("Bhakti_Sourabh/img359.webp"),
-//     ]
-//   },
-//   "Rohan-preksha": {
-//     couple: "Rohan & Preksha",
-//     location: "Pushkar, Rajasthan",
-//     caption: [
-//       "Rohan and Preksha's wedding felt like one long celebration where no one held back. The days were filled with colour, music, and constant movement with something happening in every corner.",
-//       "What made it special was how easily they blended into it all. Dancing with their friends, sharing jokes, and just enjoying the chaos around them."
-//     ],
-//     images: [
-//       img("Rohan_Preksha/img501.webp"), img("Rohan_Preksha/img502.webp"), img("Rohan_Preksha/img503.webp"),
-//       img("Rohan_Preksha/img504.webp"), img("Rohan_Preksha/img505.webp"), img("Rohan_Preksha/img506.webp"),
-//       img("Rohan_Preksha/img507.webp"), img("Rohan_Preksha/img508.webp"), img("Rohan_Preksha/img509.webp"),
-//       img("Rohan_Preksha/img511.webp"), img("Rohan_Preksha/img514.webp"), img("Rohan_Preksha/img515.webp"),
-//       img("Rohan_Preksha/img517.webp"), img("Rohan_Preksha/img519.webp"), img("Rohan_Preksha/img520.webp"),
-//       img("Rohan_Preksha/img521.webp"), img("Rohan_Preksha/img534.webp"), img("Rohan_Preksha/img533.webp"),
-//       img("Rohan_Preksha/img536.webp"), img("Rohan_Preksha/img540.webp"), img("Rohan_Preksha/img543.webp"),
-//       img("Rohan_Preksha/img544.webp"), img("Rohan_Preksha/img545.webp"), img("Rohan_Preksha/img546.webp"),
-//     ]
-//   },
-//   "Chaitrali_Shubham": {
-//     couple: "Chaitrali & Shubham",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Chaitrali and Shubham's wedding had a rhythm of its own, steady, joyful, and full of heart. The celebrations felt close knit, with every ritual bringing people together in the most genuine way.",
-//       "What stood out was how effortlessly everything came together. Just two people surrounded by their families, celebrating in a way that felt familiar and comforting."
-//     ],
-//     images: [
-//       img("Chaitrali_Shubham/img401.webp"), img("Chaitrali_Shubham/img402.webp"), img("Chaitrali_Shubham/img403.webp"),
-//       img("Chaitrali_Shubham/img404.webp"), img("Chaitrali_Shubham/img405.webp"), img("Chaitrali_Shubham/img407.webp"),
-//       img("Chaitrali_Shubham/img408.webp"), img("Chaitrali_Shubham/img409.webp"), img("Chaitrali_Shubham/img411.webp"),
-//       img("Chaitrali_Shubham/img412.webp"), img("Chaitrali_Shubham/img415.webp"), img("Chaitrali_Shubham/img416.webp"),
-//       img("Chaitrali_Shubham/img418.webp"), img("Chaitrali_Shubham/img421.webp"), img("Chaitrali_Shubham/img422.webp"),
-//       img("Chaitrali_Shubham/img420.webp"), img("Chaitrali_Shubham/img423.webp"), img("Chaitrali_Shubham/img425.webp"),
-//       img("Chaitrali_Shubham/img427.webp"), img("Chaitrali_Shubham/img428.webp"), img("Chaitrali_Shubham/img432.webp"),
-//       img("Chaitrali_Shubham/img434.webp"), img("Chaitrali_Shubham/img436.webp"), img("Chaitrali_Shubham/img438.webp"),
-//     ]
-//   },
-//   "Aishwarya_Sanmay": {
-//     couple: "Aishwarya & Sanmay",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Aishwarya and Sanmay's wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout.",
-//       "What stood out was how naturally they moved through it all. It wasn't about the scale or the setup, but about how present they were with each other."
-//     ],
-//     images: [
-//       img("Aishwarya_Sanmay/img0.webp"), img("Aishwarya_Sanmay/img1.webp"), img("Aishwarya_Sanmay/img3.webp"),
-//       img("Aishwarya_Sanmay/img5.webp"), img("Aishwarya_Sanmay/img6.webp"), img("Aishwarya_Sanmay/img15.webp"),
-//       img("Aishwarya_Sanmay/img20.webp"), img("Aishwarya_Sanmay/img26.webp"), img("Aishwarya_Sanmay/img17.webp"),
-//       img("Aishwarya_Sanmay/img27.webp"), img("Aishwarya_Sanmay/img29.webp"), img("Aishwarya_Sanmay/img23.webp"),
-//       img("Aishwarya_Sanmay/img28.webp"), img("Aishwarya_Sanmay/img31.webp"), img("Aishwarya_Sanmay/img35.webp"),
-//       img("Aishwarya_Sanmay/img39.webp"), img("Aishwarya_Sanmay/img44.webp"), img("Aishwarya_Sanmay/img48.webp"),
-//       img("Aishwarya_Sanmay/img54.webp"), img("Aishwarya_Sanmay/img62.webp"), img("Aishwarya_Sanmay/img64.webp"),
-//       img("Aishwarya_Sanmay/img67.webp"), img("Aishwarya_Sanmay/img69.webp"), img("Aishwarya_Sanmay/img70.webp"),
-//       img("Aishwarya_Sanmay/img73.webp"), img("Aishwarya_Sanmay/img74.webp"), img("Aishwarya_Sanmay/img80.webp"),
-//       img("Aishwarya_Sanmay/img82.webp"),
-//     ]
-//   }
-// };
-// export default function WeddingPage() {
-//   const { slug } = useParams();
-//   const wedding = weddingData[slug];
-//   const location = useLocation();
-//   const navigate = useNavigate();
-
-//   // Scroll to top on load
-//   useEffect(() => {
-//     window.scrollTo(0, 0);
-//   }, [slug]);
-
-//   const handleBack = () => {
-//     if (location.state?.from) navigate(location.state.from);
-//     else navigate("/");
-//   };
-
-//   if (!wedding) {
-//     return (
-//       <div className="h-screen flex items-center justify-center bg-[#1a1a1a] text-white">
-//         <Link to="/" className="font-serif italic text-2xl">Return to Archive</Link>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="bg-[#f4f1ee] min-h-screen selection:bg-[#bba98a] selection:text-white overflow-x-hidden">
-//       <Helmet>
-//         <title>{wedding.couple} — TILT SHIFT Films</title>
-//       </Helmet>
-
-//       {/* Advanced Global Styles */}
-//       <style>{`
-//         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Jost:wght@200;300;400&display=swap');
-        
-//         .text-vertical { writing-mode: vertical-rl; }
-        
-//         .img-reveal {
-//           clip-path: inset(100% 0 0 0);
-//           animation: clip-reveal 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-//         }
-
-//         @keyframes clip-reveal {
-//           to { clip-path: inset(0% 0 0 0); }
-//         }
-
-//         .grain {
-//           position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-//           background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
-//           opacity: 0.04; pointer-events: none; z-index: 50;
-//         }
-//       `}</style>
-
-//       <div className="grain" />
-
-//       {/* Minimalist Top Navigation */}
-//       <nav className="fixed top-0 left-0 w-full z-[60] mix-blend-difference flex justify-between p-6 md:p-10 items-center">
-//         <button
-//           onClick={handleBack}
-//           className="group flex items-center gap-3 font-sans text-[9px] tracking-[0.5em] uppercase text-white/70 hover:text-white transition-all"
-//         >
-//           <span className="w-6 h-[1px] bg-white/30 group-hover:w-12 group-hover:bg-white transition-all duration-700"></span>
-//           Index
-//         </button>
-//         <div className="font-sans text-[9px] tracking-[0.5em] uppercase text-white/50">
-//           Tilt Shift © 2026
-//         </div>
-//       </nav>
-
-//       <main className="relative">
-//         {/* HERO SECTION: Large Split Text */}
-//         <section className="min-h-screen flex flex-col justify-center px-6 md:px-20 relative mb-32">
-//           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none opacity-[0.03] select-none">
-//             <h2 className="font-serif text-[25vw] leading-none whitespace-nowrap uppercase tracking-tighter">
-//               {wedding.couple.split(" & ")[0]}
-//             </h2>
-//           </div>
-
-//           <div className="relative z-10">
-//             <p className="font-sans text-[11px] tracking-[0.6em] uppercase text-[#bba98a] mb-8 overflow-hidden">
-//               <span className="inline-block animate-bounce-subtle">Memories in Motion</span>
-//             </p>
-            
-//             <h1 className="font-serif text-[12vw] md:text-[10vw] leading-[0.8] text-neutral-900 tracking-tighter flex flex-col">
-//               <span className="reveal inline-block">{wedding.couple.split(" & ")[0]}</span>
-//               <span className="reveal inline-block italic font-light ml-[10vw] md:ml-[20vw] text-[#bba98a]">
-//                 & {wedding.couple.split(" & ")[1]}
-//               </span>
-//             </h1>
-//           </div>
-
-//           <div className="absolute bottom-10 right-6 md:right-20 flex items-center gap-4 reveal" style={{animationDelay: '0.5s'}}>
-//              <div className="text-right">
-//                 <p className="font-sans text-[9px] tracking-[0.3em] uppercase text-neutral-400">Captured at</p>
-//                 <p className="font-serif italic text-xl text-neutral-800">{wedding.location}</p>
-//              </div>
-//              <div className="w-[1px] h-12 bg-neutral-200"></div>
-//           </div>
-//         </section>
-
-//         {/* NARRATIVE: The Book Look */}
-//         <section className="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-12 mb-60">
-//           <div className="md:col-start-2 md:col-span-10 lg:col-start-3 lg:col-span-8">
-//             <div className="relative">
-//               <span className="absolute -left-12 top-2 text-vertical font-sans text-[9px] tracking-[0.4em] uppercase text-neutral-300 hidden md:block">
-//                 Description
-//               </span>
-//               <div className="space-y-12">
-//                 {wedding.caption.map((para, i) => (
-//                   <p key={i} className="font-serif text-2xl md:text-4xl leading-[1.4] text-neutral-700 font-light last:text-[#bba98a]">
-//                     {para}
-//                   </p>
-//                 ))}
-//               </div>
-//             </div>
-//           </div>
-//         </section>
-
-//         {/* GALLERY: The Asymmetric Journal */}
-//         <section className="max-w-[1800px] mx-auto px-4 md:px-10 pb-40">
-//           <div className="grid grid-cols-1 md:grid-cols-12 gap-y-24 md:gap-y-40 items-center">
-//             {wedding.images.map((src, index) => {
-//               // Create an asymmetric rhythm: some span 4 cols, some 6, some 8
-//               const spans = ["md:col-span-7", "md:col-start-7 md:col-span-5", "md:col-start-2 md:col-span-10", "md:col-span-6", "md:col-start-8 md:col-span-4"];
-//               const span = spans[index % spans.length];
-              
-//               return (
-//                 <div key={index} className={`${span} group relative`}>
-//                   <div className="overflow-hidden bg-neutral-200 img-reveal" style={{animationDelay: `${(index % 3) * 0.2}s`}}>
-//                     <img
-//                       src={src}
-//                       alt=""
-//                       className="w-full h-auto object-cover scale-110 group-hover:scale-100 transition-transform duration-[2.5s] ease-out"
-//                     />
-//                   </div>
-//                   {/* Image counter */}
-//                   <span className="absolute -bottom-8 left-0 font-sans text-[10px] tracking-widest text-neutral-300">
-//                     {String(index + 1).padStart(2, '0')} / {wedding.images.length}
-//                   </span>
-//                 </div>
-//               );
-//             })}
-//           </div>
-//         </section>
-
-//         {/* FINAL CALL: Cinematic Outro */}
-//         <footer className="bg-[#1a1714] text-[#f4f1ee] pt-40 pb-20 px-6 overflow-hidden relative">
-//           <div className="max-w-7xl mx-auto relative z-10 text-center">
-//             <p className="font-sans text-[10px] tracking-[0.5em] uppercase text-white/30 mb-10">End of Volume</p>
-//             <h2 className="font-serif text-6xl md:text-[10vw] italic leading-none mb-20 opacity-90">
-//               The Archive
-//             </h2>
-            
-//             <div className="flex flex-col md:flex-row justify-between items-center gap-10 border-t border-white/10 pt-10">
-//               <button 
-//                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-//                 className="font-sans text-[10px] tracking-[0.4em] uppercase hover:text-[#bba98a] transition-colors"
-//               >
-//                 Return to Top
-//               </button>
-//               <p className="font-serif italic text-lg opacity-40">Created by Tilt Shift Films</p>
-//               <Link to="/" className="font-sans text-[10px] tracking-[0.4em] uppercase hover:text-[#bba98a] transition-colors">
-//                 Next Story →
-//               </Link>
-//             </div>
-//           </div>
-          
-//           {/* Large background text in footer */}
-//           <div className="absolute -bottom-10 left-0 w-full text-center opacity-[0.02] pointer-events-none select-none">
-//              <span className="font-serif text-[30vw] leading-none uppercase italic">Cinema</span>
-//           </div>
-//         </footer>
-//       </main>
-//     </div>
-//   );
-// }
-
-//below is image 3
-
-// import React, { useEffect } from "react";
-// import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
-// import { Helmet } from "react-helmet-async";
-
-// const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
-// const img = (path) => allImages[`../assets/${path}`]?.default;
-
-// // ... (weddingData stays the same) ...
-// const weddingData = {
-//   "amruta-amey": {
-//     couple: "Amruta & Amey",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Amruta & Amey's wedding was a heartfelt Maharashtrian celebration, rooted in tradition and quiet elegance. The day unfolded with a gentle rhythm where every ritual felt meaningful, unhurried and deeply personal.",
-//       "From soft, intimate moments to bursts of laughter shared with loved ones, their wedding carried a warmth that stayed constant throughout. Nothing felt rushed, nothing felt staged, just real emotions, honest connections and a love that spoke for itself."
-//     ],
-//     images: [
-//       img("Amruta_Amey/img200.webp"), img("Amruta_Amey/img202.webp"), img("Amruta_Amey/img203.webp"),
-//       img("Amruta_Amey/img204.webp"), img("Amruta_Amey/img206.webp"), img("Amruta_Amey/img207.webp"),
-//       img("Amruta_Amey/img208.webp"), img("Amruta_Amey/img209.webp"), img("Amruta_Amey/img213.webp"),
-//       img("Amruta_Amey/img216.webp"), img("Amruta_Amey/img218.webp"), img("Amruta_Amey/img221.webp"),
-//       img("Amruta_Amey/img225.webp"), img("Amruta_Amey/img229.webp"), img("Amruta_Amey/img232.webp"),
-//       img("Amruta_Amey/img233.webp"), img("Amruta_Amey/img234.webp"), img("Amruta_Amey/img235.webp"),
-//       img("Amruta_Amey/img239.webp"), img("Amruta_Amey/img237.webp"), img("Amruta_Amey/img241.webp"),
-//       img("Amruta_Amey/img243.webp"), img("Amruta_Amey/img244.webp"), img("Amruta_Amey/img252.webp"),
-//       img("Amruta_Amey/img254.webp"), img("Amruta_Amey/img257.webp"), img("Amruta_Amey/img258.webp"),
-//       img("Amruta_Amey/img266.webp"), img("Amruta_Amey/img265.webp"), img("Amruta_Amey/img262.webp"),
-//       img("Amruta_Amey/img261.webp"), img("Amruta_Amey/img270.webp"),
-//     ]
-//   },
-//   "abhimanyu-manisha": {
-//     couple: "Abhimanyu & Manisha",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Abhimanyu and Manisha's wedding felt full of life from the very beginning. The haldi was filled with laughter and colour where everyone was completely in the moment and enjoying every second.",
-//       "When the ceremony began everything slowed down and fell calm and meaningful. In between it all they stayed present sharing real moments with their people. It was warm honest and truly a reflection of them."
-//     ],
-//     images: [
-//       img("Abhimanyu_Manisha/img601.webp"), img("Abhimanyu_Manisha/img602.webp"), img("Abhimanyu_Manisha/img603.webp"),
-//       img("Abhimanyu_Manisha/img604.webp"), img("Abhimanyu_Manisha/img605.webp"), img("Abhimanyu_Manisha/img606.webp"),
-//       img("Abhimanyu_Manisha/img607.webp"), img("Abhimanyu_Manisha/img608.webp"), img("Abhimanyu_Manisha/img609.webp"),
-//       img("Abhimanyu_Manisha/img610.webp"), img("Abhimanyu_Manisha/img611.webp"), img("Abhimanyu_Manisha/img612.webp"),
-//       img("Abhimanyu_Manisha/img613.webp"), img("Abhimanyu_Manisha/img614.webp"), img("Abhimanyu_Manisha/img615.webp"),
-//       img("Abhimanyu_Manisha/img616.webp"), img("Abhimanyu_Manisha/img617.webp"), img("Abhimanyu_Manisha/img618.webp"),
-//       img("Abhimanyu_Manisha/img624.webp"), img("Abhimanyu_Manisha/img620.webp"), img("Abhimanyu_Manisha/img621.webp"),
-//       img("Abhimanyu_Manisha/img622.webp"), img("Abhimanyu_Manisha/img623.webp"),
-//     ]
-//   },
-//   "bhakti-sourabh": {
-//     couple: "Bhakti & Sourabh",
-//     location: "Jodhpur, Rajasthan",
-//     caption: [
-//       "Bhakti and Sourabh's wedding carried a royal charm that felt both grand and personal at the same time. Set against the heritage beauty of Jodhpur the celebrations moved effortlessly from intimate rituals to lively evenings.",
-//       "There was a natural ease between them that showed in every moment whether it was quiet glances or carefree laughter with their people."
-//     ],
-//     images: [
-//       img("Bhakti_Sourabh/img304.webp"), img("Bhakti_Sourabh/img309.webp"), img("Bhakti_Sourabh/img310.webp"),
-//       img("Bhakti_Sourabh/img314.webp"), img("Bhakti_Sourabh/img316.webp"), img("Bhakti_Sourabh/img317.webp"),
-//       img("Bhakti_Sourabh/img318.webp"), img("Bhakti_Sourabh/img319.webp"), img("Bhakti_Sourabh/img321.webp"),
-//       img("Bhakti_Sourabh/img322.webp"), img("Bhakti_Sourabh/img323.webp"), img("Bhakti_Sourabh/img324.webp"),
-//       img("Bhakti_Sourabh/img327.webp"), img("Bhakti_Sourabh/img328.webp"), img("Bhakti_Sourabh/img330.webp"),
-//       img("Bhakti_Sourabh/img332.webp"), img("Bhakti_Sourabh/img333.webp"), img("Bhakti_Sourabh/img334.webp"),
-//       img("Bhakti_Sourabh/img335.webp"), img("Bhakti_Sourabh/img338.webp"), img("Bhakti_Sourabh/img339.webp"),
-//       img("Bhakti_Sourabh/img340.webp"), img("Bhakti_Sourabh/img342.webp"), img("Bhakti_Sourabh/img344.webp"),
-//       img("Bhakti_Sourabh/img345.webp"), img("Bhakti_Sourabh/img346.webp"), img("Bhakti_Sourabh/img349.webp"),
-//       img("Bhakti_Sourabh/img350.webp"), img("Bhakti_Sourabh/img351.webp"), img("Bhakti_Sourabh/img353.webp"),
-//       img("Bhakti_Sourabh/img357.webp"), img("Bhakti_Sourabh/img359.webp"),
-//     ]
-//   },
-//   "Rohan-preksha": {
-//     couple: "Rohan & Preksha",
-//     location: "Pushkar, Rajasthan",
-//     caption: [
-//       "Rohan and Preksha's wedding felt like one long celebration where no one held back. The days were filled with colour, music, and constant movement with something happening in every corner.",
-//       "What made it special was how easily they blended into it all. Dancing with their friends, sharing jokes, and just enjoying the chaos around them."
-//     ],
-//     images: [
-//       img("Rohan_Preksha/img501.webp"), img("Rohan_Preksha/img502.webp"), img("Rohan_Preksha/img503.webp"),
-//       img("Rohan_Preksha/img504.webp"), img("Rohan_Preksha/img505.webp"), img("Rohan_Preksha/img506.webp"),
-//       img("Rohan_Preksha/img507.webp"), img("Rohan_Preksha/img508.webp"), img("Rohan_Preksha/img509.webp"),
-//       img("Rohan_Preksha/img511.webp"), img("Rohan_Preksha/img514.webp"), img("Rohan_Preksha/img515.webp"),
-//       img("Rohan_Preksha/img517.webp"), img("Rohan_Preksha/img519.webp"), img("Rohan_Preksha/img520.webp"),
-//       img("Rohan_Preksha/img521.webp"), img("Rohan_Preksha/img534.webp"), img("Rohan_Preksha/img533.webp"),
-//       img("Rohan_Preksha/img536.webp"), img("Rohan_Preksha/img540.webp"), img("Rohan_Preksha/img543.webp"),
-//       img("Rohan_Preksha/img544.webp"), img("Rohan_Preksha/img545.webp"), img("Rohan_Preksha/img546.webp"),
-//     ]
-//   },
-//   "Chaitrali_Shubham": {
-//     couple: "Chaitrali & Shubham",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Chaitrali and Shubham's wedding had a rhythm of its own, steady, joyful, and full of heart. The celebrations felt close knit, with every ritual bringing people together in the most genuine way.",
-//       "What stood out was how effortlessly everything came together. Just two people surrounded by their families, celebrating in a way that felt familiar and comforting."
-//     ],
-//     images: [
-//       img("Chaitrali_Shubham/img401.webp"), img("Chaitrali_Shubham/img402.webp"), img("Chaitrali_Shubham/img403.webp"),
-//       img("Chaitrali_Shubham/img404.webp"), img("Chaitrali_Shubham/img405.webp"), img("Chaitrali_Shubham/img407.webp"),
-//       img("Chaitrali_Shubham/img408.webp"), img("Chaitrali_Shubham/img409.webp"), img("Chaitrali_Shubham/img411.webp"),
-//       img("Chaitrali_Shubham/img412.webp"), img("Chaitrali_Shubham/img415.webp"), img("Chaitrali_Shubham/img416.webp"),
-//       img("Chaitrali_Shubham/img418.webp"), img("Chaitrali_Shubham/img421.webp"), img("Chaitrali_Shubham/img422.webp"),
-//       img("Chaitrali_Shubham/img420.webp"), img("Chaitrali_Shubham/img423.webp"), img("Chaitrali_Shubham/img425.webp"),
-//       img("Chaitrali_Shubham/img427.webp"), img("Chaitrali_Shubham/img428.webp"), img("Chaitrali_Shubham/img432.webp"),
-//       img("Chaitrali_Shubham/img434.webp"), img("Chaitrali_Shubham/img436.webp"), img("Chaitrali_Shubham/img438.webp"),
-//     ]
-//   },
-//   "Aishwarya_Sanmay": {
-//     couple: "Aishwarya & Sanmay",
-//     location: "Pune, Maharashtra",
-//     caption: [
-//       "Aishwarya and Sanmay's wedding had a charm that felt easy and unforced. The early moments were playful and full of colour, with friends and family bringing in a kind of energy that stayed throughout.",
-//       "What stood out was how naturally they moved through it all. It wasn't about the scale or the setup, but about how present they were with each other."
-//     ],
-//     images: [
-//       img("Aishwarya_Sanmay/img0.webp"), img("Aishwarya_Sanmay/img1.webp"), img("Aishwarya_Sanmay/img3.webp"),
-//       img("Aishwarya_Sanmay/img5.webp"), img("Aishwarya_Sanmay/img6.webp"), img("Aishwarya_Sanmay/img15.webp"),
-//       img("Aishwarya_Sanmay/img20.webp"), img("Aishwarya_Sanmay/img26.webp"), img("Aishwarya_Sanmay/img17.webp"),
-//       img("Aishwarya_Sanmay/img27.webp"), img("Aishwarya_Sanmay/img29.webp"), img("Aishwarya_Sanmay/img23.webp"),
-//       img("Aishwarya_Sanmay/img28.webp"), img("Aishwarya_Sanmay/img31.webp"), img("Aishwarya_Sanmay/img35.webp"),
-//       img("Aishwarya_Sanmay/img39.webp"), img("Aishwarya_Sanmay/img44.webp"), img("Aishwarya_Sanmay/img48.webp"),
-//       img("Aishwarya_Sanmay/img54.webp"), img("Aishwarya_Sanmay/img62.webp"), img("Aishwarya_Sanmay/img64.webp"),
-//       img("Aishwarya_Sanmay/img67.webp"), img("Aishwarya_Sanmay/img69.webp"), img("Aishwarya_Sanmay/img70.webp"),
-//       img("Aishwarya_Sanmay/img73.webp"), img("Aishwarya_Sanmay/img74.webp"), img("Aishwarya_Sanmay/img80.webp"),
-//       img("Aishwarya_Sanmay/img82.webp"),
-//     ]
-//   }
-// };
-
-// export default function WeddingPage() {
-//   const { slug } = useParams();
-//   const wedding = weddingData[slug];
-//   const location = useLocation();
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     window.scrollTo(0, 0);
-//   }, [slug]);
-
-//   const handleBack = () => {
-//     if (location.state?.from) navigate(location.state.from);
-//     else navigate("/");
-//   };
-
-//   if (!wedding) return null;
-
-//   return (
-//     <div className="bg-[#f9f9f9] min-h-screen font-light selection:bg-neutral-200">
-//       <Helmet>
-//         <title>{wedding.couple} — TILT SHIFT</title>
-//       </Helmet>
-
-//       <style>{`
-//         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@200;300;400&display=swap');
-        
-//         .font-serif { font-family: 'Cormorant Garamond', serif; }
-//         .font-sans { font-family: 'Montserrat', sans-serif; }
-
-//         .reveal-frame {
-//           animation: frame-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-//         }
-
-//         @keyframes frame-in {
-//           from { opacity: 0; transform: translateY(20px); }
-//           to { opacity: 1; transform: translateY(0); }
-//         }
-//       `}</style>
-
-//       {/* Persistent Back Navigation */}
-//       <nav className="fixed top-0 left-0 w-full z-50 p-6 md:p-10 flex justify-start">
-//         <button 
-//           onClick={handleBack}
-//           className="group flex items-center gap-4 font-sans text-[10px] tracking-[0.3em] uppercase text-neutral-400 hover:text-neutral-900 transition-all duration-500"
-//         >
-//           <span className="w-6 h-[1px] bg-neutral-300 group-hover:w-10 group-hover:bg-neutral-900 transition-all duration-700"></span>
-//           Back
-//         </button>
-//       </nav>
-
-//       <main className="max-w-6xl mx-auto px-6 pt-32 pb-40">
-        
-//         {/* Header Section: Compact & Sophisticated */}
-//         <header className="text-center mb-32 reveal-frame">
-//           <span className="font-sans text-[9px] tracking-[0.5em] uppercase text-[#bba98a] block mb-6">
-//             Wedding Collection
-//           </span>
-//           <h1 className="font-serif text-5xl md:text-7xl text-neutral-800 mb-4 tracking-tight">
-//             {wedding.couple}
-//           </h1>
-//           <p className="font-serif italic text-xl text-neutral-500">{wedding.location}</p>
-//           <div className="mt-12 flex justify-center">
-//             <div className="w-[1px] h-16 bg-neutral-200"></div>
-//           </div>
-//         </header>
-
-//         {/* Hero Image: Centered & Framed (Not Full Screen) */}
-//         <section className="mb-40 flex justify-center reveal-frame" style={{ animationDelay: '0.2s' }}>
-//           <div className="w-full max-w-4xl p-4 bg-white shadow-sm border border-neutral-100">
-//             <img 
-//               src={wedding.images[0]} 
-//               alt="Opening Moment" 
-//               className="w-full h-auto grayscale-[20%] hover:grayscale-0 transition-all duration-1000"
-//             />
-//           </div>
-//         </section>
-
-//         {/* Narrative Section */}
-//         <section className="max-w-2xl mx-auto mb-40 text-center px-4 reveal-frame" style={{ animationDelay: '0.4s' }}>
-//           <div className="space-y-8">
-//             {wedding.caption.map((para, i) => (
-//               <p key={i} className="font-serif text-xl md:text-2xl leading-relaxed text-neutral-600 font-light italic">
-//                 {para}
-//               </p>
-//             ))}
-//           </div>
-//         </section>
-
-//         {/* Small Tiled Gallery: Controlled Sizes */}
-//         <section className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
-//           {wedding.images.slice(1).map((src, index) => {
-//             // This creates a pattern where images aren't all the same size
-//             const isSmall = index % 3 === 0; 
-            
-//             return (
-//               <div 
-//                 key={index} 
-//                 className={`flex flex-col ${isSmall ? 'md:px-20' : 'px-0'} group`}
-//               >
-//                 <div className="relative overflow-hidden bg-white p-3 shadow-sm border border-neutral-100 transition-transform duration-700 hover:-translate-y-2">
-//                   <img 
-//                     src={src} 
-//                     className="w-full h-auto object-cover" 
-//                     alt={`Moment ${index + 2}`} 
-//                   />
-//                 </div>
-//                 <div className="mt-4 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-//                   <span className="font-sans text-[8px] tracking-[0.3em] uppercase text-neutral-300">
-//                     Scene {String(index + 2).padStart(2, '0')}
-//                   </span>
-//                   <div className="h-[1px] w-8 bg-neutral-100"></div>
-//                 </div>
-//               </div>
-//             );
-//           })}
-//         </section>
-
-//         {/* Refined Footer */}
-//         <footer className="mt-60 pt-20 border-t border-neutral-100 text-center">
-//           <h2 className="font-serif italic text-3xl text-neutral-800 mb-10">Fin.</h2>
-//           <div className="flex justify-center gap-12">
-//             <button 
-//               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-//               className="font-sans text-[9px] tracking-[0.4em] uppercase text-neutral-400 hover:text-black transition-colors"
-//             >
-//               Scroll Top
-//             </button>
-//             <Link 
-//               to="/" 
-//               className="font-sans text-[9px] tracking-[0.4em] uppercase text-neutral-400 hover:text-black transition-colors"
-//             >
-//               Archive
-//             </Link>
-//           </div>
-//         </footer>
-
-//       </main>
-//     </div>
-//   );
-// }
