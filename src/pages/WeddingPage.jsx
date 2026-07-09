@@ -441,7 +441,7 @@ const weddingData = {
   img("Gaurav_Chinmaee/img906.webp"),
   img("Gaurav_Chinmaee/img907.webp"),
   img("Gaurav_Chinmaee/img908.webp"),
-  img("Gaurav_Chinmaee/img909.webp"),
+  // img("Gaurav_Chinmaee/img909.webp"),
   img("Gaurav_Chinmaee/img910.webp"),
   img("Gaurav_Chinmaee/img911.webp"),
   img("Gaurav_Chinmaee/img912.webp"),

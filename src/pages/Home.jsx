@@ -352,7 +352,7 @@ export default function Home() {
                   href="/portfolio"
                   className="font-jost text-[0.75rem] tracking-[0.25em] uppercase border-b border-[#1a1a1a] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
                 >
-                  View Photography →
+                  View Portfolio →
                 </a>
               </div>
             </div>
@@ -453,7 +453,7 @@ export default function Home() {
       {/* FILMS SECTION */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section className="bg-white py-[clamp(80px,10vw,140px)] overflow-hidden mb-26">
+          <section className="bg-white py-[clamp(0px,10vw,40px)] overflow-hidden mb-26">
             <div className="text-center px-6 mb-16">
               <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a] mb-8">
                 Films
@@ -582,11 +582,11 @@ export default function Home() {
       {/* FINAL CTA */}
       <section className="bg-white py-[clamp(80px,10vw,130px)] px-[clamp(24px,6vw,80px)] text-center">
         <h2 className="font-cormorant text-[clamp(2.5rem,5vw,4.5rem)] font-light leading-tight text-[#1a1a1a] max-w-[700px] mx-auto mb-9">
-          Your Story Deserves<br />
-          <em className="italic">To Be Told Beautifully</em>
+          Your story deserves<br />
+          <em className="italic">to be told beautifully.</em>
         </h2>
         <p className="text-[#777] text-base max-w-[500px] mx-auto mb-12 leading-relaxed">
-          We accept only 24 weddings per year — ensuring every couple receives our full creative devotion.
+         
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center">

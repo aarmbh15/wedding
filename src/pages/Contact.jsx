@@ -69,7 +69,7 @@ const Contact = () => {
                       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
 
         <div className="relative z-10 text-center px-6 animate-[fadeIn_1.4s_ease-out]">
-          <p className="text-[0.75rem] tracking-[0.5em] uppercase text-[#c9a84c] mb-6 font-semibold drop-shadow-sm">
+          <p className="text-[0.75rem] tracking-[0.5em] uppercase text-[#ffffff] mb-6 font-semibold drop-shadow-sm">
             Availability for 2026
           </p>
           <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.8rem,8vw,6rem)] font-light leading-none text-white drop-shadow-md mb-4">
