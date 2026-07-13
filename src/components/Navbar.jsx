@@ -23,13 +23,16 @@ const Header = () => {
       dropdown: [
         { name: "FILMS", path: "/films" },
         { name: "PHOTOGRAPHY", path: "/portfolio" },
-        ],
+      ],
     },
     { name: "ABOUT", path: "/about" },
   ];
 
   const isActive = (path) =>
     path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
+
+  // Helper variable to check if the header has a solid white background
+  const isSolidHeader = isScrolled || isMenuOpen;
 
   return (
     <>
@@ -39,7 +42,7 @@ const Header = () => {
 
       <header
         className={`fixed top-0 left-0 right-0 z-[9000] transition-all duration-500 ${
-          isScrolled || isMenuOpen
+          isSolidHeader
             ? "bg-white/85 backdrop-blur-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.06)] border-b border-black/5"
             : "bg-transparent"
         }`}
@@ -64,7 +67,9 @@ const Header = () => {
                   className={`font-jost text-[0.85rem] font-semibold tracking-[0.26em] uppercase pb-[3px] border-b-2 border-transparent transition-all duration-300 ${
                     isActive(item.path)
                       ? "text-[#c9a84c] border-[#c9a84c]"
-                      : "text-[#1a1a1a] group-hover:text-[#c9a84c] group-hover:border-[#c9a84c]"
+                      : isSolidHeader
+                      ? "text-[#1a1a1a] group-hover:text-[#c9a84c] group-hover:border-[#c9a84c]"
+                      : "text-white group-hover:text-[#c9a84c] group-hover:border-[#c9a84c]"
                   }`}
                 >
                   {item.name}
@@ -91,7 +96,7 @@ const Header = () => {
             <Link
               to="/contact"
               className={`font-jost text-[0.8rem] font-semibold tracking-[0.24em] uppercase px-8 py-[13px] border-2 transition-all duration-300 whitespace-nowrap ${
-                isScrolled || isMenuOpen
+                isSolidHeader
                   ? "bg-[#1a1a1a] text-white border-[#1a1a1a] hover:bg-[#c9a84c] hover:border-[#c9a84c]"
                   : "bg-[#c9a84c] text-[#1a1a1a] border-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white"
               }`}
@@ -107,17 +112,23 @@ const Header = () => {
             aria-label="Toggle menu"
           >
             <span
-              className={`block h-[2px] bg-[#1a1a1a] rounded transition-all duration-300 ${
+              className={`block h-[2px] rounded transition-all duration-300 ${
+                isSolidHeader ? "bg-[#1a1a1a]" : "bg-white"
+              } ${
                 isMenuOpen ? "w-[30px] rotate-45 translate-y-[9px]" : "w-[30px]"
               }`}
             />
             <span
-              className={`block h-[2px] bg-[#1a1a1a] rounded transition-all duration-300 ${
+              className={`block h-[2px] rounded transition-all duration-300 ${
+                isSolidHeader ? "bg-[#1a1a1a]" : "bg-white"
+              } ${
                 isMenuOpen ? "opacity-0" : "w-[20px]"
               }`}
             />
             <span
-              className={`block h-[2px] bg-[#1a1a1a] rounded transition-all duration-300 ${
+              className={`block h-[2px] rounded transition-all duration-300 ${
+                isSolidHeader ? "bg-[#1a1a1a]" : "bg-white"
+              } ${
                 isMenuOpen ? "w-[30px] -rotate-45 -translate-y-[9px]" : "w-[30px]"
               }`}
             />

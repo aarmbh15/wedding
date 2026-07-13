@@ -183,7 +183,7 @@ function HeroSlider() {
       <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-gradient-to-t from-black/40 to-transparent z-20" />
 
       {/* Hero Text — responsive right-inset so it never crowds the dots/arrows on mobile */}
-      <div className="absolute bottom-[clamp(24px,5vw,72px)] left-[clamp(16px,5vw,80px)] right-[clamp(60px,16vw,90px)] z-30 text-white">
+      <div className="absolute bottom-[clamp(24px,5vw,72px)] left-[clamp(16px,5vw,80px)] right-[clamp(60px,16vw,90px)] z-30 text-white mt-24">
         <p className="font-jost text-[0.58rem] sm:text-[0.7rem] tracking-[0.25em] sm:tracking-[0.35em] uppercase opacity-75 mb-2">
           Mumbai · Pune · Worldwide
         </p>
