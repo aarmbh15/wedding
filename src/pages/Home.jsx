@@ -98,16 +98,25 @@ const heroVideos = [
 ];
 
 const portfolioGrid = [
-  { src: img("Abhimanyu_Manisha/img621.webp"), pos: "52% 88%", size: "portrait" },   // Tall
-  { src: img("Bhakti_Sourabh/img331.webp"), pos: "50% 50%", size: "normal" },       // Square
-  { src: img("Rohan_Preksha/img515.webp"), pos: "50% 50%", size: "normal" },       // Square
-  { src: img("Amruta_Amey/img208.webp"), pos: "50% 50%", size: "landscape" },    // Wide
-  { src: img("Chaitrali_Shubham/img407.webp"), pos: "50% 50%", size: "normal" },    // Square
-  { src: img("Bhakti_Sourabh/img343.webp"), pos: "50% 50%", size: "portrait" },   // Tall
-  { src: img("Chaitrali_Shubham/img439.webp"), pos: "50% 50%", size: "landscape" }, // Wide
-  { src: img("Rohan_Preksha/img549.webp"), pos: "50% 50%", size: "normal" },       // Square
-  { src: img("Abhimanyu_Manisha/img613.webp"), pos: "50% 50%", size: "normal" },    // Square
-  { src: img("Amruta_Amey/img258.webp"), pos: "50% 50%", size: "normal" },       // Square
+  { src: img("Web Gallery/img5001.webp"), pos: "52% 88%", size: "portrait" },   // Tall
+  { src: img("Web Gallery/img5002.webp"), pos: "50% 50%", size: "normal" },      // Square
+  { src: img("Web Gallery/img5003.webp"), pos: "50% 50%", size: "normal" },      // Square
+  { src: img("Web Gallery/img5004.webp"), pos: "50% 50%", size: "landscape" },   // Wide
+  { src: img("Web Gallery/img5005.webp"), pos: "50% 50%", size: "normal" },      // Square
+  { src: img("Web Gallery/img5006.webp"), pos: "50% 50%", size: "portrait" },    // Tall
+  { src: img("Web Gallery/img5007.webp"), pos: "50% 50%", size: "landscape" },   // Wide
+  { src: img("Web Gallery/img5008.webp"), pos: "50% 50%", size: "normal" },      // Square
+  { src: img("Web Gallery/img5009.webp"), pos: "50% 50%", size: "normal" },      // Square
+  { src: img("Web Gallery/img5010.webp"), pos: "50% 50%", size: "normal" },      // Square
+  { src: img("Web Gallery/img5011.webp"), pos: "50% 50%", size: "normal" },
+  { src: img("Web Gallery/img5012.webp"), pos: "50% 50%", size: "normal" },
+  { src: img("Web Gallery/img5013.webp"), pos: "50% 50%", size: "portrait" },
+  { src: img("Web Gallery/img5014.webp"), pos: "50% 50%", size: "landscape" },
+  { src: img("Web Gallery/img5015.webp"), pos: "50% 50%", size: "normal" },
+  { src: img("Web Gallery/img5016.webp"), pos: "50% 50%", size: "portrait" },
+  { src: img("Web Gallery/img5017.webp"), pos: "50% 50%", size: "normal" },
+  { src: img("Web Gallery/img5018.webp"), pos: "50% 50%", size: "landscape" },
+  { src: img("Web Gallery/img5019.webp"), pos: "50% 50%", size: "normal" },
 ];
 
 const featured = [
@@ -453,7 +462,7 @@ export default function Home() {
       {/* FILMS SECTION */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section className="bg-white py-[clamp(0px,10vw,40px)] overflow-hidden mb-26">
+          <section className="bg-white py-[clamp(0px,10vw,40px)] overflow-hidden">
             <div className="text-center px-6 mb-16">
               <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a] mb-8">
                 Films
@@ -550,8 +559,9 @@ export default function Home() {
           <section className="premium-grid grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,8vw,120px)] items-center max-w-[1300px] mx-auto  bg-white">
             <div>
               <h2 className="font-cormorant text-[clamp(2rem,4vw,3.5rem)] font-light leading-tight text-[#1a1a1a] mb-16">
-                Fine-Art<br />
-                <em className="italic">Editorial Photography</em>
+                Fine-Art <br/>Editorial Photography
+
+                {/* <em className="">Editorial Photography</em> */}
               </h2>
               <div className="w-10 h-px bg-[#1a1a1a] mb-8" />
               <p className="text-[#555] text-base leading-[1.9] mb-6">
