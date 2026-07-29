@@ -320,9 +320,9 @@ export default function Portfolio() {
 
       {/* ── CTA Strip ───────────────────────────────────────────────────────── */}
       <div className="bg-[#1a1a1a] py-[clamp(52px,7vw,80px)] px-[clamp(24px,6vw,80px)] text-center">
-        {/* <p className="font-jost text-[0.72rem] font-medium tracking-[0.3em] uppercase text-white/35 mb-5">
+        <p className="font-jost text-[0.72rem] font-medium tracking-[0.3em] uppercase text-white/35 mb-5">
           Limited Availability · 2025–26
-        </p> */}
+        </p>
         <h2 className="font-cormorant text-[clamp(2rem,4vw,3.4rem)] font-light text-white leading-tight mb-9">
           Your story deserves to be<br />
           <em className="italic">told beautifully</em>

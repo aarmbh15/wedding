@@ -18,16 +18,7 @@ function useInView(threshold = 0.1) {
 const packageOptions = ["Wedding Film", "Commercial/Brand", "Portfolio Shoot", "Short Film", "Not Sure Yet"];
 
 const Contact = () => {
-  const [form, setForm] = useState({ 
-    name: "", 
-    email: "", 
-    phone: "", 
-    date: "", 
-    venue: "", 
-    eventDetails: "", 
-    package: "", 
-    message: "" 
-  });
+  const [form, setForm] = useState({ name: "", email: "", date: "", venue: "", package: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
@@ -51,18 +42,36 @@ const Contact = () => {
       
       {/* ─── HERO ─────────────────────────────────────────────────── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
+        {/* <div className="absolute inset-0 z-0">
           <LazyLoadImage
+            src="https://images.unsplash.com/photo-1492691523567-6170c3295db6?auto=format&fit=crop&w=2000&q=80"
+            alt="Contact Hero"
+            className="w-full h-full object-cover"
+            effect="blur"
+            wrapperClassName="w-full h-full"
+          />
+          <div className="absolute inset-0 bg-black/30" />
+        </div> */}
+        <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
+                        {/* <img
+                          src={HeroImage}
+                          alt="Wedding Cinematography"
+                          className="w-full h-full object-cover opacity-60 brightness-75"
+                        /> */}
+                        <LazyLoadImage
             src={HeroImage}
             alt="Contact Hero"
             className="w-full h-full object-cover opacity-60 brightness-75"
             effect="blur"
             wrapperClassName="w-full h-full"
           />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
 
         <div className="relative z-10 text-center px-6 animate-[fadeIn_1.4s_ease-out]">
+          <p className="text-[0.75rem] tracking-[0.5em] uppercase text-[#ffffff] mb-6 font-semibold drop-shadow-sm">
+            Availability for 2026
+          </p>
           <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.8rem,8vw,6rem)] font-light leading-none text-white drop-shadow-md mb-4">
             Let’s Capture <br />
             <span className="italic">The Magic</span>
@@ -71,7 +80,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* ─── QUICK INFO STRIP ─────────────────────────────────────── */}
+      {/* ─── QUICK INFO STRIP (Updated Details) ───────────────────── */}
       <div className="bg-[#F4F1EA] border-y border-black/5 py-8 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
           {[
@@ -117,28 +126,26 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="group">
-                    <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Phone Number</label>
-                    <input type="tel" required className={inputClasses} placeholder="+91" />
-                  </div>
-                  <div className="group">
                     <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Event Date</label>
                     <input type="date" className={inputClasses} />
                   </div>
+                  <div className="group">
+                    <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Venue & City</label>
+                    <input type="text" className={inputClasses} placeholder="Baner, Pune..." />
+                  </div>
                 </div>
 
-                <div className="group">
-                  <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Venue & City</label>
-                  <input type="text" className={inputClasses} placeholder="Baner, Pune..." />
-                </div>
-
-                <div className="group">
-                  <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Event Details</label>
-                  <textarea className={inputClasses + " resize-none"} placeholder="Functions, Timings and approx guest count..." />
-                </div>
+                {/* <div className="group">
+                  <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">What are you interested in?</label>
+                  <select className={inputClasses + " cursor-pointer"}>
+                    <option value="">Select a service</option>
+                    {packageOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                  </select>
+                </div> */}
 
                 <div className="group">
                   <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Tell us your story</label>
-                  <textarea className={inputClasses + " resize-none"} placeholder="Tell us about your project or vision..." />
+                  <textarea rows={4} className={inputClasses + " resize-none"} placeholder="Tell us about your project or vision..." />
                 </div>
 
                 <button 
@@ -152,7 +159,7 @@ const Contact = () => {
             )}
           </div>
 
-          {/* Info Side */}
+          {/* Info Side (Updated Address & Links) */}
           <div className="lg:col-span-5 space-y-12">
             <div className="bg-[#F4F1EA] p-10 md:p-14">
               <h3 className="font-['Cormorant_Garamond'] text-2xl mb-6 italic">Visit our Studio</h3>
@@ -160,6 +167,10 @@ const Contact = () => {
                 Bunglow no 6, Periwinkle Society,<br />
                 Near Yogi park Baner, Pune 411045
               </p>
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-[0.65rem] uppercase tracking-widest text-gray-400">Limited slots for 2026</span>
+              </div>
             </div>
 
             <div className="px-4">
@@ -189,6 +200,11 @@ const Contact = () => {
                 >
                   Facebook
                 </a>
+                {/* {['Facebook', 'YouTube'].map(social => (
+                  <a key={social} href="#" className="text-[0.7rem] uppercase tracking-widest border border-black/10 px-6 py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all">
+                    {social}
+                  </a>
+                ))} */}
               </div>
             </div>
           </div>
@@ -206,12 +222,9 @@ const Contact = () => {
 
           <div className="space-y-4">
             {[
-              { q: "How is your work different from others?", a: "At Tilt Shift Pictures, we believe every wedding has its own story and our job is to document it as naturally as it unfolds. Rather than focusing only on posed photographs, we specialise in candid wedding photography that captures genuine emotions, meaningful traditions, candid interactions and the moments that often go unnoticed. Our approach allows you to relive your wedding exactly as it felt. What sets our work apart is our attention to storytelling, natural colour tones and clean timeless editing. As experienced wedding photographers in Pune and across India, we use light creatively to ensure every frame looks elegant, whether it's a bright outdoor ceremony or a dimly lit evening celebration. Our wedding photographs are crafted to feel authentic today and remain beautiful for years to come. We also understand that a wedding is about more than just the couple. Parents, grandparents, siblings, relatives and friends all play an important role in your celebration and we make sure their emotions and moments become part of your wedding story too. This thoughtful approach is what makes our wedding photography truly personal. Our cinematic wedding films and traditional wedding films are created with the same philosophy. Instead of simply documenting events, we weave together emotions, conversations, music and meaningful moments into a film that reflects your journey. Whether it's a celebration in Pune or a destination wedding anywhere in India, every edit is carefully crafted so that your wedding film feels personal, emotional and timeless, something you will enjoy watching even decades later." },
-              { q: "Do you cover destination weddings?", a: "Yes, absolutely! We specialise in destination wedding photography and cinematic wedding films across India. Whether you are planning a beach wedding in Goa, a royal wedding in Rajasthan or a celebration anywhere in the country, our team is ready to capture every moment. Just let us know the location and we will pack our bags (and cameras) to capture your story beautifully." },
-              { q: "How many people will come for my wedding?", a: "The size of our wedding photography and videography team depends on the scale of your wedding, the number of functions and your coverage requirements. For intimate weddings, we typically assign a smaller team, while larger celebrations and destination weddings require a bigger crew to ensure every moment is captured seamlessly. We will recommend the ideal team based on your wedding plans." },
-              { q: "How are your services priced?", a: "Our wedding photography and videography packages are customised based on your wedding plans, including the number of functions, event locations, coverage requirements and the team size needed. Since every wedding is unique, we create a package that best suits your celebration. Share your wedding details with us and we will be happy to provide a personalised quote." },
-              { q: "Do you meet clients before they book?", a: "Yes, absolutely. We always recommend meeting our couples before the booking, either in person or through a video call. It gives us an opportunity to understand your wedding plans, expectations, and photography preferences while answering any questions you may have. More importantly, it helps us build a comfortable connection, so you feel relaxed and confident with our team on your wedding day." },
-              { q: "What are your delivery timelines?", a: "We deliver a curated preview of 30–100 professionally edited wedding photographs during or shortly after your wedding, depending on the event schedule and available editing time. Within 10 working days, you will receive our Editor's Choice collection, a handpicked selection of the best moments from all your wedding celebrations. Your complete wedding photography gallery is professionally edited and delivered within 35 working days Our cinematic wedding films and traditional wedding films are crafted with great attention to detail. From selecting the best footage and refining every scene to colour grading and storytelling, each film goes through a meticulous editing process. Your cinematic highlight film is delivered first, followed by your traditional wedding film. During the wedding season, the complete film delivery typically takes 2–3 months, ensuring every memory is beautifully preserved." },
+              { q: "Do you travel for shoots?", a: "Absolutely. While based in Pune, we work with clients across India and internationally for commercial and wedding projects." },
+              { q: "What is your typical turnaround time?", a: "For commercial projects, 2-3 weeks. For films, the handcrafted final edit typically takes 6-8 weeks." },
+              { q: "How do we secure a date?", a: "A booking deposit and a signed agreement are required to officially reserve your date in our calendar." }
             ].map((faq, i) => (
               <div key={i} className="bg-white border border-black/5 overflow-hidden">
                 <button 
@@ -221,7 +234,7 @@ const Contact = () => {
                   <span className="font-['Cormorant_Garamond'] text-lg group-hover:text-[#c9a84c] transition-colors">{faq.q}</span>
                   <span className={`text-[#c9a84c] transition-transform duration-300 ${openFaq === i ? 'rotate-45' : ''}`}>+</span>
                 </button>
-                <div className={`px-8 transition-all duration-500 ease-in-out ${openFaq === i ? 'max-h pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className={`px-8 transition-all duration-500 ease-in-out ${openFaq === i ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
                   <p className="text-gray-400 font-light text-sm">{faq.a}</p>
                 </div>
               </div>

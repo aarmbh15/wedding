@@ -3,7 +3,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 // import HeroImage from '../assets/6.jpg';
 import HeroImage from '../assets/Amruta_Amey/img251.webp';
-import AboutImage from '../assets/about.png';
 
 // Hook for scroll animations
 function useInView(threshold = 0.15) {
@@ -44,8 +43,7 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
         
         <div className="relative z-20 text-center px-6 transition-all duration-1000 transform translate-y-0 opacity-100">
-          {/* <p className="text-[0.7rem] tracking-[0.4em] uppercase text-[#c9a84c] mb-6">Est. 2019 • Mumbai • Pune</p> */}
-          <p className="text-[0.7rem] tracking-[0.4em] uppercase text-[#c9a84c] mb-6">Est. 2019 • Pune • India</p>
+          <p className="text-[0.7rem] tracking-[0.4em] uppercase text-[#c9a84c] mb-6">Est. 2019 • Mumbai • Pune</p>
           <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,8vw,6.5rem)] font-light text-white leading-[1.1] mb-8">
             About <span className="italic text-[#c9a84c]">TILT SHIFT</span>
           </h1>
@@ -66,16 +64,11 @@ const About = () => {
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className={`relative transition-all duration-1000 ${storyInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
             <div className="aspect-[3/4] relative z-10 overflow-hidden shadow-2xl">
-            <img
-            src={AboutImage}
-            alt="Wedding Cinematography"
-            className="w-full h-full object-cover"
-          />
-              {/* <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="Our Story" className="w-full h-full object-cover" /> */}
+              <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="Our Story" className="w-full h-full object-cover" />
             </div>
-            {/* <div className="absolute -bottom-10 -right-6 w-1/2 aspect-square hidden md:block border-[12px] border-white shadow-xl z-20 overflow-hidden">
+            <div className="absolute -bottom-10 -right-6 w-1/2 aspect-square hidden md:block border-[12px] border-white shadow-xl z-20 overflow-hidden">
               <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80" alt="Detail" className="w-full h-full object-cover" />
-            </div> */}
+            </div>
             <div className="absolute -top-6 -left-6 bg-[#c9a84c] text-white p-6 z-20">
               <span className="font-['Cormorant_Garamond'] text-4xl block">6+</span>
               <span className="text-[0.6rem] tracking-widest uppercase">Years</span>
@@ -105,10 +98,10 @@ const About = () => {
         </div>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200">
           {[
-            { t: "Candid Wedding Photography", d: "Capturing genuine emotions and natural moments that beautifully tell the story of your wedding day." },
-            { t: "Cinematic & Traditional Films", d: "Blending cinematic storytelling with traditional coverage to preserve every meaningful moment of your wedding." },
-            { t: "Destination Wedding Experts", d: "Experienced in capturing weddings across India, ensuring seamless coverage wherever your celebration takes place." },
-            { t: "On-Time Delivery", d: "Your photos and films are delivered within the promised timeline, without compromising on quality or attention to detail." }
+            { t: " Candid Wedding Photography", d: "Capturing real emotions, natural moments, and authentic stories through candid wedding photography." },
+            { t: "Traditional Modern Weddings", d: "Blending traditional Indian rituals with modern aesthetics for timeless, elegant wedding storytelling." },
+            { t: "Cinematic Wedding Films", d: "Creating cinematic wedding films that capture emotions, moments, and your complete love story beautifully." },
+            { t: "Destination Wedding Experts", d: "Experienced in destination weddings across India, capturing every moment seamlessly in diverse locations." }
           ].map((v, i) => (
             <div key={i} className="bg-[#F4F1EA] p-10 md:p-16 transition-all hover:bg-white group">
               <span className="font-['Cormorant_Garamond'] text-5xl text-[#c9a84c]/20 block mb-6 group-hover:text-[#c9a84c]/50 transition-colors">0{i+1}</span>

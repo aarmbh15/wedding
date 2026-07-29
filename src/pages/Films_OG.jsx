@@ -115,7 +115,7 @@ export default function Films() {
                       </h1>
                       <div className="w-16 h-[1px] bg-[#c9a84c] mx-auto mb-8 animate-[widthGrow_1.5s_ease-out]" />
                    <p className="pf-hero-sub mt-8 mx-auto max-w-4xl px-6 text-center font-jost text-[0.95rem] md:text-[1.05rem] font-light text-white/90 leading-[1.9]">
-  {/* These wedding films are shaped around
+  These wedding films are shaped around
   <span className="font-medium text-white"> real moments</span> and
   <span className="font-medium text-white"> natural emotions</span>, brought together
   through a
@@ -125,16 +125,13 @@ export default function Films() {
   becomes a
   <span className="font-medium text-white"> seamless narrative</span> that preserves
   the essence of the celebration in an
-  <span className="font-medium text-white"> authentic and enduring</span> way. */}
-  Every wedding has its own rhythm of emotions, laughter and unforgettable moments.<br/> Our cinematic wedding films and professional wedding videography capture this flow through candid moments, 
-               real emotions and creative storytelling. From traditional Indian weddings to modern destination weddings, we craft timeless wedding films that let you relive your celebration with authenticity, 
-               beauty and lasting memories.
+  <span className="font-medium text-white"> authentic and enduring</span> way.
 </p>
                     </div>
                   </section>
 
       {/* Filters */}
-      {/* <div className="flex justify-center gap-[10px] flex-wrap mb-10 px-6 pt-[clamp(28px,4vw,48px)]">
+      <div className="flex justify-center gap-[10px] flex-wrap mb-10 px-6 pt-[clamp(28px,4vw,48px)]">
         {categories.map(cat => (
           <button 
             key={cat} 
@@ -144,8 +141,7 @@ export default function Films() {
             {cat}
           </button>
         ))}
-      </div> */}
-      <br/><br/><br/> 
+      </div>
 
       {/* Grid */}
       <div className="max-w-[1200px] mx-auto px-6 pb-[100px]">
@@ -158,9 +154,9 @@ export default function Films() {
 
       {/* CTA Strip */}
       <div className="bg-[#1a1a1a] py-[clamp(52px,7vw,80px)] px-6 text-center">
-        {/* <p className="font-['Jost'] text-[0.72rem] font-medium tracking-[0.3em] uppercase text-white/35 mb-[1.2rem]">
+        <p className="font-['Jost'] text-[0.72rem] font-medium tracking-[0.3em] uppercase text-white/35 mb-[1.2rem]">
           Limited Availability · 2025–26
-        </p> */}
+        </p>
         <h2 className="font-['Cormorant_Garamond'] text-[clamp(2rem,4vw,3.4rem)] font-light text-white leading-[1.2] mb-[2.2rem]">
           Your story deserves to be<br /><em className="italic">told beautifully</em>
         </h2>
