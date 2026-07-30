@@ -82,7 +82,7 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
         initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-5xl aspect-video rounded-xl overflow-hidden bg-black border border-white/10 shadow-2xl"
+        className="relative w-full max-w-5xl aspect-video rounded-xl overflow-hidden bg-black border border-white/10 group shadow-2xl"
       >
         {youtube ? (
           <iframe
@@ -104,23 +104,23 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
           />
         )}
 
-        <div className="absolute top-3 sm:top-4 inset-x-3 sm:inset-x-4 flex justify-end items-center gap-2 z-30">
-          <button onClick={onClose} className="p-2 sm:p-2.5 rounded-xl bg-black/40 hover:bg-[#c9a84c] text-white transition-colors border border-white/10 backdrop-blur-md shadow-lg shrink-0">
+        <div className="absolute top-3 sm:top-4 inset-x-3 sm:inset-x-4 flex justify-end items-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-30">
+          <button onClick={onClose} className="p-2 sm:p-2.5 rounded-xl bg-white/10 hover:bg-[#c9a84c] text-white transition-colors border border-white/10 backdrop-blur-md shadow-lg shrink-0">
             <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
 
         {!youtube && (
-          <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between z-30 gap-4">
+          <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-30 gap-4">
             <div className="flex items-center gap-2 sm:gap-3">
               <button onClick={handlePlayPause} className="p-2.5 sm:p-3 rounded-xl bg-[#c9a84c] hover:bg-[#b08f3a] text-white transition-all shadow-md">
                 {isPlaying ? <Pause className="w-4 h-4 sm:w-5 sm:h-5 fill-current" /> : <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />}
               </button>
-              <button onClick={handleMuteToggle} className="p-2.5 sm:p-3 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white transition-all backdrop-blur-md">
+              <button onClick={handleMuteToggle} className="p-2.5 sm:p-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition-all backdrop-blur-md">
                 {isMuted ? <VolumeX className="w-4 h-4 sm:w-5 sm:h-5" /> : <Volume2 className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
             </div>
-            <button onClick={handleFullscreen} className="p-2.5 sm:p-3 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white transition-all backdrop-blur-md">
+            <button onClick={handleFullscreen} className="p-2.5 sm:p-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition-all backdrop-blur-md">
               <Maximize className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
@@ -150,52 +150,55 @@ const films = [
 const categories = ["All", "Destination", "Royal", "Coastal", "City"];
 
 // ─── Elegant Film Card Component ──────────────────────────────────────────────
-function FilmCard({ film, onSelect, isOffset }) {
+function FilmCard({ film, onSelect }) {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.4 }}
       onClick={() => onSelect(film)}
-      className={`cursor-pointer w-full group flex flex-col ${isOffset ? 'md:mt-32' : ''}`}
+      className="cursor-pointer w-full group flex flex-col"
     >
-      <div className="relative aspect-video overflow-hidden bg-[#e6e2da]">
+      <div className="relative aspect-[16/9] overflow-hidden bg-[#e0dbd1] rounded-sm shadow-md mb-6">
         {/* Thumbnail Image */}
         <img
           src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
           alt={film.couple}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.04]"
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
         />
         
         {/* Elegant Gradient Overlay */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-700" />
+        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-500" />
         
-        {/* Sleek Glassmorphism Play Button */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-500 ease-out pointer-events-none">
-          <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-2xl">
-            <Play className="w-5 h-5 text-white fill-white ml-1" />
+        {/* Sleek Play Button */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:border-[#c9a84c] group-hover:bg-[#c9a84c] transition-all duration-500 shadow-2xl">
+            <Play className="w-6 h-6 text-white fill-white ml-1" />
           </div>
+        </div>
+
+        {/* Category Badge */}
+        <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-md px-3 py-1.5 rounded-sm">
+          <span className="font-jost text-[0.6rem] uppercase tracking-widest text-white/90">
+            {film.category}
+          </span>
         </div>
       </div>
       
-      {/* Clean Editorial Typography underneath */}
-      <div className="text-left mt-6">
-        <h3 className="font-['Cormorant_Garamond'] text-2xl md:text-3xl font-light text-[#1a1a1a] mb-2 group-hover:text-[#c9a84c] transition-colors duration-400">
+      {/* Editorial Style Typography underneath */}
+      <div className="text-center px-4">
+        <h3 className="font-cormorant text-[1.6rem] font-medium text-[#1a1a1a] mb-1.5 group-hover:text-[#c9a84c] transition-colors duration-400">
           {film.couple}
         </h3>
-        
-        {/* Tags explicitly placed at the very bottom */}
-        <div className="flex items-center gap-3 mt-3">
-          <span className="font-['Jost'] text-[0.65rem] tracking-[0.2em] uppercase text-[#999]">
+        <div className="flex items-center justify-center gap-2">
+          <div className="w-4 h-[1px] bg-[#c9a84c]"></div>
+          <p className="font-jost text-[0.65rem] tracking-[0.25em] uppercase text-gray-500">
             {film.location}
-          </span>
-          <div className="w-6 h-[1px] bg-[#c9a84c]/40" />
-          {/* <span className="font-['Jost'] text-[0.65rem] tracking-[0.2em] uppercase text-[#c9a84c]">
-            {film.category}
-          </span> */}
+          </p>
+          <div className="w-4 h-[1px] bg-[#c9a84c]"></div>
         </div>
       </div>
     </motion.div>
@@ -221,15 +224,14 @@ export default function Films() {
   }, [selectedFilm]);
 
   return (
-    <div className="min-h-screen bg-[#FDFCF9]">
+    <div className="min-h-screen bg-[#f7f5f1]">
       <Helmet>
         <title>Films · TILT SHIFT Films</title>
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
       </Helmet>
 
-      {/* Minimalist Hero Section */}
-      {/* <section className="relative h-[80vh] md:h-screen flex items-center justify-center overflow-hidden bg-black"> */}
-      <section className="relative h-screen md:h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
           <img
             src={HeroImage}
@@ -237,43 +239,39 @@ export default function Films() {
             className="w-full h-full object-cover opacity-60 brightness-75"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/80 z-10" />
         
-        <div className="relative z-20 flex flex-col items-center justify-center px-6 mt-16 animate-[fadeIn_1.4s_ease-out]">
-          <p className="font-['Jost'] text-[0.65rem] md:text-[0.75rem] tracking-[0.4em] uppercase text-white/80 mb-6">
-            Cinematic Storytelling
-          </p>
-          <h1 className="font-['Cormorant_Garamond'] text-[clamp(4rem,10vw,8rem)] leading-none font-light text-white drop-shadow-lg tracking-wide uppercase">
-            Films
+        <div className="relative z-20 text-center px-6 mt-16 animate-[fadeIn_1.4s_ease-out]">
+          <h1 className="font-cormorant text-[clamp(3.5rem,8vw,6rem)] font-light text-white drop-shadow-lg">
+            Cinematic <span className="italic text-[#c9a84c]">Films</span>
           </h1>
-          <p className="pf-hero-sub mt-8 mx-auto max-w-4xl px-6 text-center font-jost text-[0.95rem] md:text-[1.05rem] font-light text-white/90 leading-[1.9]">
-            Every wedding has its own rhythm of emotions, laughter and unforgettable moments.<br/> 
-            Our cinematic wedding films and professional wedding videography capture this flow through candid moments, real emotions and creative storytelling. From traditional Indian weddings to modern destination weddings, we craft timeless wedding films that let you relive your celebration with authenticity, beauty and lasting memories.
+          <div className="w-20 h-[1.5px] bg-[#c9a84c] mx-auto mt-6 shadow-sm" />
+          <p className="mt-8 mx-auto max-w-3xl px-6 text-center font-jost text-[0.95rem] md:text-[1.05rem] font-light text-white/90 leading-[2] tracking-wide">
+            Every wedding has its own rhythm of emotions, laughter, and unforgettable moments.<br className="hidden md:block"/> 
+            Our cinematic wedding films capture this flow through candid interactions, real emotions, and creative storytelling. From traditional Indian rituals to modern destination celebrations, we craft timeless films that let you relive the magic beautifully.
           </p>
-          <div className="w-16 h-[1.5px] bg-[#c9a84c] mx-auto mt-10 shadow-sm" />
         </div>
       </section>
 
-      {/* Main Editorial Content Area */}
-      <div className="py-24 md:py-40 px-6">
+      {/* Main Content Area */}
+      <div className="py-20 md:py-32 px-6">
         
-        {/* Simple & Elegant Filter Menu */}
-        <div className="max-w-[1200px] mx-auto mb-20 md:mb-32">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-14">
+        {/* Elegant Filter Menu */}
+        <div className="max-w-[1200px] mx-auto mb-16 md:mb-24">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-12">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`font-['Jost'] text-[0.75rem] uppercase tracking-[0.25em] pb-2 transition-all duration-300 relative group ${
-                  activeCategory === cat ? 'text-[#c9a84c]' : 'text-gray-400 hover:text-[#1a1a1a]'
+                className={`font-jost text-[0.7rem] md:text-[0.8rem] uppercase tracking-[0.2em] pb-1.5 transition-all duration-300 relative ${
+                  activeCategory === cat ? 'text-[#c9a84c] font-medium' : 'text-gray-400 hover:text-[#1a1a1a]'
                 }`}
               >
                 {cat}
-                {/* Active Indicator */}
                 {activeCategory === cat && (
                   <motion.div 
-                    layoutId="dot"
-                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#c9a84c]"
+                    layoutId="underline"
+                    className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#c9a84c]"
                   />
                 )}
               </button>
@@ -281,23 +279,18 @@ export default function Films() {
           </div>
         </div>
 
-        {/* Staggered Offset Grid for Premium Agency Look */}
-        <div className="max-w-[1300px] mx-auto">
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24 md:gap-y-10 items-start">
+        {/* Animated Cinematic Grid */}
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
             <AnimatePresence mode="popLayout">
-              {filtered.map((film, index) => (
-                <FilmCard 
-                  key={film.id} 
-                  film={film} 
-                  onSelect={setSelectedFilm} 
-                  isOffset={index % 2 !== 0} // Staggers the right column downwards
-                />
+              {filtered.map((film) => (
+                <FilmCard key={film.id} film={film} onSelect={setSelectedFilm} />
               ))}
             </AnimatePresence>
           </motion.div>
           
           {filtered.length === 0 && (
-            <div className="text-center py-32 text-gray-400 font-['Jost'] uppercase tracking-widest text-sm">
+            <div className="text-center py-20 text-gray-400 font-jost uppercase tracking-widest text-sm">
               No films found for this category.
             </div>
           )}
@@ -305,14 +298,13 @@ export default function Films() {
       </div>
 
       {/* Premium CTA Strip */}
-      <div className="bg-[#1a1a1a] py-28 md:py-36 px-6 text-center">
-        <p className="font-['Jost'] text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-6">Let's Create Together</p>
-        <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,5vw,4rem)] font-light text-white leading-[1.1] mb-12">
+      <div className="bg-[#1a1a1a] py-24 md:py-32 px-6 text-center border-t-4 border-[#c9a84c]">
+        <h2 className="font-cormorant text-[clamp(2.2rem,5vw,4rem)] font-light text-white leading-[1.2] mb-10">
           Your story deserves to be<br /><em className="italic text-[#c9a84c]">told beautifully</em>
         </h2>
         <a 
           href="/contact" 
-          className="inline-block font-['Jost'] text-[0.7rem] font-medium tracking-[0.3em] uppercase text-white border border-white/20 px-12 py-5 transition-all duration-500 hover:bg-[#c9a84c] hover:border-[#c9a84c] hover:text-[#1a1a1a]"
+          className="inline-block font-jost text-[0.75rem] font-medium tracking-[0.3em] uppercase text-[#1a1a1a] bg-[#c9a84c] px-12 py-5 transition-all duration-400 hover:bg-white hover:scale-105 shadow-lg"
         >
           Enquire Now
         </a>

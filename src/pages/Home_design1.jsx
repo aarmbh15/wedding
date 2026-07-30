@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState, useCallback, useMemo } from "react"
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Play, Pause, Volume2, VolumeX, Maximize, Quote } from "lucide-react";
+import { X, Play, Pause, Volume2, VolumeX, Maximize } from "lucide-react";
 
 // ─── Import Local Hero Videos ────────────────────────────────────────────────
 import showreelVideo from "../assets/Website Showreel.mp4";
@@ -71,7 +71,7 @@ function ProgressiveImg({ src, alt = "", shouldLoad = true, isMasonry = false })
 
   if (isMasonry) {
     return (
-      <div className="relative w-full h-auto bg-[#f7f7f7] overflow-hidden group rounded-sm">
+      <div className="relative w-full h-auto bg-[#f7f7f7]">
         {shouldLoad && (
           <img
             src={src}
@@ -79,7 +79,7 @@ function ProgressiveImg({ src, alt = "", shouldLoad = true, isMasonry = false })
             loading="lazy"
             decoding="async"
             onLoad={() => setLoaded(true)}
-            className={`block w-full h-auto object-cover transition-all duration-700 ease-out group-hover:scale-[1.03] ${loaded ? "opacity-100" : "opacity-0"}`}
+            className={`block w-full h-auto transition-opacity duration-700 ease-out ${loaded ? "opacity-100" : "opacity-0"}`}
           />
         )}
       </div>
@@ -95,7 +95,7 @@ function ProgressiveImg({ src, alt = "", shouldLoad = true, isMasonry = false })
           loading="lazy"
           decoding="async"
           onLoad={() => setLoaded(true)}
-          className={`block w-full h-full object-cover transition-all duration-1000 ease-out ${loaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
+          className={`block w-full h-full object-cover transition-all duration-700 ease-out ${loaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
         />
       )}
     </div>
@@ -141,16 +141,16 @@ const portfolioGrid = [
   { src: img("Web Gallery/img5007.webp") },
   { src: img("Web Gallery/img5008.webp") },
   { src: img("Web Gallery/img5009.webp") },
-  { src: img("Web Gallery/img5010.webp") },
-  { src: img("Web Gallery/img5011.webp") },
-  { src: img("Web Gallery/img5012.webp") },
-  { src: img("Web Gallery/img5013.webp") },
-  { src: img("Web Gallery/img5014.webp") },
-  { src: img("Web Gallery/img5015.webp") },
-  { src: img("Web Gallery/img5016.webp") },
-  { src: img("Web Gallery/img5017.webp") },
-  { src: img("Web Gallery/img5018.webp") },
-  { src: img("Web Gallery/img5019.webp") },
+  { src: img("Web Gallery/img50010.webp") },
+  { src: img("Web Gallery/img50011.webp") },
+  { src: img("Web Gallery/img50012.webp") },
+  { src: img("Web Gallery/img50013.webp") },
+  { src: img("Web Gallery/img50014.webp") },
+  { src: img("Web Gallery/img50015.webp") },
+  { src: img("Web Gallery/img50016.webp") },
+  { src: img("Web Gallery/img50017.webp") },
+  { src: img("Web Gallery/img50018.webp") },
+  { src: img("Web Gallery/img50019.webp") },
 ];
 
 const featured = [
@@ -161,11 +161,11 @@ const featured = [
 ];
 
 const testimonials = [
-  { name: "Amey", text: "Nityanand and his amazing team deliver absolutely incredible photography! Over time, Nityanand has gone from being just a hired professional to our trusted family photographer and a genuine friend. We have trusted them to capture all of our family functions and the experience is always wonderful. I highly recommend them for any special occasion." },
+  { name: "Amey", text: "Nityanand and his amazing team deliver absolutely incredible photography! Over time, Nityanand has gone from being just a hired professional to our trusted family photographer and a genuine friend. We have trusted them to capture all of our family functions and the experience is always wonderful. I highly recommend them for any special occasion" },
   { name: "Sumeet", text: "We couldn’t have asked for a better wedding photographer. From making us feel completely at ease to capturing every emotion and little detail so beautifully, the entire experience was wonderful. The photos truly let us relive our special day and we are so grateful for the memories they have given us. Highly recommended!" },
-  { name: "Aishwarya", text: "We had a really lovely experience with them comfort and constant support. You can truly trust them for your big day! Their attention to small candid moments is what makes them unique." },
-  { name: "John", text: "Nithyanad and team were very professional and easy to work with. Right from the start, they worked with us to ensure our requirements were understood and were very calm and patient throughout the 3 days of our wedding events. The turnaround they provided was excellent. Their teaser and 10 min wedding trailers were also absolutely amazing!" },
-  { name: "Sanskruti", text: "We had a great experience with TiltShift Pictures for our wedding. We absolutely loved the photography, videography, editing and the team's guidance during the shoots. They captured our moments beautifully and the final output exceeded our expectations. Overall, we are happy with their work and would definitely recommend them!" }
+  { name: "Aishwarya", text: "We had a really lovely experience with them comfort and constant support. You can truly trust them for your big day!" },
+  { name: "John", text: "Nithyanad and team were very professional and easy to work with. Right from the start, they worked with us to ensure our requirements were understood and were very calm and patient throughout the 3 days of our wedding events. The turnaround they provided was excellent, having a select few photos edited immediately for us to be able to use for our reception following our wedding. Their teaser and 10 min wedding trailers were also absolutely amazing! Would highly recommend their services to anyone." },
+  { name: "Sanskruti", text: "We had a great experience with TiltShift Pictures for our wedding. We absolutely loved the photography, videography, editing and the team's guidance during the shoots, they captured our moments beautifully and the final output exceeded our expectations. Overall, we are happy with their work and would definitely recommend them!" }
 ];
 
 const aboutImg = img("Chaitrali_Shubham/img407.webp");
@@ -233,30 +233,23 @@ function HeroSlider() {
   );
 }
 
-/* ─── Static Film Card (Updated with Thumbnail & Play Icon) ─── */
+/* ─── Static Film Card ────────────────────────────────────── */
 function FilmCard({ film, onSelect }) {
   return (
-    <div className="w-full cursor-pointer group" onClick={() => onSelect(film)}>
-      <div className="relative aspect-video overflow-hidden rounded-sm bg-[#ede9e3] mb-5 shadow-sm">
-        <img
-          src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
-          alt={film.couple}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+    <div className="w-full transition-transform duration-500 group" onClick={() => onSelect(film)}>
+      <div className="relative aspect-video overflow-hidden bg-[#ede9e3] mb-5 cursor-pointer">
+        <iframe
+          className="w-full h-full border-none pointer-events-none scale-[1.15] transition-transform duration-700 group-hover:scale-[1.20]"
+          src={`https://www.youtube.com/embed/${film.id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${film.id}&rel=0&modestbranding=1&vq=hd1080&start=20`}
+          title={film.couple}
+          allow="autoplay; encrypted-media"
         />
-        {/* Dark overlay for contrast on hover */}
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
-        
-        {/* Elegant Play Button */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300 shadow-xl">
-            <Play className="w-5 h-5 text-white fill-white ml-1" />
-          </div>
-        </div>
+        <div className="absolute inset-0 bg-black/5 z-20 pointer-events-none group-hover:bg-transparent transition-colors duration-500" />
       </div>
-      <h3 className="font-cormorant text-[1.45rem] transition-colors duration-400 group-hover:text-[#c9a84c] text-[#1a1a1a]">
+      <h3 className="font-cormorant text-[1.4rem] transition-colors duration-400 group-hover:text-[#c9a84c] text-[#1a1a1a] cursor-pointer">
         {film.couple}
       </h3>
-      <p className="font-jost text-[0.7rem] tracking-[0.2em] uppercase text-[#999] mt-0.5">
+      <p className="font-jost text-[0.7rem] tracking-[0.2em] uppercase text-[#999]">
         {film.location}
       </p>
     </div>
@@ -425,10 +418,8 @@ export default function Home() {
           .hover-zoom { overflow: hidden; }
           .hover-zoom img { transition: transform 0.9s cubic-bezier(.22,1,.36,1); }
           .hover-zoom:hover img { transform: scale(1.06); }
-          
-          /* Smooth Marquee settings */
           @keyframes scroll-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-          .animate-scroll { display: flex; width: max-content; animation: scroll-marquee 50s linear infinite; }
+          .animate-scroll { display: flex; width: max-content; animation: scroll-marquee 40s linear infinite; }
           .group\\/scroll:hover .animate-scroll { animation-play-state: paused; }
         `}</style>
       </Helmet>
@@ -441,7 +432,7 @@ export default function Home() {
           <section ref={aboutRef} className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,8vw,120px)] items-center px-[clamp(24px,8vw,120px)] py-[clamp(80px,10vw,140px)] bg-white about-grid">
             <div className={`hover-zoom fade-up ${aboutInView ? "in" : ""} relative aspect-[3/4]`}>
               <ProgressiveImg src={aboutImg} alt="Wedding story" shouldLoad={isNear} />
-              <div className="absolute bottom-[clamp(16px,2.5vw,28px)] right-[clamp(16px,2.5vw,28px)] bg-white px-5 py-3.5 shadow-sm">
+              <div className="absolute bottom-[clamp(16px,2.5vw,28px)] right-[clamp(16px,2.5vw,28px)] bg-white px-5 py-3.5">
                 <p className="font-jost text-[0.68rem] tracking-[0.28em] uppercase text-[#888]">Est. 2019</p>
               </div>
             </div>
@@ -466,34 +457,25 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* PORTFOLIO MASONRY GRID (Original Size) */}
+      {/* PORTFOLIO GRID */}
       <LazySection rootMargin="400px">
         {(isNear) => (
           <section ref={gridRef} className="bg-white pb-[clamp(60px,8vw,100px)]">
             <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
               <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a]">PORTFOLIO</h2>
             </div>
-            
-            {/* Elegant CSS Columns Masonry - Filtered to prevent empty spaces from broken paths */}
-            <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 px-3 md:px-5">
-              {portfolioGrid
-                .filter(image => image && image.src) // Vital fix for "missing" images breaking the grid
-                .map((image, i) => (
-                <div 
-                  key={i} 
-                  className={`fade-up ${gridInView ? "in" : ""} mb-3 md:mb-4 break-inside-avoid inline-block w-full relative`} 
-                  style={{ transitionDelay: `${(i % 5) * 0.1}s` }}
-                >
-                  <ProgressiveImg 
-                    src={image.src} 
-                    alt={`Gallery ${i}`} 
-                    shouldLoad={gridInView} 
-                    isMasonry={true} 
-                  />
-                </div>
-              ))}
+            <div className="grid grid-cols-2 md:grid-cols-4 grid-flow-dense gap-3 px-3 auto-rows-[200px] md:auto-rows-[260px]">
+              {portfolioGrid.map((image, i) => {
+                let sizeClasses = "col-span-1 row-span-1";
+                if (image.size === "landscape") sizeClasses = "col-span-2 row-span-1";
+                if (image.size === "portrait") sizeClasses = "col-span-1 row-span-2";
+                return (
+                  <div key={i} className={`fade-up ${gridInView ? "in" : ""} ${sizeClasses} relative overflow-hidden rounded-sm`} style={{ transitionDelay: `${i * 0.1}s` }}>
+                    <ProgressiveImg src={image.src} alt={`Gallery ${i}`} shouldLoad={gridInView} className="w-full h-full object-cover" style={{ objectPosition: image.pos || "50% 50%" }} />
+                  </div>
+                );
+              })}
             </div>
-
             <div className="text-center mt-[clamp(32px,4vw,56px)]">
               <a href="/portfolio" className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-[#1a1a1a] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors">
                 View Full Portfolio
@@ -503,39 +485,30 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* FEATURED WEDDINGS (Premium Portrait Cards) */}
+      {/* FEATURED WEDDINGS */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section ref={featRef} className="bg-[#fcfcfc] py-[clamp(60px,10vw,80px)] px-[clamp(24px,6vw,80px)] border-y border-black/5">
+          <section ref={featRef} className="bg-white py-[clamp(40px,10vw,40px)] px-[clamp(24px,6vw,80px)]">
             <div className="max-w-[1320px] mx-auto">
               <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
                 <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">Featured Weddings</h2>
-                <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
               </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 featured-grid">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[clamp(16px,2vw,32px)] featured-grid">
                 {featured.map((f, i) => (
-                  <Link key={i} to={`/wedding/${f.slug}`} state={{ from: location }} className={`group fade-up flex flex-col ${featInView ? `in d${i + 1}` : ""}`}>
-                    {/* Portrait layout for premium wedding aesthetic */}
-                    <div className="relative w-full aspect-[4/5] mb-5 overflow-hidden bg-white shadow-sm rounded-sm">
-                      <img 
-                        src={f.img} 
-                        alt={f.couple} 
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
-                      />
-                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <Link key={i} to={`/wedding/${f.slug}`} state={{ from: location }} className={`hover-zoom fade-up ${featInView ? `in d${i + 1}` : ""} block`}>
+                    <div className="relative w-full aspect-video mb-4 overflow-hidden">
+                      <ProgressiveImg src={f.img} alt={f.couple} shouldLoad={isNear} isMasonry={false} />
                     </div>
-                    <div className="text-center">
-                      <h3 className="font-cormorant text-2xl font-medium text-[#1a1a1a] mb-1.5 transition-colors group-hover:text-[#c9a84c]">{f.couple}</h3>
-                      <p className="font-jost text-[0.65rem] tracking-[0.2em] uppercase text-gray-400">{f.location}</p>
+                    <div className="text-left">
+                      <h3 className="font-cormorant text-[1.4rem] text-[#1a1a1a] mb-1.5">{f.couple}</h3>
+                      <p className="font-jost text-[0.65rem] tracking-[0.2em] uppercase text-[#a3a3a3]">{f.location}</p>
                     </div>
                   </Link>
                 ))}
               </div>
-              <div className="text-center mt-12 md:mt-16">
+              <div className="text-center mt-[clamp(32px,4vw,56px)]">
                 <a href="/portfolio" className="font-jost text-[0.72rem] tracking-[0.28em] uppercase border-b border-[#aaa] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors">
-                  See All Stories
+                  See All 
                 </a>
               </div>
             </div>
@@ -543,12 +516,12 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* FILMS SECTION */}
+      {/* FILMS SECTION (Now uses Lightbox via onSelect) */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section className="bg-white py-[clamp(60px,10vw,100px)] px-[clamp(24px,6vw,80px)] overflow-hidden">
+          <section className="bg-white py-[clamp(40px,10vw,80px)] px-[clamp(24px,6vw,80px)] overflow-hidden">
             <div className="max-w-[1320px] mx-auto">
-              <div className="text-center px-6 mb-12">
+              <div className="text-center px-6 mb-16">
                 <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a]">Films</h2>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(24px,4vw,40px)]">
@@ -573,16 +546,16 @@ export default function Home() {
       {/* PHILOSOPHY SECTION */}
       <LazySection rootMargin="100px">
         {(isNear) => (
-          <section className="relative z-10 min-h-[60vh] flex items-center justify-center bg-white border-t border-black/5">
-            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-[100px] max-w-[1300px] w-full px-[clamp(24px,6vw,80px)] py-20">
+          <section className="relative z-10 min-h-[60vh] flex items-center justify-center bg-white">
+            <div className="flex flex-col md:flex-row items-center gap-1 md:gap-[100px] max-w-[1300px] w-full ">
               <div className="w-full md:w-[45%]">
-                <img src={leftImg} alt="Couple" className="w-full h-[400px] md:h-[650px] object-cover rounded-sm shadow-md" />
+                <img src={leftImg} alt="Couple" className="w-full h-[300px] md:h-[700px] object-cover rounded-[10px]" />
               </div>
               <div className="w-full md:w-[55%] text-center md:text-left">
-                <blockquote className="font-cormorant italic text-[1.5rem] md:text-[2rem] leading-[1.6] text-[#222] mb-10">
-                   "We capture weddings in their truest form—whether deeply traditional or beautifully modern. From soulful rituals to vibrant celebrations, our candid wedding photography and cinematic wedding films focus on real emotions, natural moments, and timeless storytelling."
+                <blockquote className="font-cormorant italic text-[1.4rem] sm:text-[2rem] leading-relaxed mb-8">
+                   We capture weddings in their truest form-whether deeply traditional or beautifully modern. From soulful rituals to vibrant celebrations, our candid wedding photography and cinematic wedding films focus on real emotions, natural moments, and timeless storytelling. Be it an intimate ceremony or a grand destination wedding, we preserve every detail with authenticity, creativity, and a style that reflects your unique love story.
                 </blockquote>
-                <a href="/about" className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-black pb-1 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors">
+                <a href="/about" className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-black hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors">
                   Our Story →
                 </a>
               </div>
@@ -591,33 +564,22 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* ENHANCED CLIENT TESTIMONIALS (Slimmer, Elegant Cards) */}
+      {/* CLIENT TESTIMONIALS */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section className="bg-[#f7f5f1] py-[clamp(60px,10vw,100px)] overflow-hidden">
+          <section className="bg-[#fcfcfc] py-[clamp(60px,10vw,100px)] overflow-hidden">
             <div className="max-w-[1320px] mx-auto px-[clamp(24px,6vw,80px)]">
-              <div className="text-center pb-[clamp(40px,6vw,70px)]">
-                <p className="font-jost text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-3">Kind Words</p>
+              <div className="text-center pb-[clamp(32px,5vw,60px)]">
                 <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">Client Testimonials</h2>
+                <div className="w-10 h-px bg-[#1a1a1a] mx-auto mt-6" />
               </div>
             </div>
-
             <div className="relative group/scroll w-full">
-              <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#f7f5f1] to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#f7f5f1] to-transparent z-10 pointer-events-none" />
-              
-              <div className="animate-scroll flex gap-6 px-4">
+              <div className="animate-scroll">
                 {[...testimonials, ...testimonials].map((t, i) => (
-                  <div key={i} className="flex-shrink-0 w-[300px] md:w-[350px] flex flex-col bg-white p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm group relative">
-                    <Quote className="w-8 h-8 text-[#c9a84c] opacity-20 mb-5" />
-                    <p className="font-cormorant italic text-[1.1rem] leading-[1.8] text-gray-600 mb-8 relative z-10 flex-grow">
-                      "{t.text}"
-                    </p>
-                    <div className="mt-auto flex flex-col gap-2 pt-5 border-t border-[#f4f1ea]">
-                      <p className="font-jost text-[0.7rem] tracking-[0.2em] uppercase text-[#1a1a1a] font-medium">
-                        {t.name}
-                      </p>
-                    </div>
+                  <div key={i} className="flex-shrink-0 w-[85vw] md:w-[400px] lg:w-[420px] mx-[clamp(12px,2vw,20px)] flex flex-col justify-between bg-white p-8 border border-[#eaeaea] shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+                    <p className="font-cormorant italic text-[1.2rem] leading-relaxed text-[#555] mb-8">"{t.text}"</p>
+                    <p className="font-jost text-[0.72rem] tracking-[0.2em] uppercase text-[#999] mt-auto pt-4 border-t border-[#eaeaea]">{t.name}</p>
                   </div>
                 ))}
               </div>
@@ -628,17 +590,14 @@ export default function Home() {
 
       {/* ENQUIRY POPUP */}
       {showEnquiry && (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 sm:p-6 transition-opacity duration-300">
-          <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto bg-[#FDFCF9] p-6 md:p-8 shadow-2xl animate-[fadeIn_0.3s_ease-out] rounded-sm custom-scrollbar">
-            
-            {/* Sticky Header inside scrollable area */}
-            <div className="sticky top-0 bg-[#FDFCF9] z-20 flex justify-between items-center mb-6 border-b border-black/5 pb-4 pt-2 -mt-2">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity duration-300">
+          <div className="relative w-full max-w-2xl bg-[#FDFCF9] p-6 md:p-8 shadow-2xl animate-[fadeIn_0.3s_ease-out]">
+            <div className="flex justify-between items-center mb-6 border-b border-black/5 pb-4">
               <h2 className="font-['Cormorant_Garamond'] text-2xl font-light text-[#1a1a1a]">Enquire Now</h2>
               <button onClick={() => setShowEnquiry(false)} className="w-8 h-8 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors" aria-label="Close popup">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
               </button>
             </div>
-            
             {popupSubmitted ? (
               <div className="py-12 text-center">
                 <span className="text-4xl block mb-4">✨</span>

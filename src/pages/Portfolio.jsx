@@ -16,7 +16,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "December 2024",
     category: "Destination",
-    cover:    img("Amruta_Amey/img233.webp"),
+    cover:    img("portfolio/Amruta_Amey.webp"),
   },
   {
     slug:     "abhimanyu-manisha",
@@ -24,7 +24,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "November 2024",
     category: "Coastal",
-    cover:    img("Abhimanyu_Manisha/img603.webp"),
+    cover:    img("portfolio/Abhimanyu_Manisha.webp"),
   },
   {
     slug:     "Rohan-preksha",
@@ -32,7 +32,7 @@ const weddings = [
     location: "Pushkar, Rajasthan",
     date:     "January 2025",
     category: "Royal",
-    cover:    img("Rohan_Preksha/img538.webp"),
+    cover:    img("portfolio/Rohan_Preksha.webp"),
   },
     {
     slug:     "bhakti-sourabh",
@@ -40,7 +40,7 @@ const weddings = [
     location: "Jodhpur, Rajasthan",
     date:     "October 2024",
     category: "City",
-    cover:    img("Bhakti_Sourabh/img319.webp"),
+    cover:    img("portfolio/Bhakti_Saurabh.webp"),
   },
   {
     slug:     "Nina_Parth",
@@ -48,7 +48,7 @@ const weddings = [
     location: "Pushkar, Rajasthan",
     date:     "January 2025",
     category: "Royal",
-    cover:    img("Nina_Parth/img1025.webp"),
+    cover:    img("portfolio/Nina_Parth.webp"),
   },
   {
     slug:     "Atish_Shweta",
@@ -56,7 +56,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Atish_Shweta/img4014.webp"),
+    cover:    img("portfolio/Atish_Shweta.webp"),
   },
    {
     slug:     "Gaurav_Chinmaee",
@@ -64,7 +64,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Gaurav_Chinmaee/img913.webp"),
+    cover:    img("portfolio/Gaurav_Chinmaee.webp"),
   },
   {
     slug:     "Raj_Suhasini",
@@ -72,7 +72,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Raj_Suhasini/img2045.webp"),
+    cover:    img("portfolio/Raj_Suhasini.webp"),
   },
   {
     slug:     "Aishwarya_Sanmay",
@@ -80,7 +80,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Aishwarya_Sanmay/img33.webp"),
+    cover:    img("portfolio/Sanmay_Aishwarya.jpeg"),
   },
    {
     slug:     "Anuja_Shubhang",
@@ -88,7 +88,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Anuja_Shubhang/img709.webp"),
+    cover:    img("portfolio/Anuja_Shubhang.webp"),
   },
   {
     slug:     "Atharva_Haritha",
@@ -96,7 +96,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Atharva_Haritha/img836.webp"),
+    cover:    img("portfolio/Atharva_Harita.webp"),
   },
     {
     slug:     "Shruti_Harjot",
@@ -104,7 +104,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Shruti_Harjot/img3057.webp"),
+    cover:    img("portfolio/Shruti_Harjot.webp"),
   },
   
   {
@@ -113,7 +113,7 @@ const weddings = [
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("Chaitrali_Shubham/img432.webp"),
+    cover:    img("portfolio/Chaitraly_Shubham.webp"),
   },
 ];
 
@@ -167,7 +167,7 @@ function WeddingCard({ wedding, onClick }) {
       className="cursor-pointer group"
     >
       {/* Image Container */}
-      <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-[#ede9e3]">
+      <div className="relative aspect-[4/2] overflow-hidden mb-4 bg-[#ede9e3]">
         <LazyImg src={wedding.cover} alt={wedding.couple} />
 
         {/* Zoom effect layer */}
