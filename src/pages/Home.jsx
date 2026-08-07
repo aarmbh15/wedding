@@ -5,11 +5,19 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Play, Pause, Volume2, VolumeX, Maximize, Quote } from "lucide-react";
 
-// ─── Import Local Hero Videos ────────────────────────────────────────────────
-import showreelVideo from "../assets/Website Showreel.mp4";
-import shrutiVideo from "../assets/Shruti Bride.mp4";
-import rohanPrekshaVideo from "../assets/Rohan & Preksha Prewedding.mp4";
-import eshaRahulVideo from "../assets/Esha & Rahul Haldi.mp4";
+// ─── Import Hero Images (Lap folder) ─────────────────────────────────────────
+import heroImg1 from "../assets/Lap/1.jpg";
+import heroImg2 from "../assets/Lap/2.jpg";
+import heroImg3 from "../assets/Lap/3.jpg";
+import heroImg5 from "../assets/Lap/5.jpg";
+import heroImg6 from "../assets/Lap/6.jpg";
+import heroImg7 from "../assets/Lap/7.jpg";
+import heroImg8 from "../assets/Lap/8.jpg";
+import heroImg10 from "../assets/Lap/10.webp";
+import heroImg11 from "../assets/Lap/11.jpg";
+import heroImg12 from "../assets/Lap/12.jpg";
+import heroImg13 from "../assets/Lap/13.jpg";
+import heroImg14 from "../assets/Lap/14.jpg";
 
 // ─── Bulk import ALL images ───────────────────────────────────────────────────
 const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png}", { eager: true });
@@ -63,9 +71,9 @@ function ProgressiveImg({ src, alt = "", shouldLoad = true, isMasonry = false })
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     if (shouldLoad && src) {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => setLoaded(true);
+      const image = new Image();
+      image.src = src;
+      image.onload = () => setLoaded(true);
     }
   }, [src, shouldLoad]);
 
@@ -124,11 +132,20 @@ function LazySection({ children, rootMargin = "200px" }) {
 }
 
 /* ─── Data ───────────────────────────────────────────────────── */
-const heroVideos = [
-  { src: showreelVideo },
-  { src: shrutiVideo },
-  { src: rohanPrekshaVideo },
-  { src: eshaRahulVideo }
+// Hero slider now uses local images instead of videos.
+const heroImages = [
+  { src: heroImg1 },
+  { src: heroImg2 },
+  { src: heroImg3 },
+  { src: heroImg5 },
+  { src: heroImg6 },
+  { src: heroImg7 },
+  { src: heroImg8 },
+  { src: heroImg10 },
+  { src: heroImg11 },
+  { src: heroImg12 },
+  { src: heroImg13 },
+  { src: heroImg14 },
 ];
 
 const portfolioGrid = [
@@ -137,11 +154,11 @@ const portfolioGrid = [
   { src: img("Web Gallery/img5003.webp") },
   { src: img("Web Gallery/img5004.webp") },
   { src: img("Web Gallery/img5005.webp") },
-  { src: img("Web Gallery/img5006.webp") },
   { src: img("Web Gallery/img5007.webp") },
   { src: img("Web Gallery/img5008.webp") },
   { src: img("Web Gallery/img5009.webp") },
   { src: img("Web Gallery/img5010.webp") },
+  { src: img("Web Gallery/img5006.webp") },
   { src: img("Web Gallery/img5011.webp") },
   { src: img("Web Gallery/img5012.webp") },
   { src: img("Web Gallery/img5013.webp") },
@@ -162,7 +179,7 @@ const featured = [
 
 const testimonials = [
   { name: "Amey", text: "Nityanand and his amazing team deliver absolutely incredible photography! Over time, Nityanand has gone from being just a hired professional to our trusted family photographer and a genuine friend. We have trusted them to capture all of our family functions and the experience is always wonderful. I highly recommend them for any special occasion." },
-  { name: "Sumeet", text: "We couldn’t have asked for a better wedding photographer. From making us feel completely at ease to capturing every emotion and little detail so beautifully, the entire experience was wonderful. The photos truly let us relive our special day and we are so grateful for the memories they have given us. Highly recommended!" },
+  { name: "Sumeet", text: "We couldn't have asked for a better wedding photographer. From making us feel completely at ease to capturing every emotion and little detail so beautifully, the entire experience was wonderful. The photos truly let us relive our special day and we are so grateful for the memories they have given us. Highly recommended!" },
   { name: "Aishwarya", text: "We had a really lovely experience with them comfort and constant support. You can truly trust them for your big day! Their attention to small candid moments is what makes them unique." },
   { name: "John", text: "Nithyanad and team were very professional and easy to work with. Right from the start, they worked with us to ensure our requirements were understood and were very calm and patient throughout the 3 days of our wedding events. The turnaround they provided was excellent. Their teaser and 10 min wedding trailers were also absolutely amazing!" },
   { name: "Sanskruti", text: "We had a great experience with TiltShift Pictures for our wedding. We absolutely loved the photography, videography, editing and the team's guidance during the shoots. They captured our moments beautifully and the final output exceeded our expectations. Overall, we are happy with their work and would definitely recommend them!" }
@@ -171,64 +188,118 @@ const testimonials = [
 const aboutImg = img("Chaitrali_Shubham/img407.webp");
 const leftImg = img("Abhimanyu_Manisha/img615.webp");
 
-/* ─── Hero Video Slider ───────────────────────────────────────── */
+/* ─── Hero Image Slider (Scrollable / Swipeable) ────────────────
+   - Horizontal scroll-snap container so users can drag/swipe/scroll
+     through the images on any device (touch, trackpad, or mouse wheel).
+   - Arrow buttons & dots both animate the scroll position.
+   - object-contain + blurred background fill ensures the image is
+     never awkwardly cropped on mobile — the full photo stays visible.
+------------------------------------------------------------------ */
 function HeroSlider() {
   const [current, setCurrent] = useState(0);
-  const [loadedSlides, setLoadedSlides] = useState(new Set([0]));
+  const scrollRef = useRef(null);
+  const isProgrammaticScroll = useRef(false);
+  const scrollTimeout = useRef(null);
 
-  const advance = useCallback(() => {
-    setCurrent((c) => {
-      const next = (c + 1) % heroVideos.length;
-      setLoadedSlides((prev) => (prev.has(next) ? prev : new Set([...prev, next])));
-      return next;
-    });
+  const scrollToIndex = useCallback((i) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const slideWidth = container.clientWidth;
+    isProgrammaticScroll.current = true;
+    container.scrollTo({ left: slideWidth * i, behavior: "smooth" });
+    setCurrent(i);
+    clearTimeout(scrollTimeout.current);
+    scrollTimeout.current = setTimeout(() => {
+      isProgrammaticScroll.current = false;
+    }, 700);
   }, []);
 
+  const goNext = useCallback(() => {
+    setCurrent((c) => {
+      const next = (c + 1) % heroImages.length;
+      scrollToIndex(next);
+      return next;
+    });
+  }, [scrollToIndex]);
+
+  const goPrev = useCallback(() => {
+    setCurrent((c) => {
+      const prev = (c - 1 + heroImages.length) % heroImages.length;
+      scrollToIndex(prev);
+      return prev;
+    });
+  }, [scrollToIndex]);
+
+  // Auto-advance
   useEffect(() => {
-    const t = setInterval(advance, 8000);
+    const t = setInterval(goNext, 5000);
     return () => clearInterval(t);
-  }, [advance]);
+  }, [goNext]);
 
-  const goTo = (i) => {
-    setLoadedSlides((prev) => new Set([...prev, i]));
-    setCurrent(i);
-  };
+  // Keep `current` in sync when the user drags/swipes/scrolls manually
+  const handleScroll = useCallback(() => {
+    if (isProgrammaticScroll.current) return;
+    const container = scrollRef.current;
+    if (!container) return;
+    const slideWidth = container.clientWidth;
+    if (!slideWidth) return;
+    const index = Math.round(container.scrollLeft / slideWidth);
+    setCurrent((c) => (c !== index ? index : c));
+  }, []);
 
-  const goNext = () => goTo((current + 1) % heroVideos.length);
-  const goPrev = () => goTo((current - 1 + heroVideos.length) % heroVideos.length);
+  // Re-align on resize/orientation change so slides stay snapped correctly
+  useEffect(() => {
+    const handleResize = () => scrollToIndex(current);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div className="relative w-full h-[68vh] sm:h-[78vh] md:h-[100dvh] overflow-hidden bg-black">
-      <div className="absolute inset-0 w-full h-full">
-        {heroVideos.map((video, i) => (
-          <div key={i} className={`absolute inset-0 w-full h-full transition-opacity duration-[1600ms] pointer-events-none ${i === current ? "opacity-100 z-10" : "opacity-0 z-0"}`}>
-            {loadedSlides.has(i) && (
-              <video className="absolute inset-0 w-full h-full object-cover object-center" src={video.src} autoPlay loop muted playsInline />
-            )}
+    <div className="relative w-full h-[54vh] sm:h-[68vh] md:h-[85vh] lg:h-[100dvh] overflow-hidden bg-black">
+      {/* Scrollable / swipeable image track — full-bleed, same crop treatment as desktop on every screen size */}
+      <div
+        ref={scrollRef}
+        onScroll={handleScroll}
+        className="absolute inset-0 w-full h-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth hero-scroll"
+      >
+        {heroImages.map((image, i) => (
+          <div
+            key={i}
+            className="relative w-full h-full flex-shrink-0 snap-center snap-always"
+          >
+            <img
+              src={image.src}
+              alt={`Tilt Shift Pictures wedding photography ${i + 1}`}
+              loading={i === 0 ? "eager" : "lazy"}
+              draggable={false}
+              className="w-full h-full object-cover object-top sm:object-center select-none"
+            />
           </div>
         ))}
       </div>
-      <div className="absolute inset-0 bg-black/25 z-20" />
-      <div className="absolute bottom-0 left-0 right-0 h-[35%] bg-gradient-to-t from-black/40 to-transparent z-20" />
-      <div className="absolute bottom-[clamp(24px,5vw,72px)] left-[clamp(16px,5vw,80px)] right-[clamp(60px,16vw,90px)] z-30 text-white mt-24">
-        <p className="font-jost text-[0.58rem] sm:text-[0.7rem] tracking-[0.25em] sm:tracking-[0.35em] uppercase opacity-75 mb-2">
-          Mumbai · Pune · Worldwide
-        </p>
-        <h1 className="font-cormorant text-[clamp(1.7rem,7.5vw,5.5rem)] font-light leading-[1.08]">
-          TILT SHIFT Pictures
-        </h1>
-      </div>
-      <button type="button" onClick={goPrev} aria-label="Previous video" className="absolute left-2 sm:left-5 md:left-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/35 text-white transition-colors duration-300">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+
+      <div className="absolute inset-0 bg-black/25 z-20 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-gradient-to-t from-black/55 to-transparent z-20 pointer-events-none" />
+    <div className="absolute bottom-[clamp(16px,4vw,72px)] left-[clamp(14px,5vw,80px)] right-[clamp(50px,16vw,90px)] z-30 text-white">
+  <p className="font-jost text-[0.52rem] sm:text-[0.7rem] tracking-[0.22em] sm:tracking-[0.35em] uppercase opacity-75 mb-2">
+    Mumbai · Pune · India
+  </p>
+
+  <h1 className="font-cormorant text-[clamp(1.5rem,7vw,5.5rem)] font-light leading-[1.08]">
+    TILT SHIFT PICTURES
+  </h1>
+
+  <p className="mt-2 sm:mt-3 max-w-[650px] font-jost text-[0.72rem] sm:text-[0.9rem] md:text-[1rem] font-light leading-relaxed tracking-[0.08em] text-white/80">
+    Wedding Photography, Cinematic Wedding Films &amp; Destination Weddings Across India
+  </p>
+</div>
+      <button type="button" onClick={goPrev} aria-label="Previous image" className="absolute left-2 sm:left-5 md:left-8 top-1/2 -translate-y-1/2 z-30 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/35 text-white transition-colors duration-300">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
       </button>
-      <button type="button" onClick={goNext} aria-label="Next video" className="absolute right-2 sm:right-5 md:right-8 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/35 text-white transition-colors duration-300">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+      <button type="button" onClick={goNext} aria-label="Next image" className="absolute right-2 sm:right-5 md:right-8 top-1/2 -translate-y-1/2 z-30 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/35 text-white transition-colors duration-300">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
       </button>
-      <div className="absolute bottom-[clamp(24px,5vw,72px)] right-[clamp(16px,5vw,80px)] z-30 flex gap-2 items-center">
-        {heroVideos.map((_, i) => (
-          <button key={i} onClick={() => goTo(i)} aria-label={`Go to slide ${i + 1}`} className={`h-[2px] transition-all duration-400 ${i === current ? "w-7 bg-white" : "w-2 bg-white/40"}`} />
-        ))}
-      </div>
     </div>
   );
 }
@@ -425,7 +496,11 @@ export default function Home() {
           .hover-zoom { overflow: hidden; }
           .hover-zoom img { transition: transform 0.9s cubic-bezier(.22,1,.36,1); }
           .hover-zoom:hover img { transform: scale(1.06); }
-          
+
+          /* Hero slider: scrollable/swipeable track, scrollbar hidden across browsers */
+          .hero-scroll { -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+          .hero-scroll::-webkit-scrollbar { display: none; height: 0; width: 0; }
+
           /* Smooth Marquee settings */
           @keyframes scroll-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
           .animate-scroll { display: flex; width: max-content; animation: scroll-marquee 50s linear infinite; }
@@ -447,7 +522,8 @@ export default function Home() {
             </div>
             <div className={`fade-up ${aboutInView ? "in" : ""}`}>
               <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.4rem)] font-light leading-tight text-[#1a1a1a] mb-8">
-                Candid Wedding Photography &<br /><em className="italic">Cinematic Wedding Films Across India</em>
+                Our Approach to Wedding Photography & Cinematic Films<br />
+                {/* <em className="italic">Cinematic Wedding Films Across India</em> */}
               </h2>
               <div className="w-10 h-px bg-[#1a1a1a] mb-8" />
               <p className="text-[#555] text-base leading-[1.9] mb-6">
