@@ -256,31 +256,6 @@ export default function Films() {
 
       {/* Main Editorial Content Area */}
       <div className="py-24 md:py-40 px-6">
-        
-        {/* Simple & Elegant Filter Menu */}
-        <div className="max-w-[1200px] mx-auto mb-20 md:mb-32">
-          <div className="flex flex-wrap justify-center gap-8 md:gap-14">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`font-['Jost'] text-[0.75rem] uppercase tracking-[0.25em] pb-2 transition-all duration-300 relative group ${
-                  activeCategory === cat ? 'text-[#c9a84c]' : 'text-gray-400 hover:text-[#1a1a1a]'
-                }`}
-              >
-                {cat}
-                {/* Active Indicator */}
-                {activeCategory === cat && (
-                  <motion.div 
-                    layoutId="dot"
-                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#c9a84c]"
-                  />
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Staggered Offset Grid for Premium Agency Look */}
         <div className="max-w-[1300px] mx-auto">
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24 md:gap-y-10 items-start">

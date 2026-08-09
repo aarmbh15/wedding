@@ -40,7 +40,7 @@ function App() {
         {/* ScrollToTop sits here to monitor navigation */}
         <ScrollToTop /> 
         
-        <div className="min-h-screen bg-gradient-to-b from-amber-50 to-white font-serif">
+        <div className="min-h-screen font-serif">
           <Navbar />
           <Suspense fallback={<div className="flex justify-center items-center h-screen">Loading...</div>}>
             <Routes>

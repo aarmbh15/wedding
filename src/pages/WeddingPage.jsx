@@ -844,7 +844,7 @@ export default function WeddingPage() {
   const heroImage = wedding.images[0];
 
   return (
-    <div className="bg-white min-h-screen selection:bg-[#bba98a]/20">
+    <div className="bg-pastel min-h-screen selection:bg-[#bba98a]/20">
       <Helmet>
         <title>{wedding.couple} | TILT SHIFT Films</title>
       </Helmet>

@@ -513,10 +513,10 @@ export default function Home() {
       {/* ABOUT SECTION */}
       <LazySection rootMargin="200px">
         {(isNear) => (
-          <section ref={aboutRef} className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,8vw,120px)] items-center px-[clamp(24px,8vw,120px)] py-[clamp(80px,10vw,140px)] bg-white about-grid">
+          <section ref={aboutRef} className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,8vw,120px)] items-center px-[clamp(24px,8vw,120px)] py-[clamp(80px,10vw,140px)] bg-pastel about-grid">
             <div className={`hover-zoom fade-up ${aboutInView ? "in" : ""} relative aspect-[3/4]`}>
               <ProgressiveImg src={aboutImg} alt="Wedding story" shouldLoad={isNear} />
-              <div className="absolute bottom-[clamp(16px,2.5vw,28px)] right-[clamp(16px,2.5vw,28px)] bg-white px-5 py-3.5 shadow-sm">
+              <div className="absolute bottom-[clamp(16px,2.5vw,28px)] right-[clamp(16px,2.5vw,28px)] bg-pastel px-5 py-3.5 shadow-sm">
                 <p className="font-jost text-[0.68rem] tracking-[0.28em] uppercase text-[#888]">Est. 2019</p>
               </div>
             </div>
@@ -545,7 +545,7 @@ export default function Home() {
       {/* PORTFOLIO MASONRY GRID (Original Size) */}
       <LazySection rootMargin="400px">
         {(isNear) => (
-          <section ref={gridRef} className="bg-white pb-[clamp(60px,8vw,100px)]">
+          <section ref={gridRef} className="bg-pastel pb-[clamp(60px,8vw,100px)]">
             <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
               <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a]">PORTFOLIO</h2>
             </div>
@@ -593,7 +593,7 @@ export default function Home() {
                 {featured.map((f, i) => (
                   <Link key={i} to={`/wedding/${f.slug}`} state={{ from: location }} className={`group fade-up flex flex-col ${featInView ? `in d${i + 1}` : ""}`}>
                     {/* Portrait layout for premium wedding aesthetic */}
-                    <div className="relative w-full aspect-[4/5] mb-5 overflow-hidden bg-white shadow-sm rounded-sm">
+                    <div className="relative w-full aspect-[4/5] mb-5 overflow-hidden bg-pastel shadow-sm rounded-sm">
                       <img 
                         src={f.img} 
                         alt={f.couple} 
@@ -622,7 +622,7 @@ export default function Home() {
       {/* FILMS SECTION */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section className="bg-white py-[clamp(60px,10vw,100px)] px-[clamp(24px,6vw,80px)] overflow-hidden">
+          <section className="bg-pastel py-[clamp(60px,10vw,100px)] px-[clamp(24px,6vw,80px)] overflow-hidden">
             <div className="max-w-[1320px] mx-auto">
               <div className="text-center px-6 mb-12">
                 <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a]">Films</h2>
@@ -649,7 +649,7 @@ export default function Home() {
       {/* PHILOSOPHY SECTION */}
       <LazySection rootMargin="100px">
         {(isNear) => (
-          <section className="relative z-10 min-h-[60vh] flex items-center justify-center bg-white border-t border-black/5">
+          <section className="relative z-10 min-h-[60vh] flex items-center justify-center bg-pastel border-t border-black/5">
             <div className="flex flex-col md:flex-row items-center gap-10 md:gap-[100px] max-w-[1300px] w-full px-[clamp(24px,6vw,80px)] py-20">
               <div className="w-full md:w-[45%]">
                 <img src={leftImg} alt="Couple" className="w-full h-[400px] md:h-[650px] object-cover rounded-sm shadow-md" />
@@ -684,7 +684,7 @@ export default function Home() {
               
               <div className="animate-scroll flex gap-6 px-4">
                 {[...testimonials, ...testimonials].map((t, i) => (
-                  <div key={i} className="flex-shrink-0 w-[300px] md:w-[350px] flex flex-col bg-white p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm group relative">
+                  <div key={i} className="flex-shrink-0 w-[300px] md:w-[350px] flex flex-col bg-pastel p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm group relative">
                     <Quote className="w-8 h-8 text-[#c9a84c] opacity-20 mb-5" />
                     <p className="font-cormorant italic text-[1.1rem] leading-[1.8] text-gray-600 mb-8 relative z-10 flex-grow">
                       "{t.text}"

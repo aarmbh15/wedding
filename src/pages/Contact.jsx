@@ -97,7 +97,7 @@ const Contact = () => {
             <h2 className="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-light mb-12">Inquiry Form</h2>
             
             {submitted ? (
-              <div className="bg-white p-12 text-center border border-[#c9a84c]/20 shadow-sm">
+              <div className="bg-pastel p-12 text-center border border-[#c9a84c]/20 shadow-sm">
                 <span className="text-4xl block mb-4">✨</span>
                 <h3 className="font-['Cormorant_Garamond'] text-2xl mb-2">Thank You</h3>
                 <p className="text-gray-500 font-light">Your inquiry has reached us. We'll be in touch very soon.</p>
@@ -135,12 +135,6 @@ const Contact = () => {
                   <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Event Details</label>
                   <textarea className={inputClasses + " resize-none"} placeholder="Functions, Timings and approx guest count..." />
                 </div>
-
-                <div className="group">
-                  <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Tell us your story</label>
-                  <textarea className={inputClasses + " resize-none"} placeholder="Tell us about your project or vision..." />
-                </div>
-
                 <button 
                   type="submit" 
                   disabled={loading}
@@ -213,7 +207,7 @@ const Contact = () => {
               { q: "Do you meet clients before they book?", a: "Yes, absolutely. We always recommend meeting our couples before the booking, either in person or through a video call. It gives us an opportunity to understand your wedding plans, expectations, and photography preferences while answering any questions you may have. More importantly, it helps us build a comfortable connection, so you feel relaxed and confident with our team on your wedding day." },
               { q: "What are your delivery timelines?", a: "We deliver a curated preview of 30–100 professionally edited wedding photographs during or shortly after your wedding, depending on the event schedule and available editing time. Within 10 working days, you will receive our Editor's Choice collection, a handpicked selection of the best moments from all your wedding celebrations. Your complete wedding photography gallery is professionally edited and delivered within 35 working days Our cinematic wedding films and traditional wedding films are crafted with great attention to detail. From selecting the best footage and refining every scene to colour grading and storytelling, each film goes through a meticulous editing process. Your cinematic highlight film is delivered first, followed by your traditional wedding film. During the wedding season, the complete film delivery typically takes 2–3 months, ensuring every memory is beautifully preserved." },
             ].map((faq, i) => (
-              <div key={i} className="bg-white border border-black/5 overflow-hidden">
+              <div key={i} className="bg-pastel border border-black/5 overflow-hidden">
                 <button 
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full px-8 py-6 text-left flex justify-between items-center group"
