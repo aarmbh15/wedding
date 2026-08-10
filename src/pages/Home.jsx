@@ -18,6 +18,9 @@ import heroImg11 from "../assets/Lap/11.jpg";
 import heroImg12 from "../assets/Lap/12.jpg";
 import heroImg13 from "../assets/Lap/13.jpg";
 import heroImg14 from "../assets/Lap/14.jpg";
+import ThumbRahulEsha from "../assets/Filmsthumbnail/esha & rahul.webp";
+import ThumbHarjotShruti from "../assets/Filmsthumbnail/harjot & shruti.webp";
+import ThumbBhaktiSaurabh from "../assets/Filmsthumbnail/bhakti & saurabh.webp";
 
 // ─── Bulk import ALL images ───────────────────────────────────────────────────
 const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png}", { eager: true });
@@ -168,6 +171,7 @@ const portfolioGrid = [
   { src: img("Web Gallery/img5017.webp") },
   { src: img("Web Gallery/img5018.webp") },
   { src: img("Web Gallery/img5019.webp") },
+  { src: img("Web Gallery/port.jpeg") },
 ];
 
 const featured = [
@@ -188,13 +192,6 @@ const testimonials = [
 const aboutImg = img("Chaitrali_Shubham/img407.webp");
 const leftImg = img("Abhimanyu_Manisha/img615.webp");
 
-/* ─── Hero Image Slider (Scrollable / Swipeable) ────────────────
-   - Horizontal scroll-snap container so users can drag/swipe/scroll
-     through the images on any device (touch, trackpad, or mouse wheel).
-   - Arrow buttons & dots both animate the scroll position.
-   - object-contain + blurred background fill ensures the image is
-     never awkwardly cropped on mobile — the full photo stays visible.
------------------------------------------------------------------- */
 function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const scrollRef = useRef(null);
@@ -219,14 +216,6 @@ function HeroSlider() {
       const next = (c + 1) % heroImages.length;
       scrollToIndex(next);
       return next;
-    });
-  }, [scrollToIndex]);
-
-  const goPrev = useCallback(() => {
-    setCurrent((c) => {
-      const prev = (c - 1 + heroImages.length) % heroImages.length;
-      scrollToIndex(prev);
-      return prev;
     });
   }, [scrollToIndex]);
 
@@ -294,12 +283,6 @@ function HeroSlider() {
     Wedding Photography, Cinematic Wedding Films &amp; Destination Weddings Across India
   </p>
 </div>
-      <button type="button" onClick={goPrev} aria-label="Previous image" className="absolute left-2 sm:left-5 md:left-8 top-1/2 -translate-y-1/2 z-30 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/35 text-white transition-colors duration-300">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
-      </button>
-      <button type="button" onClick={goNext} aria-label="Next image" className="absolute right-2 sm:right-5 md:right-8 top-1/2 -translate-y-1/2 z-30 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 active:bg-white/30 backdrop-blur-sm border border-white/35 text-white transition-colors duration-300">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
-      </button>
     </div>
   );
 }
@@ -308,11 +291,12 @@ function HeroSlider() {
 function FilmCard({ film, onSelect }) {
   return (
     <div className="w-full cursor-pointer group" onClick={() => onSelect(film)}>
-      <div className="relative aspect-video overflow-hidden rounded-sm bg-[#ede9e3] mb-5 shadow-sm">
+      <div className="relative aspect-video overflow-hidden rounded-sm bg-[#1a1a1a] mb-5 shadow-sm">
         <img
-          src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
+          src={film.thumbnail || `https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
           alt={film.couple}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
         />
         {/* Dark overlay for contrast on hover */}
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
@@ -513,19 +497,18 @@ export default function Home() {
       {/* ABOUT SECTION */}
       <LazySection rootMargin="200px">
         {(isNear) => (
-          <section ref={aboutRef} className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,8vw,120px)] items-center px-[clamp(24px,8vw,120px)] py-[clamp(80px,10vw,140px)] bg-pastel about-grid">
+          <section ref={aboutRef} className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,8vw,120px)] items-center px-[clamp(24px,8vw,120px)] py-[clamp(80px,10vw,140px)] bg-white about-grid">
             <div className={`hover-zoom fade-up ${aboutInView ? "in" : ""} relative aspect-[3/4]`}>
               <ProgressiveImg src={aboutImg} alt="Wedding story" shouldLoad={isNear} />
-              <div className="absolute bottom-[clamp(16px,2.5vw,28px)] right-[clamp(16px,2.5vw,28px)] bg-pastel px-5 py-3.5 shadow-sm">
+              <div className="absolute bottom-[clamp(16px,2.5vw,28px)] right-[clamp(16px,2.5vw,28px)] bg-[#F4F1EA] px-5 py-3.5 shadow-sm">
                 <p className="font-jost text-[0.68rem] tracking-[0.28em] uppercase text-[#888]">Est. 2019</p>
               </div>
             </div>
             <div className={`fade-up ${aboutInView ? "in" : ""}`}>
               <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.4rem)] font-light leading-tight text-[#1a1a1a] mb-8">
-                Our Approach to Wedding Photography & Cinematic Films<br />
+                Our Approach to Wedding Photography & Cinematic Films 
                 {/* <em className="italic">Cinematic Wedding Films Across India</em> */}
               </h2>
-              <div className="w-10 h-px bg-[#1a1a1a] mb-8" />
               <p className="text-[#555] text-base leading-[1.9] mb-6">
                 At Tilt Shift Pictures, we believe every wedding deserves to be remembered through real emotions and meaningful storytelling. Through candid wedding photography and cinematic wedding films, we capture genuine moments, family bonds and celebrations exactly as they happen.
               </p>
@@ -545,9 +528,10 @@ export default function Home() {
       {/* PORTFOLIO MASONRY GRID (Original Size) */}
       <LazySection rootMargin="400px">
         {(isNear) => (
-          <section ref={gridRef} className="bg-pastel pb-[clamp(60px,8vw,100px)]">
+          <section ref={gridRef} className="bg-[#F4F1EA] pb-[clamp(60px,8vw,100px)]">
             <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
               <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a]">PORTFOLIO</h2>
+              <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
             </div>
             
             {/* Elegant CSS Columns Masonry - Filtered to prevent empty spaces from broken paths */}
@@ -582,10 +566,10 @@ export default function Home() {
       {/* FEATURED WEDDINGS (Premium Portrait Cards) */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section ref={featRef} className="bg-[#fcfcfc] py-[clamp(60px,10vw,80px)] px-[clamp(24px,6vw,80px)] border-y border-black/5">
+          <section ref={featRef} className="bg-white py-[clamp(60px,10vw,80px)] px-[clamp(24px,6vw,80px)] border-y border-black/5">
             <div className="max-w-[1320px] mx-auto">
               <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
-                <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">Featured Weddings</h2>
+                <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">FEATURED WEDDINGS</h2>
                 <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
               </div>
 
@@ -593,7 +577,7 @@ export default function Home() {
                 {featured.map((f, i) => (
                   <Link key={i} to={`/wedding/${f.slug}`} state={{ from: location }} className={`group fade-up flex flex-col ${featInView ? `in d${i + 1}` : ""}`}>
                     {/* Portrait layout for premium wedding aesthetic */}
-                    <div className="relative w-full aspect-[4/5] mb-5 overflow-hidden bg-pastel shadow-sm rounded-sm">
+                    <div className="relative w-full aspect-[4/5] mb-5 overflow-hidden bg-white shadow-sm rounded-sm">
                       <img 
                         src={f.img} 
                         alt={f.couple} 
@@ -622,16 +606,17 @@ export default function Home() {
       {/* FILMS SECTION */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section className="bg-pastel py-[clamp(60px,10vw,100px)] px-[clamp(24px,6vw,80px)] overflow-hidden">
+          <section className="bg-[#F4F1EA] py-[clamp(60px,10vw,100px)] px-[clamp(24px,6vw,80px)] overflow-hidden">
             <div className="max-w-[1320px] mx-auto">
               <div className="text-center px-6 mb-12">
-                <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a]">Films</h2>
+                <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a]">FILMS</h2>
+                <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(24px,4vw,40px)]">
                 {[
-                  { couple: "Shubhang & Anuja", url: "https://youtu.be/6AlgoGp8SLg", id: "6AlgoGp8SLg", location: "Pune, Maharashtra"},
-                  { couple: "Abhimanyu & Manisha", url: "https://youtu.be/ppQtE_3sPcg", id: "ppQtE_3sPcg", location: "Pune, Maharashtra" },
-                  { couple: "Amey & Amruta", url: "https://youtu.be/yUpQjeTuSbA", id: "yUpQjeTuSbA", location: "Pune, Maharashtra" },
+                  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra",thumbnail: ThumbRahulEsha},
+                  { couple: "Harjot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra",thumbnail: ThumbHarjotShruti},
+                  { couple: "Bhakti & Saurabh", url: "https://youtu.be/tHZ2RwYCdpQ", id: "tHZ2RwYCdpQ", location: "Jodhpur, Rajasthan",thumbnail: ThumbBhaktiSaurabh},
                 ].map((film, i) => (
                   <FilmCard key={i} film={film} onSelect={setSelectedFilm} />
                 ))}
@@ -649,7 +634,7 @@ export default function Home() {
       {/* PHILOSOPHY SECTION */}
       <LazySection rootMargin="100px">
         {(isNear) => (
-          <section className="relative z-10 min-h-[60vh] flex items-center justify-center bg-pastel border-t border-black/5">
+          <section className="relative z-10 min-h-[60vh] flex items-center justify-center bg-white border-t border-black/5">
             <div className="flex flex-col md:flex-row items-center gap-10 md:gap-[100px] max-w-[1300px] w-full px-[clamp(24px,6vw,80px)] py-20">
               <div className="w-full md:w-[45%]">
                 <img src={leftImg} alt="Couple" className="w-full h-[400px] md:h-[650px] object-cover rounded-sm shadow-md" />
@@ -670,11 +655,12 @@ export default function Home() {
       {/* ENHANCED CLIENT TESTIMONIALS (Slimmer, Elegant Cards) */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section className="bg-[#f7f5f1] py-[clamp(60px,10vw,100px)] overflow-hidden">
+          <section className="bg-[#F4F1EA] py-[clamp(60px,10vw,100px)] overflow-hidden">
             <div className="max-w-[1320px] mx-auto px-[clamp(24px,6vw,80px)]">
               <div className="text-center pb-[clamp(40px,6vw,70px)]">
                 <p className="font-jost text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-3">Kind Words</p>
-                <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">Client Testimonials</h2>
+                <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">CLIENT TESTIMONIALS</h2>
+                <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
               </div>
             </div>
 
@@ -684,7 +670,7 @@ export default function Home() {
               
               <div className="animate-scroll flex gap-6 px-4">
                 {[...testimonials, ...testimonials].map((t, i) => (
-                  <div key={i} className="flex-shrink-0 w-[300px] md:w-[350px] flex flex-col bg-pastel p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm group relative">
+                  <div key={i} className="flex-shrink-0 w-[300px] md:w-[350px] flex flex-col bg-white p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm group relative">
                     <Quote className="w-8 h-8 text-[#c9a84c] opacity-20 mb-5" />
                     <p className="font-cormorant italic text-[1.1rem] leading-[1.8] text-gray-600 mb-8 relative z-10 flex-grow">
                       "{t.text}"

@@ -4,6 +4,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Play, Pause, Volume2, VolumeX, Maximize } from "lucide-react";
 import HeroImage from "../assets/hero3.webp";
 
+// ─── Thumbnail Imports ────────────────────────────────────────
+import ThumbShubhangAnuja from "../assets/Filmsthumbnail/shubhang & anuja.webp";
+import ThumbAbhimanyuManisha from "../assets/Filmsthumbnail/abhimanyu & manisha.webp";
+import ThumbAmeyAmruta from "../assets/Filmsthumbnail/amey & amruta.webp";
+import ThumbHarjotShruti from "../assets/Filmsthumbnail/harjot & shruti.webp";
+import ThumbPradyumnaDrushti from "../assets/Filmsthumbnail/pradyumna & drushti.webp";
+import ThumbDhritiLakshya from "../assets/Filmsthumbnail/dhriti & lakshya.webp";
+import ThumbRahulEsha from "../assets/Filmsthumbnail/esha & rahul.webp";
+import ThumbChandraAnmol from "../assets/Filmsthumbnail/chandra & anmol.webp";
+import ThumbNidhiKunal from "../assets/Filmsthumbnail/kunal & nidhi.webp";
+import ThumbOmkarApurva from "../assets/Filmsthumbnail/omkar & apurva.webp";
+import ThumbBhaktiSaurabh from "../assets/Filmsthumbnail/bhakti & saurabh.webp";
+import ThumbUtsavDyuthi from "../assets/Filmsthumbnail/utsav & dyuthi.webp";
+import Thumbsakshi from "../assets/Filmsthumbnail/Indrajeet & Sakshi.png";
+
 // ─── Helpers for Video Modal ──────────────────────────────────
 function toEmbedUrl(url) {
   if (!url) return "";
@@ -132,19 +147,19 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
 
 // ─── Data ───────────────────────────────────────────────────────────────────
 const films = [
-  { couple: "Shubhang & Anuja", url: "https://youtu.be/6AlgoGp8SLg", id: "6AlgoGp8SLg", location: "Pune, Maharashtra", category: "Destination" },
-  { couple: "Abhimanyu & Manisha", url: "https://youtu.be/ppQtE_3sPcg", id: "ppQtE_3sPcg", location: "Pune, Maharashtra", category: "Coastal" },
-  { couple: "Amey & Amruta", url: "https://youtu.be/yUpQjeTuSbA", id: "yUpQjeTuSbA", location: "Pune, Maharashtra", category: "Destination" },
-  { couple: "Harjot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra", category: "Royal" },
-  { couple: "Pradyumna & Drushti", url: "https://youtu.be/ER4o6k5L3J0", id: "ER4o6k5L3J0", location: "Pune, Maharashtra", category: "City" },
-  { couple: "Dhriti & Lakshya", url: "https://youtu.be/QV-GVZNHNDo", id: "QV-GVZNHNDo", location: "Pune, Maharashtra", category: "Royal" },
-  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra", category: "City" },
-  { couple: "Chandra & Anmol", url: "https://youtu.be/8UMiPZMhUE4", id: "8UMiPZMhUE4", location: "Pune, Maharashtra", category: "Destination" },
-  { couple: "Indrajeet & Sakshi", url: "https://youtu.be/R0F2tWN8oLc", id: "R0F2tWN8oLc", location: "Pune, Maharashtra", category: "City" },
-  { couple: "Nidhi & Kunal", url: "https://youtu.be/ex_Fs-BiUC0", id: "ex_Fs-BiUC0", location: "Bangalore, Karnataka", category: "Coastal" },
-  { couple: "Omkar & Apoorva", url: "https://youtu.be/DCCGOXaPCHQ", id: "DCCGOXaPCHQ", location: "Pune, Maharashtra", category: "City" },
-  { couple: "Bhakti & Saurabh", url: "https://youtu.be/tHZ2RwYCdpQ", id: "tHZ2RwYCdpQ", location: "Jodhpur, Rajasthan", category: "Royal" },
-  { couple: "Utsav & Dyuthi", url: "https://youtu.be/nHDxp0WJqaE", id: "nHDxp0WJqaE", location: "Bangalore, Karnataka", category: "Destination" },
+  { couple: "Shubhang & Anuja", url: "https://youtu.be/6AlgoGp8SLg", id: "6AlgoGp8SLg", location: "Pune, Maharashtra", category: "Destination", thumbnail: ThumbShubhangAnuja },
+  { couple: "Abhimanyu & Manisha", url: "https://youtu.be/ppQtE_3sPcg", id: "ppQtE_3sPcg", location: "Pune, Maharashtra", category: "Coastal", thumbnail: ThumbAbhimanyuManisha },
+  { couple: "Amey & Amruta", url: "https://youtu.be/yUpQjeTuSbA", id: "yUpQjeTuSbA", location: "Pune, Maharashtra", category: "Destination", thumbnail: ThumbAmeyAmruta },
+  { couple: "Harjot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra", category: "Royal", thumbnail: ThumbHarjotShruti },
+  { couple: "Pradyumna & Drushti", url: "https://youtu.be/ER4o6k5L3J0", id: "ER4o6k5L3J0", location: "Pune, Maharashtra", category: "City", thumbnail: ThumbPradyumnaDrushti },
+  { couple: "Dhriti & Lakshya", url: "https://youtu.be/QV-GVZNHNDo", id: "QV-GVZNHNDo", location: "Pune, Maharashtra", category: "Royal", thumbnail: ThumbDhritiLakshya },
+  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra", category: "City", thumbnail: ThumbRahulEsha },
+  { couple: "Chandra & Anmol", url: "https://youtu.be/8UMiPZMhUE4", id: "8UMiPZMhUE4", location: "Pune, Maharashtra", category: "Destination", thumbnail: ThumbChandraAnmol },
+  { couple: "Indrajeet & Sakshi", url: "https://youtu.be/R0F2tWN8oLc", id: "R0F2tWN8oLc", location: "Pune, Maharashtra", category: "City", thumbnail: Thumbsakshi },
+  { couple: "Nidhi & Kunal", url: "https://youtu.be/ex_Fs-BiUC0", id: "ex_Fs-BiUC0", location: "Bangalore, Karnataka", category: "Coastal", thumbnail: ThumbNidhiKunal },
+  { couple: "Omkar & Apurva", url: "https://youtu.be/DCCGOXaPCHQ", id: "DCCGOXaPCHQ", location: "Pune, Maharashtra", category: "City", thumbnail: ThumbOmkarApurva },
+  { couple: "Bhakti & Saurabh", url: "https://youtu.be/tHZ2RwYCdpQ", id: "tHZ2RwYCdpQ", location: "Jodhpur, Rajasthan", category: "Royal", thumbnail: ThumbBhaktiSaurabh },
+  { couple: "Utsav & Dyuthi", url: "https://youtu.be/nHDxp0WJqaE", id: "nHDxp0WJqaE", location: "Bangalore, Karnataka", category: "Destination", thumbnail: ThumbUtsavDyuthi },
 ];
 
 const categories = ["All", "Destination", "Royal", "Coastal", "City"];
@@ -164,7 +179,7 @@ function FilmCard({ film, onSelect, isOffset }) {
       <div className="relative aspect-video overflow-hidden bg-[#e6e2da]">
         {/* Thumbnail Image */}
         <img
-          src={`https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
+          src={film.thumbnail || `https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
           alt={film.couple}
           loading="lazy"
           className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.04]"
@@ -228,7 +243,6 @@ export default function Films() {
       </Helmet>
 
       {/* Minimalist Hero Section */}
-      {/* <section className="relative h-[80vh] md:h-screen flex items-center justify-center overflow-hidden bg-black"> */}
       <section className="relative h-screen md:h-screen flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
           <img
@@ -265,7 +279,7 @@ export default function Films() {
                   key={film.id} 
                   film={film} 
                   onSelect={setSelectedFilm} 
-                  isOffset={index % 2 !== 0} // Staggers the right column downwards
+                  isOffset={index % 2 !== 0}
                 />
               ))}
             </AnimatePresence>

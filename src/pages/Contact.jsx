@@ -72,7 +72,7 @@ const Contact = () => {
       </section>
 
       {/* ─── QUICK INFO STRIP ─────────────────────────────────────── */}
-      <div className="bg-[#F4F1EA] border-y border-black/5 py-8 px-6">
+      <div className="bg-white border-y border-black/5 py-8 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
           {[
             { l: "Email", v: "hello@tiltshiftpictures.com" },
@@ -89,7 +89,7 @@ const Contact = () => {
       </div>
 
       {/* ─── MAIN CONTACT SECTION ────────────────────────────────── */}
-      <section className="py-20 lg:py-32 px-6">
+      <section className="py-20 lg:py-32 px-6 bg-[#F4F1EA]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           
           {/* Form Side */}
@@ -97,7 +97,7 @@ const Contact = () => {
             <h2 className="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-light mb-12">Inquiry Form</h2>
             
             {submitted ? (
-              <div className="bg-pastel p-12 text-center border border-[#c9a84c]/20 shadow-sm">
+              <div className="bg-white p-12 text-center border border-[#c9a84c]/20 shadow-sm">
                 <span className="text-4xl block mb-4">✨</span>
                 <h3 className="font-['Cormorant_Garamond'] text-2xl mb-2">Thank You</h3>
                 <p className="text-gray-500 font-light">Your inquiry has reached us. We'll be in touch very soon.</p>
@@ -148,7 +148,7 @@ const Contact = () => {
 
           {/* Info Side */}
           <div className="lg:col-span-5 space-y-12">
-            <div className="bg-[#F4F1EA] p-10 md:p-14">
+            <div className="bg-white p-10 md:p-14">
               <h3 className="font-['Cormorant_Garamond'] text-2xl mb-6 italic">Visit our Studio</h3>
               <p className="text-gray-500 font-light leading-relaxed mb-8 text-[0.95rem]">
                 Bunglow no 6, Periwinkle Society,<br />
@@ -191,7 +191,7 @@ const Contact = () => {
       </section>
 
       {/* ─── FAQ SECTION ─────────────────────────────────────────── */}
-      <section ref={faqRef} className="py-20 lg:py-32 bg-[#E5DED0]/30 px-6">
+      <section ref={faqRef} className="py-20 lg:py-32 bg-white px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-[0.6rem] uppercase tracking-[0.3em] text-[#c9a84c] mb-4">Support</p>
@@ -207,7 +207,7 @@ const Contact = () => {
               { q: "Do you meet clients before they book?", a: "Yes, absolutely. We always recommend meeting our couples before the booking, either in person or through a video call. It gives us an opportunity to understand your wedding plans, expectations, and photography preferences while answering any questions you may have. More importantly, it helps us build a comfortable connection, so you feel relaxed and confident with our team on your wedding day." },
               { q: "What are your delivery timelines?", a: "We deliver a curated preview of 30–100 professionally edited wedding photographs during or shortly after your wedding, depending on the event schedule and available editing time. Within 10 working days, you will receive our Editor's Choice collection, a handpicked selection of the best moments from all your wedding celebrations. Your complete wedding photography gallery is professionally edited and delivered within 35 working days Our cinematic wedding films and traditional wedding films are crafted with great attention to detail. From selecting the best footage and refining every scene to colour grading and storytelling, each film goes through a meticulous editing process. Your cinematic highlight film is delivered first, followed by your traditional wedding film. During the wedding season, the complete film delivery typically takes 2–3 months, ensuring every memory is beautifully preserved." },
             ].map((faq, i) => (
-              <div key={i} className="bg-pastel border border-black/5 overflow-hidden">
+              <div key={i} className="bg-[#F4F1EA] border border-black/5 overflow-hidden">
                 <button 
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full px-8 py-6 text-left flex justify-between items-center group"

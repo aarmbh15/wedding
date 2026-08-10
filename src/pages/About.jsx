@@ -62,7 +62,7 @@ const About = () => {
       </section>
 
       {/* ─── OUR STORY (WHITE) ────────────────────────────────────── */}
-      <section ref={storyRef} className="bg-pastel py-[clamp(80px,10vw,140px)] px-6 overflow-hidden">
+      <section ref={storyRef} className="bg-white py-[clamp(80px,10vw,140px)] px-6 overflow-hidden">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className={`relative transition-all duration-1000 ${storyInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
             <div className="aspect-[3/4] relative z-10 overflow-hidden shadow-2xl">
@@ -110,7 +110,7 @@ const About = () => {
             { t: "Destination Wedding Experts", d: "Experienced in capturing weddings across India, ensuring seamless coverage wherever your celebration takes place." },
             { t: "On-Time Delivery", d: "Your photos and films are delivered within the promised timeline, without compromising on quality or attention to detail." }
           ].map((v, i) => (
-            <div key={i} className="bg-[#F4F1EA] p-10 md:p-16 transition-all hover:bg-pastel group">
+            <div key={i} className="bg-[#F4F1EA] p-10 md:p-16 transition-all hover:bg-white group">
               <span className="font-['Cormorant_Garamond'] text-5xl text-[#c9a84c]/20 block mb-6 group-hover:text-[#c9a84c]/50 transition-colors">0{i+1}</span>
               <h3 className="font-['Cormorant_Garamond'] text-2xl mb-4">{v.t}</h3>
               <p className="text-gray-500 font-light leading-relaxed">{v.d}</p>
@@ -126,7 +126,7 @@ const About = () => {
           <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,6vw,5rem)] font-light text-white leading-tight mb-8">
             Ready to Create <br /><em>Your Heirloom?</em>
           </h2>
-          <a href="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-white uppercase tracking-[0.2em] text-[0.8rem] hover:bg-pastel hover:text-black transition-all">
+          <a href="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-white uppercase tracking-[0.2em] text-[0.8rem] hover:bg-white hover:text-black transition-all">
             Inquire Now →
           </a>
         </div>

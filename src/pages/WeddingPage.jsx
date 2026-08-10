@@ -844,7 +844,7 @@ export default function WeddingPage() {
   const heroImage = wedding.images[0];
 
   return (
-    <div className="bg-pastel min-h-screen selection:bg-[#bba98a]/20">
+    <div className="bg-white min-h-screen selection:bg-[#bba98a]/20">
       <Helmet>
         <title>{wedding.couple} | TILT SHIFT Films</title>
       </Helmet>
@@ -874,7 +874,7 @@ export default function WeddingPage() {
       </section>
 
       {/* 2. STORY DETAILS SECTION */}
-      <section className="max-w-4xl mx-auto px-6 py-24 md:py-32 text-center">
+      <section className="max-w-4xl mx-auto px-6 py-24 md:py-32 text-center bg-white">
         <span className="inline-block font-sans text-[10px] tracking-[0.4em] uppercase text-[#bba98a] mb-8 font-medium">
           {wedding.location}
         </span>
@@ -891,7 +891,7 @@ export default function WeddingPage() {
       </section>
 
       {/* 3. DYNAMIC MASONRY GALLERY */}
-      <section className="max-w-full mx-auto px-1 pb-32">
+      <section className="max-w-full mx-auto px-1 pb-32 bg-[#F4F1EA]">
         <div className="columns-2 sm:columns-2 lg:columns-3 xl:columns-4 gap-2 space-y-2">
           {wedding.images.map((src, index) => (
             <div 

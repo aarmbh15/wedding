@@ -271,28 +271,19 @@ export default function Portfolio() {
               </div>
             </section>
 
-      {/* ── Filter Pills ────────────────────────────────────────────────────── */}
-      <div className="pt-[clamp(28px,4vw,48px)] px-[clamp(24px,6vw,80px)] pb-0 max-w-[1400px] mx-auto">
-        <div className="pf-filters justify-center flex gap-2 flex-wrap">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`pf-pill font-jost text-[0.72rem] font-medium tracking-[0.22em] uppercase px-6 py-[9px] border border-[#d6d0c8] transition-all duration-250 cursor-pointer
-                ${activeCategory === cat 
-                  ? "bg-[#1a1a1a] border-[#1a1a1a] text-white" 
-                  : "text-[#888] hover:border-[#1a1a1a] hover:text-[#1a1a1a]"
-                }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
+  <div className="max-w-[1000px] mx-auto text-center mt-5">
+  <p className="font-['Jost'] text-[0.65rem] md:text-[0.7rem] uppercase tracking-[0.35em] text-[#B99A4A] ">
+    Our Stories
+  </p>
+
+  <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.2rem,4.5vw,4rem)] font-light text-[#1a1a1a] leading-[1.15]">
+    Take a look at some of the beautiful weddings we have had the pleasure of capturing.
+  </h2>
+</div>
 
       {/* ── Grid ────────────────────────────────────────────────────────────── */}
       <div className="pt-8 pb-[clamp(80px,10vw,120px)] px-[clamp(24px,6vw,80px)] max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[clamp(16px,2.5vw,32px)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-[clamp(16px,2.5vw,32px)]">
           {filtered.map((wedding, i) => (
             <div
               key={wedding.slug}

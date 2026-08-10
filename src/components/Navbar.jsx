@@ -44,7 +44,7 @@ const Header = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-[9000] transition-all duration-500 ${
           isSolidHeader
-            ? "bg-pastel/85 backdrop-blur-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.06)] border-b border-black/5"
+            ? "bg-white/85 backdrop-blur-[18px] shadow-[0_4px_20px_rgba(0,0,0,0.06)] border-b border-black/5"
             : "bg-transparent"
         }`}
       >
@@ -78,7 +78,7 @@ const Header = () => {
 
                 {/* Desktop Dropdown */}
                 {item.dropdown && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 bg-pastel shadow-xl min-w-[180px] py-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-3">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 bg-white shadow-xl min-w-[180px] py-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 mt-3">
                     {item.dropdown.map((sub) => (
                       <Link
                         key={sub.name}
@@ -138,7 +138,7 @@ const Header = () => {
 
         {/* Mobile Menu Drawer */}
         <div
-          className={`overflow-hidden transition-all duration-500 bg-pastel border-t border-[#eee] ${
+          className={`overflow-hidden transition-all duration-500 bg-white border-t border-[#eee] ${
             isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
           }`}
         >

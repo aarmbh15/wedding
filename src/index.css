@@ -5,20 +5,17 @@
   --font-sans: Montserrat, system-ui, sans-serif;
   --font-serif: Playfair Display, Georgia, serif;
 
-  /* Pastel Yellow (Yellow 200) – global background */
+  /* Brand palette tokens used across pages for alternating sections */
   --color-pastel: #F4F1EA;
+ 
 }
 
 /* ========== GLOBAL BACKGROUND ========== */
 html,
 body {
-  background-color: var(--color-pastel);
+  background-color: #ffffff;
   min-height: 100%;
 }
-
-/* This @theme variable auto-generates bg-pastel, hover:bg-pastel,
-   bg-pastel/85 (opacity), text-pastel, border-pastel, etc.
-   No separate utility class needed. */
 
 /* Existing animations */
 .fade-up {
