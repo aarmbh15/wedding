@@ -164,8 +164,8 @@ const films = [
 
 const categories = ["All", "Destination", "Royal", "Coastal", "City"];
 
-// ─── Elegant Film Card Component ──────────────────────────────────────────────
-function FilmCard({ film, onSelect, isOffset }) {
+// ─── Elegant Film Card Component ───
+function FilmCard({ film, onSelect }) {
   return (
     <motion.div
       layout
@@ -174,15 +174,15 @@ function FilmCard({ film, onSelect, isOffset }) {
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       onClick={() => onSelect(film)}
-      className={`cursor-pointer w-full group flex flex-col ${isOffset ? 'md:mt-32' : ''}`}
+      className="cursor-pointer w-full group flex flex-col"
     >
-      <div className="relative aspect-video overflow-hidden bg-[#e6e2da]">
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#e6e2da]">
         {/* Thumbnail Image */}
         <img
           src={film.thumbnail || `https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
           alt={film.couple}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-[1.04]"
+          className="w-full h-full object-cover object-center transition-transform duration-[1.5s] ease-out group-hover:scale-[1.04]"
         />
         
         {/* Elegant Gradient Overlay */}
@@ -198,7 +198,7 @@ function FilmCard({ film, onSelect, isOffset }) {
       
       {/* Clean Editorial Typography underneath */}
       <div className="text-left mt-6">
-        <h3 className="font-['Cormorant_Garamond'] text-2xl md:text-3xl font-light text-[#1a1a1a] mb-2 group-hover:text-[#c9a84c] transition-colors duration-400">
+        <h3 className="font-['Cormorant_Garamond'] text-2xl md:text-[1.75rem] font-light text-[#1a1a1a] mb-2 group-hover:text-[#c9a84c] transition-colors duration-400">
           {film.couple}
         </h3>
         
@@ -269,17 +269,19 @@ export default function Films() {
       </section>
 
       {/* Main Editorial Content Area */}
-      <div className="py-24 md:py-40 px-6">
-        {/* Staggered Offset Grid for Premium Agency Look */}
-        <div className="max-w-[1300px] mx-auto">
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24 md:gap-y-10 items-start">
+      <div className="py-24 md:py-32 px-[clamp(24px,6vw,80px)]">
+        {/* Clean 3-Column Grid — matches the Portfolio page layout */}
+        <div className="max-w-[1400px] mx-auto">
+          <motion.div
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-[clamp(20px,2.5vw,40px)] gap-y-[clamp(48px,5vw,72px)]"
+          >
             <AnimatePresence mode="popLayout">
-              {filtered.map((film, index) => (
-                <FilmCard 
-                  key={film.id} 
-                  film={film} 
-                  onSelect={setSelectedFilm} 
-                  isOffset={index % 2 !== 0}
+              {filtered.map((film) => (
+                <FilmCard
+                  key={film.id}
+                  film={film}
+                  onSelect={setSelectedFilm}
                 />
               ))}
             </AnimatePresence>

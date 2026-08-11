@@ -8,63 +8,15 @@ import HeroImage from "../assets/hero5.webp";
 const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png,webp}", { eager: true });
 const img = (path) => allImages[`../assets/${path}`]?.default;
 
-// ─── Portfolio data ───────────────────────────────────────────────────────────
+// ─── Portfolio data (ordered to match reference layout) ──────────────────────
 const weddings = [
   {
-    slug:     "amruta-amey",
-    couple:   "Amruta & Amey",
-    location: "Pune, Maharashtra",
-    date:     "December 2024",
-    category: "Destination",
-    cover:    img("portfolio/Amruta_Amey.webp"),
-  },
-  {
-    slug:     "abhimanyu-manisha",
-    couple:   "Manisha & Abhimanyu",
-    location: "Pune, Maharashtra",
-    date:     "November 2024",
-    category: "Coastal",
-    cover:    img("portfolio/Abhimanyu_Manisha.webp"),
-  },
-  {
-    slug:     "Rohan-preksha",
-    couple:   "Preksha & Rohan",
-    location: "Pushkar, Rajasthan",
-    date:     "January 2025",
-    category: "Royal",
-    cover:    img("portfolio/Rohan_Preksha.webp"),
-  },
-    {
-    slug:     "bhakti-sourabh",
-    couple:   "Bhakti & Sourabh",
-    location: "Jodhpur, Rajasthan",
-    date:     "October 2024",
-    category: "City",
-    cover:    img("portfolio/Bhakti_Saurabh.webp"),
-  },
-  {
-    slug:     "Nina_Parth",
-    couple:   "Nina & Parth",
-    location: "Pushkar, Rajasthan",
-    date:     "January 2025",
-    category: "Royal",
-    cover:    img("portfolio/Nina_Parth.webp"),
-  },
-  {
-    slug:     "Atish_Shweta",
-    couple:   "Atish & Shweta",
+    slug:     "Shruti_Harjot",
+    couple:   "Harjot & Shruti",
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("portfolio/Atish_Shweta.webp"),
-  },
-   {
-    slug:     "Gaurav_Chinmaee",
-    couple:   "Gaurav & Chinmaee",
-    location: "Pune, Maharashtra",
-    date:     "Month Year",
-    category: "Tag",
-    cover:    img("portfolio/Gaurav_Chinmaee.webp"),
+    cover:    img("portfolio/Shruti_Harjot.webp"),
   },
   {
     slug:     "Raj_Suhasini",
@@ -75,41 +27,88 @@ const weddings = [
     cover:    img("portfolio/Raj_Suhasini.webp"),
   },
   {
-    slug:     "Aishwarya_Sanmay",
-    couple:   "Aishwarya & Sanmay",
+    slug:     "Rohan-preksha",
+    couple:   "Rohan & Preksha",
+    location: "Pushkar, Rajasthan",
+    date:     "January 2025",
+    category: "Royal",
+    cover:    img("portfolio/Rohan_Preksha.webp"),
+  },
+  {
+    slug:     "Atharva_Haritha",
+    couple:   "Atharva & Harita",
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("portfolio/Sanmay_Aishwarya.jpeg"),
+    cover:    img("portfolio/Atharva_Harita.webp"),
   },
-   {
+  {
     slug:     "Anuja_Shubhang",
-    couple:   "Anuja & Shubhang",
+    couple:   "Shubhang & Anuja",
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
     cover:    img("portfolio/Anuja_Shubhang.webp"),
   },
   {
-    slug:     "Atharva_Haritha",
-    couple:   "Atharva & Haritha",
+    slug:     "Atish_Shweta",
+    couple:   "Atish & Shweta",
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("portfolio/Atharva_Harita.webp"),
+    cover:    img("portfolio/Atish_Shweta.webp"),
   },
-    {
-    slug:     "Shruti_Harjot",
-    couple:   "Shruti & Harjot",
+  {
+    slug:     "bhakti-sourabh",
+    couple:   "Saurabh & Bhakti",
+    location: "Jodhpur, Rajasthan",
+    date:     "October 2024",
+    category: "City",
+    cover:    img("portfolio/Bhakti_Saurabh.webp"),
+  },
+  {
+    slug:     "Gaurav_Chinmaee",
+    couple:   "Gaurav & Chinmaee",
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
-    cover:    img("portfolio/Shruti_Harjot.webp"),
+    cover:    img("portfolio/Gaurav_Chinmaee.webp"),
   },
-  
+  {
+    slug:     "Nina_Parth",
+    couple:   "Parth & Nina",
+    location: "Pushkar, Rajasthan",
+    date:     "January 2025",
+    category: "Royal",
+    cover:    img("portfolio/Nina_Parth.webp"),
+  },
+  {
+    slug:     "Aishwarya_Sanmay",
+    couple:   "Sanmay & Aishwarya",
+    location: "Pune, Maharashtra",
+    date:     "Month Year",
+    category: "Tag",
+    cover:    img("portfolio/Sanmay_Aishwarya.jpeg"),
+  },
+  {
+    slug:     "amruta-amey",
+    couple:   "Amruta & Amey",
+    location: "Pune, Maharashtra",
+    date:     "December 2024",
+    category: "Destination",
+    cover:    img("portfolio/Amruta_Amey.webp"),
+  },
+  {
+    slug:     "abhimanyu-manisha",
+    couple:   "Abhimanyu & Manisha",
+    location: "Pune, Maharashtra",
+    date:     "November 2024",
+    category: "Coastal",
+    cover:    img("portfolio/Abhimanyu_Manisha.webp"),
+  },
   {
     slug:     "Chaitrali_Shubham",
-    couple:   "Chaitrali & Shubham",
+    couple:   "Shubham & Chaitraly",
     location: "Pune, Maharashtra",
     date:     "Month Year",
     category: "Tag",
@@ -147,7 +146,7 @@ function LazyImg({ src, alt }) {
           decoding="async"
           loading="lazy"
           onLoad={() => setLoaded(true)}
-          className="absolute inset-0 w-full h-full object-cover object-[center_20%] transition-opacity duration-700 ease-out"
+          className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ease-out"
           style={{ opacity: loaded ? 1 : 0 }}
         />
       )}
@@ -166,13 +165,13 @@ function WeddingCard({ wedding, onClick }) {
       onMouseLeave={() => setHovered(false)}
       className="cursor-pointer group"
     >
-      {/* Image Container */}
-      <div className="relative aspect-[4/2] overflow-hidden mb-4 bg-[#ede9e3]">
+      {/* Image Container — taller portrait ratio for a proper gallery feel */}
+      <div className="relative aspect-[4/3] overflow-hidden mb-4 bg-[#ede9e3]">
         <LazyImg src={wedding.cover} alt={wedding.couple} />
 
         {/* Zoom effect layer */}
         <div
-          className="absolute inset-0 bg-cover bg-[center_20%] transition-transform duration-[900ms] cubic-bezier(.22,1,.36,1) opacity-0 group-hover:opacity-100"
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-[900ms] cubic-bezier(.22,1,.36,1) opacity-0 group-hover:opacity-100"
           style={{
             backgroundImage: `url(${wedding.cover})`,
             transform: hovered ? "scale(1.06)" : "scale(1)",
@@ -271,19 +270,20 @@ export default function Portfolio() {
               </div>
             </section>
 
-  <div className="max-w-[1000px] mx-auto text-center mt-5">
-  <p className="font-['Jost'] text-[0.65rem] md:text-[0.7rem] uppercase tracking-[0.35em] text-[#B99A4A] ">
-    Our Stories
-  </p>
+  {/* ── Section Intro — resized to sit properly under the hero ───────────── */}
+  <div className="max-w-[720px] mx-auto text-center mt-16 px-6">
+    <p className="font-['Jost'] text-[0.65rem] md:text-[0.7rem] uppercase tracking-[0.35em] text-[#B99A4A] mb-3">
+      Our Stories
+    </p>
 
-  <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.2rem,4.5vw,4rem)] font-light text-[#1a1a1a] leading-[1.15]">
-    Take a look at some of the beautiful weddings we have had the pleasure of capturing.
-  </h2>
-</div>
+    <h2 className="font-['Cormorant_Garamond'] text-[clamp(1.4rem,2.4vw,1.9rem)] font-light text-[#1a1a1a] leading-[1.4]">
+      Take a look at some of the beautiful weddings we have had the pleasure of capturing.
+    </h2>
+  </div>
 
       {/* ── Grid ────────────────────────────────────────────────────────────── */}
-      <div className="pt-8 pb-[clamp(80px,10vw,120px)] px-[clamp(24px,6vw,80px)] max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-[clamp(16px,2.5vw,32px)]">
+      <div className="pt-12 pb-[clamp(80px,10vw,120px)] px-[clamp(24px,6vw,80px)] max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-[clamp(20px,2.5vw,40px)]">
           {filtered.map((wedding, i) => (
             <div
               key={wedding.slug}

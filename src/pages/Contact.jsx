@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Instagram, Youtube, Facebook } from 'lucide-react';
 import HeroImage from "../assets/hero1.webp";
 
 // Hook for scroll animations
@@ -16,6 +17,24 @@ function useInView(threshold = 0.1) {
 }
 
 const packageOptions = ["Wedding Film", "Commercial/Brand", "Portfolio Shoot", "Short Film", "Not Sure Yet"];
+
+const socialLinks = [
+  {
+    name: "Instagram",
+    icon: Instagram,
+    href: "https://www.instagram.com/tiltshift_pictures?igsh=Mm9zeXQ2bHQxaWk0&utm_source=qr",
+  },
+  {
+    name: "YouTube",
+    icon: Youtube,
+    href: "https://www.youtube.com/@tiltshiftpictures1623",
+  },
+  {
+    name: "Facebook",
+    icon: Facebook,
+    href: "https://www.facebook.com/tiltshiftpicture",
+  },
+];
 
 const Contact = () => {
   const [form, setForm] = useState({ 
@@ -47,10 +66,10 @@ const Contact = () => {
   const inputClasses = "w-full py-4 bg-transparent border-b border-black/10 text-gray-800 font-light focus:border-[#c9a84c] outline-none transition-all placeholder:text-gray-300";
 
   return (
-    <div className="min-h-screen bg-[#FDFCF9] text-[#2D2D2D] font-['Jost']">
+    <div className="min-h-screen bg-white text-[#2D2D2D] font-['Jost']">
       
       {/* ─── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen bg-[#F4F1EA] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
           <LazyLoadImage
             src={HeroImage}
@@ -72,7 +91,7 @@ const Contact = () => {
       </section>
 
       {/* ─── QUICK INFO STRIP ─────────────────────────────────────── */}
-      <div className="bg-white border-y border-black/5 py-8 px-6">
+      <div className="bg-[#F4F1EA] border-y border-black/5 py-8 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
           {[
             { l: "Email", v: "hello@tiltshiftpictures.com" },
@@ -89,7 +108,7 @@ const Contact = () => {
       </div>
 
       {/* ─── MAIN CONTACT SECTION ────────────────────────────────── */}
-      <section className="py-20 lg:py-32 px-6 bg-[#F4F1EA]">
+      <section className="py-20 lg:py-32 px-6 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           
           {/* Form Side */}
@@ -97,7 +116,7 @@ const Contact = () => {
             <h2 className="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-light mb-12">Inquiry Form</h2>
             
             {submitted ? (
-              <div className="bg-white p-12 text-center border border-[#c9a84c]/20 shadow-sm">
+              <div className="bg-[#FDFCF9] p-12 text-center border border-[#c9a84c]/20 shadow-sm">
                 <span className="text-4xl block mb-4">✨</span>
                 <h3 className="font-['Cormorant_Garamond'] text-2xl mb-2">Thank You</h3>
                 <p className="text-gray-500 font-light">Your inquiry has reached us. We'll be in touch very soon.</p>
@@ -148,7 +167,7 @@ const Contact = () => {
 
           {/* Info Side */}
           <div className="lg:col-span-5 space-y-12">
-            <div className="bg-white p-10 md:p-14">
+            <div className="bg-[#F4F1EA] p-10 md:p-14 rounded-2xl">
               <h3 className="font-['Cormorant_Garamond'] text-2xl mb-6 italic">Visit our Studio</h3>
               <p className="text-gray-500 font-light leading-relaxed mb-8 text-[0.95rem]">
                 Bunglow no 6, Periwinkle Society,<br />
@@ -159,30 +178,19 @@ const Contact = () => {
             <div className="px-4">
               <h3 className="font-['Cormorant_Garamond'] text-xl mb-6">Social Portfolios</h3>
               <div className="flex flex-wrap gap-4">
-                <a 
-                  href="https://www.instagram.com/tiltshift_pictures?igsh=Mm9zeXQ2bHQxaWk0&utm_source=qr" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-[0.7rem] uppercase tracking-widest border border-black/10 px-6 py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all"
-                >
-                  Instagram
-                </a>
-                <a 
-                  href="https://www.youtube.com/@tiltshiftpictures1623" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-[0.7rem] uppercase tracking-widest border border-black/10 px-6 py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all"
-                >
-                  YouTube
-                </a>
-                <a 
-                  href="https://www.facebook.com/tiltshiftpicture" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-[0.7rem] uppercase tracking-widest border border-black/10 px-6 py-3 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all"
-                >
-                  Facebook
-                </a>
+                {socialLinks.map(({ name, icon: Icon, href }) => (
+                  <a
+                    key={name}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={name}
+                    title={name}
+                    className="group w-12 h-12 flex items-center justify-center rounded-full border border-black/10 text-[#2D2D2D] hover:border-[#c9a84c] hover:bg-[#c9a84c] hover:text-white transition-all duration-300"
+                  >
+                    <Icon size={18} strokeWidth={1.5} />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -200,12 +208,46 @@ const Contact = () => {
 
           <div className="space-y-4">
             {[
-              { q: "How is your work different from others?", a: "At Tilt Shift Pictures, we believe every wedding has its own story and our job is to document it as naturally as it unfolds. Rather than focusing only on posed photographs, we specialise in candid wedding photography that captures genuine emotions, meaningful traditions, candid interactions and the moments that often go unnoticed. Our approach allows you to relive your wedding exactly as it felt. What sets our work apart is our attention to storytelling, natural colour tones and clean timeless editing. As experienced wedding photographers in Pune and across India, we use light creatively to ensure every frame looks elegant, whether it's a bright outdoor ceremony or a dimly lit evening celebration. Our wedding photographs are crafted to feel authentic today and remain beautiful for years to come. We also understand that a wedding is about more than just the couple. Parents, grandparents, siblings, relatives and friends all play an important role in your celebration and we make sure their emotions and moments become part of your wedding story too. This thoughtful approach is what makes our wedding photography truly personal. Our cinematic wedding films and traditional wedding films are created with the same philosophy. Instead of simply documenting events, we weave together emotions, conversations, music and meaningful moments into a film that reflects your journey. Whether it's a celebration in Pune or a destination wedding anywhere in India, every edit is carefully crafted so that your wedding film feels personal, emotional and timeless, something you will enjoy watching even decades later." },
-              { q: "Do you cover destination weddings?", a: "Yes, absolutely! We specialise in destination wedding photography and cinematic wedding films across India. Whether you are planning a beach wedding in Goa, a royal wedding in Rajasthan or a celebration anywhere in the country, our team is ready to capture every moment. Just let us know the location and we will pack our bags (and cameras) to capture your story beautifully." },
-              { q: "How many people will come for my wedding?", a: "The size of our wedding photography and videography team depends on the scale of your wedding, the number of functions and your coverage requirements. For intimate weddings, we typically assign a smaller team, while larger celebrations and destination weddings require a bigger crew to ensure every moment is captured seamlessly. We will recommend the ideal team based on your wedding plans." },
-              { q: "How are your services priced?", a: "Our wedding photography and videography packages are customised based on your wedding plans, including the number of functions, event locations, coverage requirements and the team size needed. Since every wedding is unique, we create a package that best suits your celebration. Share your wedding details with us and we will be happy to provide a personalised quote." },
-              { q: "Do you meet clients before they book?", a: "Yes, absolutely. We always recommend meeting our couples before the booking, either in person or through a video call. It gives us an opportunity to understand your wedding plans, expectations, and photography preferences while answering any questions you may have. More importantly, it helps us build a comfortable connection, so you feel relaxed and confident with our team on your wedding day." },
-              { q: "What are your delivery timelines?", a: "We deliver a curated preview of 30–100 professionally edited wedding photographs during or shortly after your wedding, depending on the event schedule and available editing time. Within 10 working days, you will receive our Editor's Choice collection, a handpicked selection of the best moments from all your wedding celebrations. Your complete wedding photography gallery is professionally edited and delivered within 35 working days Our cinematic wedding films and traditional wedding films are crafted with great attention to detail. From selecting the best footage and refining every scene to colour grading and storytelling, each film goes through a meticulous editing process. Your cinematic highlight film is delivered first, followed by your traditional wedding film. During the wedding season, the complete film delivery typically takes 2–3 months, ensuring every memory is beautifully preserved." },
+              {
+                q: "How is your work different from others?",
+                a: [
+                  "At Tilt Shift Pictures, we believe every wedding has its own story and our job is to document it as naturally as it unfolds. Rather than focusing only on posed photographs, we specialise in candid wedding photography that captures genuine emotions, meaningful traditions, candid interactions and the moments that often go unnoticed. Our approach allows you to relive your wedding exactly as it felt.",
+                  "What sets our work apart is our attention to storytelling, natural colour tones and clean timeless editing. As experienced wedding photographers in Pune and across India, we use light creatively to ensure every frame looks elegant, whether it's a bright outdoor ceremony or a dimly lit evening celebration. Our wedding photographs are crafted to feel authentic today and remain beautiful for years to come.",
+                  "We also understand that a wedding is about more than just the couple. Parents, grandparents, siblings, relatives and friends all play an important role in your celebration and we make sure their emotions and moments become part of your wedding story too. This thoughtful approach is what makes our wedding photography truly personal.",
+                  "Our cinematic wedding films and traditional wedding films are created with the same philosophy. Instead of simply documenting events, we weave together emotions, conversations, music and meaningful moments into a film that reflects your journey. Whether it's a celebration in Pune or a destination wedding anywhere in India, every edit is carefully crafted so that your wedding film feels personal, emotional and timeless, something you will enjoy watching even decades later.",
+                ],
+              },
+              {
+                q: "Do you cover destination weddings?",
+                a: [
+                  "Yes, absolutely! We specialise in destination wedding photography and cinematic wedding films across India. Whether you are planning a beach wedding in Goa, a royal wedding in Rajasthan or a celebration anywhere in the country, our team is ready to capture every moment. Just let us know the location and we will pack our bags (and cameras) to capture your story beautifully.",
+                ],
+              },
+              {
+                q: "How many people will come for my wedding?",
+                a: [
+                  "The size of our wedding photography and videography team depends on the scale of your wedding, the number of functions and your coverage requirements. For intimate weddings, we typically assign a smaller team, while larger celebrations and destination weddings require a bigger crew to ensure every moment is captured seamlessly. We will recommend the ideal team based on your wedding plans.",
+                ],
+              },
+              {
+                q: "How are your services priced?",
+                a: [
+                  "Our wedding photography and videography packages are customised based on your wedding plans, including the number of functions, event locations, coverage requirements and the team size needed. Since every wedding is unique, we create a package that best suits your celebration. Share your wedding details with us and we will be happy to provide a personalised quote.",
+                ],
+              },
+              {
+                q: "Do you meet clients before they book?",
+                a: [
+                  "Yes, absolutely. We always recommend meeting our couples before the booking, either in person or through a video call. It gives us an opportunity to understand your wedding plans, expectations, and photography preferences while answering any questions you may have. More importantly, it helps us build a comfortable connection, so you feel relaxed and confident with our team on your wedding day.",
+                ],
+              },
+              {
+                q: "What are your delivery timelines?",
+                a: [
+                  "We deliver a curated preview of 30–100 professionally edited wedding photographs during or shortly after your wedding, depending on the event schedule and available editing time. Within 10 working days, you will receive our Editor's Choice collection, a handpicked selection of the best moments from all your wedding celebrations. Your complete wedding photography gallery is professionally edited and delivered within 35 working days.",
+                  "Our cinematic wedding films and traditional wedding films are crafted with great attention to detail. From selecting the best footage and refining every scene to colour grading and storytelling, each film goes through a meticulous editing process. Your cinematic highlight film is delivered first, followed by your traditional wedding film. During the wedding season, the complete film delivery typically takes 2–3 months, ensuring every memory is beautifully preserved.",
+                ],
+              },
             ].map((faq, i) => (
               <div key={i} className="bg-[#F4F1EA] border border-black/5 overflow-hidden">
                 <button 
@@ -215,8 +257,14 @@ const Contact = () => {
                   <span className="font-['Cormorant_Garamond'] text-lg group-hover:text-[#c9a84c] transition-colors">{faq.q}</span>
                   <span className={`text-[#c9a84c] transition-transform duration-300 ${openFaq === i ? 'rotate-45' : ''}`}>+</span>
                 </button>
-                <div className={`px-8 transition-all duration-500 ease-in-out ${openFaq === i ? 'max-h pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <p className="text-gray-400 font-light text-sm">{faq.a}</p>
+                <div className={`px-8 transition-all duration-500 ease-in-out ${openFaq === i ? 'max-h-[2000px] pb-8 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <div className="space-y-4">
+                    {faq.a.map((paragraph, pIdx) => (
+                      <p key={pIdx} className="text-gray-500 font-light text-sm leading-[1.9]">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

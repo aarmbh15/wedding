@@ -69,7 +69,7 @@ const About = () => {
             <img
             src={AboutImage}
             alt="Wedding Cinematography"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-[1.3] object-[65%_center]"
           />
               {/* <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="Our Story" className="w-full h-full object-cover" /> */}
             </div>
@@ -97,8 +97,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── PHILOSOPHY (BEIGE) ─────────────────────────────────── */}
-      <section ref={valRef} className="bg-[#F4F1EA] py-[clamp(80px,10vw,130px)] px-6">
+      {/* ─── PHILOSOPHY (WHITE SECTION, CARDS KEEP THEIR COLOR) ──── */}
+      <section ref={valRef} className="bg-white py-[clamp(80px,10vw,130px)] px-6">
         <div className="max-w-[1200px] mx-auto text-center mb-16">
           {/* <p className="text-[0.7rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-4">Our DNA</p> */}
           <h2 className="font-['Cormorant_Garamond'] text-[clamp(2rem,4vw,3.5rem)] font-light">Why Choose Us?</h2>
@@ -110,7 +110,7 @@ const About = () => {
             { t: "Destination Wedding Experts", d: "Experienced in capturing weddings across India, ensuring seamless coverage wherever your celebration takes place." },
             { t: "On-Time Delivery", d: "Your photos and films are delivered within the promised timeline, without compromising on quality or attention to detail." }
           ].map((v, i) => (
-            <div key={i} className="bg-[#F4F1EA] p-10 md:p-16 transition-all hover:bg-white group">
+            <div key={i} className="bg-[#F4F1EA] p-8 sm:p-10 md:p-16 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group">
               <span className="font-['Cormorant_Garamond'] text-5xl text-[#c9a84c]/20 block mb-6 group-hover:text-[#c9a84c]/50 transition-colors">0{i+1}</span>
               <h3 className="font-['Cormorant_Garamond'] text-2xl mb-4">{v.t}</h3>
               <p className="text-gray-500 font-light leading-relaxed">{v.d}</p>

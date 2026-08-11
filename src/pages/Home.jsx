@@ -175,7 +175,7 @@ const portfolioGrid = [
 ];
 
 const featured = [
-  { couple: "Amruta & Amey", slug: "amruta-amey", location: "Pune, Maharashtra", date: "December 2024", img: img("Amruta_Amey/img218.webp") },
+  // { couple: "Amruta & Amey", slug: "amruta-amey", location: "Pune, Maharashtra", date: "December 2024", img: img("Amruta_Amey/img218.webp") },
   { couple: "Abhimanyu & Manisha", slug: "abhimanyu-manisha", location: "Pune, Maharashtra", date: "November 2024", img: img("portfolio/Abhimanyu_Manisha.webp") },
   { couple: "Bhakti & Sourabh", slug: "bhakti-sourabh", location: "Jodhpur, Rajasthan", date: "October 2024", img: img("Bhakti_Sourabh/img353.webp") },
   { couple: "Rohan & Preksha", slug: "Rohan-preksha", location: "Pushkar, Rajasthan", date: "January 2025", img: img("Rohan_Preksha/img550.webp") },
@@ -272,7 +272,7 @@ function HeroSlider() {
       <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-gradient-to-t from-black/55 to-transparent z-20 pointer-events-none" />
     <div className="absolute bottom-[clamp(16px,4vw,72px)] left-[clamp(14px,5vw,80px)] right-[clamp(50px,16vw,90px)] z-30 text-white">
   <p className="font-jost text-[0.52rem] sm:text-[0.7rem] tracking-[0.22em] sm:tracking-[0.35em] uppercase opacity-75 mb-2">
-    Mumbai · Pune · India
+    Pune · Mumbai · India
   </p>
 
   <h1 className="font-cormorant text-[clamp(1.5rem,7vw,5.5rem)] font-light leading-[1.08]">
@@ -529,10 +529,17 @@ export default function Home() {
       <LazySection rootMargin="400px">
         {(isNear) => (
           <section ref={gridRef} className="bg-[#F4F1EA] pb-[clamp(60px,8vw,100px)]">
-            <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
-              <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a]">PORTFOLIO</h2>
-              <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
-            </div>
+          <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
+  <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a] relative top-8">
+    PORTFOLIO
+  </h2>
+
+  <p className="font-cormorant italic text-[clamp(1rem,1.5vw,1.25rem)] text-[#666] mt-10 max-w-[700px] mx-auto leading-relaxed">
+    Explore our beautifully captured wedding films and romantic love stories brought to life.
+  </p>
+
+  <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
+</div>
             
             {/* Elegant CSS Columns Masonry - Filtered to prevent empty spaces from broken paths */}
             <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 px-3 md:px-5">
@@ -565,53 +572,96 @@ export default function Home() {
 
       {/* FEATURED WEDDINGS (Premium Portrait Cards) */}
       <LazySection rootMargin="300px">
-        {(isNear) => (
-          <section ref={featRef} className="bg-white py-[clamp(60px,10vw,80px)] px-[clamp(24px,6vw,80px)] border-y border-black/5">
-            <div className="max-w-[1320px] mx-auto">
-              <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
-                <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">FEATURED WEDDINGS</h2>
-                <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
+  {(isNear) => (
+    <section
+      ref={featRef}
+      className="bg-white py-[clamp(60px,10vw,80px)] px-[clamp(24px,5vw,60px)] border-y border-black/5"
+    >
+      <div className="max-w-[1400px] mx-auto">
+
+        {/* Section Heading */}
+        <div className="text-center px-6 pb-[clamp(40px,5vw,60px)]">
+          <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
+            FEATURED WEDDINGS
+          </h2>
+
+          <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
+        </div>
+
+        {/* 2 Column Wedding Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12 lg:gap-x-10 lg:gap-y-16 featured-grid">
+
+          {featured.map((f, i) => (
+            <Link
+              key={i}
+              to={`/wedding/${f.slug}`}
+              state={{ from: location }}
+              className={`group fade-up flex flex-col ${
+                featInView ? `in d${i + 1}` : ""
+              }`}
+            >
+
+              {/* Landscape Image */}
+              <div className="relative w-full aspect-[16/12] mb-5 overflow-hidden bg-white shadow-sm rounded-sm">
+
+                <img
+                  src={f.img}
+                  alt={f.couple}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 featured-grid">
-                {featured.map((f, i) => (
-                  <Link key={i} to={`/wedding/${f.slug}`} state={{ from: location }} className={`group fade-up flex flex-col ${featInView ? `in d${i + 1}` : ""}`}>
-                    {/* Portrait layout for premium wedding aesthetic */}
-                    <div className="relative w-full aspect-[4/5] mb-5 overflow-hidden bg-white shadow-sm rounded-sm">
-                      <img 
-                        src={f.img} 
-                        alt={f.couple} 
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
-                      />
-                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    </div>
-                    <div className="text-center">
-                      <h3 className="font-cormorant text-2xl font-medium text-[#1a1a1a] mb-1.5 transition-colors group-hover:text-[#c9a84c]">{f.couple}</h3>
-                      <p className="font-jost text-[0.65rem] tracking-[0.2em] uppercase text-gray-400">{f.location}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-              <div className="text-center mt-12 md:mt-16">
-                <a href="/portfolio" className="font-jost text-[0.72rem] tracking-[0.28em] uppercase border-b border-[#aaa] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors">
-                  See All Stories
-                </a>
-              </div>
-            </div>
-          </section>
-        )}
-      </LazySection>
+              {/* Wedding Details */}
+              <div className="text-left">
+                <h3 className="font-cormorant text-[clamp(1.5rem,2vw,2rem)] font-medium text-[#1a1a1a] mb-1.5 transition-colors group-hover:text-[#c9a84c]">
+                  {f.couple}
+                </h3>
 
+                <p className="font-jost text-[0.65rem] tracking-[0.2em] uppercase text-gray-400">
+                  {f.location}
+                </p>
+              </div>
+
+            </Link>
+          ))}
+
+        </div>
+
+        {/* View All */}
+        <div className="text-center mt-14 md:mt-20">
+          <a
+            href="/portfolio"
+            className="font-jost text-[0.72rem] tracking-[0.28em] uppercase border-b border-[#aaa] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
+          >
+            See All Stories
+          </a>
+        </div>
+
+      </div>
+    </section>
+  )}
+</LazySection>
       {/* FILMS SECTION */}
       <LazySection rootMargin="300px">
         {(isNear) => (
           <section className="bg-[#F4F1EA] py-[clamp(60px,10vw,100px)] px-[clamp(24px,6vw,80px)] overflow-hidden">
             <div className="max-w-[1320px] mx-auto">
-              <div className="text-center px-6 mb-12">
-                <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a]">FILMS</h2>
-                <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
-              </div>
+        <div className="text-center px-6 mb-5">
+  <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a]">
+    FILMS
+  </h2>
+
+  <p className="font-cormorant italic text-[clamp(1rem,1.5vw,1.25rem)] text-[#666] mt-2 max-w-[700px] mx-auto leading-relaxed">
+    Explore our beautifully captured wedding films and romantic love stories brought to life.
+  </p>
+
+  <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-4" />
+</div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(24px,4vw,40px)]">
                 {[
                   { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra",thumbnail: ThumbRahulEsha},
@@ -632,7 +682,7 @@ export default function Home() {
       </LazySection>
 
       {/* PHILOSOPHY SECTION */}
-      <LazySection rootMargin="100px">
+      {/* <LazySection rootMargin="100px">
         {(isNear) => (
           <section className="relative z-10 min-h-[60vh] flex items-center justify-center bg-white border-t border-black/5">
             <div className="flex flex-col md:flex-row items-center gap-10 md:gap-[100px] max-w-[1300px] w-full px-[clamp(24px,6vw,80px)] py-20">
@@ -650,43 +700,71 @@ export default function Home() {
             </div>
           </section>
         )}
-      </LazySection>
+      </LazySection> */}
 
       {/* ENHANCED CLIENT TESTIMONIALS (Slimmer, Elegant Cards) */}
-      <LazySection rootMargin="300px">
-        {(isNear) => (
-          <section className="bg-[#F4F1EA] py-[clamp(60px,10vw,100px)] overflow-hidden">
-            <div className="max-w-[1320px] mx-auto px-[clamp(24px,6vw,80px)]">
-              <div className="text-center pb-[clamp(40px,6vw,70px)]">
-                <p className="font-jost text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-3">Kind Words</p>
-                <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">CLIENT TESTIMONIALS</h2>
-                <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
-              </div>
-            </div>
+     <LazySection rootMargin="300px">
+  {(isNear) => (
+    <section className="bg-white py-[clamp(60px,10vw,100px)] overflow-hidden">
+      <div className="max-w-[1320px] mx-auto px-[clamp(24px,6vw,80px)]">
+        <div className="text-center pb-[clamp(40px,6vw,70px)]">
+          <p className="font-jost text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-3">
+            Kind Words
+          </p>
 
-            <div className="relative group/scroll w-full">
-              <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#f7f5f1] to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#f7f5f1] to-transparent z-10 pointer-events-none" />
-              
-              <div className="animate-scroll flex gap-6 px-4">
-                {[...testimonials, ...testimonials].map((t, i) => (
-                  <div key={i} className="flex-shrink-0 w-[300px] md:w-[350px] flex flex-col bg-white p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm group relative">
-                    <Quote className="w-8 h-8 text-[#c9a84c] opacity-20 mb-5" />
-                    <p className="font-cormorant italic text-[1.1rem] leading-[1.8] text-gray-600 mb-8 relative z-10 flex-grow">
-                      "{t.text}"
-                    </p>
-                    <div className="mt-auto flex flex-col gap-2 pt-5 border-t border-[#f4f1ea]">
-                      <p className="font-jost text-[0.7rem] tracking-[0.2em] uppercase text-[#1a1a1a] font-medium">
-                        {t.name}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+          <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
+            CLIENT TESTIMONIALS
+          </h2>
+
+          <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
+        </div>
+      </div>
+
+      {/* Testimonials Slider */}
+      <div className="relative group/scroll w-full">
+        {/* Left Fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
+
+        {/* Right Fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
+
+        {/* Scroll Container */}
+        <div
+          className="testimonial-scroll flex gap-6 overflow-x-auto px-4 pb-4"
+          style={{
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.dataset.paused = "true";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.dataset.paused = "false";
+          }}
+        >
+          {[...testimonials, ...testimonials].map((t, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 w-[300px] md:w-[350px] min-h-[320px] flex flex-col bg-[#F4F1EA] p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm"
+            >
+              <Quote className="w-8 h-8 text-[#c9a84c] opacity-20 mb-5" />
+
+              <p className="font-cormorant italic text-[1.1rem] leading-[1.8] text-gray-600 mb-8 relative z-10 flex-grow">
+                "{t.text}"
+              </p>
+
+              <div className="mt-auto flex flex-col gap-2 pt-5 border-t border-[#f4f1ea]">
+                <p className="font-jost text-[0.7rem] tracking-[0.2em] uppercase text-[#1a1a1a] font-medium">
+                  {t.name}
+                </p>
               </div>
             </div>
-          </section>
-        )}
-      </LazySection>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</LazySection>
 
       {/* ENQUIRY POPUP */}
       {showEnquiry && (
