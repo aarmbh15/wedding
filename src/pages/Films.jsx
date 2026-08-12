@@ -267,6 +267,16 @@ export default function Films() {
           <div className="w-16 h-[1.5px] bg-[#c9a84c] mx-auto mt-10 shadow-sm" />
         </div>
       </section>
+       <div className="max-w-[720px] mx-auto text-center mt-16 px-6">
+    <p className="font-['Jost'] text-[0.65rem] md:text-[0.7rem] uppercase tracking-[0.35em] text-[#B99A4A] mb-3">
+      Our Films
+    </p>
+
+    <h2 className="font-['Cormorant_Garamond'] text-[clamp(1.4rem,2.4vw,1.9rem)] font-light text-[#1a1a1a] leading-[1.4]">
+      Explore our beautifully captured wedding films and romantic love stories brought to life.
+    </h2>
+  </div>
+
 
       {/* Main Editorial Content Area */}
       <div className="py-24 md:py-32 px-[clamp(24px,6vw,80px)]">

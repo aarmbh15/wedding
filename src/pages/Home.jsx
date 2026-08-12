@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Play, Pause, Volume2, VolumeX, Maximize, Quote } from "lucide-react";
 
-// ─── Import Hero Images (Lap folder) ─────────────────────────────────────────
+// ─── Import Hero Images (Lap folder — DESKTOP) ───────────────────────────────
 import heroImg1 from "../assets/Lap/1.jpg";
 import heroImg2 from "../assets/Lap/2.jpg";
 import heroImg3 from "../assets/Lap/3.jpg";
@@ -18,6 +18,19 @@ import heroImg11 from "../assets/Lap/11.jpg";
 import heroImg12 from "../assets/Lap/12.jpg";
 import heroImg13 from "../assets/Lap/13.jpg";
 import heroImg14 from "../assets/Lap/14.jpg";
+
+// ─── Import Hero Images (Mobile folder — MOBILE) ─────────────────────────────
+import heroMobile1 from "../assets/Mobile/1.jpg";
+import heroMobile2 from "../assets/Mobile/2.jpg";
+import heroMobile3 from "../assets/Mobile/3.jpg";
+import heroMobile4 from "../assets/Mobile/4.jpg";
+import heroMobile5 from "../assets/Mobile/5.jpg";
+import heroMobile6 from "../assets/Mobile/6.jpg";
+import heroMobile7 from "../assets/Mobile/7.webp";
+import heroMobile8 from "../assets/Mobile/8.jpg";
+import heroMobile9 from "../assets/Mobile/9.jpg";
+import heroMobile10 from "../assets/Mobile/10.jpg";
+
 import ThumbRahulEsha from "../assets/Filmsthumbnail/esha & rahul.webp";
 import ThumbHarjotShruti from "../assets/Filmsthumbnail/harjot & shruti.webp";
 import ThumbBhaktiSaurabh from "../assets/Filmsthumbnail/bhakti & saurabh.webp";
@@ -67,6 +80,35 @@ function useInView(threshold = 0.1) {
   }, [threshold]);
 
   return [ref, inView];
+}
+
+/* ─── Mobile Viewport Detection Hook ─────────────────────────── */
+function useIsMobile(breakpoint = 768) {
+  const query = `(max-width: ${breakpoint - 1}px)`;
+
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia(query).matches : false
+  );
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mql = window.matchMedia(query);
+    const handleChange = (e) => setIsMobile(e.matches);
+
+    // sync immediately in case it changed between initial render and mount
+    setIsMobile(mql.matches);
+
+    if (mql.addEventListener) {
+      mql.addEventListener("change", handleChange);
+      return () => mql.removeEventListener("change", handleChange);
+    } else {
+      // Safari <14 fallback
+      mql.addListener(handleChange);
+      return () => mql.removeListener(handleChange);
+    }
+  }, [query]);
+
+  return isMobile;
 }
 
 /* ─── Progressive Image Component ───────────────────────────── */
@@ -135,7 +177,7 @@ function LazySection({ children, rootMargin = "200px" }) {
 }
 
 /* ─── Data ───────────────────────────────────────────────────── */
-// Hero slider now uses local images instead of videos.
+// Hero slider — DESKTOP images (unchanged)
 const heroImages = [
   { src: heroImg1 },
   { src: heroImg2 },
@@ -149,6 +191,20 @@ const heroImages = [
   { src: heroImg12 },
   { src: heroImg13 },
   { src: heroImg14 },
+];
+
+// Hero slider — MOBILE images (new)
+const heroImagesMobile = [
+  { src: heroMobile1 },
+  { src: heroMobile2 },
+  { src: heroMobile3 },
+  { src: heroMobile4 },
+  { src: heroMobile5 },
+  { src: heroMobile6 },
+  { src: heroMobile7 },
+  { src: heroMobile8 },
+  { src: heroMobile9 },
+  { src: heroMobile10 },
 ];
 
 const portfolioGrid = [
@@ -175,7 +231,6 @@ const portfolioGrid = [
 ];
 
 const featured = [
-  // { couple: "Amruta & Amey", slug: "amruta-amey", location: "Pune, Maharashtra", date: "December 2024", img: img("Amruta_Amey/img218.webp") },
   { couple: "Abhimanyu & Manisha", slug: "abhimanyu-manisha", location: "Pune, Maharashtra", date: "November 2024", img: img("portfolio/Abhimanyu_Manisha.webp") },
   { couple: "Bhakti & Sourabh", slug: "bhakti-sourabh", location: "Jodhpur, Rajasthan", date: "October 2024", img: img("Bhakti_Sourabh/img353.webp") },
   { couple: "Rohan & Preksha", slug: "Rohan-preksha", location: "Pushkar, Rajasthan", date: "January 2025", img: img("Rohan_Preksha/img550.webp") },
@@ -193,6 +248,9 @@ const aboutImg = img("Chaitrali_Shubham/img407.webp");
 const leftImg = img("Abhimanyu_Manisha/img615.webp");
 
 function HeroSlider() {
+  const isMobile = useIsMobile(768);
+  const images = isMobile ? heroImagesMobile : heroImages;
+
   const [current, setCurrent] = useState(0);
   const scrollRef = useRef(null);
   const isProgrammaticScroll = useRef(false);
@@ -213,11 +271,25 @@ function HeroSlider() {
 
   const goNext = useCallback(() => {
     setCurrent((c) => {
-      const next = (c + 1) % heroImages.length;
+      const next = (c + 1) % images.length;
       scrollToIndex(next);
       return next;
     });
-  }, [scrollToIndex]);
+  }, [scrollToIndex, images.length]);
+
+  // Reset to first slide whenever we switch between mobile/desktop image sets
+  useEffect(() => {
+    setCurrent(0);
+    const container = scrollRef.current;
+    if (container) {
+      isProgrammaticScroll.current = true;
+      container.scrollTo({ left: 0, behavior: "auto" });
+      setTimeout(() => {
+        isProgrammaticScroll.current = false;
+      }, 50);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile]);
 
   // Auto-advance
   useEffect(() => {
@@ -246,13 +318,12 @@ function HeroSlider() {
 
   return (
     <div className="relative w-full h-[54vh] sm:h-[68vh] md:h-[85vh] lg:h-[100dvh] overflow-hidden bg-black">
-      {/* Scrollable / swipeable image track — full-bleed, same crop treatment as desktop on every screen size */}
       <div
         ref={scrollRef}
         onScroll={handleScroll}
         className="absolute inset-0 w-full h-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth hero-scroll"
       >
-        {heroImages.map((image, i) => (
+        {images.map((image, i) => (
           <div
             key={i}
             className="relative w-full h-full flex-shrink-0 snap-center snap-always"
@@ -270,19 +341,19 @@ function HeroSlider() {
 
       <div className="absolute inset-0 bg-black/25 z-20 pointer-events-none" />
       <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-gradient-to-t from-black/55 to-transparent z-20 pointer-events-none" />
-    <div className="absolute bottom-[clamp(16px,4vw,72px)] left-[clamp(14px,5vw,80px)] right-[clamp(50px,16vw,90px)] z-30 text-white">
-  <p className="font-jost text-[0.52rem] sm:text-[0.7rem] tracking-[0.22em] sm:tracking-[0.35em] uppercase opacity-75 mb-2">
-    Pune · Mumbai · India
-  </p>
+      <div className="absolute bottom-[clamp(16px,4vw,72px)] left-[clamp(14px,5vw,80px)] right-[clamp(50px,16vw,90px)] z-30 text-white">
+        <p className="font-jost text-[0.52rem] sm:text-[0.7rem] tracking-[0.22em] sm:tracking-[0.35em] uppercase opacity-75 mb-2">
+          Pune · Mumbai · India
+        </p>
 
-  <h1 className="font-cormorant text-[clamp(1.5rem,7vw,5.5rem)] font-light leading-[1.08]">
-    TILT SHIFT PICTURES
-  </h1>
+        <h1 className="font-cormorant text-[clamp(1.5rem,7vw,5.5rem)] font-light leading-[1.08]">
+          TILT SHIFT PICTURES
+        </h1>
 
-  <p className="mt-2 sm:mt-3 max-w-[650px] font-jost text-[0.72rem] sm:text-[0.9rem] md:text-[1rem] font-light leading-relaxed tracking-[0.08em] text-white/80">
-    Wedding Photography, Cinematic Wedding Films &amp; Destination Weddings Across India
-  </p>
-</div>
+        <p className="mt-2 sm:mt-3 max-w-[650px] font-jost text-[0.72rem] sm:text-[0.9rem] md:text-[1rem] font-light leading-relaxed tracking-[0.08em] text-white/80">
+          Wedding Photography, Cinematic Wedding Films &amp; Destination Weddings Across India
+        </p>
+      </div>
     </div>
   );
 }
@@ -298,10 +369,8 @@ function FilmCard({ film, onSelect }) {
           loading="lazy"
           className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
         />
-        {/* Dark overlay for contrast on hover */}
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
-        
-        {/* Elegant Play Button */}
+
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300 shadow-xl">
             <Play className="w-5 h-5 text-white fill-white ml-1" />
@@ -346,7 +415,7 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
     e.stopPropagation();
     const el = videoRef.current;
     if (!el) return;
-    if (el.paused) { el.play().catch(() => {}); setIsPlaying(true); } 
+    if (el.paused) { el.play().catch(() => {}); setIsPlaying(true); }
     else { el.pause(); setIsPlaying(false); }
   }, []);
 
@@ -430,23 +499,19 @@ export default function Home() {
   const [gridRef, gridInView] = useInView(0.05);
   const location = useLocation();
 
-  // Selected Film for Lightbox
   const [selectedFilm, setSelectedFilm] = useState(null);
 
-  // Enquiry Popup State
   const [showEnquiry, setShowEnquiry] = useState(false);
   const [popupLoading, setPopupLoading] = useState(false);
   const [popupSubmitted, setPopupSubmitted] = useState(false);
 
-  // Auto-open popup on home page load
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowEnquiry(true);
-    }, 2000); 
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
-  // Lock body scroll when any popup is open
   useEffect(() => {
     if (showEnquiry || selectedFilm) {
       document.body.style.overflow = "hidden";
@@ -481,11 +546,9 @@ export default function Home() {
           .hover-zoom img { transition: transform 0.9s cubic-bezier(.22,1,.36,1); }
           .hover-zoom:hover img { transform: scale(1.06); }
 
-          /* Hero slider: scrollable/swipeable track, scrollbar hidden across browsers */
           .hero-scroll { -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
           .hero-scroll::-webkit-scrollbar { display: none; height: 0; width: 0; }
 
-          /* Smooth Marquee settings */
           @keyframes scroll-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
           .animate-scroll { display: flex; width: max-content; animation: scroll-marquee 50s linear infinite; }
           .group\\/scroll:hover .animate-scroll { animation-play-state: paused; }
@@ -506,8 +569,7 @@ export default function Home() {
             </div>
             <div className={`fade-up ${aboutInView ? "in" : ""}`}>
               <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.4rem)] font-light leading-tight text-[#1a1a1a] mb-8">
-                Our Approach to Wedding Photography & Cinematic Films 
-                {/* <em className="italic">Cinematic Wedding Films Across India</em> */}
+                Our Approach to Wedding Photography & Cinematic Films
               </h2>
               <p className="text-[#555] text-base leading-[1.9] mb-6">
                 At Tilt Shift Pictures, we believe every wedding deserves to be remembered through real emotions and meaningful storytelling. Through candid wedding photography and cinematic wedding films, we capture genuine moments, family bonds and celebrations exactly as they happen.
@@ -525,37 +587,36 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* PORTFOLIO MASONRY GRID (Original Size) */}
+      {/* PORTFOLIO MASONRY GRID */}
       <LazySection rootMargin="400px">
         {(isNear) => (
           <section ref={gridRef} className="bg-[#F4F1EA] pb-[clamp(60px,8vw,100px)]">
-          <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
-  <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a] relative top-8">
-    PORTFOLIO
-  </h2>
+            <div className="text-center px-6 pb-[clamp(32px,5vw,60px)]">
+              <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a] relative top-8">
+                PORTFOLIO
+              </h2>
 
-  <p className="font-cormorant italic text-[clamp(1rem,1.5vw,1.25rem)] text-[#666] mt-10 max-w-[700px] mx-auto leading-relaxed">
-    Explore our beautifully captured wedding films and romantic love stories brought to life.
-  </p>
+              <p className="font-cormorant italic text-[clamp(1rem,1.5vw,1.25rem)] text-[#666] mt-10 max-w-[700px] mx-auto leading-relaxed">
+                A collection of beautifully captured wedding moments, emotions and celebrations.
+              </p>
 
-  <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
-</div>
-            
-            {/* Elegant CSS Columns Masonry - Filtered to prevent empty spaces from broken paths */}
+              <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
+            </div>
+
             <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 md:gap-4 px-3 md:px-5">
               {portfolioGrid
-                .filter(image => image && image.src) // Vital fix for "missing" images breaking the grid
+                .filter(image => image && image.src)
                 .map((image, i) => (
-                <div 
-                  key={i} 
-                  className={`fade-up ${gridInView ? "in" : ""} mb-3 md:mb-4 break-inside-avoid inline-block w-full relative`} 
+                <div
+                  key={i}
+                  className={`fade-up ${gridInView ? "in" : ""} mb-3 md:mb-4 break-inside-avoid inline-block w-full relative`}
                   style={{ transitionDelay: `${(i % 5) * 0.1}s` }}
                 >
-                  <ProgressiveImg 
-                    src={image.src} 
-                    alt={`Gallery ${i}`} 
-                    shouldLoad={gridInView} 
-                    isMasonry={true} 
+                  <ProgressiveImg
+                    src={image.src}
+                    alt={`Gallery ${i}`}
+                    shouldLoad={gridInView}
+                    isMasonry={true}
                   />
                 </div>
               ))}
@@ -570,110 +631,94 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* FEATURED WEDDINGS (Premium Portrait Cards) */}
+      {/* FEATURED WEDDINGS */}
       <LazySection rootMargin="300px">
-  {(isNear) => (
-    <section
-      ref={featRef}
-      className="bg-white py-[clamp(60px,10vw,80px)] px-[clamp(24px,5vw,60px)] border-y border-black/5"
-    >
-      <div className="max-w-[1400px] mx-auto">
-
-        {/* Section Heading */}
-        <div className="text-center px-6 pb-[clamp(40px,5vw,60px)]">
-          <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
-            FEATURED WEDDINGS
-          </h2>
-
-          <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
-        </div>
-
-        {/* 2 Column Wedding Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12 lg:gap-x-10 lg:gap-y-16 featured-grid">
-
-          {featured.map((f, i) => (
-            <Link
-              key={i}
-              to={`/wedding/${f.slug}`}
-              state={{ from: location }}
-              className={`group fade-up flex flex-col ${
-                featInView ? `in d${i + 1}` : ""
-              }`}
-            >
-
-              {/* Landscape Image */}
-              <div className="relative w-full aspect-[16/12] mb-5 overflow-hidden bg-white shadow-sm rounded-sm">
-
-                <img
-                  src={f.img}
-                  alt={f.couple}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                />
-
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              </div>
-
-              {/* Wedding Details */}
-              <div className="text-left">
-                <h3 className="font-cormorant text-[clamp(1.5rem,2vw,2rem)] font-medium text-[#1a1a1a] mb-1.5 transition-colors group-hover:text-[#c9a84c]">
-                  {f.couple}
-                </h3>
-
-                <p className="font-jost text-[0.65rem] tracking-[0.2em] uppercase text-gray-400">
-                  {f.location}
-                </p>
-              </div>
-
-            </Link>
-          ))}
-
-        </div>
-
-        {/* View All */}
-        <div className="text-center mt-14 md:mt-20">
-          <a
-            href="/portfolio"
-            className="font-jost text-[0.72rem] tracking-[0.28em] uppercase border-b border-[#aaa] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
+        {(isNear) => (
+          <section
+            ref={featRef}
+            className="bg-white py-[clamp(60px,10vw,80px)] px-[clamp(24px,5vw,60px)] border-y border-black/5"
           >
-            See All Stories
-          </a>
-        </div>
+            <div className="max-w-[1400px] mx-auto">
+              <div className="text-center px-6 pb-[clamp(40px,5vw,60px)]">
+                <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
+                  FEATURED WEDDINGS
+                </h2>
 
-      </div>
-    </section>
-  )}
-</LazySection>
+                <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12 lg:gap-x-10 lg:gap-y-16 featured-grid">
+                {featured.map((f, i) => (
+                  <Link
+                    key={i}
+                    to={`/wedding/${f.slug}`}
+                    state={{ from: location }}
+                    className={`group fade-up flex flex-col ${
+                      featInView ? `in d${i + 1}` : ""
+                    }`}
+                  >
+                    <div className="relative w-full aspect-[16/12] mb-5 overflow-hidden bg-white shadow-sm rounded-sm">
+                      <img
+                        src={f.img}
+                        alt={f.couple}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+
+                    <div className="text-left">
+                      <h3 className="font-cormorant text-[clamp(1.5rem,2vw,2rem)] font-medium text-[#1a1a1a] mb-1.5 transition-colors group-hover:text-[#c9a84c]">
+                        {f.couple}
+                      </h3>
+
+                      <p className="font-jost text-[0.65rem] tracking-[0.2em] uppercase text-gray-400">
+                        {f.location}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="text-center mt-14 md:mt-20">
+                <a
+                  href="/portfolio"
+                  className="font-jost text-[0.72rem] tracking-[0.28em] uppercase border-b border-[#aaa] pb-0.5 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
+                >
+                  See All Stories
+                </a>
+              </div>
+            </div>
+          </section>
+        )}
+      </LazySection>
+
       {/* FILMS SECTION */}
       <LazySection rootMargin="300px">
         {(isNear) => (
           <section className="bg-[#F4F1EA] py-[clamp(60px,10vw,100px)] px-[clamp(24px,6vw,80px)] overflow-hidden">
             <div className="max-w-[1320px] mx-auto">
-        <div className="text-center px-6 mb-5">
-  <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a]">
-    FILMS
-  </h2>
+              <div className="text-center px-6 mb-5">
+                <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a]">
+                  FILMS
+                </h2>
 
-  <p className="font-cormorant italic text-[clamp(1rem,1.5vw,1.25rem)] text-[#666] mt-2 max-w-[700px] mx-auto leading-relaxed">
-    Explore our beautifully captured wedding films and romantic love stories brought to life.
-  </p>
+                <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-4" />
+              </div>
 
-  <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-4" />
-</div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[clamp(24px,4vw,40px)]">
                 {[
-                  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra",thumbnail: ThumbRahulEsha},
-                  { couple: "Harjot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra",thumbnail: ThumbHarjotShruti},
-                  { couple: "Bhakti & Saurabh", url: "https://youtu.be/tHZ2RwYCdpQ", id: "tHZ2RwYCdpQ", location: "Jodhpur, Rajasthan",thumbnail: ThumbBhaktiSaurabh},
+                  { couple: "Rahul & Esha", url: "https://youtu.be/6-2JG29kYxU", id: "6-2JG29kYxU", location: "Pune, Maharashtra", thumbnail: ThumbRahulEsha },
+                  { couple: "Harjot & Shruti", url: "https://youtu.be/DaO8vn9w7zo", id: "DaO8vn9w7zo", location: "Pune, Maharashtra", thumbnail: ThumbHarjotShruti },
+                  { couple: "Bhakti & Saurabh", url: "https://youtu.be/tHZ2RwYCdpQ", id: "tHZ2RwYCdpQ", location: "Jodhpur, Rajasthan", thumbnail: ThumbBhaktiSaurabh },
                 ].map((film, i) => (
                   <FilmCard key={i} film={film} onSelect={setSelectedFilm} />
                 ))}
               </div>
+
               <div className="text-center mt-16">
                 <Link to="/films" className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-[#1a1a1a] pb-1 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all">
-                  Explore All Films 
+                  Explore All Films
                 </Link>
               </div>
             </div>
@@ -681,104 +726,76 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* PHILOSOPHY SECTION */}
-      {/* <LazySection rootMargin="100px">
+      {/* CLIENT TESTIMONIALS */}
+      <LazySection rootMargin="300px">
         {(isNear) => (
-          <section className="relative z-10 min-h-[60vh] flex items-center justify-center bg-white border-t border-black/5">
-            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-[100px] max-w-[1300px] w-full px-[clamp(24px,6vw,80px)] py-20">
-              <div className="w-full md:w-[45%]">
-                <img src={leftImg} alt="Couple" className="w-full h-[400px] md:h-[650px] object-cover rounded-sm shadow-md" />
+          <section className="bg-white py-[clamp(60px,10vw,100px)] overflow-hidden">
+            <div className="max-w-[1320px] mx-auto px-[clamp(24px,6vw,80px)]">
+              <div className="text-center pb-[clamp(40px,6vw,70px)]">
+                <p className="font-jost text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-3">
+                  Kind Words
+                </p>
+
+                <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
+                  CLIENT TESTIMONIALS
+                </h2>
+
+                <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
               </div>
-              <div className="w-full md:w-[55%] text-center md:text-left">
-                <blockquote className="font-cormorant italic text-[1.5rem] md:text-[2rem] leading-[1.6] text-[#222] mb-10">
-                   "We capture weddings in their truest form—whether deeply traditional or beautifully modern. From soulful rituals to vibrant celebrations, our candid wedding photography and cinematic wedding films focus on real emotions, natural moments, and timeless storytelling."
-                </blockquote>
-                <a href="/about" className="font-jost text-[0.75rem] tracking-[0.3em] uppercase border-b border-black pb-1 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors">
-                  Our Story →
-                </a>
+            </div>
+
+            <div className="relative group/scroll w-full">
+              <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
+
+              <div
+                className="testimonial-scroll flex gap-6 overflow-x-auto px-4 pb-4"
+                style={{
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.dataset.paused = "true";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.dataset.paused = "false";
+                }}
+              >
+                {[...testimonials, ...testimonials].map((t, i) => (
+                  <div
+                    key={i}
+                    className="flex-shrink-0 w-[300px] md:w-[350px] min-h-[320px] flex flex-col bg-[#F4F1EA] p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm"
+                  >
+                    <Quote className="w-8 h-8 text-[#c9a84c] opacity-20 mb-5" />
+
+                    <p className="font-cormorant italic text-[1.1rem] leading-[1.8] text-gray-600 mb-8 relative z-10 flex-grow">
+                      "{t.text}"
+                    </p>
+
+                    <div className="mt-auto flex flex-col gap-2 pt-5 border-t border-[#f4f1ea]">
+                      <p className="font-jost text-[0.7rem] tracking-[0.2em] uppercase text-[#1a1a1a] font-medium">
+                        {t.name}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
         )}
-      </LazySection> */}
-
-      {/* ENHANCED CLIENT TESTIMONIALS (Slimmer, Elegant Cards) */}
-     <LazySection rootMargin="300px">
-  {(isNear) => (
-    <section className="bg-white py-[clamp(60px,10vw,100px)] overflow-hidden">
-      <div className="max-w-[1320px] mx-auto px-[clamp(24px,6vw,80px)]">
-        <div className="text-center pb-[clamp(40px,6vw,70px)]">
-          <p className="font-jost text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-3">
-            Kind Words
-          </p>
-
-          <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
-            CLIENT TESTIMONIALS
-          </h2>
-
-          <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
-        </div>
-      </div>
-
-      {/* Testimonials Slider */}
-      <div className="relative group/scroll w-full">
-        {/* Left Fade */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
-
-        {/* Right Fade */}
-        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
-
-        {/* Scroll Container */}
-        <div
-          className="testimonial-scroll flex gap-6 overflow-x-auto px-4 pb-4"
-          style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.dataset.paused = "true";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.dataset.paused = "false";
-          }}
-        >
-          {[...testimonials, ...testimonials].map((t, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 w-[300px] md:w-[350px] min-h-[320px] flex flex-col bg-[#F4F1EA] p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm"
-            >
-              <Quote className="w-8 h-8 text-[#c9a84c] opacity-20 mb-5" />
-
-              <p className="font-cormorant italic text-[1.1rem] leading-[1.8] text-gray-600 mb-8 relative z-10 flex-grow">
-                "{t.text}"
-              </p>
-
-              <div className="mt-auto flex flex-col gap-2 pt-5 border-t border-[#f4f1ea]">
-                <p className="font-jost text-[0.7rem] tracking-[0.2em] uppercase text-[#1a1a1a] font-medium">
-                  {t.name}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-</LazySection>
+      </LazySection>
 
       {/* ENQUIRY POPUP */}
       {showEnquiry && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 sm:p-6 transition-opacity duration-300">
           <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto bg-[#FDFCF9] p-6 md:p-8 shadow-2xl animate-[fadeIn_0.3s_ease-out] rounded-sm custom-scrollbar">
-            
-            {/* Sticky Header inside scrollable area */}
             <div className="sticky top-0 bg-[#FDFCF9] z-20 flex justify-between items-center mb-6 border-b border-black/5 pb-4 pt-2 -mt-2">
               <h2 className="font-['Cormorant_Garamond'] text-2xl font-light text-[#1a1a1a]">Enquire Now</h2>
               <button onClick={() => setShowEnquiry(false)} className="w-8 h-8 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors" aria-label="Close popup">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
               </button>
             </div>
-            
+
             {popupSubmitted ? (
               <div className="py-12 text-center">
                 <span className="text-4xl block mb-4">✨</span>

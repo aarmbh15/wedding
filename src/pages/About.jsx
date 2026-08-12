@@ -44,7 +44,6 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
         
         <div className="relative z-20 text-center px-6 transition-all duration-1000 transform translate-y-0 opacity-100">
-          {/* <p className="text-[0.7rem] tracking-[0.4em] uppercase text-[#c9a84c] mb-6">Est. 2019 • Mumbai • Pune</p> */}
           <p className="text-[0.7rem] tracking-[0.4em] uppercase text-[#c9a84c] mb-6">Est. 2019 • Pune • India</p>
           <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,8vw,6.5rem)] font-light text-white leading-[1.1] mb-8">
             About <span className="italic text-[#c9a84c]">TILT SHIFT</span>
@@ -65,17 +64,14 @@ const About = () => {
       <section ref={storyRef} className="bg-white py-[clamp(80px,10vw,140px)] px-6 overflow-hidden">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className={`relative transition-all duration-1000 ${storyInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
-            <div className="aspect-[3/4] relative z-10 overflow-hidden shadow-2xl">
-            <img
-            src={AboutImage}
-            alt="Wedding Cinematography"
-            className="w-full h-full object-cover scale-[1.3] object-[65%_center]"
-          />
-              {/* <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" alt="Our Story" className="w-full h-full object-cover" /> */}
+            {/* Box now sizes itself to the image's real aspect ratio — no forced crop, no empty letterbox space */}
+            <div className="relative z-10 overflow-hidden shadow-2xl">
+              <img
+                src={AboutImage}
+                alt="Wedding Cinematography"
+                className="w-full h-auto block"
+              />
             </div>
-            {/* <div className="absolute -bottom-10 -right-6 w-1/2 aspect-square hidden md:block border-[12px] border-white shadow-xl z-20 overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80" alt="Detail" className="w-full h-full object-cover" />
-            </div> */}
             <div className="absolute -top-6 -left-6 bg-[#c9a84c] text-white p-6 z-20">
               <span className="font-['Cormorant_Garamond'] text-4xl block">6+</span>
               <span className="text-[0.6rem] tracking-widest uppercase">Years</span>
@@ -88,10 +84,8 @@ const About = () => {
               Documenting Love <br /><em>With Absolute Sincerity</em>
             </h2>
             <div className="space-y-6 text-[#4a4a4a] leading-relaxed text-[1.05rem]">
-              {/* <p>Two friends left the corporate world in 2019 to pursue a simple dream: to see weddings differently. Not as events, but as living, breathing stories.</p>
-              <p>Today, with over 500 weddings across 12 countries, Knots by Amp has become a synonym for cinematic honesty. We don't just take photos; we preserve emotions.</p> */}
-              <p>I’m Nityananda Borkar, the founder of Tilt Shift Pictures. My journey into wedding photography wasn’t planned, it was built over time through passion and instinct. After spending over 15 years in the corporate world working in customer service and sales, I realized my true calling was always behind the camera. What began as a deep interest in wildlife photography slowly evolved into capturing people, emotions and stories. I started as a freelance wedding photographer and with every wedding, my connection to storytelling grew stronger. In October 2019, I took a leap of faith and founded Tilt Shift Pictures, turning passion into purpose.</p>
-              <p>Over the past six years, we have had the privilege of capturing 400+ weddings across India, including Bangalore, Mysore, Pune, Mumbai, Goa, MP & Rajasthan, establishing ourselves as a trusted name in candid wedding photography and cinematic wedding films. From intimate ceremonies to grand destination weddings our focus has always been on telling real stories through natural, unscripted moments. As a wedding photographer in Pune and across major cities in India, we specialise in creating timeless memories through candid photography and storytelling videos that let you relive every emotion. At Tilt Shift Pictures, it’s never just about photos or films it’s about preserving your story in the most authentic way possible.</p>
+              <p>I'm Nityananda Borkar, the founder of Tilt Shift Pictures. My journey into wedding photography wasn't planned, it was built over time through passion and instinct. After spending over 15 years in the corporate world working in customer service and sales, I realized my true calling was always behind the camera. What began as a deep interest in wildlife photography slowly evolved into capturing people, emotions and stories. I started as a freelance wedding photographer and with every wedding, my connection to storytelling grew stronger. In October 2019, I took a leap of faith and founded Tilt Shift Pictures, turning passion into purpose.</p>
+              <p>Over the past six years, we have had the privilege of capturing 400+ weddings across India, including Bangalore, Mysore, Pune, Mumbai, Goa, MP & Rajasthan, establishing ourselves as a trusted name in candid wedding photography and cinematic wedding films. From intimate ceremonies to grand destination weddings our focus has always been on telling real stories through natural, unscripted moments. As a wedding photographer in Pune and across major cities in India, we specialise in creating timeless memories through candid photography and storytelling videos that let you relive every emotion. At Tilt Shift Pictures, it's never just about photos or films it's about preserving your story in the most authentic way possible.</p>
             </div>
           </div>
         </div>
@@ -100,7 +94,6 @@ const About = () => {
       {/* ─── PHILOSOPHY (WHITE SECTION, CARDS KEEP THEIR COLOR) ──── */}
       <section ref={valRef} className="bg-white py-[clamp(80px,10vw,130px)] px-6">
         <div className="max-w-[1200px] mx-auto text-center mb-16">
-          {/* <p className="text-[0.7rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-4">Our DNA</p> */}
           <h2 className="font-['Cormorant_Garamond'] text-[clamp(2rem,4vw,3.5rem)] font-light">Why Choose Us?</h2>
         </div>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200">
