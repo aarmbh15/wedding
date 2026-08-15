@@ -1,5 +1,4 @@
-// src/components/FloatingWhatsApp.jsx
-import React from "react";
+import React, { useState, useEffect, useMemo, memo } from "react";
 
 const positions = {
   br: "right-4 bottom-4",
@@ -15,7 +14,7 @@ const tooltipSide = {
   tl: "right",
 };
 
-export default function FloatingWhatsApp({
+const FloatingWhatsApp = memo(function FloatingWhatsApp({
   phone = "9579328262",
   message = "Hi! I’d like to know more about your services.",
   label = "Chat on WhatsApp",
@@ -24,25 +23,29 @@ export default function FloatingWhatsApp({
   showOnScroll = false,
   className = "",
 }) {
-  const [visible, setVisible] = React.useState(!showOnScroll);
+  const [visible, setVisible] = useState(!showOnScroll);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!showOnScroll) return;
     const onScroll = () => setVisible(window.scrollY > 120);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [showOnScroll]);
 
-  const href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-  const side = tooltipSide[position] ?? "left";
+  const href = useMemo(() => 
+    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`, 
+    [phone, message]
+  );
 
-  const tipPos = side === "left"
-    ? "md:right-full md:mr-3"
-    : "md:left-full md:ml-3";
-
-  const tipAnim = side === "left"
-    ? "md:translate-x-3 group-hover:md:translate-x-0"
-    : "md:-translate-x-3 group-hover:md:translate-x-0";
+  const { tipPos, tipAnim } = useMemo(() => {
+    const side = tooltipSide[position] ?? "left";
+    return {
+      tipPos: side === "left" ? "md:right-full md:mr-3" : "md:left-full md:ml-3",
+      tipAnim: side === "left"
+        ? "md:translate-x-3 group-hover:md:translate-x-0"
+        : "md:-translate-x-3 group-hover:md:translate-x-0"
+    };
+  }, [position]);
 
   return (
     <div
@@ -86,4 +89,6 @@ export default function FloatingWhatsApp({
       </a>
     </div>
   );
-}
+});
+
+export default FloatingWhatsApp;

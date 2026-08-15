@@ -1,43 +1,49 @@
-import { useEffect, useRef, useState } from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-// import HeroImage from '../assets/6.jpg';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import HeroImage from '../assets/Amruta_Amey/img251.webp';
 import AboutImage from '../assets/about.png';
 
-// Hook for scroll animations
+// Optimized hook for one-time scroll trigger
 function useInView(threshold = 0.15) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
+
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setInView(true); }, { threshold });
-    if (ref.current) obs.observe(ref.current);
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        setInView(true);
+        obs.disconnect();
+      }
+    }, { threshold });
+    obs.observe(el);
     return () => obs.disconnect();
   }, [threshold]);
+
   return [ref, inView];
 }
 
-const team = [
-  { name: "Anupam Maurya", role: "Creative Director", bio: "Ex-engineer turned storyteller. Anupam sees poetry in shadows.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80", tag: "Photographer" },
-  { name: "Soumi Goswami", role: "Chief Storyteller", bio: "A former architect who designs emotional narratives.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80", tag: "Editor" },
-  { name: "Rahul Mehta", role: "Lead Cinematographer", bio: "Rahul crafts films that play like short cinema features.", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&q=80", tag: "Videographer" },
-  { name: "Priya Desai", role: "Second Photographer", bio: "Priya seizes the tears and laughter no one else noticed.", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&q=80", tag: "Retoucher" },
+const philosophyItems = [
+  { t: "Candid Wedding Photography", d: "Capturing genuine emotions and natural moments that beautifully tell the story of your wedding day." },
+  { t: "Cinematic & Traditional Films", d: "Blending cinematic storytelling with traditional coverage to preserve every meaningful moment of your wedding." },
+  { t: "Destination Wedding Experts", d: "Experienced in capturing weddings across India, ensuring seamless coverage wherever your celebration takes place." },
+  { t: "On-Time Delivery", d: "Your photos and films are delivered within the promised timeline, without compromising on quality or attention to detail." }
 ];
 
 const About = () => {
-  const [heroRef, heroInView] = useInView(0.1);
   const [storyRef, storyInView] = useInView(0.1);
-  const [valRef, valInView] = useInView(0.1);
-  const [teamRef, teamInView] = useInView(0.1);
+  const [valRef] = useInView(0.1);
 
   return (
     <div className="min-h-screen font-['Jost'] text-[#1a1a1a]">
       {/* ─── HERO SECTION ─────────────────────────────────────────── */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-       <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
+        <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
           <img
             src={HeroImage}
             alt="Wedding Cinematography"
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover opacity-60 brightness-75"
           />
         </div>
@@ -60,15 +66,16 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── OUR STORY (WHITE) ────────────────────────────────────── */}
+      {/* ─── OUR STORY ────────────────────────────────────────────── */}
       <section ref={storyRef} className="bg-white py-[clamp(80px,10vw,140px)] px-6 overflow-hidden">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className={`relative transition-all duration-1000 ${storyInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
-            {/* Box now sizes itself to the image's real aspect ratio — no forced crop, no empty letterbox space */}
             <div className="relative z-10 overflow-hidden shadow-2xl">
               <img
                 src={AboutImage}
                 alt="Wedding Cinematography"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto block"
               />
             </div>
@@ -91,18 +98,13 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── PHILOSOPHY (WHITE SECTION, CARDS KEEP THEIR COLOR) ──── */}
+      {/* ─── PHILOSOPHY ───────────────────────────────────────────── */}
       <section ref={valRef} className="bg-white py-[clamp(80px,10vw,130px)] px-6">
         <div className="max-w-[1200px] mx-auto text-center mb-16">
           <h2 className="font-['Cormorant_Garamond'] text-[clamp(2rem,4vw,3.5rem)] font-light">Why Choose Us?</h2>
         </div>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200">
-          {[
-            { t: "Candid Wedding Photography", d: "Capturing genuine emotions and natural moments that beautifully tell the story of your wedding day." },
-            { t: "Cinematic & Traditional Films", d: "Blending cinematic storytelling with traditional coverage to preserve every meaningful moment of your wedding." },
-            { t: "Destination Wedding Experts", d: "Experienced in capturing weddings across India, ensuring seamless coverage wherever your celebration takes place." },
-            { t: "On-Time Delivery", d: "Your photos and films are delivered within the promised timeline, without compromising on quality or attention to detail." }
-          ].map((v, i) => (
+          {philosophyItems.map((v, i) => (
             <div key={i} className="bg-[#F4F1EA] p-8 sm:p-10 md:p-16 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group">
               <span className="font-['Cormorant_Garamond'] text-5xl text-[#c9a84c]/20 block mb-6 group-hover:text-[#c9a84c]/50 transition-colors">0{i+1}</span>
               <h3 className="font-['Cormorant_Garamond'] text-2xl mb-4">{v.t}</h3>
@@ -114,7 +116,13 @@ const About = () => {
 
       {/* ─── CTA ──────────────────────────────────────────────────── */}
       <section className="relative py-32 lg:py-48 px-6 text-center overflow-hidden bg-black">
-        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1800&q=80" alt="CTA" className="absolute inset-0 w-full h-full object-cover opacity-30" />
+        <img 
+          src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1800&q=80" 
+          alt="CTA" 
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover opacity-30" 
+        />
         <div className="relative z-10 max-w-3xl mx-auto">
           <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,6vw,5rem)] font-light text-white leading-tight mb-8">
             Ready to Create <br /><em>Your Heirloom?</em>

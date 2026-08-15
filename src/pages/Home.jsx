@@ -1,45 +1,40 @@
-// src/pages/Home.jsx
 import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Play, Pause, Volume2, VolumeX, Maximize, Quote } from "lucide-react";
+import { X, Play, Pause, Volume2, VolumeX, Maximize, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
-// ─── Import Hero Images (Lap folder — DESKTOP) ───────────────────────────────
-import heroImg1 from "../assets/Lap/1.jpg";
-import heroImg2 from "../assets/Lap/2.jpg";
-import heroImg3 from "../assets/Lap/3.jpg";
-import heroImg5 from "../assets/Lap/5.jpg";
-import heroImg6 from "../assets/Lap/6.jpg";
-import heroImg7 from "../assets/Lap/7.jpg";
-import heroImg8 from "../assets/Lap/8.jpg";
+import heroImg1 from "../assets/Lap/1.webp";
+import heroImg2 from "../assets/Lap/2.webp";
+import heroImg3 from "../assets/Lap/3.webp";
+import heroImg5 from "../assets/Lap/5.webp";
+import heroImg6 from "../assets/Lap/6.webp";
+import heroImg7 from "../assets/Lap/7.webp";
+import heroImg8 from "../assets/Lap/8.webp";
 import heroImg10 from "../assets/Lap/10.webp";
-import heroImg11 from "../assets/Lap/11.jpg";
-import heroImg12 from "../assets/Lap/12.jpg";
-import heroImg13 from "../assets/Lap/13.jpg";
-import heroImg14 from "../assets/Lap/14.jpg";
+import heroImg11 from "../assets/Lap/11.webp";
+import heroImg12 from "../assets/Lap/12.webp";
+import heroImg13 from "../assets/Lap/13.webp";
+import heroImg14 from "../assets/Lap/14.webp";
 
-// ─── Import Hero Images (Mobile folder — MOBILE) ─────────────────────────────
-import heroMobile1 from "../assets/Mobile/1.jpg";
-import heroMobile2 from "../assets/Mobile/2.jpg";
-import heroMobile3 from "../assets/Mobile/3.jpg";
-import heroMobile4 from "../assets/Mobile/4.jpg";
-import heroMobile5 from "../assets/Mobile/5.jpg";
-import heroMobile6 from "../assets/Mobile/6.jpg";
+import heroMobile1 from "../assets/Mobile/1.webp";
+import heroMobile2 from "../assets/Mobile/2.webp";
+import heroMobile3 from "../assets/Mobile/3.webp";
+import heroMobile4 from "../assets/Mobile/4.webp";
+import heroMobile5 from "../assets/Mobile/5.webp";
+import heroMobile6 from "../assets/Mobile/6.webp";
 import heroMobile7 from "../assets/Mobile/7.webp";
-import heroMobile8 from "../assets/Mobile/8.jpg";
-import heroMobile9 from "../assets/Mobile/9.jpg";
-import heroMobile10 from "../assets/Mobile/10.jpg";
+import heroMobile8 from "../assets/Mobile/8.webp";
+import heroMobile9 from "../assets/Mobile/9.webp";
+import heroMobile10 from "../assets/Mobile/10.webp";
 
 import ThumbRahulEsha from "../assets/Filmsthumbnail/esha & rahul.webp";
 import ThumbHarjotShruti from "../assets/Filmsthumbnail/harjot & shruti.webp";
 import ThumbBhaktiSaurabh from "../assets/Filmsthumbnail/bhakti & saurabh.webp";
 
-// ─── Bulk import ALL images ───────────────────────────────────────────────────
 const allImages = import.meta.glob("../assets/**/*.{webp,jpeg,png}", { eager: true });
 const img = (path) => allImages[`../assets/${path}`]?.default;
 
-/* ─── Helpers for Video Modal ────────────────────────────────── */
 function toEmbedUrl(url) {
   if (!url) return "";
   if (url.includes("drive.google.com")) {
@@ -60,12 +55,13 @@ function isYouTube(url) {
   return url && (url.includes("youtu.be") || url.includes("youtube.com") || url.includes("drive.google.com"));
 }
 
-/* ─── Intersection Observer Hook ─────────────────────────────── */
 function useInView(threshold = 0.1) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -75,91 +71,39 @@ function useInView(threshold = 0.1) {
       },
       { threshold, rootMargin: "100px" }
     );
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(el);
     return () => observer.disconnect();
   }, [threshold]);
 
   return [ref, inView];
 }
 
-/* ─── Mobile Viewport Detection Hook ─────────────────────────── */
-function useIsMobile(breakpoint = 768) {
-  const query = `(max-width: ${breakpoint - 1}px)`;
-
-  const [isMobile, setIsMobile] = useState(() =>
-    typeof window !== "undefined" ? window.matchMedia(query).matches : false
-  );
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const mql = window.matchMedia(query);
-    const handleChange = (e) => setIsMobile(e.matches);
-
-    // sync immediately in case it changed between initial render and mount
-    setIsMobile(mql.matches);
-
-    if (mql.addEventListener) {
-      mql.addEventListener("change", handleChange);
-      return () => mql.removeEventListener("change", handleChange);
-    } else {
-      // Safari <14 fallback
-      mql.addListener(handleChange);
-      return () => mql.removeListener(handleChange);
-    }
-  }, [query]);
-
-  return isMobile;
-}
-
-/* ─── Progressive Image Component ───────────────────────────── */
 function ProgressiveImg({ src, alt = "", shouldLoad = true, isMasonry = false }) {
   const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
-    if (shouldLoad && src) {
-      const image = new Image();
-      image.src = src;
-      image.onload = () => setLoaded(true);
-    }
-  }, [src, shouldLoad]);
-
-  if (isMasonry) {
-    return (
-      <div className="relative w-full h-auto bg-[#f7f7f7] overflow-hidden group rounded-sm">
-        {shouldLoad && (
-          <img
-            src={src}
-            alt={alt}
-            loading="lazy"
-            decoding="async"
-            onLoad={() => setLoaded(true)}
-            className={`block w-full h-auto object-cover transition-all duration-700 ease-out group-hover:scale-[1.03] ${loaded ? "opacity-100" : "opacity-0"}`}
-          />
-        )}
-      </div>
-    );
-  }
 
   return (
-    <div className="relative overflow-hidden bg-[#f7f7f7] w-full h-full">
-      {shouldLoad && (
+    <div className={`relative overflow-hidden bg-[#f7f7f7] ${isMasonry ? "w-full h-auto group rounded-sm" : "w-full h-full"}`}>
+      {shouldLoad && src && (
         <img
           src={src}
           alt={alt}
           loading="lazy"
           decoding="async"
           onLoad={() => setLoaded(true)}
-          className={`block w-full h-full object-cover transition-all duration-1000 ease-out ${loaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
+          className={`block w-full ${isMasonry ? "h-auto object-cover transition-all duration-700 ease-out group-hover:scale-[1.03]" : "h-full object-cover transition-all duration-1000 ease-out"} ${loaded ? "opacity-100 scale-100" : "opacity-0 scale-105"}`}
         />
       )}
     </div>
   );
 }
 
-/* ─── Lazy Section Wrapper ───────────────────────────────────── */
 function LazySection({ children, rootMargin = "200px" }) {
   const ref = useRef(null);
   const [isNear, setIsNear] = useState(false);
+
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -169,71 +113,42 @@ function LazySection({ children, rootMargin = "200px" }) {
       },
       { rootMargin }
     );
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(el);
     return () => observer.disconnect();
   }, [rootMargin]);
 
   return <div ref={ref}>{children(isNear)}</div>;
 }
 
-/* ─── Data ───────────────────────────────────────────────────── */
-// Hero slider — DESKTOP images (unchanged)
 const heroImages = [
-  { src: heroImg1 },
-  { src: heroImg2 },
-  { src: heroImg3 },
-  { src: heroImg5 },
-  { src: heroImg6 },
-  { src: heroImg7 },
-  { src: heroImg8 },
-  { src: heroImg10 },
-  { src: heroImg11 },
-  { src: heroImg12 },
-  { src: heroImg13 },
-  { src: heroImg14 },
+  { src: heroImg1 }, { src: heroImg2 }, { src: heroImg3 }, { src: heroImg5 },
+  { src: heroImg6 }, { src: heroImg7 }, { src: heroImg8 }, { src: heroImg10 },
+  { src: heroImg11 }, { src: heroImg12 }, { src: heroImg13 }, { src: heroImg14 },
 ];
 
-// Hero slider — MOBILE images (new)
 const heroImagesMobile = [
-  { src: heroMobile1 },
-  { src: heroMobile2 },
-  { src: heroMobile3 },
-  { src: heroMobile4 },
-  { src: heroMobile5 },
-  { src: heroMobile6 },
-  { src: heroMobile7 },
-  { src: heroMobile8 },
-  { src: heroMobile9 },
-  { src: heroMobile10 },
+  { src: heroMobile1 }, { src: heroMobile2 }, { src: heroMobile3 }, { src: heroMobile4 },
+  { src: heroMobile5 }, { src: heroMobile6 }, { src: heroMobile7 }, { src: heroMobile8 },
+  { src: heroMobile9 }, { src: heroMobile10 },
 ];
 
 const portfolioGrid = [
-  { src: img("Web Gallery/img5001.webp") },
-  { src: img("Web Gallery/img5002.webp") },
-  { src: img("Web Gallery/img5003.webp") },
-  { src: img("Web Gallery/img5004.webp") },
-  { src: img("Web Gallery/img5005.webp") },
-  { src: img("Web Gallery/img5007.webp") },
-  { src: img("Web Gallery/img5008.webp") },
-  { src: img("Web Gallery/img5009.webp") },
-  { src: img("Web Gallery/img5010.webp") },
-  { src: img("Web Gallery/img5006.webp") },
-  { src: img("Web Gallery/img5011.webp") },
-  { src: img("Web Gallery/img5012.webp") },
-  { src: img("Web Gallery/img5013.webp") },
-  { src: img("Web Gallery/img5014.webp") },
-  { src: img("Web Gallery/img5015.webp") },
-  { src: img("Web Gallery/img5016.webp") },
-  { src: img("Web Gallery/img5017.webp") },
-  { src: img("Web Gallery/img5018.webp") },
-  { src: img("Web Gallery/img5019.webp") },
-  { src: img("Web Gallery/port.jpeg") },
+  { src: img("Web Gallery/img5001.webp") }, { src: img("Web Gallery/img5002.webp") },
+  { src: img("Web Gallery/img5003.webp") }, { src: img("Web Gallery/img5004.webp") },
+  { src: img("Web Gallery/img5005.webp") }, { src: img("Web Gallery/img5007.webp") },
+  { src: img("Web Gallery/img5008.webp") }, { src: img("Web Gallery/img5009.webp") },
+  { src: img("Web Gallery/img5010.webp") }, { src: img("Web Gallery/img5006.webp") },
+  { src: img("Web Gallery/img5011.webp") }, { src: img("Web Gallery/img5012.webp") },
+  { src: img("Web Gallery/img5013.webp") }, { src: img("Web Gallery/img5014.webp") },
+  { src: img("Web Gallery/img5015.webp") }, { src: img("Web Gallery/img5016.webp") },
+  { src: img("Web Gallery/img5017.webp") }, { src: img("Web Gallery/img5018.webp") },
+  { src: img("Web Gallery/img5019.webp") }, { src: img("Web Gallery/port.jpeg") },
 ];
 
 const featured = [
-  { couple: "Abhimanyu & Manisha", slug: "abhimanyu-manisha", location: "Pune, Maharashtra", date: "November 2024", img: img("portfolio/Abhimanyu_Manisha.webp") },
-  { couple: "Bhakti & Sourabh", slug: "bhakti-sourabh", location: "Jodhpur, Rajasthan", date: "October 2024", img: img("Bhakti_Sourabh/img353.webp") },
-  { couple: "Rohan & Preksha", slug: "Rohan-preksha", location: "Pushkar, Rajasthan", date: "January 2025", img: img("Rohan_Preksha/img550.webp") },
+  { slug: "Atharva_Haritha", couple: "Atharva & Harita", location: "Pune, Maharashtra", date: "Month Year", category: "Tag", cover: img("portfolio/Atharva_Harita.webp") },
+  { slug: "Anuja_Shubhang", couple: "Shubhang & Anuja", location: "Pune, Maharashtra", date: "Month Year", category: "Tag", cover: img("portfolio/Anuja_Shubhang.webp") },
+  { slug: "Atish_Shweta", couple: "Atish & Shweta", location: "Pune, Maharashtra", date: "Month Year", category: "Tag", cover: img("portfolio/Atish_Shweta.webp") },
 ];
 
 const testimonials = [
@@ -245,12 +160,8 @@ const testimonials = [
 ];
 
 const aboutImg = img("Chaitrali_Shubham/img407.webp");
-const leftImg = img("Abhimanyu_Manisha/img615.webp");
 
-function HeroSlider() {
-  const isMobile = useIsMobile(768);
-  const images = isMobile ? heroImagesMobile : heroImages;
-
+function HeroSliderTrack({ images }) {
   const [current, setCurrent] = useState(0);
   const scrollRef = useRef(null);
   const isProgrammaticScroll = useRef(false);
@@ -277,27 +188,11 @@ function HeroSlider() {
     });
   }, [scrollToIndex, images.length]);
 
-  // Reset to first slide whenever we switch between mobile/desktop image sets
-  useEffect(() => {
-    setCurrent(0);
-    const container = scrollRef.current;
-    if (container) {
-      isProgrammaticScroll.current = true;
-      container.scrollTo({ left: 0, behavior: "auto" });
-      setTimeout(() => {
-        isProgrammaticScroll.current = false;
-      }, 50);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isMobile]);
-
-  // Auto-advance
   useEffect(() => {
     const t = setInterval(goNext, 5000);
     return () => clearInterval(t);
   }, [goNext]);
 
-  // Keep `current` in sync when the user drags/swipes/scrolls manually
   const handleScroll = useCallback(() => {
     if (isProgrammaticScroll.current) return;
     const container = scrollRef.current;
@@ -308,35 +203,37 @@ function HeroSlider() {
     setCurrent((c) => (c !== index ? index : c));
   }, []);
 
-  // Re-align on resize/orientation change so slides stay snapped correctly
-  useEffect(() => {
-    const handleResize = () => scrollToIndex(current);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
-    <div className="relative w-full h-[54vh] sm:h-[68vh] md:h-[85vh] lg:h-[100dvh] overflow-hidden bg-black">
-      <div
-        ref={scrollRef}
-        onScroll={handleScroll}
-        className="absolute inset-0 w-full h-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth hero-scroll"
-      >
-        {images.map((image, i) => (
-          <div
-            key={i}
-            className="relative w-full h-full flex-shrink-0 snap-center snap-always"
-          >
-            <img
-              src={image.src}
-              alt={`Tilt Shift Pictures wedding photography ${i + 1}`}
-              loading={i === 0 ? "eager" : "lazy"}
-              draggable={false}
-              className="w-full h-full object-cover object-top sm:object-center select-none"
-            />
-          </div>
-        ))}
+    <div
+      ref={scrollRef}
+      onScroll={handleScroll}
+      className="absolute inset-0 w-full h-full flex overflow-x-auto snap-x snap-mandatory scroll-smooth hero-scroll"
+    >
+      {images.map((image, i) => (
+        <div key={i} className="relative w-full h-full flex-shrink-0 snap-center snap-always">
+          <img
+            src={image.src}
+            alt={`Tilt Shift Pictures wedding photography ${i + 1}`}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            draggable={false}
+            className="w-full h-full object-cover object-top sm:object-center select-none"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function HeroSlider() {
+  return (
+    <div className="relative w-full h-[90vh] sm:h-[90vh] md:h-[85vh] lg:h-[100dvh] overflow-hidden bg-black">
+      <div className="absolute inset-0 w-full h-full block md:hidden">
+        <HeroSliderTrack images={heroImagesMobile} />
+      </div>
+
+      <div className="absolute inset-0 w-full h-full hidden md:block">
+        <HeroSliderTrack images={heroImages} />
       </div>
 
       <div className="absolute inset-0 bg-black/25 z-20 pointer-events-none" />
@@ -358,19 +255,18 @@ function HeroSlider() {
   );
 }
 
-/* ─── Static Film Card (Updated with Thumbnail & Play Icon) ─── */
-function FilmCard({ film, onSelect }) {
+const FilmCard = React.memo(function FilmCard({ film, onSelect }) {
   return (
     <div className="w-full cursor-pointer group" onClick={() => onSelect(film)}>
       <div className="relative aspect-video overflow-hidden rounded-sm bg-[#1a1a1a] mb-5 shadow-sm">
         <img
-          src={film.thumbnail || `https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
+          src={film.thumbnail || `https://img.youtube.com/vi/${film.id}/maxresdefault.webp`}
           alt={film.couple}
           loading="lazy"
+          decoding="async"
           className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
-
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300 shadow-xl">
             <Play className="w-5 h-5 text-white fill-white ml-1" />
@@ -385,9 +281,8 @@ function FilmCard({ film, onSelect }) {
       </p>
     </div>
   );
-}
+});
 
-/* ─── Video Modal (Lightbox) ────────────────────────────────── */
 const VideoModal = React.memo(function VideoModal({ film, onClose }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -397,7 +292,7 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
 
   useEffect(() => {
     const handler = (e) => { if (e.key === 'Escape') onClose(); };
-    window.addEventListener('keydown', handler);
+    window.addEventListener('keydown', handler, { passive: true });
     return () => window.removeEventListener('keydown', handler);
   }, [onClose]);
 
@@ -467,7 +362,7 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
         )}
 
         <div className="absolute top-3 sm:top-4 inset-x-3 sm:inset-x-4 flex justify-end items-center gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-30">
-          <button onClick={onClose} className="p-2 sm:p-2.5 rounded-xl bg-white/10 hover:bg-red-500 text-white transition-colors border border-white/10 backdrop-blur-md shadow-lg shrink-0">
+          <button onClick={onClose} aria-label="Close modal" className="p-2 sm:p-2.5 rounded-xl bg-white/10 hover:bg-red-500 text-white transition-colors border border-white/10 backdrop-blur-md shadow-lg shrink-0">
             <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
@@ -475,14 +370,14 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
         {!youtube && (
           <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 z-30 gap-4">
             <div className="flex items-center gap-2 sm:gap-3">
-              <button onClick={handlePlayPause} className="p-2.5 sm:p-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-all shadow-md">
+              <button onClick={handlePlayPause} aria-label="Play/Pause" className="p-2.5 sm:p-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-all shadow-md">
                 {isPlaying ? <Pause className="w-4 h-4 sm:w-5 sm:h-5 fill-current" /> : <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />}
               </button>
-              <button onClick={handleMuteToggle} className="p-2.5 sm:p-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition-all backdrop-blur-md">
+              <button onClick={handleMuteToggle} aria-label="Mute" className="p-2.5 sm:p-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition-all backdrop-blur-md">
                 {isMuted ? <VolumeX className="w-4 h-4 sm:w-5 sm:h-5" /> : <Volume2 className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
             </div>
-            <button onClick={handleFullscreen} className="p-2.5 sm:p-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition-all backdrop-blur-md">
+            <button onClick={handleFullscreen} aria-label="Fullscreen" className="p-2.5 sm:p-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 text-white transition-all backdrop-blur-md">
               <Maximize className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
@@ -492,7 +387,67 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
   );
 });
 
-/* ─── Main Home Component ────────────────────────────────────── */
+function TestimonialsCarousel({ items }) {
+  const containerRef = useRef(null);
+
+  const scrollLeft = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    container.scrollBy({ left: -380, behavior: "smooth" });
+  }, []);
+
+  const scrollRight = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    container.scrollBy({ left: 380, behavior: "smooth" });
+  }, []);
+
+  return (
+    <div className="relative group/scroll w-full">
+      <button
+        type="button"
+        onClick={scrollLeft}
+        aria-label="Previous testimonial"
+        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white/95 border border-[#d8d2c8] text-[#1a1a1a] shadow-md transition-all duration-300 hover:bg-[#1a1a1a] hover:text-white hover:border-[#1a1a1a]"
+      >
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+      </button>
+
+      <button
+        type="button"
+        onClick={scrollRight}
+        aria-label="Next testimonial"
+        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white/95 border border-[#d8d2c8] text-[#1a1a1a] shadow-md transition-all duration-300 hover:bg-[#1a1a1a] hover:text-white hover:border-[#1a1a1a]"
+      >
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+      </button>
+
+      <div
+        ref={containerRef}
+        className="testimonial-scroll flex gap-6 overflow-x-auto px-14 md:px-20 pb-4 scroll-smooth snap-x snap-mandatory"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {items.map((t, i) => (
+          <div
+            key={i}
+            className="flex-shrink-0 w-[300px] md:w-[350px] min-h-[320px] snap-start flex flex-col bg-[#F4F1EA] p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm"
+          >
+            <Quote className="w-8 h-8 text-[#c9a84c] opacity-20 mb-5" />
+            <p className="font-cormorant italic text-[1.1rem] leading-[1.8] text-gray-600 mb-8 relative z-10 flex-grow">
+              "{t.text}"
+            </p>
+            <div className="mt-auto flex flex-col gap-2 pt-5 border-t border-[#e5e0d8]">
+              <p className="font-jost text-[0.7rem] tracking-[0.2em] uppercase text-[#1a1a1a] font-medium">
+                {t.name}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [aboutRef, aboutInView] = useInView(0.1);
   const [featRef, featInView] = useInView(0.1);
@@ -500,34 +455,34 @@ export default function Home() {
   const location = useLocation();
 
   const [selectedFilm, setSelectedFilm] = useState(null);
-
   const [showEnquiry, setShowEnquiry] = useState(false);
   const [popupLoading, setPopupLoading] = useState(false);
   const [popupSubmitted, setPopupSubmitted] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowEnquiry(true);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
+    if (popupSubmitted) return;
+    const openPopup = () => setShowEnquiry(true);
+    const initialTimer = setTimeout(openPopup, 2000);
+    const recurring = setInterval(openPopup, 60000);
+
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(recurring);
+    };
+  }, [popupSubmitted]);
 
   useEffect(() => {
-    if (showEnquiry || selectedFilm) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = (showEnquiry || selectedFilm) ? "hidden" : "auto";
     return () => { document.body.style.overflow = "auto"; };
   }, [showEnquiry, selectedFilm]);
 
-  const handlePopupSubmit = async (e) => {
+  const handlePopupSubmit = useCallback(async (e) => {
     e.preventDefault();
     setPopupLoading(true);
-    await new Promise(r => setTimeout(r, 2000));
+    await new Promise(r => setTimeout(r, 1500));
     setPopupLoading(false);
     setPopupSubmitted(true);
-  };
+  }, []);
 
   const compactInputClasses = "w-full py-2 bg-transparent border-b border-black/10 text-gray-800 text-[0.85rem] font-light focus:border-[#c9a84c] outline-none transition-all placeholder:text-gray-300";
 
@@ -539,25 +494,19 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
         <style>{`
-          @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
           .fade-up { opacity: 0; transform: translateY(32px); transition: all 1s cubic-bezier(.22,1,.36,1); }
           .fade-up.in { opacity: 1; transform: none; }
           .hover-zoom { overflow: hidden; }
           .hover-zoom img { transition: transform 0.9s cubic-bezier(.22,1,.36,1); }
           .hover-zoom:hover img { transform: scale(1.06); }
-
           .hero-scroll { -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
           .hero-scroll::-webkit-scrollbar { display: none; height: 0; width: 0; }
-
-          @keyframes scroll-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-          .animate-scroll { display: flex; width: max-content; animation: scroll-marquee 50s linear infinite; }
-          .group\\/scroll:hover .animate-scroll { animation-play-state: paused; }
+          .testimonial-scroll::-webkit-scrollbar { display: none; height: 0; width: 0; }
         `}</style>
       </Helmet>
 
       <HeroSlider />
 
-      {/* ABOUT SECTION */}
       <LazySection rootMargin="200px">
         {(isNear) => (
           <section ref={aboutRef} className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(40px,8vw,120px)] items-center px-[clamp(24px,8vw,120px)] py-[clamp(80px,10vw,140px)] bg-white about-grid">
@@ -587,7 +536,6 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* PORTFOLIO MASONRY GRID */}
       <LazySection rootMargin="400px">
         {(isNear) => (
           <section ref={gridRef} className="bg-[#F4F1EA] pb-[clamp(60px,8vw,100px)]">
@@ -595,11 +543,9 @@ export default function Home() {
               <h2 className="font-cormorant text-[clamp(2.2rem,4vw,3.5rem)] font-light text-[#1a1a1a] relative top-8">
                 PORTFOLIO
               </h2>
-
               <p className="font-cormorant italic text-[clamp(1rem,1.5vw,1.25rem)] text-[#666] mt-10 max-w-[700px] mx-auto leading-relaxed">
                 A collection of beautifully captured wedding moments, emotions and celebrations.
               </p>
-
               <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
             </div>
 
@@ -631,19 +577,14 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* FEATURED WEDDINGS */}
       <LazySection rootMargin="300px">
         {(isNear) => (
-          <section
-            ref={featRef}
-            className="bg-white py-[clamp(60px,10vw,80px)] px-[clamp(24px,5vw,60px)] border-y border-black/5"
-          >
+          <section ref={featRef} className="bg-white py-[clamp(60px,10vw,80px)] px-[clamp(24px,5vw,60px)] border-y border-black/5">
             <div className="max-w-[1400px] mx-auto">
               <div className="text-center px-6 pb-[clamp(40px,5vw,60px)]">
                 <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
                   FEATURED WEDDINGS
                 </h2>
-
                 <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
               </div>
 
@@ -653,15 +594,14 @@ export default function Home() {
                     key={i}
                     to={`/wedding/${f.slug}`}
                     state={{ from: location }}
-                    className={`group fade-up flex flex-col ${
-                      featInView ? `in d${i + 1}` : ""
-                    }`}
+                    className={`group fade-up flex flex-col ${featInView ? `in d${i + 1}` : ""}`}
                   >
                     <div className="relative w-full aspect-[16/12] mb-5 overflow-hidden bg-white shadow-sm rounded-sm">
                       <img
-                        src={f.img}
+                        src={f.img || f.cover}
                         alt={f.couple}
                         loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -671,7 +611,6 @@ export default function Home() {
                       <h3 className="font-cormorant text-[clamp(1.5rem,2vw,2rem)] font-medium text-[#1a1a1a] mb-1.5 transition-colors group-hover:text-[#c9a84c]">
                         {f.couple}
                       </h3>
-
                       <p className="font-jost text-[0.65rem] tracking-[0.2em] uppercase text-gray-400">
                         {f.location}
                       </p>
@@ -693,7 +632,6 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* FILMS SECTION */}
       <LazySection rootMargin="300px">
         {(isNear) => (
           <section className="bg-[#F4F1EA] py-[clamp(60px,10vw,100px)] px-[clamp(24px,6vw,80px)] overflow-hidden">
@@ -702,7 +640,6 @@ export default function Home() {
                 <h2 className="font-cormorant text-[clamp(2.5rem,6vw,4.5rem)] font-light text-[#1a1a1a]">
                   FILMS
                 </h2>
-
                 <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-4" />
               </div>
 
@@ -726,7 +663,6 @@ export default function Home() {
         )}
       </LazySection>
 
-      {/* CLIENT TESTIMONIALS */}
       <LazySection rootMargin="300px">
         {(isNear) => (
           <section className="bg-white py-[clamp(60px,10vw,100px)] overflow-hidden">
@@ -735,57 +671,18 @@ export default function Home() {
                 <p className="font-jost text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-3">
                   Kind Words
                 </p>
-
                 <h2 className="font-cormorant text-[clamp(2rem,3.5vw,3.2rem)] font-light text-[#1a1a1a]">
                   CLIENT TESTIMONIALS
                 </h2>
-
                 <div className="w-10 h-[1px] bg-[#c9a84c] mx-auto mt-6" />
               </div>
             </div>
 
-            <div className="relative group/scroll w-full">
-              <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#F4F1EA] to-transparent z-10 pointer-events-none" />
-
-              <div
-                className="testimonial-scroll flex gap-6 overflow-x-auto px-4 pb-4"
-                style={{
-                  scrollbarWidth: "none",
-                  msOverflowStyle: "none",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.dataset.paused = "true";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.dataset.paused = "false";
-                }}
-              >
-                {[...testimonials, ...testimonials].map((t, i) => (
-                  <div
-                    key={i}
-                    className="flex-shrink-0 w-[300px] md:w-[350px] min-h-[320px] flex flex-col bg-[#F4F1EA] p-8 md:p-10 shadow-sm border border-[#eaeaea] hover:border-[#c9a84c]/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-500 rounded-sm"
-                  >
-                    <Quote className="w-8 h-8 text-[#c9a84c] opacity-20 mb-5" />
-
-                    <p className="font-cormorant italic text-[1.1rem] leading-[1.8] text-gray-600 mb-8 relative z-10 flex-grow">
-                      "{t.text}"
-                    </p>
-
-                    <div className="mt-auto flex flex-col gap-2 pt-5 border-t border-[#f4f1ea]">
-                      <p className="font-jost text-[0.7rem] tracking-[0.2em] uppercase text-[#1a1a1a] font-medium">
-                        {t.name}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <TestimonialsCarousel items={testimonials} />
           </section>
         )}
       </LazySection>
 
-      {/* ENQUIRY POPUP */}
       {showEnquiry && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 sm:p-6 transition-opacity duration-300">
           <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto bg-[#FDFCF9] p-6 md:p-8 shadow-2xl animate-[fadeIn_0.3s_ease-out] rounded-sm custom-scrollbar">
@@ -823,7 +720,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* RENDER VIDEO MODAL LIGHTBOX */}
       <AnimatePresence>
         {selectedFilm && <VideoModal film={selectedFilm} onClose={() => setSelectedFilm(null)} />}
       </AnimatePresence>

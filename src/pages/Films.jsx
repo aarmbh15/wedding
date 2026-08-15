@@ -3,8 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Play, Pause, Volume2, VolumeX, Maximize } from "lucide-react";
 import HeroImage from "../assets/hero3.webp";
+import CtaBgImage from "../assets/5.webp";
 
-// ─── Thumbnail Imports ────────────────────────────────────────
+// Thumbnails
 import ThumbShubhangAnuja from "../assets/Filmsthumbnail/shubhang & anuja.webp";
 import ThumbAbhimanyuManisha from "../assets/Filmsthumbnail/abhimanyu & manisha.webp";
 import ThumbAmeyAmruta from "../assets/Filmsthumbnail/amey & amruta.webp";
@@ -19,7 +20,6 @@ import ThumbBhaktiSaurabh from "../assets/Filmsthumbnail/bhakti & saurabh.webp";
 import ThumbUtsavDyuthi from "../assets/Filmsthumbnail/utsav & dyuthi.webp";
 import Thumbsakshi from "../assets/Filmsthumbnail/Indrajeet & Sakshi.png";
 
-// ─── Helpers for Video Modal ──────────────────────────────────
 function toEmbedUrl(url) {
   if (!url) return "";
   if (url.includes("drive.google.com")) {
@@ -40,7 +40,6 @@ function isYouTube(url) {
   return url && (url.includes("youtu.be") || url.includes("youtube.com") || url.includes("drive.google.com"));
 }
 
-// ─── Video Modal (Lightbox) ──────────────────────────────────
 const VideoModal = React.memo(function VideoModal({ film, onClose }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -50,7 +49,7 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
 
   useEffect(() => {
     const handler = (e) => { if (e.key === 'Escape') onClose(); };
-    window.addEventListener('keydown', handler);
+    window.addEventListener('keydown', handler, { passive: true });
     return () => window.removeEventListener('keydown', handler);
   }, [onClose]);
 
@@ -120,7 +119,7 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
         )}
 
         <div className="absolute top-3 sm:top-4 inset-x-3 sm:inset-x-4 flex justify-end items-center gap-2 z-30">
-          <button onClick={onClose} className="p-2 sm:p-2.5 rounded-xl bg-black/40 hover:bg-[#c9a84c] text-white transition-colors border border-white/10 backdrop-blur-md shadow-lg shrink-0">
+          <button onClick={onClose} aria-label="Close modal" className="p-2 sm:p-2.5 rounded-xl bg-black/40 hover:bg-[#c9a84c] text-white transition-colors border border-white/10 backdrop-blur-md shadow-lg shrink-0">
             <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
@@ -128,14 +127,14 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
         {!youtube && (
           <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-center justify-between z-30 gap-4">
             <div className="flex items-center gap-2 sm:gap-3">
-              <button onClick={handlePlayPause} className="p-2.5 sm:p-3 rounded-xl bg-[#c9a84c] hover:bg-[#b08f3a] text-white transition-all shadow-md">
+              <button onClick={handlePlayPause} aria-label={isPlaying ? "Pause" : "Play"} className="p-2.5 sm:p-3 rounded-xl bg-[#c9a84c] hover:bg-[#b08f3a] text-white transition-all shadow-md">
                 {isPlaying ? <Pause className="w-4 h-4 sm:w-5 sm:h-5 fill-current" /> : <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />}
               </button>
-              <button onClick={handleMuteToggle} className="p-2.5 sm:p-3 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white transition-all backdrop-blur-md">
+              <button onClick={handleMuteToggle} aria-label="Mute" className="p-2.5 sm:p-3 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white transition-all backdrop-blur-md">
                 {isMuted ? <VolumeX className="w-4 h-4 sm:w-5 sm:h-5" /> : <Volume2 className="w-4 h-4 sm:w-5 sm:h-5" />}
               </button>
             </div>
-            <button onClick={handleFullscreen} className="p-2.5 sm:p-3 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white transition-all backdrop-blur-md">
+            <button onClick={handleFullscreen} aria-label="Fullscreen" className="p-2.5 sm:p-3 rounded-xl bg-black/40 hover:bg-black/60 border border-white/10 text-white transition-all backdrop-blur-md">
               <Maximize className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
@@ -145,7 +144,6 @@ const VideoModal = React.memo(function VideoModal({ film, onClose }) {
   );
 });
 
-// ─── Data ───────────────────────────────────────────────────────────────────
 const films = [
   { couple: "Shubhang & Anuja", url: "https://youtu.be/6AlgoGp8SLg", id: "6AlgoGp8SLg", location: "Pune, Maharashtra", category: "Destination", thumbnail: ThumbShubhangAnuja },
   { couple: "Abhimanyu & Manisha", url: "https://youtu.be/ppQtE_3sPcg", id: "ppQtE_3sPcg", location: "Pune, Maharashtra", category: "Coastal", thumbnail: ThumbAbhimanyuManisha },
@@ -162,33 +160,26 @@ const films = [
   { couple: "Utsav & Dyuthi", url: "https://youtu.be/nHDxp0WJqaE", id: "nHDxp0WJqaE", location: "Bangalore, Karnataka", category: "Destination", thumbnail: ThumbUtsavDyuthi },
 ];
 
-const categories = ["All", "Destination", "Royal", "Coastal", "City"];
-
-// ─── Elegant Film Card Component ───
-function FilmCard({ film, onSelect }) {
+const FilmCard = React.memo(function FilmCard({ film, onSelect }) {
   return (
     <motion.div
       layout
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       onClick={() => onSelect(film)}
       className="cursor-pointer w-full group flex flex-col"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-[#e6e2da]">
-        {/* Thumbnail Image */}
         <img
           src={film.thumbnail || `https://img.youtube.com/vi/${film.id}/maxresdefault.jpg`}
           alt={film.couple}
           loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover object-center transition-transform duration-[1.5s] ease-out group-hover:scale-[1.04]"
         />
-        
-        {/* Elegant Gradient Overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-700" />
-        
-        {/* Sleek Glassmorphism Play Button */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-500 ease-out pointer-events-none">
           <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-2xl">
             <Play className="w-5 h-5 text-white fill-white ml-1" />
@@ -196,42 +187,26 @@ function FilmCard({ film, onSelect }) {
         </div>
       </div>
       
-      {/* Clean Editorial Typography underneath */}
       <div className="text-left mt-6">
         <h3 className="font-['Cormorant_Garamond'] text-2xl md:text-[1.75rem] font-light text-[#1a1a1a] mb-2 group-hover:text-[#c9a84c] transition-colors duration-400">
           {film.couple}
         </h3>
-        
-        {/* Tags explicitly placed at the very bottom */}
         <div className="flex items-center gap-3 mt-3">
           <span className="font-['Jost'] text-[0.65rem] tracking-[0.2em] uppercase text-[#999]">
             {film.location}
           </span>
           <div className="w-6 h-[1px] bg-[#c9a84c]/40" />
-          {/* <span className="font-['Jost'] text-[0.65rem] tracking-[0.2em] uppercase text-[#c9a84c]">
-            {film.category}
-          </span> */}
         </div>
       </div>
     </motion.div>
   );
-}
+});
 
 export default function Films() {
-  const [activeCategory, setActiveCategory] = useState("All");
   const [selectedFilm, setSelectedFilm] = useState(null);
 
-  const filtered = useMemo(() => {
-    return activeCategory === "All" ? films : films.filter((f) => f.category === activeCategory);
-  }, [activeCategory]);
-  
-  // Lock body scroll when modal is open
   useEffect(() => {
-    if (selectedFilm) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = selectedFilm ? "hidden" : "auto";
     return () => { document.body.style.overflow = "auto"; };
   }, [selectedFilm]);
 
@@ -242,12 +217,13 @@ export default function Films() {
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
       </Helmet>
 
-      {/* Minimalist Hero Section */}
       <section className="relative h-screen md:h-screen flex items-center justify-center overflow-hidden bg-black">
         <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
           <img
             src={HeroImage}
             alt="Wedding Cinematography"
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover opacity-60 brightness-75"
           />
         </div>
@@ -267,27 +243,25 @@ export default function Films() {
           <div className="w-16 h-[1.5px] bg-[#c9a84c] mx-auto mt-10 shadow-sm" />
         </div>
       </section>
-       <div className="max-w-[720px] mx-auto text-center mt-16 px-6">
-    <p className="font-['Jost'] text-[0.65rem] md:text-[0.7rem] uppercase tracking-[0.35em] text-[#B99A4A] mb-3">
-      Our Films
-    </p>
 
-    <h2 className="font-['Cormorant_Garamond'] text-[clamp(1.4rem,2.4vw,1.9rem)] font-light text-[#1a1a1a] leading-[1.4]">
-      Explore our beautifully captured wedding films and romantic love stories brought to life.
-    </h2>
-  </div>
+      <div className="max-w-[720px] mx-auto text-center mt-16 px-6">
+        <p className="font-['Jost'] text-[0.65rem] md:text-[0.7rem] uppercase tracking-[0.35em] text-[#B99A4A] mb-3">
+          Our Films
+        </p>
 
+        <h2 className="font-['Cormorant_Garamond'] text-[clamp(1.4rem,2.4vw,1.9rem)] font-light text-[#1a1a1a] leading-[1.4]">
+          Explore our beautifully captured wedding films and romantic love stories brought to life.
+        </h2>
+      </div>
 
-      {/* Main Editorial Content Area */}
-      <div className="py-24 md:py-32 px-[clamp(24px,6vw,80px)]">
-        {/* Clean 3-Column Grid — matches the Portfolio page layout */}
+      <div className="pt-10 md:pt-12 pb-24 md:pb-32 px-[clamp(24px,6vw,80px)] mb-0">
         <div className="max-w-[1400px] mx-auto">
           <motion.div
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-[clamp(20px,2.5vw,40px)] gap-y-[clamp(48px,5vw,72px)]"
           >
             <AnimatePresence mode="popLayout">
-              {filtered.map((film) => (
+              {films.map((film) => (
                 <FilmCard
                   key={film.id}
                   film={film}
@@ -296,30 +270,29 @@ export default function Films() {
               ))}
             </AnimatePresence>
           </motion.div>
-          
-          {filtered.length === 0 && (
-            <div className="text-center py-32 text-gray-400 font-['Jost'] uppercase tracking-widest text-sm">
-              No films found for this category.
-            </div>
-          )}
         </div>
       </div>
 
-      {/* Premium CTA Strip */}
-      <div className="bg-[#1a1a1a] py-28 md:py-36 px-6 text-center">
-        <p className="font-['Jost'] text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-6">Let's Create Together</p>
-        <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,5vw,4rem)] font-light text-white leading-[1.1] mb-12">
-          Your story deserves to be<br /><em className="italic text-[#c9a84c]">told beautifully</em>
-        </h2>
-        <a 
-          href="/contact" 
-          className="inline-block font-['Jost'] text-[0.7rem] font-medium tracking-[0.3em] uppercase text-white border border-white/20 px-12 py-5 transition-all duration-500 hover:bg-[#c9a84c] hover:border-[#c9a84c] hover:text-[#1a1a1a]"
-        >
-          Enquire Now
-        </a>
+      <div
+        className="relative py-28 md:py-36 px-6 text-center bg-[#1a1a1a] bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${CtaBgImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/70" />
+
+        <div className="relative z-10">
+          <p className="font-['Jost'] text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-6">Let's Create Together</p>
+          <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,5vw,4rem)] font-light text-white leading-[1.1] mb-12">
+            Your story deserves to be<br /><em className="italic text-[#c9a84c]">told beautifully</em>
+          </h2>
+          <a 
+            href="/contact" 
+            className="inline-block font-['Jost'] text-[0.7rem] font-medium tracking-[0.3em] uppercase text-white border border-white/20 px-12 py-5 transition-all duration-500 hover:bg-[#c9a84c] hover:border-[#c9a84c] hover:text-[#1a1a1a]"
+          >
+            Enquire Now
+          </a>
+        </div>
       </div>
 
-      {/* RENDER VIDEO MODAL LIGHTBOX */}
       <AnimatePresence>
         {selectedFilm && <VideoModal film={selectedFilm} onClose={() => setSelectedFilm(null)} />}
       </AnimatePresence>
