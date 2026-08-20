@@ -92,26 +92,27 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white text-[#2D2D2D] font-['Jost']">
       {/* ─── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative h-screen bg-[#F4F1EA] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0 scale-105 animate-[kenburns_20s_ease_infinite]">
-          <img
-            src={HeroImage}
-            alt="Contact Hero"
-            loading="eager"
-            decoding="async"
-            className="w-full h-full object-cover opacity-60 brightness-75"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 z-10" />
+     {/* ─── HERO ─────────────────────────────────────────────────── */}
+<section className="relative h-screen bg-[#F4F1EA] flex items-center justify-center overflow-hidden">
+  <div className="absolute inset-0 z-0 scale-110 animate-[kenburns_20s_ease_infinite]">
+    <img
+      src={HeroImage}
+      alt="Contact Hero"
+      loading="eager"
+      decoding="async"
+      className="w-full h-full object-cover object-[center_40%] opacity-90 brightness-95 contrast-105"
+    />
+  </div>
+  <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/50 z-10" />
 
-        <div className="relative z-10 text-center px-6 animate-[fadeIn_1.4s_ease-out]">
-          <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.8rem,8vw,6rem)] font-light leading-none text-white drop-shadow-md mb-4">
-            Let’s Capture <br />
-            <span className="italic">The Magic</span>
-          </h1>
-          <div className="w-16 h-[1.5px] bg-[#c9a84c] mx-auto mt-8 shadow-sm" />
-        </div>
-      </section>
+  <div className="relative z-10 text-center px-6 animate-[fadeIn_1.4s_ease-out]">
+    <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.8rem,8vw,6rem)] font-light leading-none text-white drop-shadow-md mb-4">
+      Let's Capture <br />
+      <span className="italic">The Magic</span>
+    </h1>
+    <div className="w-16 h-[1.5px] bg-[#c9a84c] mx-auto mt-8 shadow-sm" />
+  </div>
+</section>
 
       {/* ─── QUICK INFO STRIP ─────────────────────────────────────── */}
       <div className="bg-[#F4F1EA] border-y border-black/5 py-8 px-6">

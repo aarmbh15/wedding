@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 import HeroImage from '../assets/Amruta_Amey/img251.webp';
 import AboutImage from '../assets/about.png';
+import BannerImage from '../assets/banner.webp';
 
 // Optimized hook for one-time scroll trigger
 function useInView(threshold = 0.15) {
@@ -99,7 +100,7 @@ const About = () => {
       </section>
 
       {/* ─── PHILOSOPHY ───────────────────────────────────────────── */}
-      <section ref={valRef} className="bg-white py-[clamp(80px,10vw,130px)] px-6">
+      <section ref={valRef} className="bg-white pt-[clamp(24px,3vw,48px)] pb-[clamp(80px,10vw,130px)] px-6">
         <div className="max-w-[1200px] mx-auto text-center mb-16">
           <h2 className="font-['Cormorant_Garamond'] text-[clamp(2rem,4vw,3.5rem)] font-light">Why Choose Us?</h2>
         </div>
@@ -115,19 +116,16 @@ const About = () => {
       </section>
 
       {/* ─── CTA ──────────────────────────────────────────────────── */}
-      <section className="relative py-32 lg:py-48 px-6 text-center overflow-hidden bg-black">
-        <img 
-          src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1800&q=80" 
-          alt="CTA" 
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover opacity-30" 
-        />
+      <section
+        className="relative py-[clamp(52px,7vw,80px)] px-[clamp(24px,6vw,80px)] text-center overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${BannerImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 max-w-3xl mx-auto">
           <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,6vw,5rem)] font-light text-white leading-tight mb-8">
-            Ready to Create <br /><em>Your Heirloom?</em>
+            Ready to Create <br /><em className="italic text-[#c9a84c]">Your Heirloom?</em>
           </h2>
-          <a href="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-white uppercase tracking-[0.2em] text-[0.8rem] hover:bg-white hover:text-black transition-all">
+          <a href="/contact" className="inline-block font-['Jost'] text-[0.7rem] font-medium tracking-[0.3em] uppercase text-white border border-white/20 px-12 py-5 transition-all duration-500 hover:bg-[#c9a84c] hover:border-[#c9a84c] hover:text-[#1a1a1a]">
             Inquire Now →
           </a>
         </div>

@@ -179,9 +179,9 @@ const FilmCard = React.memo(function FilmCard({ film, onSelect }) {
           decoding="async"
           className="w-full h-full object-cover object-center transition-transform duration-[1.5s] ease-out group-hover:scale-[1.04]"
         />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-700" />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-500 ease-out pointer-events-none">
-          <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 shadow-2xl">
+        <div className="absolute inset-0 bg-black/10 md:bg-black/0 md:group-hover:bg-black/10 transition-colors duration-700" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-100 scale-100 md:opacity-0 md:group-hover:opacity-100 md:scale-90 md:group-hover:scale-100 transition-all duration-500 ease-out pointer-events-none">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black/30 md:bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/30 md:border-white/20 shadow-2xl">
             <Play className="w-5 h-5 text-white fill-white ml-1" />
           </div>
         </div>
@@ -273,25 +273,25 @@ export default function Films() {
         </div>
       </div>
 
-      <div
-        className="relative py-28 md:py-36 px-6 text-center bg-[#1a1a1a] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${CtaBgImage})` }}
-      >
-        <div className="absolute inset-0 bg-black/70" />
+  <div
+  className="relative py-[clamp(52px,7vw,80px)] px-[clamp(24px,6vw,80px)] text-center overflow-hidden bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: `url(${CtaBgImage})` }}
+>
+  <div className="absolute inset-0 bg-black/70" />
 
-        <div className="relative z-10">
-          <p className="font-['Jost'] text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-6">Let's Create Together</p>
-          <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,5vw,4rem)] font-light text-white leading-[1.1] mb-12">
-            Your story deserves to be<br /><em className="italic text-[#c9a84c]">told beautifully</em>
-          </h2>
-          <a 
-            href="/contact" 
-            className="inline-block font-['Jost'] text-[0.7rem] font-medium tracking-[0.3em] uppercase text-white border border-white/20 px-12 py-5 transition-all duration-500 hover:bg-[#c9a84c] hover:border-[#c9a84c] hover:text-[#1a1a1a]"
-          >
-            Enquire Now
-          </a>
-        </div>
-      </div>
+  <div className="relative z-10">
+    {/* <p className="font-['Jost'] text-[0.65rem] tracking-[0.3em] uppercase text-[#c9a84c] mb-6">Let's Create Together</p> */}
+    <h2 className="font-['Cormorant_Garamond'] text-[clamp(2.5rem,5vw,4rem)] font-light text-white leading-[1.1] mb-12">
+      Your story deserves to be<br /><em className="italic text-[#c9a84c]">Told Beautifully</em>
+    </h2>
+    <a 
+      href="/contact" 
+      className="inline-block font-['Jost'] text-[0.7rem] font-medium tracking-[0.3em] uppercase text-white border border-white/20 px-12 py-5 transition-all duration-500 hover:bg-[#c9a84c] hover:border-[#c9a84c] hover:text-[#1a1a1a]"
+    >
+      Enquire Now
+    </a>
+  </div>
+</div>
 
       <AnimatePresence>
         {selectedFilm && <VideoModal film={selectedFilm} onClose={() => setSelectedFilm(null)} />}

@@ -146,8 +146,8 @@ const portfolioGrid = [
 ];
 
 const featured = [
-  { slug: "Atharva_Haritha", couple: "Atharva & Harita", location: "Pune, Maharashtra", date: "Month Year", category: "Tag", cover: img("portfolio/Atharva_Harita.webp") },
   { slug: "Anuja_Shubhang", couple: "Shubhang & Anuja", location: "Pune, Maharashtra", date: "Month Year", category: "Tag", cover: img("portfolio/Anuja_Shubhang.webp") },
+  { slug: "Atharva_Haritha", couple: "Atharva & Harita", location: "Pune, Maharashtra", date: "Month Year", category: "Tag", cover: img("portfolio/Atharva_Harita.webp") },
   { slug: "Atish_Shweta", couple: "Atish & Shweta", location: "Pune, Maharashtra", date: "Month Year", category: "Tag", cover: img("portfolio/Atish_Shweta.webp") },
 ];
 

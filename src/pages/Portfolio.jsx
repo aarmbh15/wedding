@@ -169,7 +169,7 @@ export default function Portfolio() {
         <div className="relative z-10">
           <h2 className="font-cormorant text-[clamp(2rem,4vw,3.4rem)] font-light text-white leading-tight mb-9">
             Your story deserves to be<br />
-            <em className="italic">told beautifully</em>
+            <em className="italic text-[#c9a84c]">Told Beautifully</em>
           </h2>
           <a
             href="/contact"
