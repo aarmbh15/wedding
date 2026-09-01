@@ -22,7 +22,6 @@ const weddings = [
   { slug: "abhimanyu-manisha", couple: "Abhimanyu & Manisha", location: "Pune, Maharashtra", date: "November 2024", category: "Coastal", cover: img("portfolio/Abhimanyu_Manisha.webp") },
   { slug: "Chaitrali_Shubham", couple: "Shubham & Chaitraly", location: "Pune, Maharashtra", date: "Month Year", category: "Tag", cover: img("portfolio/Chaitraly_Shubham.webp") },
 ];
-
 function LazyImg({ src, alt }) {
   const ref = useRef(null);
   const [load, setLoad] = useState(false);

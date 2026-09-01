@@ -15,7 +15,8 @@ const weddingData = {
 "From soft, intimate moments to bursts of laughter shared with loved ones, their wedding carried a warmth that stayed constant throughout. Nothing felt rushed, nothing felt staged, just real emotions, honest connections and a love that spoke for itself."
     ],
   images: [
-      img("Amruta_Amey/img233.webp"),
+  img("portfolio/Amruta_Amey.webp"),
+  img("Amruta_Amey/img233.webp"),
   img("Amruta_Amey/img200.webp"),
   img("Amruta_Amey/img202.webp"),
   img("Amruta_Amey/img203.webp"),
@@ -83,6 +84,7 @@ const weddingData = {
       "When the ceremony began everything slowed down and felt calm and meaningful. In between it all they stayed present sharing real moments with their people. Nothing felt forced or planned it just flowed naturally. It was warm honest and truly a reflection of them."
     ],
     images: [
+      img("portfolio/Abhimanyu_Manisha.webp"),
       img("Abhimanyu_Manisha/img613.webp"),
       img("Abhimanyu_Manisha/img600.webp"),
       img("Abhimanyu_Manisha/img601.webp"),
@@ -117,7 +119,8 @@ const weddingData = {
       "There was a natural ease between them that showed in every moment whether it was quiet glances or carefree laughter with their people. Nothing felt overdone yet everything felt complete. It was a celebration full of warmth energy and connection that stayed consistent from start to finish."
     ],
     images: [
-      img("Bhakti_Sourabh/img356.webp"),
+  img("portfolio/Bhakti_Saurabh.webp"),
+  img("Bhakti_Sourabh/img356.webp"),
   img("Bhakti_Sourabh/img301.webp"),
   img("Bhakti_Sourabh/img303.webp"),
   img("Bhakti_Sourabh/img304.webp"),
@@ -187,7 +190,8 @@ const weddingData = {
       "What made it special was how easily they blended into it all. Dancing with their friends, sharing jokes, and just enjoying the chaos around them. Even during the ceremony, there was a lightness that stayed. It felt fun, spontaneous and completely true to who they are."
     ],
  images: [
-      img("Rohan_Preksha/img538.webp"),
+  img("portfolio/Rohan_Preksha.webp"),
+  img("Rohan_Preksha/img538.webp"),
   img("Rohan_Preksha/img500.webp"),
   img("Rohan_Preksha/img501.webp"),
   img("Rohan_Preksha/img502.webp"),
@@ -200,7 +204,6 @@ const weddingData = {
   img("Rohan_Preksha/img509.webp"),
   img("Rohan_Preksha/img510.webp"),
   img("Rohan_Preksha/img511.webp"),
-
   img("Rohan_Preksha/img512.webp"),
   img("Rohan_Preksha/img513.webp"),
   img("Rohan_Preksha/img514.webp"),
@@ -213,7 +216,6 @@ const weddingData = {
   img("Rohan_Preksha/img521.webp"),
   img("Rohan_Preksha/img522.webp"),
   img("Rohan_Preksha/img523.webp"),
-
   img("Rohan_Preksha/img524.webp"),
   img("Rohan_Preksha/img525.webp"),
   img("Rohan_Preksha/img526.webp"),
@@ -226,10 +228,8 @@ const weddingData = {
   img("Rohan_Preksha/img533.webp"),
   img("Rohan_Preksha/img534.webp"),
   img("Rohan_Preksha/img535.webp"),
-
   img("Rohan_Preksha/img536.webp"),
   img("Rohan_Preksha/img537.webp"),
-  
   img("Rohan_Preksha/img539.webp"),
   img("Rohan_Preksha/img540.webp"),
   img("Rohan_Preksha/img541.webp"),
@@ -252,6 +252,7 @@ const weddingData = {
       "What stood out was how effortlessly everything came together. Nothing felt rushed or overdone. Just two people surrounded by their families, celebrating in a way that felt familiar, comforting, and truly their own."
     ],
     images: [
+      img("portfolio/Chaitraly_Shubham.webp"),
       img("Chaitrali_Shubham/img401.webp"),
       img("Chaitrali_Shubham/img402.webp"),
       img("Chaitrali_Shubham/img403.webp"),
@@ -297,7 +298,8 @@ const weddingData = {
       "What stood out was how naturally they moved through it all. Whether it was laughter during the smaller moments or the quiet pauses they shared, everything felt real. It wasn’t about the scale or the setup, but about how present they were with each other and everyone around them."
     ],
     images: [
-      img("Aishwarya_Sanmay/img38.webp"),
+  img("portfolio/Sanmay_Aishwarya.jpeg"),
+  img("Aishwarya_Sanmay/img38.webp"),
   img("Aishwarya_Sanmay/img0.webp"),
   img("Aishwarya_Sanmay/img1.webp"),
   img("Aishwarya_Sanmay/img3.webp"),
@@ -380,6 +382,7 @@ const weddingData = {
       "Between all the ceremonies and celebrations, they found time to exchange glances that said more than the words around them."
     ],
   images: [
+    img("portfolio/Atish_Shweta.webp"),
   img("Atish_Shweta/img4001.webp"),
   img("Atish_Shweta/img4002.webp"),
   img("Atish_Shweta/img4003.webp"),
@@ -433,6 +436,7 @@ const weddingData = {
       "Surrounded by family and friends, they embraced each moment as it came, making the celebration feel genuine, memorable and truly their own."
     ],
   images: [
+  img("portfolio/Gaurav_Chinmaee.webp"),
   img("Gaurav_Chinmaee/img901.webp"),
   img("Gaurav_Chinmaee/img902.webp"),
   img("Gaurav_Chinmaee/img903.webp"),
@@ -482,6 +486,7 @@ const weddingData = {
       "By the wedding day, the excitement had settled into meaningful moments, bringing everyone together for a celebration that felt complete from start to finish."
     ],
     images: [
+  img("portfolio/Raj_Suhasini.webp"),
   img("Raj_Suhasini/img2001.webp"),
   img("Raj_Suhasini/img2002.webp"),
   img("Raj_Suhasini/img2003.webp"),
@@ -540,6 +545,7 @@ const weddingData = {
       "By the wedding day, the pace had slowed, allowing them to take in each ritual, each glance and each moment shared with the people around them."
     ],
 images: [
+  img("portfolio/Shruti_Harjot.webp"),
   img("Shruti_Harjot/img3001.webp"),
   img("Shruti_Harjot/img3002.webp"),
   img("Shruti_Harjot/img3003.webp"),
@@ -613,6 +619,7 @@ images: [
       "Surrounded by their loved ones, they enjoyed every moment together making it a beautiful wedding celebration in Pune that reflected who they are."
     ],
 images: [
+  img("portfolio/Atharva_Harita.webp"),
   img("Atharva_Haritha/img801.webp"),
   img("Atharva_Haritha/img802.webp"),
   img("Atharva_Haritha/img803.webp"),
@@ -677,6 +684,7 @@ images: [
       "Wherever you looked, there were people dancing, laughing and creating moments that made the entire wedding feel alive from start to finish."
     ],
 images: [
+  img("portfolio/Nina_Parth.webp"),
   img("Nina_Parth/img1001.webp"),
   img("Nina_Parth/img1002.webp"),
   img("Nina_Parth/img1003.webp"),
@@ -724,6 +732,7 @@ images: [
       "The sangeet brought a different energy, with performances, dancing and a packed dance floor. By the wedding day, the focus shifted to meaningful rituals, bringing everyone together for a celebration rooted in tradition."
     ],
 images: [
+  img("portfolio/Anuja_Shubhang.webp"),
   img("Anuja_Shubhang/img701.webp"),
   img("Anuja_Shubhang/img702.webp"),
   img("Anuja_Shubhang/img703.webp"),
