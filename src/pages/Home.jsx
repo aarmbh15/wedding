@@ -267,11 +267,11 @@ const FilmCard = React.memo(function FilmCard({ film, onSelect }) {
           className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300 shadow-xl">
-            <Play className="w-5 h-5 text-white fill-white ml-1" />
-          </div>
-        </div>
+              <div className="absolute inset-0 flex items-center justify-center opacity-100 scale-100 md:opacity-0 md:group-hover:opacity-100 md:scale-90 md:group-hover:scale-100 transition-all duration-500 ease-out pointer-events-none">
+         <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black/15 md:bg-white/10 flex items-center justify-center border border-white/20 md:border-white/20 shadow-lg">
+           <Play className="w-5 h-5 text-white/90 fill-white/90 ml-1" />
+         </div>
+       </div>
       </div>
       <h3 className="font-cormorant text-[1.45rem] transition-colors duration-400 group-hover:text-[#c9a84c] text-[#1a1a1a]">
         {film.couple}
