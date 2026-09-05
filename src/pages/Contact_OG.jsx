@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { Instagram, Youtube, Facebook } from 'lucide-react';
-import Swal from 'sweetalert2';
 import HeroImage from "../assets/hero1.webp";
 
 function useInView(threshold = 0.1) {
@@ -83,54 +82,9 @@ const Contact = () => {
   const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     setLoading(true);
-
-    const formData = new FormData(e.target);
-
-    try {
-      // 1. DATABASE & EMAIL POST
-      // ⚠️ Toggle these URLs depending on your environment (Local vs Live)
-      const response = await fetch('http://localhost/contact_wedding.php', { 
-    //   const response = await fetch('https://tiltshiftpictures.com/contact.php', {
-        method: 'POST',
-        body: formData,
-      });
-
-      // 2. GOOGLE SHEETS POST (Optional but requested)
-      // If you create a Google Apps Script Web App for Sheets, paste the URL here.
-      // const googleSheetURL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL";
-      // fetch(googleSheetURL, { method: 'POST', body: formData, mode: 'no-cors' }).catch(err => console.log(err));
-
-      const data = await response.json();
-
-      if (data.status === "success") {
-        setSubmitted(true);
-        Swal.fire({
-          title: 'Beautiful Moments Await.',
-          text: "Your inquiry has reached us. We'll be in touch very soon.",
-          icon: 'success',
-          confirmButtonColor: '#c9a84c',
-          confirmButtonText: 'Perfect'
-        });
-      } else {
-        Swal.fire({
-          title: 'Something went wrong.',
-          text: "We couldn't submit your inquiry. Please try again or email us directly at hello@tiltshiftpictures.com.",
-          icon: 'error',
-          confirmButtonColor: '#c9a84c'
-        });
-      }
-    } catch (error) {
-      console.error("Submission failed", error);
-      Swal.fire({
-        title: 'Connection Issue',
-        text: "Looks like there's a network error. Please try again or drop us an email.",
-        icon: 'warning',
-        confirmButtonColor: '#c9a84c',
-        confirmButtonText: 'Got it'
-      });
-    } finally {
-      setLoading(false);
-    }
+    await new Promise(r => setTimeout(r, 1500));
+    setLoading(false);
+    setSubmitted(true);
   }, []);
 
   const inputClasses = "w-full py-4 bg-transparent border-b border-black/10 text-gray-800 font-light focus:border-[#c9a84c] outline-none transition-all placeholder:text-gray-300";
@@ -138,26 +92,27 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white text-[#2D2D2D] font-['Jost']">
       {/* ─── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative h-screen bg-[#F4F1EA] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0 scale-110 animate-[kenburns_20s_ease_infinite]">
-          <img
-            src={HeroImage}
-            alt="Contact Hero"
-            loading="eager"
-            decoding="async"
-            className="w-full h-full object-cover object-[center_40%] opacity-90 brightness-95 contrast-105"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/50 z-10" />
+     {/* ─── HERO ─────────────────────────────────────────────────── */}
+<section className="relative h-screen bg-[#F4F1EA] flex items-center justify-center overflow-hidden">
+  <div className="absolute inset-0 z-0 scale-110 animate-[kenburns_20s_ease_infinite]">
+    <img
+      src={HeroImage}
+      alt="Contact Hero"
+      loading="eager"
+      decoding="async"
+      className="w-full h-full object-cover object-[center_40%] opacity-90 brightness-95 contrast-105"
+    />
+  </div>
+  <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/50 z-10" />
 
-        <div className="relative z-10 text-center px-6 animate-[fadeIn_1.4s_ease-out]">
-          <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.8rem,8vw,6rem)] font-light leading-none text-white drop-shadow-md mb-4">
-            Let's Capture <br />
-            <span className="italic">The Magic</span>
-          </h1>
-          <div className="w-16 h-[1.5px] bg-[#c9a84c] mx-auto mt-8 shadow-sm" />
-        </div>
-      </section>
+  <div className="relative z-10 text-center px-6 animate-[fadeIn_1.4s_ease-out]">
+    <h1 className="font-['Cormorant_Garamond'] text-[clamp(2.8rem,8vw,6rem)] font-light leading-none text-white drop-shadow-md mb-4">
+      Let's Capture <br />
+      <span className="italic">The Magic</span>
+    </h1>
+    <div className="w-16 h-[1.5px] bg-[#c9a84c] mx-auto mt-8 shadow-sm" />
+  </div>
+</section>
 
       {/* ─── QUICK INFO STRIP ─────────────────────────────────────── */}
       <div className="bg-[#F4F1EA] border-y border-black/5 py-8 px-6">
@@ -190,52 +145,43 @@ const Contact = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-10">
-                {/* Honeypot field for bot protection */}
-                <input type="text" name="honeypot" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
-                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="group">
                     <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Your Name</label>
-                    <input type="text" name="name" required className={inputClasses} placeholder="First & Last Name" />
+                    <input type="text" required className={inputClasses} placeholder="First & Last Name" />
                   </div>
                   <div className="group">
                     <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Email Address</label>
-                    <input type="email" name="email" required className={inputClasses} placeholder="email@example.com" />
+                    <input type="email" required className={inputClasses} placeholder="email@example.com" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="group">
                     <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Phone Number</label>
-                    <input type="tel" name="phone" required className={inputClasses} placeholder="+91" />
+                    <input type="tel" required className={inputClasses} placeholder="+91" />
                   </div>
                   <div className="group">
                     <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Event Date</label>
-                    <input type="date" name="event_date" className={inputClasses} />
+                    <input type="date" className={inputClasses} />
                   </div>
                 </div>
 
                 <div className="group">
                   <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Venue & City</label>
-                  <input type="text" name="venue" className={inputClasses} placeholder="Baner, Pune..." />
+                  <input type="text" className={inputClasses} placeholder="Baner, Pune..." />
                 </div>
 
                 <div className="group">
                   <label className="text-[0.65rem] uppercase tracking-widest text-[#c9a84c]">Event Details</label>
-                  <textarea name="event_details" className={inputClasses + " resize-none"} placeholder="Functions, Timings and approx guest count..." />
+                  <textarea className={inputClasses + " resize-none"} placeholder="Functions, Timings and approx guest count..." />
                 </div>
-                
                 <button 
                   type="submit" 
                   disabled={loading}
-                  className="w-full md:w-auto px-12 py-5 bg-[#c9a84c] text-white text-[0.7rem] uppercase tracking-[0.3em] hover:bg-[#2D2D2D] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="w-full md:w-auto px-12 py-5 bg-[#c9a84c] text-white text-[0.7rem] uppercase tracking-[0.3em] hover:bg-[#2D2D2D] transition-colors disabled:opacity-50"
                 >
-                  {loading ? (
-                    <>
-                      <span className="w-3 h-3 border-2 border-white/20 border-t-white rounded-full animate-spin inline-block" />
-                      Sending...
-                    </>
-                  ) : "Submit Inquiry"}
+                  {loading ? "Sending..." : "Submit Inquiry"}
                 </button>
               </form>
             )}
